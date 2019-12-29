@@ -107,17 +107,17 @@ body{
     color: #693d3d;
 }
 
-.signature{
+.references{
     font-size: 0.8rem;
     margin-top: 4rem;
     margin-right: 5rem;
     text-align: right;
 }
 
-.references{
+.signature{
     font-size: 0.8rem;
     margin-top: 0;
-    margin-right: 4.6rem;
+    margin-right: 126px;
     text-align: right;
 }
 
