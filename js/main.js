@@ -73,7 +73,7 @@ function showWinner(winner, computerChoice, probability){
         <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() 
             + computerChoice.slice(1)
         }</strong></p>
-        <p>as percentage of ${(probability*100).toFixed(2)}%</p>
+        
         `;
     }else if(winner === 'computer'){
         // Inc computer score
@@ -84,7 +84,7 @@ function showWinner(winner, computerChoice, probability){
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
         <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() 
             + computerChoice.slice(1)}</strong></p>
-            <p>as percentage of ${(probability*100).toFixed(2)}%</p>
+            
         `;
     }else{
         // Show modal result
@@ -93,7 +93,7 @@ function showWinner(winner, computerChoice, probability){
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
         <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() 
             + computerChoice.slice(1)}</strong></p>
-            <p>as percentage of ${(probability*100).toFixed(2)}%</p>
+            
         `;
     }
     if(winner !== 'draw'){
