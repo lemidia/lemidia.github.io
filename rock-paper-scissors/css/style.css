@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root{
+    --primary-color: rgba(189, 189, 211);
+    --dark-color:#333333;
+    --light-color:#f4f4f4;
+    --lose-color:#dc3545;
+    --win-color:#28a745;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: rgb(56, 56, 56);
+    color: rgb(216, 216, 216);
+}
+
+.container{
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0.2rem;
+    text-align: center;
+}
+
+.restart-btn{
+    display: none;
+    background: var(--light-color);
+    color:#333;
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 1.7rem;
+    border-radius: 1rem;
+}
+
+.restart-btn:hover{
+    background:var(--primary-color);
+    color: rgb(78, 73, 73);
+}
+
+.header{
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.header h1{
+    margin-bottom: 1rem;
+}
+
+.score{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 1.2rem;
+    color: #fff;
+    
+}
+
+.score p{
+    margin: auto;
+}
+
+.score .left-side{
+    display: block;
+    overflow: hidden;
+    padding-left: 15rem;
+
+}
+
+.score .right-side{
+    display: block;
+    padding-right: 15rem;
+    overflow: hidden;
+}
+
+.choices{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.choice{
+    cursor: pointer;
+}
+
+.choice:hover{
+    color: var(--primary-color);
+}
+.text-win{
+    color: var(--win-color);
+}
+
+.text-lose{
+    color: var(--lose-color);
+}
+
+.text-draw{
+    color: #693d3d;
+}
+
+.references{
+    font-size: 0.8rem;
+    margin-top: 4rem;
+    margin-right: 5rem;
+    text-align: right;
+}
+
+.signature{
+    font-size: 0.8rem;
+    margin-top: 0;
+    margin-right: 126px;
+    text-align: right;
+    
+}
+
+.grade{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    text-align: left;
+    width: 200px;
+    
+}
+
+.grade .two, .three, .four, .five, .six{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: left;
+    display: flex;
+    color: #fff;
+}
+
+.grade .pic {
+    width: 100px;
+}
+
+
+.grade p{
+    margin-bottom: 1rem;
+}
+
+@media(max-width: 700px){
+    .choice{
+        font-size: 110px;
+    }
+}
+
+@media(max-width: 500px){
+    .choice{
+        font-size: 80px;
+    }
+}

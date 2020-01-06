@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/9b91a1c949.js"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Rock Paper Scissors by 경이 </title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Rock Paper Scissors </h1>
+            <button id="restart" class="restart-btn">Restart Game</button>
+            <div id="score" class="score">
+                <div class="left-side">
+                    <p>Player : 0</p>
+                    <p>0%</p>
+                </div>
+                <i class="fab fa-angellist fa-3x"></i>
+                <div class="right-side">
+                    <p>Computer : 0</p>
+                    <p>0%</p>
+                </div>
+            </div>
+
+            <div class="grade">
+                <p> Grade (When win straight)</p>
+                <div class="two">
+                    <div class="pic">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <p>2 win straight</p>
+                    </div>
+                </div>
+                <div class="three">
+                    <div class="pic">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <p>3 win straight</p>
+                    </div>
+                </div>
+                <div class="four">
+                    <div class="pic">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <p>4 win straight</p>
+                    </div>
+                </div>
+                <div class="five">
+                    <div class="pic">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div>
+                        <p>5 win straight</p>
+                    </div>
+                </div>
+                <div class="six">
+                    <div class="pic">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div>
+                        <p>6 win straight</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <h2>Make Your Selection</h2>
+        <div class="choices">
+            <i id="rock" class="choice fas fa-hand-rock fa-10x"></i>
+            <i id="paper" class="choice fas fa-hand-paper fa-10x"></i>
+            <i id="scissors" class="choice fas fa-hand-scissors fa-10x"></i>
+        </div>
+    </div>
+
+    <div class="references">References : Traversy Media</div>
+    <div class="signature">Modified by Gyeong</div>
+
+    <!-- Modal-->
+    <div class="modal">
+        <div id="result" class="modal-content">
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
