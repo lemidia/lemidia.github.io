@@ -4,4 +4,4 @@
 
 - rock-paper-scissors : Basic rock paper scissors game web project using Javascript. - https://lemidia.github.io/rock-paper-scissors/
 
-- word-beater-webgame : Basic word beater game web project using Javascript.
+- word-beater-webgame : Basic word beater game web project using Javascript. - https://lemidia.github.io/word-beater-webgame/dist/
