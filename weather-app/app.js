@@ -26,9 +26,8 @@ window.addEventListener('load', () =>{
                    locationTimezone.textContent = data.timezone.replace("/", " / ");
                    setIcons(icon, "icon1");
                   });
-
         }, () => {
-            alert("Error");
+            alert("You have denied or please confirm location");
         });
     } else{
         alert("Geolocation is not supported by your browser");
@@ -45,13 +44,13 @@ window.addEventListener('load', () =>{
     let isCelsius = true;
     degreeSection.addEventListener('click', () => {
         if (isCelsius) {
-            temperatureDegree.textContent = Math.round(parseInt(temperatureDegree.textContent) * 1.8 + 32);
-            console.log(temperatureDegree);
+            temperatureDegree.textContent
+             = Math.round(parseInt(temperatureDegree.textContent) * 1.8 + 32);
             transition.textContent = 'F';
             isCelsius = false;
         }else{
-            temperatureDegree.textContent = Math.round((parseInt(temperatureDegree.textContent) - 32) / 1.8);
-            console.log(temperatureDegree);
+            temperatureDegree.textContent
+             = Math.round((parseInt(temperatureDegree.textContent) - 32) / 1.8);
             transition.textContent = 'C';
             isCelsius = true;
         }

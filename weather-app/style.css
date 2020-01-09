@@ -48,3 +48,19 @@ body{
 .degree-section h2{
     font-size: 40px;
 }
+
+
+@media screen and (max-width:550px){
+    .location-timezone{
+        margin-right: 3rem;
+    }
+
+    .degree-section{
+        margin-right: 6rem;
+        font-size: 30px;
+    }
+
+    .temperature-description{
+        transform: translateX(-20%);
+    }
+}
