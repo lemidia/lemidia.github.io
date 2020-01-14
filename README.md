@@ -6,22 +6,22 @@
 - It may take a few seconds to get a weather data from the API server.
 ## Link
 [Weather App](https://lemidia.github.io/weather-app/)
-
+<br>
 ## Shopping Web app with cart item
 - Shopping website page Featuring add item to the cart made with HTML, CSS and javascript.
 ## Link
 [Shopping website](https://lemidia.github.io/shopping-web-javascript/)
-
+<br>
 ## Rock Paper Scissors
 - Simple rock paper scissors game web project built with vanilla javascript.
 ## Link
 [Rock paper scissors](https://lemidia.github.io/rock-paper-scissors/)
-
+<br>
 ## Word beater
 - Simple word beater game web project using vanilla Javascript. 
 ## Link
 [Word beater](https://lemidia.github.io/word-beater-webgame/dist/)
-
+<br>
 ## Tap Music
 - Basic Web applicaiotn Built with vanulla Javascript with CSS Animation.
 - Click the button in the bottom of the window to listen the music.
