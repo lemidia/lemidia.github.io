@@ -1,13 +1,15 @@
-I"Ë
+I"e
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt=""></a>
+        
         <a class="site-title" href="/">
-          Site Title
-          
+          Dev.Gyeong
+          <span class="site-subtitle">Development & Algorithm</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
