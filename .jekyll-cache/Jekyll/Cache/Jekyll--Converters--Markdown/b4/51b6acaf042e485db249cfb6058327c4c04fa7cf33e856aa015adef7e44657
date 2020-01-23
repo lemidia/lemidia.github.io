@@ -1,0 +1,97 @@
+I"·9<h1 id="code">code</h1>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">bcrypt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">bcryptjs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">passport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">passport</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Mongoose user model</span>
+<span class="kd">const</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../models/User</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// If user approach to /user/login</span>
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">));</span>
+<span class="c1">// If user approach to /user/register </span>
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/register</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">register</span><span class="dl">'</span><span class="p">));</span>
+
+<span class="c1">// Register Handle</span>
+<span class="c1">// If POST method which is in register.ejs is executed</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/register</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">password2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">errors</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="c1">// Check required fields</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">name</span> <span class="o">||</span> <span class="o">!</span><span class="nx">email</span> <span class="o">||</span> <span class="o">!</span><span class="nx">password</span> <span class="o">||</span> <span class="o">!</span><span class="nx">password2</span><span class="p">){</span>
+        <span class="nx">errors</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Please fill in all fields</span><span class="dl">'</span><span class="p">});</span>
+    <span class="p">}</span>
+    <span class="c1">// Check passwords match</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">password</span> <span class="o">!==</span> <span class="nx">password2</span><span class="p">){</span>
+        <span class="nx">errors</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Passwords do not match</span><span class="dl">'</span><span class="p">});</span>
+    <span class="p">}</span>
+    <span class="c1">// Check passwords length</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">password</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">errors</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Password should be at least 6 characters</span><span class="dl">'</span><span class="p">});</span>
+    <span class="p">}</span>
+    <span class="c1">// If not satisfied conditions are exist</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Reload the register page.</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">register</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">errors</span><span class="p">,</span>
+            <span class="nx">name</span><span class="p">,</span>
+            <span class="nx">email</span><span class="p">,</span>
+            <span class="nx">password</span><span class="p">,</span>
+            <span class="nx">password2</span>
+        <span class="p">});</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="c1">// Validation passed</span>
+        <span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span> <span class="na">email</span><span class="p">:</span> <span class="nx">email</span><span class="p">})</span> <span class="c1">// Find specific user in database.</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">user</span><span class="p">){</span> <span class="c1">// If user is already exists</span>
+                <span class="nx">errors</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Email is already registered</span><span class="dl">'</span><span class="p">});</span>
+                <span class="c1">// Reload the register page.</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">register</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">errors</span><span class="p">,</span>
+                    <span class="nx">name</span><span class="p">,</span>
+                    <span class="nx">email</span><span class="p">,</span>
+                    <span class="nx">password</span><span class="p">,</span>
+                    <span class="nx">password2</span>
+                <span class="p">});</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span> <span class="c1">// If user is not exists</span>
+                <span class="kd">const</span> <span class="nx">newUser</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">({</span>
+                    <span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span>
+                    <span class="na">email</span><span class="p">:</span> <span class="nx">email</span><span class="p">,</span>
+                    <span class="na">password</span><span class="p">:</span> <span class="nx">password</span>
+                <span class="p">});</span>
+                <span class="c1">// Hash password</span>
+                <span class="nx">bcrypt</span><span class="p">.</span><span class="nx">genSalt</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">salt</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="c1">// Generate salt</span>
+                 <span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">newUser</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span> <span class="nx">salt</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">hash</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+                        <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+                        <span class="c1">// Set password to hashed</span>
+                        <span class="nx">newUser</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="nx">hash</span><span class="p">;</span>
+                        <span class="c1">//Save user</span>
+                        <span class="nx">newUser</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span> <span class="c1">// Return promise</span>
+                        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">req</span><span class="p">.</span><span class="nx">flash</span><span class="p">(</span><span class="dl">'</span><span class="s1">success_msg</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">You are now registered and can login</span><span class="dl">'</span><span class="p">);</span>
+                            <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/login</span><span class="dl">'</span><span class="p">);</span>
+                        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+                    <span class="p">}))</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Login handle</span>
+<span class="c1">// Login</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">successRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/dashboard</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">failureRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/users/login</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">failureFlash</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">})(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Logout</span>
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/logout</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">logout</span><span class="p">();</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">flash</span><span class="p">(</span><span class="dl">'</span><span class="s1">success_msg</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">You are logged out</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/login</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span><span class="p">;</span>
+</code></pre></div></div>
+:ET
