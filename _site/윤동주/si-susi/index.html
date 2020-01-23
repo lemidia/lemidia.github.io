@@ -1,0 +1,636 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Union Find - Dev.Gyeong</title>
+<meta name="description" content="Union Find By Lank With Path Compression ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dev.Gyeong">
+<meta property="og:title" content="Union Find">
+<meta property="og:url" content="http://localhost:4000/%EC%9C%A4%EB%8F%99%EC%A3%BC/si-susi/">
+
+
+  <meta property="og:description" content="Union Find By Lank With Path Compression ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerLogo2.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-14T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2019-09-13T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/%EC%9C%A4%EB%8F%99%EC%A3%BC/si-susi/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dev.Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dev.Gyeong Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Dev.Gyeong
+          <span class="site-subtitle">Development & Algorithm</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/headerLogo2.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Union Find
+
+        
+      </h1>
+      
+        <p class="page__lead">Union Find By Lank With Path Compression
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Love to Coding, and more</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Korea Republic Of</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:your.name@email.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Union Find">
+    <meta itemprop="description" content="Union Find By Lank With Path Compression">
+    <meta itemprop="datePublished" content="2019-04-14T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2019-09-13T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="union-by-rank">Union by Rank</h2>
+
+<p>트리의 깊이 또는 높이는 유니온 파인드 연산 실행시간에 영향을 주는데
+트리를 합칠 때 높이가 작은 트리를 높이가 큰 트리의 루트에 붙이면 높이가 높아지지 않습니다.
+이렇게 유니온 바이 랭크(union by rank)는 높이가 작은 트리를 큰 트리 루트에 붙이는 방법입니다.</p>
+
+<p>※ 단, 높이가 같은 트리를 합칠 땐 높이가 +1 높아집니다.</p>
+
+<p>우리는 여기서 랭크라는 표현을 쓰는데, 트리의 높이는 위에서 살펴본 path compresstion에 의해서 줄어들 수 있고 업데이트되지 않기 때문입니다. 그래서 랭크라는 표현을 씁니다.</p>
+
+<p>원소마다 랭크 정보를 유지하기 위해서 Make set의 for loop에 rank [i] = 0을 추가해 줍니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+    <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 처음에는 랭크가 전부 0</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>아래는 union by rank코드입니다.</p>
+
+<p>두 원소의 루트를 구해서 서로 같다면 합치지 않고 유니온 연산을 종료합니다.<br />
+그렇지 않다면, x의 루트랭크가 y의 루트랭크보다 크거나 같다면 y의 루트를 x의 루트 아래로 붙입니다. (else 서로 스왑해서 수행)
+두 트리의 랭크가 서로 같다면 랭크+1을 해줍니다. (두 트리의 랭크가 같으니 합치면 랭크가 +1 됩니다.)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span>
+     <span class="n">xRoot</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+     <span class="n">yRoot</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
+     <span class="k">if</span> <span class="n">xRoot</span> <span class="o">==</span> <span class="n">yRroot</span>
+         <span class="k">return</span>
+ 
+     <span class="nf">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">xRoot</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="n">rank</span><span class="o">[</span><span class="n">yRoot</span><span class="o">])</span>
+         <span class="n">parent</span><span class="o">[</span><span class="n">yRoot</span><span class="o">]</span> <span class="o">=</span> <span class="n">xRoot</span><span class="o">;</span>
+     <span class="k">else</span>
+         <span class="n">parent</span><span class="o">[</span><span class="n">xRoot</span><span class="o">]</span> <span class="o">=</span> <span class="n">yRoot</span><span class="o">;</span>
+ 
+     <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">xRoot</span><span class="o">]</span> <span class="o">==</span> <span class="n">rank</span><span class="o">[</span><span class="n">yRoot</span><span class="o">])</span>
+         <span class="n">rank</span><span class="o">[</span><span class="n">yRoot</span><span class="o">]</span> <span class="o">=</span> <span class="n">rank</span><span class="o">[</span><span class="n">xRroot</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h2 id="application">Application</h2>
+
+<p>유니온 파인드는 무향 그래프에서의 사이클 존재 유무를 판별할 때 사용될 수 있습니다. (단, 셀프 루프는 없어야 합니다.)</p>
+
+<p>또, 크루스칼 알고리즘에서 최소 스패닝 트리를 찾는데에 사용됩니다.</p>
+
+<p>최소 스패닝 트리는 노드의 수가 n개 일 때 n-1개의 최소 비용의 간선으로 이루어진 트리로서 그래프에서 최소비용의 간선을 선택함에 있어 만들어지는 트리에서 사이클이 존재하지 않아야 하기에 사이클을 형성 유무 판별에 유니온 파인드가 사용됩니다.</p>
+
+<h3 id="union-by-lank-with-path-compression">Union by Lank with Path Compression</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">unionFind</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">parent</span><span class="o">[];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">rank</span><span class="o">[];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+ 
+    <span class="n">unionFind</span><span class="o">(</span><span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">n</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">;</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeSet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">==</span> <span class="n">x</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]);</span> <span class="c1">// * 경로 압축</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">root1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">root2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">root1</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">root1</span><span class="o">);</span>
+        <span class="n">root2</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">root2</span><span class="o">);</span>
+ 
+        <span class="k">if</span> <span class="o">(</span><span class="n">root1</span> <span class="o">==</span> <span class="n">root2</span><span class="o">)</span> <span class="c1">// 루트가 같다면 수행하지 않는다.</span>
+            <span class="k">return</span><span class="o">;</span>
+ 
+        <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="n">rank</span><span class="o">[</span><span class="n">root2</span><span class="o">])</span> <span class="o">{</span> <span class="c1">// 루트1의 랭크가 루트2의 랭크보다 크다면</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">root2</span><span class="o">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">root1</span><span class="o">];</span> <span class="c1">//루트2가 루트1의 밑으로 합친다</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="c1">// 위의 if문 과 반대</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">root2</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">==</span> <span class="n">rank</span><span class="o">[</span><span class="n">root2</span><span class="o">])</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure#by_size">Wikipedi - Union Find</a></p>
+
+<p><a href="https://algocoding.wordpress.com/2014/09/19/union-find-data-structure-disjoint-set-data-structure/">Algocoding - Union Find</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#data-structure" class="page__taxonomy-item" rel="tag">Data Structure</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%84%9C%EC%8B%9C" class="page__taxonomy-item" rel="tag">서시</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%8B%9C" class="page__taxonomy-item" rel="tag">시</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%9C%A4%EB%8F%99%EC%A3%BC" class="page__taxonomy-item" rel="tag">윤동주</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#%EC%9C%A4%EB%8F%99%EC%A3%BC" class="page__taxonomy-item" rel="tag">윤동주</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-09-13">September 13, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Union+Find%20http%3A%2F%2Flocalhost%3A4000%2F%25EC%259C%25A4%25EB%258F%2599%25EC%25A3%25BC%2Fsi-susi%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EC%259C%25A4%25EB%258F%2599%25EC%25A3%25BC%2Fsi-susi%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EC%259C%25A4%25EB%258F%2599%25EC%25A3%25BC%2Fsi-susi%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/blog/first-post/" class="pagination--pager" title="github.io 블로그 시작하기
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            "/assets/images/logo.png"
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/first-post/" rel="permalink">github.io 블로그 시작하기
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Dev.Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
