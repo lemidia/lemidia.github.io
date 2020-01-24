@@ -103,6 +103,8 @@
 
 <!-- end custom head snippets -->
 
+    <!-- mathjax -->
+    
   </head>
 
   <body class="layout--single">
@@ -298,6 +300,7 @@
           <h1 id="page-title" class="page__title" itemprop="headline">github.io 블로그 시작하기
 </h1>
           
+          <!--
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
 
@@ -306,6 +309,8 @@
   less than 1 minute read
 
 </p>
+          -->
+          <p class="page__date"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated: <time datetime="2020-01-22T00:00:00+09:00">January 22, 2020</time></p>
           
         </header>
       
@@ -389,7 +394,7 @@ GitHub Blog 서비스의 이름은 Pages이다.</p>
       
   <nav class="pagination">
     
-      <a href="/algorithm/eratosthenes-sieve/" class="pagination--pager" title="Union Find
+      <a href="/algorithm/eratosthenes-sieve/" class="pagination--pager" title="Eratosthenes’s Sieve
 ">Previous</a>
     
     
@@ -425,10 +430,15 @@ GitHub Blog 서비스의 이름은 Pages이다.</p>
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/eratosthenes-sieve/" rel="permalink">Union Find
+        <a href="/algorithm/eratosthenes-sieve/" rel="permalink">Eratosthenes’s Sieve
 </a>
       
     </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
     
       <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
@@ -439,7 +449,11 @@ GitHub Blog 서비스의 이름은 Pages이다.</p>
 
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">Union Find By Lank With Path Compression
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">소수를 빨리 찾을 수 있는 알고리즘
 </p>
   </article>
 </div>
@@ -462,19 +476,28 @@ GitHub Blog 서비스의 이름은 Pages이다.</p>
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/data%20structure/si-susi/" rel="permalink">Union Find
+        <a href="/data%20structure/unionfind/" rel="permalink">Union Find
 </a>
       
     </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
     
       <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
 
 
 
 
-  1 minute read
+  7 minute read
 
 </p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 14 2019</p>
     
     <p class="archive__item-excerpt" itemprop="description">Union Find By Lank With Path Compression
 </p>
@@ -540,6 +563,25 @@ GitHub Blog 서비스의 이름은 Pages이다.</p>
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/first-post/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/first-post"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

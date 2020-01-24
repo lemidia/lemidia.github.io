@@ -1,12 +1,12 @@
 var store = [{
         "title": "Union Find",
-        "excerpt":"Union by Rank 트리의 깊이 또는 높이는 유니온 파인드 연산 실행시간에 영향을 주는데 트리를 합칠 때 높이가 작은 트리를 높이가 큰 트리의 루트에 붙이면 높이가 높아지지 않습니다. 이렇게 유니온 바이 랭크(union by rank)는 높이가 작은 트리를 큰 트리 루트에 붙이는 방법입니다. ※ 단, 높이가 같은 트리를 합칠 땐 높이가 +1...","categories": ["Data Structure"],
-        "tags": ["서시","윤동주","시","Data Structure"],
-        "url": "http://localhost:4000/data%20structure/si-susi/",
+        "excerpt":"Union-Find 컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다. 부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 이 A나 B가 어느 부분집합에 속하는지, 또 A와 B가 각각 속한 부분집합 다르다면 이 두 부분집합을 하나의 집합으로 합쳐, 원소들이...","categories": ["Data Structure"],
+        "tags": ["programming","Data Structure"],
+        "url": "http://localhost:4000/data%20structure/unionfind/",
         "teaser":"http://localhost:4000/assets/images/logo.png"},{
-        "title": "Union Find",
-        "excerpt":"code const express = require('express'); const router = express.Router(); const bcrypt = require('bcryptjs'); const passport = require('passport'); // Mongoose user model const User = require('../models/User'); // If user approach to /user/login router.get('/login', (req, res) =&gt; res.render('login')); // If user approach to /user/register router.get('/register', (req, res) =&gt; res.render('register')); // Register Handle...","categories": ["Algorithm"],
-        "tags": ["Data Structure"],
+        "title": "Eratosthenes's Sieve",
+        "excerpt":"에라토스테네스의 체 Sieve_of_Eratosthenes_animation: 수학에서 에라토스테네스의 체는 소수를 찾는 방법입니다. 고대 그리스 수학자 에라토스테네스가 발견하였습니다. 선행지식: 수학에서 소수란? 소수: 1을 제외한 수 중에서 1과 자기 자신을 제외하고 약수를 가지지 않는 수를 말합니다. 예) 예1) 2는 1과 자기 자신(2)을 제외하고는 약수를 가지지 않습니다. 소수입니다. 예2) 5는 1과 자기 자신(5)을 제외하고는 약수를 가지지...","categories": ["Algorithm"],
+        "tags": ["Data Structure","Mathematics"],
         "url": "http://localhost:4000/algorithm/eratosthenes-sieve/",
         "teaser":"http://localhost:4000/assets/images/logo.png"},{
         "title": "github.io 블로그 시작하기",
