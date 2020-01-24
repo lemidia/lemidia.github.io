@@ -271,7 +271,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Korea Republic Of</span>
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
         </li>
       
 
@@ -373,10 +373,26 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#에라토스테네스의-체">에라토스테네스의 체</a>
+    <ul>
+      <li><a href="#선행지식-수학에서-소수란">선행지식: 수학에서 소수란?</a></li>
+      <li><a href="#algorithm">Algorithm</a></li>
+      <li><a href="#java로-구현">Java로 구현</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+            </nav>
+          </aside>
+        
         <h1 id="에라토스테네스의-체">에라토스테네스의 체</h1>
 
-<p>Sieve_of_Eratosthenes_animation:
-수학에서 에라토스테네스의 체는 소수를 찾는 방법입니다.<br />
+<p>수학에서 에라토스테네스의 체는 보다 빠르게 소수를 찾는 방법입니다.<br />
 고대 그리스 수학자 에라토스테네스가 발견하였습니다.</p>
 
 <hr />
@@ -393,7 +409,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 예4) 15는 1과 자기자신(15)를 제외하고도 3, 5의 약수를 가집니다. 소수가 아닙니다.
 </code></pre></div></div>
 
-<h2 id="알고리즘">알고리즘</h2>
+<h2 id="algorithm">Algorithm</h2>
 
 <p>밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다.</p>
 
@@ -419,14 +435,12 @@ x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까
 예제에서는 120까지 구하고 있으므로 120의 제곱근 $\sqrt {120}$ = 10까지만 지워도 됩니다.<br />
 왜냐하면 $\sqrt {120}$ = 10 이후의 배수들은 이미 전 단계에서 지워졋기 때문입니다.</p>
 
-<hr />
-
-<h2 id="java-code">Java Code</h2>
+<h2 id="java로-구현">Java로 구현</h2>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Eratosthenes</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-    
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 
         <span class="kt">boolean</span> <span class="o">[]</span> <span class="n">flag</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="no">MAX</span><span class="o">];</span>
@@ -450,6 +464,22 @@ x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">3</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">5</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">7</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">11</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">13</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">17</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">19</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">23</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">29</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://ko.wikipedia.org/wiki/에라토스테네스의_체">Eratothenes - wikipedia</a></p>
 
         
       </section>
@@ -526,7 +556,7 @@ x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까
 ">Previous</a>
     
     
-      <a href="/blog/first-post/" class="pagination--pager" title="github.io 블로그 시작하기
+      <a href="/algorithm/merge-sort/" class="pagination--pager" title="Merge Sort
 ">Next</a>
     
   </nav>
@@ -575,6 +605,44 @@ x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까
        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> January 22 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/merge-sort/" rel="permalink">Merge Sort
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">O(nlogn) 비교 기반 분할정복 정렬 알고리즘
 </p>
   </article>
 </div>

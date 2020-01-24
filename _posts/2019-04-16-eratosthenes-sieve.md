@@ -1,6 +1,9 @@
 ---
 title:  "Eratosthenes's Sieve"
 excerpt: "소수를 빨리 찾을 수 있는 알고리즘"
+toc: true
+toc_sticky: true
+# toc_label: "페이지 주요 목차"
 
 categories:
  - Algorithm
@@ -24,8 +27,7 @@ use_math: true
 
 # 에라토스테네스의 체
 
-Sieve_of_Eratosthenes_animation:
-수학에서 에라토스테네스의 체는 소수를 찾는 방법입니다.  
+수학에서 에라토스테네스의 체는 보다 빠르게 소수를 찾는 방법입니다.  
 고대 그리스 수학자 에라토스테네스가 발견하였습니다.
 
 ***
@@ -44,7 +46,7 @@ Sieve_of_Eratosthenes_animation:
 예4) 15는 1과 자기자신(15)를 제외하고도 3, 5의 약수를 가집니다. 소수가 아닙니다.
 ```
 
-## 알고리즘
+## Algorithm
 
 밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다.
 
@@ -70,15 +72,14 @@ x는 >= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까지
 {: .notice--warning}
 
 
-***
 
-## Java Code
+## Java로 구현
 ```java
 import java.util.Arrays;
 
 public class Eratosthenes {
-    private static final int MAX = 100;
-    
+    private static final int MAX = 30;
+
     public static void main(String[] args) {
 
         boolean [] flag = new boolean[MAX];
@@ -102,3 +103,20 @@ public class Eratosthenes {
     }
 }
 ```
+
+```java
+2 is prime number
+3 is prime number
+5 is prime number
+7 is prime number
+11 is prime number
+13 is prime number
+17 is prime number
+19 is prime number
+23 is prime number
+29 is prime number
+```
+
+## References
+
+[Eratothenes - wikipedia](https://ko.wikipedia.org/wiki/에라토스테네스의_체)

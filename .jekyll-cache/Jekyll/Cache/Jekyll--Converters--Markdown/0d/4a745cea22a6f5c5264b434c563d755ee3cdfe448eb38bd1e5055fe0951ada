@@ -1,41 +1,24 @@
-I"�<h1 id="에라토스테네스의-체">에라토스테네스의 체</h1>
+I"�<h1 id="merge-sort합병-정렬">Merge Sort(합병 정렬)</h1>
 
-<p>Sieve_of_Eratosthenes_animation:
-수학에서 에라토스테네스의 체는 소수를 찾는 방법입니다.<br />
-고대 그리스 수학자 에라토스테네스가 발견하였습니다.</p>
+<p>합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘입니다.<br />
+일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나입니다.
+존 폰 노이만이 1945년에 개발했습니다.</p>
 
 <hr />
 
-<h2 id="선행지식-수학에서-소수란">선행지식: 수학에서 소수란?</h2>
-
-<p class="notice--warning"><strong>소수:</strong> 1을 제외한 수 중에서 <strong>1과 자기 자신을 제외하고 약수를 가지지 않는 수</strong>를 말합니다.</p>
-
-<p>예)</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예1) 2는 1과 자기 자신(2)을 제외하고는 약수를 가지지 않습니다. 소수입니다.
-예2) 5는 1과 자기 자신(5)을 제외하고는 약수를 가지지 않습니다. 소수입니다.
-예3) 13은 1과 자기 자신(13)을 제외하고는 약수를 가지지 않습니다. 소수입니다.
-예4) 15는 1과 자기자신(15)를 제외하고도 3, 5의 약수를 가집니다. 소수가 아닙니다.
-</code></pre></div></div>
-
-<h2 id="알고리즘">알고리즘</h2>
+<h2 id="algorithm">Algorithm</h2>
 
 <p>밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다.</p>
 
 <ol>
-  <li>2부터 소수를 구하고자 하는 구간의 모든 수를 나열한다. 그림에서 회색 사각형으로 두른 수들이 여기에 해당한다.</li>
-  <li>2는 소수이므로 오른쪽에 2를 쓴다. (빨간색)</li>
-  <li>자기 자신을 제외한 2의 배수를 모두 지운다.</li>
-  <li>남아있는 수 가운데 3은 소수이므로 오른쪽에 3을 쓴다. (초록색)</li>
-  <li>자기 자신을 제외한 3의 배수를 모두 지운다.</li>
-  <li>남아있는 수 가운데 5는 소수이므로 오른쪽에 5를 쓴다. (파란색)</li>
-  <li>자기 자신을 제외한 5의 배수를 모두 지운다.</li>
-  <li>남아있는 수 가운데 7은 소수이므로 오른쪽에 7을 쓴다. (노란색)</li>
-  <li>자기 자신을 제외한 7의 배수를 모두 지운다.</li>
-  <li>위의 과정을 반복하면 구하는 구간의 모든 소수가 남는다.</li>
+  <li>리스트의 길이가 1 이하이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는</li>
+  <li>분할(divide) : 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다.</li>
+  <li>정복(conquer) : 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.</li>
+  <li>결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.</li>
+  <li>복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.</li>
 </ol>
 
-<p><img src="/assets/images/Sieve_of_Eratosthenes_animation.gif" alt="Alt text" /></p>
+<p><img src="/assets/images/merge-sort-animation.gif" alt="Alt text" /></p>
 
 <p class="notice--warning"><strong>Note:</strong> 만약 x까지의 소수를 구한다고 하면 우리는 x까지 검사하여 일일히 지울 필요가 없습니다.<br />
 x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까지 수를 지우면, 그 이후의 수들은 이미 $\sqrt {x}$까지의 수에서 지워졋기 때문입니다.<br />
@@ -44,14 +27,12 @@ x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까
 예제에서는 120까지 구하고 있으므로 120의 제곱근 $\sqrt {120}$ = 10까지만 지워도 됩니다.<br />
 왜냐하면 $\sqrt {120}$ = 10 이후의 배수들은 이미 전 단계에서 지워졋기 때문입니다.</p>
 
-<hr />
-
-<h2 id="java-code">Java Code</h2>
+<h2 id="java로-구현">Java로 구현</h2>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Eratosthenes</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-    
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 
         <span class="kt">boolean</span> <span class="o">[]</span> <span class="n">flag</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="no">MAX</span><span class="o">];</span>
@@ -75,4 +56,20 @@ x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">3</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">5</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">7</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">11</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">13</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">17</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">19</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">23</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+<span class="mi">29</span> <span class="n">is</span> <span class="n">prime</span> <span class="n">number</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://ko.wikipedia.org/wiki/에라토스테네스의_체">Eratothenes - wikipedia</a></p>
 :ET
