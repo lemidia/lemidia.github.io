@@ -43,7 +43,7 @@ use_math: true
 4. 결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.
 5. 복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.
 
-![Alt text](/assets/images/merge-sort-animation.gif)
+![Alt text](/assets/images/merge-sort-example.gif)
 
 ## Analysis
 
