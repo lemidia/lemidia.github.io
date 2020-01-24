@@ -12,7 +12,7 @@
 
 theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dark" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "default" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -109,8 +109,8 @@ analytics:
 author:
   name             : "Gyeong"
   avatar           : "/assets/images/gyeong.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Love to Coding, and more"
-  location         : "Korea Republic Of"
+  bio              : "Love to Coding"
+  location         : "Republic Of Korea"
   email            : 
   links:
     - label: "Email"
