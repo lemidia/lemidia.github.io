@@ -1,0 +1,19 @@
+I"�<ul class="toc__menu">
+  <li><a href="#queue">Queue</a></li>
+  <li><a href="#representation">Representation</a>
+    <ul>
+      <li><a href="#queue-node---큐-원소를-표현하기-위한-노드-클래스">Queue Node - 큐 원소를 표현하기 위한 노드 클래스</a></li>
+      <li><a href="#queue-node---큐를-표현하는-클래스">Queue Node - 큐를 표현하는 클래스</a></li>
+    </ul>
+  </li>
+  <li><a href="#operation">Operation</a>
+    <ul>
+      <li><a href="#enqueue---원소-추가-연산">Enqueue - 원소 추가 연산</a></li>
+      <li><a href="#dequeue---원소-삭제-연산">Dequeue - 원소 삭제 연산</a></li>
+    </ul>
+  </li>
+  <li><a href="#queue-implementation---전체-코드">Queue Implementation - 전체 코드</a></li>
+  <li><a href="#자바에서의-큐-인터페이스">자바에서의 큐 인터페이스</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+:ET

@@ -1,4 +1,9 @@
 var store = [{
+        "title": "Queue",
+        "excerpt":"Queue 큐(queue)는 컴퓨터의 기본적인 자료 구조의 한가지로, 먼저 집어 넣은 데이터가 먼저 나오는 FIFO (First In First Out)구조로 저장하는 형식을 말한다. 영어 단어 queue는 표를 사러 일렬로 늘어선 사람들로 이루어진 줄을 말하기도 하며, 먼저 줄을 선 사람이 먼저 나갈 수 있는 상황을 연상하면 된다. Representation Array: 기본적으로 배열을 사용해서 큐를...","categories": ["Data Structure"],
+        "tags": ["programming","Data Structure"],
+        "url": "http://localhost:4000/data%20structure/queue/",
+        "teaser":null},{
         "title": "Union Find",
         "excerpt":"Union-Find 컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다. 부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 이 A나 B가 어느 부분집합에 속하는지, 또 A와 B가 각각 속한 부분집합 다르다면 이 두 부분집합을 하나의 집합으로 합쳐, 원소들이...","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],

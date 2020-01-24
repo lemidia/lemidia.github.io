@@ -1,0 +1,480 @@
+I"�<h2 id="queue">Queue</h2>
+<p>큐(queue)는 컴퓨터의 기본적인 자료 구조의 한가지로, 먼저 집어 넣은 데이터가 먼저 나오는 FIFO (First In First Out)구조로 저장하는 형식을 말한다. 영어 단어 queue는 표를 사러 일렬로 늘어선 사람들로 이루어진 줄을 말하기도 하며, 먼저 줄을 선 사람이 먼저 나갈 수 있는 상황을 연상하면 된다.</p>
+
+<p><img src="/assets/images/queue-img.png" alt="Alt text" /></p>
+
+<h2 id="representation">Representation</h2>
+<ul>
+  <li>Array: 기본적으로 배열을 사용해서 큐를 구현할 수 있다.</li>
+  <li>Linked List: 링크드 리스트를 이용하면 배열에 비해 쉽게 구현이 가능하다.</li>
+</ul>
+
+<p class="notice--warning"><strong>Note:</strong> 이번 포스트에서는 <strong>Linked List</strong>를 이용해서 큐를 구현해 본다.</p>
+
+<h3 id="queue-node---큐-원소를-표현하기-위한-노드-클래스">Queue Node - 큐 원소를 표현하기 위한 노드 클래스</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// A linked list (LL) node to store a queue entry </span>
+<span class="kd">class</span> <span class="nc">QNode</span> <span class="o">{</span> 
+    <span class="kt">int</span> <span class="n">key</span><span class="o">;</span> 
+    <span class="nc">QNode</span> <span class="n">next</span><span class="o">;</span> 
+  
+    <span class="c1">// constructor to create a new linked list node </span>
+    <span class="kd">public</span> <span class="nf">QNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+<h3 id="queue-node---큐를-표현하는-클래스">Queue Node - 큐를 표현하는 클래스</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Queue</span> <span class="o">{</span> 
+    <span class="nc">QNode</span> <span class="n">front</span><span class="o">,</span> <span class="n">rear</span><span class="o">;</span> 
+  
+    <span class="kd">public</span> <span class="nf">Queue</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+<p class="notice--warning"><strong>Note:</strong> 큐는 맨 처음 원소를 가리키는 front와 맨 끝 원소를 가리키는 rear 포인터를 가지고 있다.</p>
+
+<h2 id="operation">Operation</h2>
+<p>큐가 지원하는 연산들을 알아보자.</p>
+
+<ul>
+  <li>Enqueue: 큐의 맨 끝에 원소를 추가하는 연산.</li>
+  <li>Dequeue: 큐의 맨 처음의 원소를 삭제하고 반환하는 연산. 큐가 비었으면 null을 반환한다.</li>
+</ul>
+
+<h2 id="enqueue">Enqueue</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">enqueue</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
+    <span class="o">{</span> 
+  
+        <span class="c1">// Create a new LL node </span>
+        <span class="nc">QNode</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QNode</span><span class="o">(</span><span class="n">key</span><span class="o">);</span> 
+  
+        <span class="c1">// If queue is empty, then new node is front and rear both </span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+            <span class="k">return</span><span class="o">;</span> 
+        <span class="o">}</span> 
+  
+        <span class="c1">// Add the new node at the end of queue and change rear </span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rear</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+    <span class="o">}</span> 
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// A linked list (LL) node to store a queue entry </span>
+<span class="kd">class</span> <span class="nc">QNode</span> <span class="o">{</span> 
+    <span class="kt">int</span> <span class="n">key</span><span class="o">;</span> 
+    <span class="nc">QNode</span> <span class="n">next</span><span class="o">;</span> 
+  
+    <span class="c1">// constructor to create a new linked list node </span>
+    <span class="kd">public</span> <span class="nf">QNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+  
+<span class="c1">// A class to represent a queue </span>
+<span class="c1">// The queue, front stores the front node of LL and rear stores the </span>
+<span class="c1">// last node of LL </span>
+<span class="kd">class</span> <span class="nc">Queue</span> <span class="o">{</span> 
+    <span class="nc">QNode</span> <span class="n">front</span><span class="o">,</span> <span class="n">rear</span><span class="o">;</span> 
+  
+    <span class="kd">public</span> <span class="nf">Queue</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="c1">// Method to add an key to the queue. </span>
+    <span class="kt">void</span> <span class="nf">enqueue</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
+    <span class="o">{</span> 
+  
+        <span class="c1">// Create a new LL node </span>
+        <span class="nc">QNode</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QNode</span><span class="o">(</span><span class="n">key</span><span class="o">);</span> 
+  
+        <span class="c1">// If queue is empty, then new node is front and rear both </span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+            <span class="k">return</span><span class="o">;</span> 
+        <span class="o">}</span> 
+  
+        <span class="c1">// Add the new node at the end of queue and change rear </span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rear</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="c1">// Method to remove an key from queue. </span>
+    <span class="nc">QNode</span> <span class="nf">dequeue</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="c1">// If queue is empty, return NULL. </span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> 
+            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span> 
+  
+        <span class="c1">// Store previous front and move front one node ahead </span>
+        <span class="nc">QNode</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">front</span><span class="o">;</span> 
+        <span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">front</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+  
+        <span class="c1">// If front becomes NULL, then change rear also as NULL </span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">front</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> 
+            <span class="k">this</span><span class="o">.</span><span class="na">rear</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+        <span class="k">return</span> <span class="n">temp</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+  
+<span class="c1">// Driver class </span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="nc">Queue</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Queue</span><span class="o">();</span> 
+        <span class="n">q</span><span class="o">.</span><span class="na">enqueue</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> 
+        <span class="n">q</span><span class="o">.</span><span class="na">enqueue</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span> 
+        <span class="n">q</span><span class="o">.</span><span class="na">dequeue</span><span class="o">();</span> 
+        <span class="n">q</span><span class="o">.</span><span class="na">dequeue</span><span class="o">();</span> 
+        <span class="n">q</span><span class="o">.</span><span class="na">enqueue</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> 
+        <span class="n">q</span><span class="o">.</span><span class="na">enqueue</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span> 
+        <span class="n">q</span><span class="o">.</span><span class="na">enqueue</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span> 
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Dequeued item is "</span> <span class="o">+</span> <span class="n">q</span><span class="o">.</span><span class="na">dequeue</span><span class="o">().</span><span class="na">key</span><span class="o">);</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h2 id="operations">Operations</h2>
+
+<p>유니온 파인드 자료구조를 위한 연산들을 보겠습니다.</p>
+
+<h3 id="make-set-initialization">Make set (Initialization)</h3>
+<p>유니온 파인드 자료구조를 위한 새로운 집합을 생성합니다.<br />
+노드 각각이 자기 자신을 가리키도록 설정합니다. (처음에는 자기 자신이 트리의 최상위 노드)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeSet</span><span class="o">()</span> <span class="o">{</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+     <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Make set operation:</p>
+
+<p><img src="/assets/images/makeset.png" alt="Alt text" /></p>
+
+<p>배열의 상태는 아래와 같습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">index</span> <span class="n">i</span>   <span class="o">=</span>  <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span>
+<span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">]</span>
+</code></pre></div></div>
+
+<h3 id="find">Find</h3>
+<p>우리는 두 원소가 서로 다른 부분집합에 속해있으면 두 부분집합을 Union 할 수 있습니다.<br />
+두 원소가 서로 같은 부분집합에 포함되어 있는지 아닌지 확인하기 위해 두 원소의 루트를 확인해야 합니다.<br />
+Find 연산은 해당 원소가 속해있는 부분집합의 루트를 반환합니다.</p>
+
+<ol>
+  <li>원소 x의 부모가 자기 자신이라면 그 부분집합의 루트이므로 x를 반환합니다.</li>
+  <li>아니라면 재귀 호출로 x의 부모를 따라갑니다.</li>
+  <li>루트를 찾을 때까지 재귀 호출이 진행되다가 루트를 찾으면 원소 x의 루트를 반환합니다.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Recursive function</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">==</span> <span class="n">x</span><span class="o">)</span>    <span class="c1">// 원소 x의 부모가 자기자신이면 그 부분집합의 루트이므로</span>
+       <span class="k">return</span> <span class="n">x</span><span class="o">;</span>        <span class="c1">// x를 반환합니다.</span>
+    <span class="k">else</span>   
+       <span class="k">return</span> <span class="nf">find</span><span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]);</span> <span class="c1">// 아니라면 x의 부모를 다시 재귀호출하여 루트를 찾습니다.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Find(1) returns 2:</p>
+
+<p><img src="/assets/images/find1.png" alt="Alt text" /></p>
+
+<p>현재 배열의 상태입니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">index</span> <span class="n">i</span>   <span class="o">=</span>  <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span>
+<span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>원소 1이 속한 부분집합의 루트를 알고 싶다면 Find(1)을 수행합니다.<br />
+parent[1] != 1  두 값이 같지 않습니다.<br />
+그럼 parent[1]을 매개변수로 다시 Find(parent[1])을 재귀 호출합니다.// 부모를 따라가는 것입니다.<br />
+parent[2] == 2 두 값이 같습니다! 2를 반환합니다. <br />
+1의 루트는 2 임을 알 수 있습니다.</p>
+
+<p>5를 보겠습니다.<br />
+find(5)를 수행하면  parent[5] == 5  두 값이 같습니다.<br />
+5의 부모는 5 자기 자신의 값이 되고, 이 말은 자기 자신이 루트란 말이므로 5를 반환합니다.</p>
+
+<h3 id="union">Union</h3>
+<p>두 원소가 속한 부분집합이 다르면 두 부분집합을 하나의 부분집합으로 합칠 수 있습니다.<br />
+이를 수행하는 연산이 Union입니다.</p>
+
+<ol>
+  <li>두 원소(x, y)가 속한 부분집합이 서로 같다면 return 합니다.</li>
+  <li>같지 않다면 두 부분집합을 합칩니다.</li>
+</ol>
+
+<p>Make set operation:</p>
+
+<p><img src="/assets/images/makeset.png" alt="Alt text" /></p>
+
+<p>처음에 이렇게 7개의 서로 다른 부분집합이 있습니다. (자기 자신이 트리의 루트)</p>
+
+<p>Union:</p>
+
+<p><img src="/assets/images/union1.png" alt="Alt text" /></p>
+
+<p>union(2,1), union(4,3), union(6,5)를 수행하면 위 그림처럼 트리가 구성됩니다.<br />
+2의 루트는 2이고 1의 루트도 1 자기 자신입니다.<br />
+둘의 값이 다르므로 서로 다른 부분집합이고, 2는 1을 가리킴으로써 부분집합을 합칩니다.<br />
+union(4,3), union(6,5)도 마찬가지입니다.</p>
+
+<p>아래는 위 트리의 배열 상태입니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">index</span> <span class="n">i</span>   <span class="o">=</span>  <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span>
+<span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">7</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>union(2, 4)를 하면 아래 그림처럼 됩니다.</p>
+
+<p>Union(2, 4):</p>
+
+<p><img src="/assets/images/union(2.4).png" alt="Alt text" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">xRoot</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="c1">// find로 x의 루트를</span>
+    <span class="n">yRoot</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> 
+    <span class="k">if</span><span class="o">(</span><span class="n">xRoot</span> <span class="o">==</span> <span class="n">yRoot</span><span class="o">)</span> <span class="c1">// 두 원소가 속한 부분집합이 같으므로 리턴합니다.</span>
+      <span class="k">return</span><span class="o">;</span>
+    <span class="n">parent</span><span class="o">[</span><span class="n">x_root</span><span class="o">]</span> <span class="o">=</span> <span class="n">y_root</span><span class="o">;</span> <span class="c1">// 두 부분집합을 합칩니다. x의 루트를 y의 루트로 가리키게 합니다.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>2가 속한 부분집합의 루트(find(2))는 1이고, 4가 속한 부분집합의 루트(find(4))는 3이므로, 이 둘의 값이 다르고 1이 3을 가리킴으로써(parent [1] = 3) 같은 부분집합으로 합쳐 줍니다.</p>
+
+<p>아래는 위 트리의 배열 상태입니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">index</span> <span class="n">i</span>   <span class="o">=</span>  <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span>
+<span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">7</span><span class="o">]</span>
+</code></pre></div></div>
+
+<h2 id="path-compression">Path compression</h2>
+
+<p>부분집합을 합치는 연산(유니온)을 수행하면서 아래 그림과 같이 편향적인 트리로 구성될 수 있습니다.<br />
+이때 노드의 개수가 n개일 때 find(n)을 수행하면 시간 복잡도는 O(n)가 됩니다.<br />
+아래 그림에서 5번 원소는 자기 부모를 타고 가다가 끝에는 루트 1을 만나게 됩니다. 링크를 4번 타고 가야 루트를 찾을 수 있습니다.<br />
+4번 원소도 링크를 3번 타고 가야 루트를 찾을 수 있습니다.</p>
+
+<p>편향 트리:</p>
+
+<p><img src="/assets/images/sqwed.png" alt="Alt text" /></p>
+
+<p>우리는 여기서 한 가지 개선을 할 수 있습니다.<br />
+5번에서 1번 까지(5 - 4 - 3- 2 - 1)의 경로에 있는 모든 원소는 전부 루트를 1로 갖습니다.<br />
+그렇다면 5번도 1을, 4번도 1을.. 2번도 1을 가리켜도 이  부분집합을 구성하는 원소는 변함이 없을 것입니다.<br />
+이렇게 되면 아래 그림처럼 5번에서 2번까지 1번을 루트로서 바로 가리키게 되고<br />
+find(n) 연산 수행 시 시간 복잡도는 상수 시간 O(1)이 됩니다.</p>
+
+<p>이것을 <strong>Path compression(경로 압축)</strong>이라 합니다.</p>
+
+<p>Union-Find with path compression:</p>
+
+<p><img src="/assets/images/ufwithpc.png" alt="Alt text" /></p>
+
+<p>find(5) 연산 수행 시 5에서 루트 1로 가는 경로에 있는 모든 원소를 재귀 호출이나 For loop을 이용해서 1을 루트로 바로 가리키게 구현할 수 있습니다.</p>
+
+<ol>
+  <li>x가 x의 부모와 같다면(자기 자신이 루트)라면 x를 반환합니다.</li>
+  <li>다르다면 x의 부모는 x의 부모의 재귀 리턴 값이 됩니다.</li>
+  <li>재귀가 진행되면서 루트를 만나게 되면(매개변수로 들어온 값이 자기 자신 = 루트) x를 반환합니다.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="n">x</span><span class="o">){</span>
+     <span class="k">if</span> <span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">!=</span> <span class="n">x</span><span class="o">)</span>
+        <span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]);</span>
+     <span class="k">return</span> <span class="n">x</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="union-by-rank">Union by Rank</h2>
+
+<p>트리의 깊이 또는 높이는 유니온 파인드 연산 실행시간에 영향을 주는데
+트리를 합칠 때 높이가 작은 트리를 높이가 큰 트리의 루트에 붙이면 높이가 높아지지 않습니다.
+이렇게 유니온 바이 랭크(union by rank)는 높이가 작은 트리를 큰 트리 루트에 붙이는 방법입니다.</p>
+
+<p>※ 단, 높이가 같은 트리를 합칠 땐 높이가 +1 높아집니다.</p>
+
+<p>우리는 여기서 랭크라는 표현을 쓰는데, 트리의 높이는 위에서 살펴본 path compresstion에 의해서 줄어들 수 있고 업데이트되지 않기 때문입니다. 그래서 랭크라는 표현을 씁니다.</p>
+
+<p><img src="/assets/images/withoutunionbylank.png" alt="Alt text" /></p>
+
+<p>어떤 원소 u가 한 트리의 루트이고 랭크 r을 가진다고 하면 유니온 바이 랭크 연산 하에<br />
+그 트리의 노드 수는 최소 2^r이 되고, 랭크 r로 같은 두 트리를 Union by rank 하면<br />
+랭크는 1 높아지게 되고 노드의 수는 2^r + 2^r = 2^(r+1)가 됩니다.<br />
+노드의 수는 2배가 되고 랭크는 1 높아지므로 연산 수행 시간이 O(log n)로 보장됩니다.</p>
+
+<p><img src="/assets/images/ufranklog2.jpeg" alt="Alt text" /></p>
+
+<p>원소마다 랭크 정보를 유지하기 위해서 Make set의 for loop에 rank [i] = 0을 추가해 줍니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+    <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 처음에는 랭크가 전부 0</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>아래는 union by rank코드입니다.</p>
+
+<ol>
+  <li>두 원소의 루트를 구해서 서로 같다면 합치지 않고 유니온 연산을 종료합니다.</li>
+  <li>그렇지 않다면, x의 루트랭크가 y의 루트랭크보다 크거나 같다면 y의 루트를 x의 루트 아래로 붙입니다. (else 서로 스왑해서 수행)</li>
+  <li>두 트리의 랭크가 서로 같다면 랭크+1을 해줍니다. (두 트리의 랭크가 같으니 합치면 랭크가 +1 됩니다.)</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span>
+     <span class="n">xRoot</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+     <span class="n">yRoot</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
+     <span class="k">if</span> <span class="n">xRoot</span> <span class="o">==</span> <span class="n">yRroot</span>
+         <span class="k">return</span>
+ 
+     <span class="nf">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">xRoot</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="n">rank</span><span class="o">[</span><span class="n">yRoot</span><span class="o">])</span>
+         <span class="n">parent</span><span class="o">[</span><span class="n">yRoot</span><span class="o">]</span> <span class="o">=</span> <span class="n">xRoot</span><span class="o">;</span>
+     <span class="k">else</span>
+         <span class="n">parent</span><span class="o">[</span><span class="n">xRoot</span><span class="o">]</span> <span class="o">=</span> <span class="n">yRoot</span><span class="o">;</span>
+ 
+     <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">xRoot</span><span class="o">]</span> <span class="o">==</span> <span class="n">rank</span><span class="o">[</span><span class="n">yRoot</span><span class="o">])</span>
+         <span class="n">rank</span><span class="o">[</span><span class="n">yRoot</span><span class="o">]</span> <span class="o">=</span> <span class="n">rank</span><span class="o">[</span><span class="n">xRroot</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h2 id="application">Application</h2>
+
+<p>유니온 파인드는 무향 그래프에서의 사이클 존재 유무를 판별할 때 사용될 수 있습니다. (단, 셀프 루프는 없어야 합니다.)</p>
+
+<p>또, 크루스칼 알고리즘에서 최소 스패닝 트리를 찾는데에 사용됩니다.</p>
+
+<p>최소 스패닝 트리는 노드의 수가 n개 일 때 n-1개의 최소 비용의 간선으로 이루어진 트리로서 그래프에서 최소비용의 간선을 선택함에 있어 만들어지는 트리에서 사이클이 존재하지 않아야 하기에 사이클을 형성 유무 판별에 유니온 파인드가 사용됩니다.</p>
+
+<h3 id="union-by-lank-with-path-compression">Union by Lank with Path Compression</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">unionFind</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">parent</span><span class="o">[];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">rank</span><span class="o">[];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+ 
+    <span class="n">unionFind</span><span class="o">(</span><span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">n</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">;</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeSet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">==</span> <span class="n">x</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]);</span> <span class="c1">// * 경로 압축</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">root1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">root2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">root1</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">root1</span><span class="o">);</span>
+        <span class="n">root2</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">root2</span><span class="o">);</span>
+ 
+        <span class="k">if</span> <span class="o">(</span><span class="n">root1</span> <span class="o">==</span> <span class="n">root2</span><span class="o">)</span> <span class="c1">// 루트가 같다면 수행하지 않는다.</span>
+            <span class="k">return</span><span class="o">;</span>
+ 
+        <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="n">rank</span><span class="o">[</span><span class="n">root2</span><span class="o">])</span> <span class="o">{</span> <span class="c1">// 루트1의 랭크가 루트2의 랭크보다 크다면</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">root2</span><span class="o">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">root1</span><span class="o">];</span> <span class="c1">//루트2가 루트1의 밑으로 합친다</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="c1">// 위의 if문 과 반대</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">root2</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">==</span> <span class="n">rank</span><span class="o">[</span><span class="n">root2</span><span class="o">])</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>백준 온라인 저지에 있는 유니온 파인드 문제 1717번 집합의 표현 코드입니다.</p>
+
+<p>BOJ - 1717번</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.StringTokenizer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="n">unionFind</span> <span class="n">h</span> <span class="o">=</span> <span class="k">new</span> <span class="n">unionFind</span><span class="o">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">h</span><span class="o">.</span><span class="na">makeSet</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            <span class="kt">int</span> <span class="n">operation</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+            <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">operation</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+                <span class="n">h</span><span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">a</span> <span class="o">,</span><span class="n">b</span><span class="o">);</span>
+            <span class="k">else</span>
+                <span class="n">sb</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">a</span><span class="o">)</span> <span class="o">==</span> <span class="n">h</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">b</span><span class="o">)</span> <span class="o">?</span> 
+                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"YES"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">)</span> <span class="o">:</span> <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"NO"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">unionFind</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">parent</span><span class="o">[];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">rank</span><span class="o">[];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+
+    <span class="n">unionFind</span><span class="o">(</span><span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">n</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">;</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeSet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">==</span> <span class="n">x</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">x</span><span class="o">]);</span> <span class="c1">// * 경로 압축</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">root1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">root2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">root1</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">root1</span><span class="o">);</span>
+        <span class="n">root2</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">root2</span><span class="o">);</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">root1</span> <span class="o">==</span> <span class="n">root2</span><span class="o">)</span> <span class="c1">// 루트가 같다면 수행하지 않는다.</span>
+            <span class="k">return</span><span class="o">;</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="n">rank</span><span class="o">[</span><span class="n">root2</span><span class="o">])</span> <span class="o">{</span> <span class="c1">// 루트1의 랭크가 루트2의 랭크보다 크다면</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">root2</span><span class="o">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">root1</span><span class="o">];</span> <span class="c1">//루트2가 루트1의 밑으로 합친다</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="c1">// 위의 if문 과 반대</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">root2</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]</span> <span class="o">==</span> <span class="n">rank</span><span class="o">[</span><span class="n">root2</span><span class="o">])</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">root1</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure#by_size">Wikipedi - Union Find</a></p>
+
+<p><a href="https://algocoding.wordpress.com/2014/09/19/union-find-data-structure-disjoint-set-data-structure/">Algocoding - Union Find</a></p>
+:ET
