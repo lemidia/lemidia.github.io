@@ -66,7 +66,7 @@ x는 >= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까지
 예) x를 16 이라고 해봅시다. $\sqrt {x}$은 4 입니다.  
 8은 16의 약수입니다. 하지만 8은 이미 전 단계 2에서 지워졌습니다. 2 * 8이기 때문입니다.  
 예제에서는 120까지 구하고 있으므로 120의 제곱근 $\sqrt {120}$ = 10까지만 지워도 됩니다.  
-왜냐하면 $\sqrt {120}$ = 10 이후의 배수들은 이미 지워졋기 때문입니다. 
+왜냐하면 $\sqrt {120}$ = 10 이후의 배수들은 이미 전 단계에서 지워졋기 때문입니다. 
 {: .notice--warning}
 
 
@@ -78,6 +78,7 @@ import java.util.Arrays;
 
 public class Eratosthenes {
     private static final int MAX = 100;
+    
     public static void main(String[] args) {
 
         boolean [] flag = new boolean[MAX];

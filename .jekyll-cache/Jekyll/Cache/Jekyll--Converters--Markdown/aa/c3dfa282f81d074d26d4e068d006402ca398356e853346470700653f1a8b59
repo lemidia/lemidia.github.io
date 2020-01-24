@@ -1,4 +1,4 @@
-I"B<h1 id="에라토스테네스의-체">에라토스테네스의 체</h1>
+I"�<h1 id="에라토스테네스의-체">에라토스테네스의 체</h1>
 
 <p>Sieve_of_Eratosthenes_animation:
 수학에서 에라토스테네스의 체는 소수를 찾는 방법입니다.<br />
@@ -37,13 +37,21 @@
 
 <p><img src="/assets/images/Sieve_of_Eratosthenes_animation.gif" alt="Alt text" /></p>
 
-<p>$11^2$ &gt; 120 이므로 11보다 작은 수의 배수들만 지워도 충분하다. 즉, 120보다 작거나 같은 수 가운데 2, 3, 5, 7의 배수를 지우고 남는 수는 모두 소수이다.</p>
+<p class="notice--warning"><strong>Note:</strong> 만약 x까지의 소수를 구한다고 하면 우리는 x까지 검사하여 일일히 지울 필요가 없습니다.<br />
+x는 &gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}$까지 수를 지우면, 그 이후의 수들은 이미 $\sqrt {x}$까지의 수에서 지워졋기 때문입니다.<br />
+예) x를 16 이라고 해봅시다. $\sqrt {x}$은 4 입니다.<br />
+8은 16의 약수입니다. 하지만 8은 이미 전 단계 2에서 지워졌습니다. 2 * 8이기 때문입니다.<br />
+예제에서는 120까지 구하고 있으므로 120의 제곱근 $\sqrt {120}$ = 10까지만 지워도 됩니다.<br />
+왜냐하면 $\sqrt {120}$ = 10 이후의 배수들은 이미 전 단계에서 지워졋기 때문입니다.</p>
+
+<hr />
 
 <h2 id="java-code">Java Code</h2>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Eratosthenes</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+    
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 
         <span class="kt">boolean</span> <span class="o">[]</span> <span class="n">flag</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="no">MAX</span><span class="o">];</span>
