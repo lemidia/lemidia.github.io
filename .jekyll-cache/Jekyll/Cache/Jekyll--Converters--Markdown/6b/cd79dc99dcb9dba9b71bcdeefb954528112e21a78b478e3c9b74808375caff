@@ -1,0 +1,115 @@
+I"�-<h1 id="graph">Graph</h1>
+<p>정점들과 간선들로 이루어진 집합이다.<br />
+V = Vertex, E = Edge, 일 때, G = (V, E)</p>
+
+<h2 id="representation">Representation</h2>
+<p>그래프를 표현하는 2가지 방법을 알아본다.</p>
+<h3 id="인접-행렬adjacency-matrix">인접 행렬(Adjacency matrix)</h3>
+
+<p>2차원 행렬로 표현하는 방법.<br />
+행은 출발 정점을 나타내고 열을 도착 정점을 나타낸다. 꼭짓점 x에서 꼭짓점 y로 변이 존재하면 행렬 성분 x행 y열의 값은 1이고 그렇지 않으면 0이다.</p>
+
+<p><img src="/assets/images/graph-representations-undir.png" alt="Alt text" /></p>
+
+<p class="notice--warning"><strong>Note:</strong> 그래프가 100개의 정점과 1개의 간선으로 이루어져 있어도, 인접행렬 표현 시 100x100 크기의 매트릭스를 써야한다. 즉, 비교적 적은 간선의 그래프를 표현하는데에는 불필요한 공간이 많이 소비된다.</p>
+
+<h3 id="인접-리스트adjacency-list">인접 리스트(Adjacency list)</h3>
+<p>인접 리스트를 이용하여 그래프를 표현하는 방법
+In this representation, for each vertex in the graph, we maintain the list of its neighbors. It means, every vertex of the graph contains list of its adjacent vertices.
+We have an array of vertices which is indexed by the vertex number and for each vertex v, the corresponding array element points to a singly linked list of neighbors of v.</p>
+
+<p><img src="/assets/images/graph-representations-adj.png" alt="Alt text" /></p>
+
+<p class="notice--warning">Pros:
+Adjacency list saves lot of space.
+We can easily insert or delete as we use linked list.
+Such kind of representation is easy to follow and clearly shows the adjacent nodes of node.</p>
+<p class="notice--warning">Cons:
+The adjacency list allows testing whether two vertices are adjacent to each other but it is slower to support this operation.</p>
+
+<h2 id="graph-implementation">Graph Implementation</h2>
+
+<h3 id="example-graph">Example Graph</h3>
+<p>예제에 사용된 그래프는 다음과 같다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph G(Bidirectional): 
+V = (0, 1, 2, 3, 4)
+E = (0, 1), (0, 2), (1, 2), (1, 3), (2, 4), (3, 4)
+
+G:
+0 ------ 2
+|      /   \
+|    /      4
+|  /       /
+1 ------ 3 
+</code></pre></div></div>
+
+<h3 id="code">code</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Graph</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="no">V</span><span class="o">;</span> <span class="c1">// 그래프의 정점 갯수</span>
+    <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">adjListArray</span><span class="o">[];</span> <span class="c1">// 그래프의 정점을 저장할 인접리스트 배열</span>
+
+    <span class="kd">public</span> <span class="nf">Graph</span><span class="o">(</span><span class="kt">int</span> <span class="no">V</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 그래프 생성자, 정점과 인접리스트 배열을 초기화 한다.</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">V</span> <span class="o">=</span> <span class="no">V</span><span class="o">;</span>
+        <span class="n">adjListArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">[</span><span class="no">V</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">V</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">adjListArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printGraph</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="no">V</span><span class="o">;</span> <span class="n">v</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Adjacency list of vertex "</span> <span class="o">+</span> <span class="n">v</span><span class="o">);</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="n">i</span> <span class="o">:</span> <span class="n">adjListArray</span><span class="o">[</span><span class="n">v</span><span class="o">])</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">" =&gt; "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">// 양방향 간선 생성 메소드</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="nc">Graph</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">src</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dest</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">adjListArray</span><span class="o">[</span><span class="n">src</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">dest</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">adjListArray</span><span class="o">[</span><span class="n">dest</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="no">V</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span> <span class="c1">// 정점의 갯수는 5개 (0, 1, 2, 3, 4)</span>
+        <span class="nc">Graph</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Graph</span><span class="o">(</span><span class="no">V</span><span class="o">);</span> <span class="c1">// 그래프 초기화</span>
+
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="c1">// 0번과 1번을 정점으로 하는 간선을 생성한다.</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span> <span class="c1">// 0번과 2번을 정점으로 하는 간선을 생성한다.</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span> <span class="c1">// 1번과 2번을 정점으로 하는 간선을 생성한다.</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+
+        <span class="n">graph</span><span class="o">.</span><span class="na">printGraph</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">Output:</span>
+<span class="nc">Adjacency</span> <span class="n">list</span> <span class="n">of</span> <span class="n">vertex</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">2</span>
+<span class="nc">Adjacency</span> <span class="n">list</span> <span class="n">of</span> <span class="n">vertex</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">3</span>
+<span class="nc">Adjacency</span> <span class="n">list</span> <span class="n">of</span> <span class="n">vertex</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">4</span>
+<span class="nc">Adjacency</span> <span class="n">list</span> <span class="n">of</span> <span class="n">vertex</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">4</span>
+<span class="nc">Adjacency</span> <span class="n">list</span> <span class="n">of</span> <span class="n">vertex</span> <span class="mi">4</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<h2 id="time-complexity">Time Complexity</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm   Average  WorstCase
+Space       O(n)     O(n)
+Search      O(n)     O(n)
+Insert      O(1)     O(1)
+Delete      O(1)     O(1)
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p><a href="https://ko.wikipedia.org/wiki/큐_(자료_구조)">Queue - Wikipedia</a></p>
+
+<p><a href="https://www.geeksforgeeks.org/queue-linked-list-implementation/">Queue - Geeks</a></p>
+:ET

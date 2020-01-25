@@ -1,4 +1,9 @@
 var store = [{
+        "title": "Graph - 그래프",
+        "excerpt":"Graph 정점들과 간선들로 이루어진 집합이다. Definition V: Vertex, E: Edge, G: Graph 그래프 G는 G(V, E)의 집합으로 정의 될 수 있다 =&gt; G = (V, E) V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다. Note: 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다....","categories": ["Data Structure"],
+        "tags": ["programming","Data Structure"],
+        "url": "http://localhost:4000/data%20structure/graph/",
+        "teaser":null},{
         "title": "Queue",
         "excerpt":"Queue 큐(queue)는 컴퓨터의 기본적인 자료 구조의 한가지로, 먼저 집어 넣은 데이터가 먼저 나오는 FIFO (First In First Out)구조로 저장하는 형식을 말한다. 영어 단어 queue는 표를 사러 일렬로 늘어선 사람들로 이루어진 줄을 말하기도 하며, 먼저 줄을 선 사람이 먼저 나갈 수 있는 상황을 연상하면 된다. Representation Array: 기본적으로 배열을 사용해서 큐를...","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],

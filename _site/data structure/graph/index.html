@@ -1,0 +1,862 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Graph - 그래프 - Dev.Gyeong</title>
+<meta name="description" content="정점과 간선으로 이루어진 비 선형 자료구조 ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dev.Gyeong">
+<meta property="og:title" content="Graph - 그래프">
+<meta property="og:url" content="http://localhost:4000/data%20structure/graph/">
+
+
+  <meta property="og:description" content="정점과 간선으로 이루어진 비 선형 자료구조 ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerLogo2.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-14T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2019-04-13T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/data%20structure/graph/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dev.Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dev.Gyeong Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- mathjax -->
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Dev.Gyeong
+          <span class="site-subtitle">Development & Algorithm</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/algorithm/" >Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/datastructure/" >Data Structure</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/headerLogo2.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Graph - 그래프
+
+        
+      </h1>
+      
+        <p class="page__lead">정점과 간선으로 이루어진 비 선형 자료구조
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Love to Coding</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:your.name@email.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Graph - 그래프">
+    <meta itemprop="description" content="정점과 간선으로 이루어진 비 선형 자료구조">
+    <meta itemprop="datePublished" content="2019-04-14T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2019-04-13T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#graph">Graph</a>
+    <ul>
+      <li><a href="#definition">Definition</a></li>
+      <li><a href="#undirected-and-directed-graph">Undirected and Directed Graph</a></li>
+      <li><a href="#unweighted-and-weighted-graph">Unweighted and weighted Graph</a></li>
+      <li><a href="#representation">Representation</a>
+        <ul>
+          <li><a href="#인접-행렬adjacency-matrix">인접 행렬(Adjacency matrix)</a></li>
+          <li><a href="#인접-리스트adjacency-list">인접 리스트(Adjacency list)</a></li>
+        </ul>
+      </li>
+      <li><a href="#graph-implementation">Graph Implementation</a>
+        <ul>
+          <li><a href="#graph-class">Graph Class</a></li>
+          <li><a href="#addedge">addEdge</a></li>
+          <li><a href="#example-graph">Example Graph</a></li>
+          <li><a href="#graphjava">Graph.java</a></li>
+        </ul>
+      </li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="graph">Graph</h1>
+<p>정점들과 간선들로 이루어진 집합이다.</p>
+
+<h2 id="definition">Definition</h2>
+<p>V: Vertex, E: Edge, G: Graph<br />
+그래프 G는 G(V, E)의 집합으로 정의 될 수 있다 =&gt; G = (V, E)<br />
+V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다.</p>
+
+<p class="notice--warning"><strong>Note:</strong> 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다.<br />
+그래서 모든 트리는 그래프이지만, 모든 그래프는 트리가 아니다.</p>
+
+<h2 id="undirected-and-directed-graph">Undirected and Directed Graph</h2>
+
+<p>그래프는 방향 그래프 또는 비방향 그래프가 될 수 있다.</p>
+
+<p>비방향 그래프는 두 정점 간의 간선에 방향이 없다.<br />
+A - B의 비방향 간선이 있다면, 이것은 A -&gt; B로, B -&gt; A로의 탐색이 가능하다는 것을 의미한다.</p>
+
+<p>방향 그래프는 두 정점 간의 간선에 방향을 가지고 있다.<br />
+A -&gt; B의 방향 간선이 있다면, 이것은 A -&gt; B로의 탐색이 가능, 그러나 B -&gt; A로의 탐색이 가능하지 않다는 것을 의미</p>
+
+<p><img src="/assets/images/graphs_directed_undirected.png" alt="Alt text" width="600px" height="500px" /></p>
+<h2 id="unweighted-and-weighted-graph">Unweighted and weighted Graph</h2>
+
+<p>두 정점 간의 간선에 추가 정보가 없다면 Unweighted(비가중치) 그래프.<br />
+두 정점 간의 간선에 추가 정보가 있다면 weighted(가중치) 그래프.</p>
+
+<p><img src="/assets/images/weightedunweighted.jpeg" alt="Alt text" width="550px" height="500px" /></p>
+
+<h2 id="representation">Representation</h2>
+<p>그래프를 표현하는 2가지 방법을 알아본다.</p>
+<h3 id="인접-행렬adjacency-matrix">인접 행렬(Adjacency matrix)</h3>
+
+<p>2차원 행렬로 표현하는 방법.<br />
+행은 출발 정점을 나타내고 열을 도착 정점을 나타낸다. 꼭짓점 x에서 꼭짓점 y로 변이 존재하면 행렬 성분 x행 y열의 값은 1이고 그렇지 않으면 0이다.</p>
+
+<p><img src="/assets/images/graph-representations-undir.png" alt="Alt text" /></p>
+
+<p class="notice--warning"><strong>Note:</strong> 그래프가 100개의 정점과 1개의 간선으로 이루어져 있어도, 인접행렬 표현 시 100x100 크기의 매트릭스를 써야한다. 즉, 비교적 적은 간선의 그래프를 표현하는데에는 불필요한 공간이 많이 소비된다.</p>
+
+<h3 id="인접-리스트adjacency-list">인접 리스트(Adjacency list)</h3>
+<p>인접 리스트를 이용하여 그래프를 표현하는 방법<br />
+In this representation, for each vertex in the graph, we maintain the list of its neighbors. It means, every vertex of the graph contains list of its adjacent vertices.
+We have an array of vertices which is indexed by the vertex number and for each vertex v, the corresponding array element points to a singly linked list of neighbors of v.</p>
+
+<p><img src="/assets/images/graph-representations-adj.png" alt="Alt text" /></p>
+
+<p class="notice--warning">Pros:
+Adjacency list saves lot of space.
+We can easily insert or delete as we use linked list.
+Such kind of representation is easy to follow and clearly shows the adjacent nodes of node.</p>
+<p class="notice--warning">Cons:
+The adjacency list allows testing whether two vertices are adjacent to each other but it is slower to support this operation.</p>
+
+<h2 id="graph-implementation">Graph Implementation</h2>
+
+<h3 id="graph-class">Graph Class</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Graph</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="no">V</span><span class="o">;</span> <span class="c1">// 그래프의 정점 갯수</span>
+    <span class="kd">private</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">adjListArray</span><span class="o">[];</span> <span class="c1">// 그래프의 정점을 저장할 인접리스트 배열</span>
+
+    <span class="kd">public</span> <span class="nf">Graph</span><span class="o">(</span><span class="kt">int</span> <span class="no">V</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 그래프 생성자, 정점과 인접리스트 배열을 초기화 한다.</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">V</span> <span class="o">=</span> <span class="no">V</span><span class="o">;</span>
+        <span class="n">adjListArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">[</span><span class="no">V</span><span class="o">];</span> <span class="c1">// 인접리스트 배열 생성</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">V</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">adjListArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span> <span class="c1">// 인접리스트 노드 초기화 및 생성</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h3 id="addedge">addEdge</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 양방향 간선 정보 저장</span>
+<span class="kd">static</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="nc">Graph</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">src</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dest</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="n">graph</span><span class="o">.</span><span class="na">adjListArray</span><span class="o">[</span><span class="n">src</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">dest</span><span class="o">);</span> <span class="c1">// src -&gt; dest</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">adjListArray</span><span class="o">[</span><span class="n">dest</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">src</span><span class="o">);</span> <span class="c1">// dest -&gt; src</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="example-graph">Example Graph</h3>
+<p>예제에서 나타내고자 하는 그래프는 다음과 같다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph G (Bidirectional): 
+V = (0, 1, 2, 3, 4)
+E = (0, 1), (0, 2), (1, 2), (1, 3), (2, 4), (3, 4)
+
+G:
+0 ------ 2
+|      /   \
+|    /      4
+|  /       /
+1 ------ 3 
+</code></pre></div></div>
+
+<h3 id="graphjava">Graph.java</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Graph</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="no">V</span><span class="o">;</span> <span class="c1">// 그래프의 정점 갯수</span>
+    <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">adjListArray</span><span class="o">[];</span> <span class="c1">// 그래프의 정점을 저장할 인접리스트 배열</span>
+
+    <span class="kd">public</span> <span class="nf">Graph</span><span class="o">(</span><span class="kt">int</span> <span class="no">V</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 그래프 생성자, 정점과 인접리스트 배열을 초기화 한다.</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">V</span> <span class="o">=</span> <span class="no">V</span><span class="o">;</span>
+        <span class="n">adjListArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">[</span><span class="no">V</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">V</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">adjListArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">// 그래프 출력 메소드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printGraph</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="no">V</span><span class="o">;</span> <span class="n">v</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">v</span><span class="o">);</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="n">i</span> <span class="o">:</span> <span class="n">adjListArray</span><span class="o">[</span><span class="n">v</span><span class="o">])</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">" =&gt; "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">// 양방향 간선 생성 메소드</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="nc">Graph</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">src</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dest</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">adjListArray</span><span class="o">[</span><span class="n">src</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">dest</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">adjListArray</span><span class="o">[</span><span class="n">dest</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="no">V</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span> <span class="c1">// 정점의 갯수는 5개 (0, 1, 2, 3, 4)</span>
+        <span class="nc">Graph</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Graph</span><span class="o">(</span><span class="no">V</span><span class="o">);</span> <span class="c1">// 그래프 초기화</span>
+
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="c1">// 0번과 1번을 정점으로 하는 간선을 생성한다.</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span> <span class="c1">// 0번과 2번을 정점으로 하는 간선을 생성한다.</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span> <span class="c1">// 1번과 2번을 정점으로 하는 간선을 생성한다.</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+
+        <span class="n">graph</span><span class="o">.</span><span class="na">printGraph</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">Output:</span>
+<span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">2</span>       <span class="c1">// 0번 정점은 1, 2번 정점과 연결되어 있다.</span>
+<span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">3</span>  <span class="c1">// 1번 정점은 0, 2, 3번 정점과 연결되어 있다.</span>
+<span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">4</span>  <span class="c1">// 2번 정점은 0, 1, 4번 정점과 연결되어 있다.</span>
+<span class="mi">3</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">4</span>       <span class="c1">// 3번 정점은 1, 4번 정점과 연결되어 있다.</span>
+<span class="mi">4</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">3</span>       <span class="c1">// 4번 정점은 2, 3번 정점과 연결되어 있다.</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p><a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">Graph - Wikipedia</a><br />
+<a href="https://www.javatpoint.com/breadth-first-search-algorithm">Graph - javapoint</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#data-structure" class="page__taxonomy-item" rel="tag">Data Structure</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#programming" class="page__taxonomy-item" rel="tag">programming</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#data-structure" class="page__taxonomy-item" rel="tag">Data Structure</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-13">April 13, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Graph+-+%EA%B7%B8%EB%9E%98%ED%94%84%20http%3A%2F%2Flocalhost%3A4000%2Fdata%2520structure%2Fgraph%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdata%2520structure%2Fgraph%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdata%2520structure%2Fgraph%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/data%20structure/queue/" class="pagination--pager" title="Queue
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/first-post/" rel="permalink">github.io 블로그 시작하기
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> January 22 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/merge-sort/" rel="permalink">Merge Sort
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">O(nlogn) 비교 기반 분할정복 정렬 알고리즘
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/eratosthenes-sieve/" rel="permalink">Eratosthenes’s Sieve
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">소수를 빨리 찾을 수 있는 알고리즘
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data%20structure/unionfind/" rel="permalink">Union Find
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 14 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Union Find By Lank With Path Compression
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Dev.Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/data%20structure/graph/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/data%20structure/graph"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
