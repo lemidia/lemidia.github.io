@@ -1,0 +1,921 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>자바스크립트를 이용한 날씨 웹 앱 - Dev.Gyeong</title>
+<meta name="description" content="자바스크립트를 이용하여 날씨 웹 앱을 만들어보자. ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dev.Gyeong">
+<meta property="og:title" content="자바스크립트를 이용한 날씨 웹 앱">
+<meta property="og:url" content="http://localhost:4000/development/weather-app/">
+
+
+  <meta property="og:description" content="자바스크립트를 이용하여 날씨 웹 앱을 만들어보자. ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerLogo2.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-10T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2019-07-15T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/weather-app/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dev.Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dev.Gyeong Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- mathjax -->
+    
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Dev.Gyeong
+          <span class="site-subtitle">Development & Algorithm</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/algorithm/" >Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/datastructure/" >Data Structure</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/headerLogo2.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          자바스크립트를 이용한 날씨 웹 앱
+
+        
+      </h1>
+      
+        <p class="page__lead">자바스크립트를 이용하여 날씨 웹 앱을 만들어보자.
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Love to Coding</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:your.name@email.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="자바스크립트를 이용한 날씨 웹 앱">
+    <meta itemprop="description" content="자바스크립트를 이용하여 날씨 웹 앱을 만들어보자.">
+    <meta itemprop="datePublished" content="2019-04-10T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2019-07-15T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#앱-개요">앱 개요</a></li>
+  <li><a href="#look">Look</a></li>
+  <li><a href="#설명">설명</a></li>
+  <li><a href="#사용되는-것들">사용되는 것들</a></li>
+  <li><a href="#실행-방법">실행 방법</a></li>
+  <li><a href="#source-code">Source Code</a>
+    <ul>
+      <li><a href="#indexhtml">index.html</a></li>
+      <li><a href="#stylecss">style.css</a></li>
+      <li><a href="#appjs">app.js</a></li>
+    </ul>
+  </li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="앱-개요">앱 개요</h2>
+
+<p>웹 화면 상으로 사용자의 지역 날씨 상태를 보여주는 웹 어플리케이션.</p>
+
+<h2 id="look">Look</h2>
+
+<p><img src="/assets/images/weather.png" alt="Alt" width="500px" height="500px" /></p>
+
+<h2 id="설명">설명</h2>
+
+<p>사용자가 웹 앱에 접속하면 사용자로부터 위치정보 엑세스에 대한 허용 여부를 묻는다.<br />
+허용이 되면 자바스크립트의 navigator.geolocation으로 부터 사용자의 위도와 경도 값을 읽어낸다.<br />
+DarkSky API로 부터 받은 사용자 키 값에 위도와 경도값을 넣어준다.<br />
+API로 부터 읽어낸 JSON 데이터를 자바스크립트 객체로 변환하여 앱에서 필요한 데이터를 얻는다.</p>
+
+<h2 id="사용되는-것들">사용되는 것들</h2>
+<ul>
+  <li>HTML - 웹 엘리먼트 구조</li>
+  <li>CSS - 스타일 꾸미기 및 레이아웃</li>
+  <li>Pure JavaScript - 사용자 위치정보, Dom Tree 조작, 온도 계산</li>
+  <li>DarkSky Api - 날씨 정보를 받아오기 위해 사용 (월 1000건 까지의 쿼리는 무료)</li>
+  <li>SkyCons - DarkSky Api에서 제공하는 날씨 아이콘</li>
+</ul>
+
+<h2 id="실행-방법">실행 방법</h2>
+
+<p>하나의 폴더에 밑의 index.html, style.css, app.js파일을 넣어준다.<br />
+그리고, <a href="https://darksky.net/dev/">날씨 데이터</a> 사이트에 가서 <strong>Try For Free</strong>를 눌러 가입하여 API키 값을 얻어낸 다음<br />
+app.js 파일의 <strong>“자신의 키”</strong> 부분에 API 키 값을 넣어준다.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// app.js파일의 &lt;자신의 키&gt; 부분에 API 키 값을 넣어준다.</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">proxy</span><span class="p">}</span><span class="s2">https://api.darksky.net/forecast/&lt;자신의 키&gt;/</span><span class="p">${</span><span class="nx">lat</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">long</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="source-code">Source Code</h2>
+
+<h3 id="indexhtml">index.html</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"./style.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Weather<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"location"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"location-timezone"</span><span class="nt">&gt;</span>Loading Location Data ...<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"icon1"</span> <span class="na">width=</span><span class="s">"128"</span> <span class="na">height=</span><span class="s">"128"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"temperature"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"degree-section"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"temperature-degree"</span><span class="nt">&gt;</span>?<span class="nt">&lt;/h2&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"transition"</span><span class="nt">&gt;</span>C<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"temperature-description"</span><span class="nt">&gt;</span>Loading Data ... <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"skycons.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<h3 id="stylecss">style.css</h3>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*</span><span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">body</span><span class="p">{</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="nb">rgb</span><span class="p">(</span><span class="m">47</span><span class="p">,</span><span class="m">150</span><span class="p">,</span><span class="m">163</span><span class="p">),</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">48</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">143</span><span class="p">));</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.location</span><span class="o">,</span> <span class="nc">.temperature</span><span class="p">{</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">20vh</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">justify-content</span><span class="p">:</span> <span class="n">space-around</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.temperature</span><span class="p">{</span>
+    <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">baseline</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.temperature-description</span><span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">20%</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.degree-section</span><span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">30%</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.degree-section</span> <span class="nt">span</span><span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">7px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.degree-section</span> <span class="nt">h2</span><span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span><span class="m">550px</span><span class="p">){</span>
+    <span class="nc">.location-timezone</span><span class="p">{</span>
+        <span class="nl">margin-right</span><span class="p">:</span> <span class="m">3rem</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.degree-section</span><span class="p">{</span>
+        <span class="nl">margin-right</span><span class="p">:</span> <span class="m">6rem</span><span class="p">;</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.temperature-description</span><span class="p">{</span>
+        <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">-20%</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="appjs">app.js</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span><span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">long</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">lat</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">temperatureDescription</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.temperature-description</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">temperatureDegree</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.temperature-degree</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">locationTimezone</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.location-timezone</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span> <span class="nx">position</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">long</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">;</span>
+            <span class="nx">lat</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">;</span>
+            <span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://cors-anywhere.herokuapp.com/</span><span class="dl">'</span><span class="p">;</span>
+            <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">proxy</span><span class="p">}</span><span class="s2">https://api.darksky.net/forecast/&lt;자신의 키&gt;/</span><span class="p">${</span><span class="nx">lat</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">long</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+
+            <span class="nx">fetch</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                 <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+                <span class="p">})</span>
+                 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                   <span class="kd">const</span> <span class="p">{</span><span class="nx">dewPoint</span><span class="p">,</span> <span class="nx">summary</span><span class="p">,</span> <span class="nx">icon</span><span class="p">}</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">currently</span><span class="p">;</span>
+                   <span class="c1">// Set DOM Elements from the API</span>
+                   <span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">dewPoint</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span><span class="p">);</span>
+                   <span class="nx">temperatureDescription</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">summary</span><span class="p">;</span>
+                   <span class="nx">locationTimezone</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">timezone</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2"> / </span><span class="dl">"</span><span class="p">);</span>
+                   <span class="nx">setIcons</span><span class="p">(</span><span class="nx">icon</span><span class="p">,</span> <span class="dl">"</span><span class="s2">icon1</span><span class="dl">"</span><span class="p">);</span>
+                  <span class="p">});</span>
+        <span class="p">},</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You have denied or please confirm location</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">Geolocation is not supported by your browser</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">setIcons</span><span class="p">(</span><span class="nx">icon</span><span class="p">,</span> <span class="nx">iconID</span><span class="p">){</span>
+        <span class="kd">const</span> <span class="nx">skycons</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Skycons</span><span class="p">({</span><span class="na">color</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">white</span><span class="dl">"</span><span class="p">});</span>
+        <span class="kd">const</span> <span class="nx">weatherCondition</span> <span class="o">=</span> <span class="nx">icon</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/-/g</span><span class="p">,</span> <span class="dl">"</span><span class="s2">_</span><span class="dl">"</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">();</span>
+        <span class="nx">skycons</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">iconID</span><span class="p">,</span> <span class="nx">Skycons</span><span class="p">[</span><span class="nx">weatherCondition</span><span class="p">]);</span>
+        <span class="nx">skycons</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">degreeSection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.degree-section</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">transition</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.transition</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">isCelsius</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">degreeSection</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">isCelsius</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span>
+             <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.8</span> <span class="o">+</span> <span class="mi">32</span><span class="p">);</span>
+            <span class="nx">transition</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">F</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">isCelsius</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span>
+             <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span><span class="p">)</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span><span class="p">);</span>
+            <span class="nx">transition</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">C</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">isCelsius</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<h2 id="references">References</h2>
+
+<p>[Dev Ed - Youtube]</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#api" class="page__taxonomy-item" rel="tag">API</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#javascript" class="page__taxonomy-item" rel="tag">JavaScript</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#web" class="page__taxonomy-item" rel="tag">Web</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">Development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-07-15">July 15, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A5%BC+%EC%9D%B4%EC%9A%A9%ED%95%9C+%EB%82%A0%EC%94%A8+%EC%9B%B9+%EC%95%B1%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fweather-app%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fweather-app%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fweather-app%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/data%20structure/graph/" class="pagination--pager" title="Graph - 그래프
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/first-post/" rel="permalink">github.io 블로그 시작하기
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> January 22 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/restfulauth/" rel="permalink">Restful API Authentication App
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> January 15 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/merge-sort/" rel="permalink">Merge Sort
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">O(nlogn) 비교 기반 분할정복 정렬 알고리즘
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/eratosthenes-sieve/" rel="permalink">Eratosthenes’s Sieve
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">소수를 빨리 찾을 수 있는 알고리즘
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Dev.Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/weather-app/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/development/weather-app"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

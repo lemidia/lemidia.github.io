@@ -1,0 +1,70 @@
+I"�.<h2 id="code">Code</h2>
+
+<h3 id="indexhtml">index.html</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<h3 id="stylecss">style.css</h3>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<h3 id="appjs">app.js</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span><span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">long</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">lat</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">temperatureDescription</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.temperature-description</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">temperatureDegree</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.temperature-degree</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">locationTimezone</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.location-timezone</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span> <span class="nx">position</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">long</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">;</span>
+            <span class="nx">lat</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">;</span>
+            <span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://cors-anywhere.herokuapp.com/</span><span class="dl">'</span><span class="p">;</span>
+            <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">proxy</span><span class="p">}</span><span class="s2">https://api.darksky.net/forecast/0b4a39b98b9129fdc454d3116ee13ad9/</span><span class="p">${</span><span class="nx">lat</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">long</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+
+            <span class="nx">fetch</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                 <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+                <span class="p">})</span>
+                 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                   <span class="kd">const</span> <span class="p">{</span><span class="nx">dewPoint</span><span class="p">,</span> <span class="nx">summary</span><span class="p">,</span> <span class="nx">icon</span><span class="p">}</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">currently</span><span class="p">;</span>
+                   <span class="c1">// Set DOM Elements from the API</span>
+                   <span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">dewPoint</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span><span class="p">);</span>
+                   <span class="nx">temperatureDescription</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">summary</span><span class="p">;</span>
+                   <span class="nx">locationTimezone</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">timezone</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2"> / </span><span class="dl">"</span><span class="p">);</span>
+                   <span class="nx">setIcons</span><span class="p">(</span><span class="nx">icon</span><span class="p">,</span> <span class="dl">"</span><span class="s2">icon1</span><span class="dl">"</span><span class="p">);</span>
+                  <span class="p">});</span>
+        <span class="p">},</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You have denied or please confirm location</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">Geolocation is not supported by your browser</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">setIcons</span><span class="p">(</span><span class="nx">icon</span><span class="p">,</span> <span class="nx">iconID</span><span class="p">){</span>
+        <span class="kd">const</span> <span class="nx">skycons</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Skycons</span><span class="p">({</span><span class="na">color</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">white</span><span class="dl">"</span><span class="p">});</span>
+        <span class="kd">const</span> <span class="nx">weatherCondition</span> <span class="o">=</span> <span class="nx">icon</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/-/g</span><span class="p">,</span> <span class="dl">"</span><span class="s2">_</span><span class="dl">"</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">();</span>
+        <span class="nx">skycons</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">iconID</span><span class="p">,</span> <span class="nx">Skycons</span><span class="p">[</span><span class="nx">weatherCondition</span><span class="p">]);</span>
+        <span class="nx">skycons</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">degreeSection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.degree-section</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">transition</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.transition</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">isCelsius</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">degreeSection</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">isCelsius</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span>
+             <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.8</span> <span class="o">+</span> <span class="mi">32</span><span class="p">);</span>
+            <span class="nx">transition</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">F</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">isCelsius</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span>
+             <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">temperatureDegree</span><span class="p">.</span><span class="nx">textContent</span><span class="p">)</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span><span class="p">);</span>
+            <span class="nx">transition</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">C</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">isCelsius</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<h2 id="references">References</h2>
+
+<p><a href="https://ko.wikipedia.org/wiki/에라토스테네스의_체">Eratothenes - wikipedia</a></p>
+:ET

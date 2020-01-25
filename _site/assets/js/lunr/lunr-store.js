@@ -1,4 +1,9 @@
 var store = [{
+        "title": "자바스크립트를 이용한 날씨 웹 앱",
+        "excerpt":"앱 개요 웹 화면 상으로 사용자의 지역 날씨 상태를 보여주는 웹 어플리케이션. Look 설명 사용자가 웹 앱에 접속하면 사용자로부터 위치정보 엑세스에 대한 허용 여부를 묻는다. 허용이 되면 자바스크립트의 navigator.geolocation으로 부터 사용자의 위도와 경도 값을 읽어낸다. DarkSky API로 부터 받은 사용자 키 값에 위도와 경도값을 넣어준다. API로 부터 읽어낸 JSON 데이터를...","categories": ["Development"],
+        "tags": ["JavaScript","Web","API"],
+        "url": "http://localhost:4000/development/weather-app/",
+        "teaser":null},{
         "title": "Graph - 그래프",
         "excerpt":"Graph 정점들과 간선들로 이루어진 집합이다. Definition V: Vertex, E: Edge, G: Graph 그래프 G는 G(V, E)의 집합으로 정의 될 수 있다 =&gt; G = (V, E) V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다. Info: 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다....","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],
@@ -23,6 +28,11 @@ var store = [{
         "excerpt":"Merge Sort(합병 정렬) 합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘입니다. 일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나입니다. 존 폰 노이만이 1945년에 개발했습니다. Algorithm 밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다. 리스트의 길이가 1 이하이면 이미...","categories": ["Algorithm"],
         "tags": ["Sort","Mathematics"],
         "url": "http://localhost:4000/algorithm/merge-sort/",
+        "teaser":null},{
+        "title": "Restful API Authentication App",
+        "excerpt":"Restful API Authentication App Used Packages, Libraris, Dependencies and Database in the project. Node.js Express.js: Node.js package nodemon: To restart server Mongoose: DB package MongoDB: To save user data bcryptjs: Encrypt the user’s password so that 3rd party don’t see dotenv: Configuration private setting data @hapi/joi: To validate user input...","categories": ["Development"],
+        "tags": ["Development","JavaScript","Node.js","API"],
+        "url": "http://localhost:4000/development/restfulauth/",
         "teaser":null},{
         "title": "github.io 블로그 시작하기",
         "excerpt":"GitHub Blog 서비스인 github.io 블로그 시작하기로 했다. GitHub Blog 서비스의 이름은 Pages이다. Pages가 다른 블로그 플랫폼 보다 편한 것 같아서 마음에 든다. 다른 사람들도 같이 많이 사용했으면 좋겠다는 생각이 든다. YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수 있다. 이 글의 제목은 github.io 블로그 시작하기이고 마지막으로 수정된 시간은 2019-04-13...","categories": ["Blog"],

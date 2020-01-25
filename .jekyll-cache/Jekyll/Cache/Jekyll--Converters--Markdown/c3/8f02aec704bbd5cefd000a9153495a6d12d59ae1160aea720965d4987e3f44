@@ -1,0 +1,38 @@
+I"n<h1 id="restful-api-authentication-app">Restful API Authentication App</h1>
+
+<h2 id="used-packages-libraris-dependencies-and-database-in-the-project">Used Packages, Libraris, Dependencies and Database in the project.</h2>
+<ul>
+  <li>Node.js</li>
+  <li>nodemon: To server restart</li>
+  <li>Express.js: Node.js package</li>
+  <li>Mongoose: DB package</li>
+  <li>MongoDB: To save user data</li>
+  <li>bcryptjs: Encrypt the user’s password so that 3rd party don’t see</li>
+  <li>dotenv: Configuration private setting data</li>
+  <li>@hapi/joi: To validate user input form data</li>
+</ul>
+
+<h2 id="make-sure">Make sure</h2>
+
+<p>Make sure that node.js must be installed in your computer. </p>
+<p>Make sure that you must have your own mongoDB cluster.</p>
+<p>Make sure that postman which is used to requset get or post method with data to server should be installed.</p>
+
+<h2 id="usage">Usage</h2>
+
+<ol>
+  <li>clone the repository.</li>
+  <li>Inside .env file, Replace <password> with your mongoDB account password.</password></li>
+  <li>Open the terminal.</li>
+  <li>Start Server by typing ‘npm start’ or ‘npm run dev’ in the terminal (Make sure that except for quotation mark in the terminal).</li>
+  <li>Open the postman</li>
+  <li>Try to send ‘POST’ request with JSON data(below 6) format with URL - http://localhost:5000/api/user/register</li>
+  <li>Try with Example JSON data =&gt; { “name”: “lemidia”, “email”: “poiu2186@gmail.com”, “password”:”own password” }</li>
+  <li>Once you have done this, Try to send ‘POST’ request with JSON data(below 7) format with URL - http://localhost:5000/api/user/login</li>
+  <li>Try with Example JSON data =&gt; { “poiu2186@gmail.com”, “password”:”&lt;own passowrd” }</li>
+</ol>
+
+<h2 id="repository">Repository</h2>
+
+<p><a href="https://github.com/lemidia/Rest-ful-API-Authentication">Github - lemidia</a></p>
+:ET
