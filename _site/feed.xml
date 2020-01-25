@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-25T15:26:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">github.io 블로그 시작하기</title><link href="http://localhost:4000/blog/first-post/" rel="alternate" type="text/html" title="github.io 블로그 시작하기" /><published>2020-01-22T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/blog/first-post</id><content type="html" xml:base="http://localhost:4000/blog/first-post/">&lt;p&gt;GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-25T21:34:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">github.io 블로그 시작하기</title><link href="http://localhost:4000/blog/first-post/" rel="alternate" type="text/html" title="github.io 블로그 시작하기" /><published>2020-01-22T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/blog/first-post</id><content type="html" xml:base="http://localhost:4000/blog/first-post/">&lt;p&gt;GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
 GitHub Blog 서비스의 이름은 Pages이다.&lt;/p&gt;
 
 &lt;p&gt;Pages가 다른 블로그 플랫폼 보다 편한 것 같아서 마음에 든다.
@@ -216,7 +216,7 @@ x는 &amp;gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}
 그래프 G는 G(V, E)의 집합으로 정의 될 수 있다 =&amp;gt; G = (V, E)&lt;br /&gt;
 V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다.&lt;/p&gt;
 
-&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다.&lt;br /&gt;
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;Info:&lt;/strong&gt; 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다.&lt;br /&gt;
 그래서 모든 트리는 그래프이지만, 모든 그래프는 트리가 아니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;undirected-and-directed-graph&quot;&gt;Undirected and Directed Graph&lt;/h2&gt;
@@ -250,19 +250,49 @@ A -&amp;gt; B의 방향 간선이 있다면, 이것은 A -&amp;gt; B로의 탐�
 
 &lt;h3 id=&quot;인접-리스트adjacency-list&quot;&gt;인접 리스트(Adjacency list)&lt;/h3&gt;
 &lt;p&gt;인접 리스트를 이용하여 그래프를 표현하는 방법&lt;br /&gt;
-In this representation, for each vertex in the graph, we maintain the list of its neighbors. It means, every vertex of the graph contains list of its adjacent vertices.
-We have an array of vertices which is indexed by the vertex number and for each vertex v, the corresponding array element points to a singly linked list of neighbors of v.&lt;/p&gt;
+이 표현에서는, 각 정점이 인접리스트 배열로 표현이 되어 있고, 자신과 인접한 노드들을 리스트로 연결한다.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;표현방식:&lt;/strong&gt; A - B 와 같이 방향성이 없을 때는 A의 인접리스트에 B 원소를 추가하고, B의 뒤에도 A를 추가한다.&lt;br /&gt;
+A -&amp;gt; B 와 같이 방향성이 있을 때는 A의 인접리스트에 B 원소만 추가한다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/graph-representations-adj.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
 
-&lt;p class=&quot;notice--warning&quot;&gt;Pros:
-Adjacency list saves lot of space.
-We can easily insert or delete as we use linked list.
-Such kind of representation is easy to follow and clearly shows the adjacent nodes of node.&lt;/p&gt;
-&lt;p class=&quot;notice--warning&quot;&gt;Cons:
-The adjacency list allows testing whether two vertices are adjacent to each other but it is slower to support this operation.&lt;/p&gt;
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; 위 그래프는 방향 그래프임에 주의하라.&lt;br /&gt;
+A 정점은 B와 C 노드와 이웃하므로 A의 인접리스트 뒤로 B와 C의 원소가 따라 붙는다.&lt;br /&gt;
+B 정점은 D와 E 노드와 이웃하므로 B의 인접리스트 뒤로 D와 E의 원소가 따라 붙는다.&lt;/p&gt;
 
-&lt;h2 id=&quot;graph-implementation&quot;&gt;Graph Implementation&lt;/h2&gt;
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;Pros&lt;/strong&gt;:
+인접 행렬 방식에 비해 메모리 공간을 많이 절약할 수 있다.&lt;br /&gt;
+각 정점들 간의 이웃관계를 보다 쉽고 확실하게 표현할 수 있다.&lt;/p&gt;
+
+&lt;p class=&quot;notice--danger&quot;&gt;&lt;strong&gt;Cons&lt;/strong&gt;:
+두 정점이 서로 연결되어 있는지 찾는 연산은 인접 행렬에 비해 다소 느리다.&lt;/p&gt;
+
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;
+
+&lt;h3 id=&quot;example-graph&quot;&gt;Example Graph&lt;/h3&gt;
+&lt;p&gt;예제에서 나타내고자 하는 그래프는 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Graph G (Bidirectional): 
+V = (0, 1, 2, 3, 4)
+E = (0, 1), (0, 2), (1, 2), (1, 3), (2, 4), (3, 4)
+
+G:
+0 ------ 2
+|      /   \
+|    /      4
+|  /       /
+1 ------ 3 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 그래프로 부터 표현되어지는 인접 리스트는 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 0번 정점은 1, 2번 정점과 연결되어 있다.&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 1번 정점은 0, 2, 3번 정점과 연결되어 있다.&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 2번 정점은 0, 1, 4번 정점과 연결되어 있다.&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 3번 정점은 1, 4번 정점과 연결되어 있다.&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;graph-class&quot;&gt;Graph Class&lt;/h3&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -288,21 +318,6 @@ The adjacency list allows testing whether two vertices are adjacent to each othe
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;hr /&gt;
-
-&lt;h3 id=&quot;example-graph&quot;&gt;Example Graph&lt;/h3&gt;
-&lt;p&gt;예제에서 나타내고자 하는 그래프는 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Graph G (Bidirectional): 
-V = (0, 1, 2, 3, 4)
-E = (0, 1), (0, 2), (1, 2), (1, 3), (2, 4), (3, 4)
-
-G:
-0 ------ 2
-|      /   \
-|    /      4
-|  /       /
-1 ------ 3 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;graphjava&quot;&gt;Graph.java&lt;/h3&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
