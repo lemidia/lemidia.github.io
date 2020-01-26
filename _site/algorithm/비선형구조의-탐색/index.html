@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>비선형 구조의 탐색 - Dev.Gyeong</title>
-<meta name="description" content="비선형 구조가 무엇이고 어떻게 탐색할 수 있는지 알아본다. ">
+<!-- begin _includes/seo.html --><title>비선형 구조와 탐색 - Dev.Gyeong</title>
+<meta name="description" content="비선형 구조가 무엇이고 이를 어떻게 탐색할 수 있는지 알아본다. ">
 
 
   <meta name="author" content="Gyeong">
@@ -19,11 +19,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dev.Gyeong">
-<meta property="og:title" content="비선형 구조의 탐색">
+<meta property="og:title" content="비선형 구조와 탐색">
 <meta property="og:url" content="http://localhost:4000/algorithm/%EB%B9%84%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/">
 
 
-  <meta property="og:description" content="비선형 구조가 무엇이고 어떻게 탐색할 수 있는지 알아본다. ">
+  <meta property="og:description" content="비선형 구조가 무엇이고 이를 어떻게 탐색할 수 있는지 알아본다. ">
 
 
 
@@ -204,12 +204,12 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="wrapper">
       <h1 id="page-title" class="page__title" itemprop="headline">
         
-          비선형 구조의 탐색
+          비선형 구조와 탐색
 
         
       </h1>
       
-        <p class="page__lead">비선형 구조가 무엇이고 어떻게 탐색할 수 있는지 알아본다.
+        <p class="page__lead">비선형 구조가 무엇이고 이를 어떻게 탐색할 수 있는지 알아본다.
 </p>
       
       
@@ -218,7 +218,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
 
-  4 minute read
+  5 minute read
 
 </p>
       
@@ -363,8 +363,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="비선형 구조의 탐색">
-    <meta itemprop="description" content="비선형 구조가 무엇이고 어떻게 탐색할 수 있는지 알아본다.">
+    <meta itemprop="headline" content="비선형 구조와 탐색">
+    <meta itemprop="description" content="비선형 구조가 무엇이고 이를 어떻게 탐색할 수 있는지 알아본다.">
     <meta itemprop="datePublished" content="2019-04-18T00:00:00+09:00">
     <meta itemprop="dateModified" content="2019-05-10T22:06:00+09:00">
 
@@ -377,40 +377,44 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
               <ul class="toc__menu">
-  <li><a href="#비선형구조의-탐색">비선형구조의 탐색</a>
+  <li><a href="#비선형-구조와-탐색">비선형 구조와 탐색</a></li>
+  <li><a href="#비선형-구조">비선형 구조</a>
     <ul>
-      <li><a href="#비선형구조">비선형구조</a></li>
       <li><a href="#경로path와-회로cycle">경로(path)와 회로(cycle)</a></li>
       <li><a href="#자기간선loop과-다중간선multi-edge">자기간선(loop)과 다중간선(multi edge)</a></li>
       <li><a href="#그래프의-차수degree">그래프의 차수(degree)</a></li>
-      <li><a href="#그래프의-구현">그래프의 구현</a>
-        <ul>
-          <li><a href="#인접행렬의-구현">인접행렬의 구현</a></li>
-          <li><a href="#인접리스트의-구현">인접리스트의 구현</a></li>
-        </ul>
-      </li>
-      <li><a href="#깊이우선탐색dfs">깊이우선탐색(dfs)</a></li>
-      <li><a href="#너비우선탐색bfs">너비우선탐색(bfs)</a></li>
     </ul>
   </li>
-  <li><a href="#references">References</a></li>
+  <li><a href="#그래프의-구현">그래프의 구현</a>
+    <ul>
+      <li><a href="#인접행렬의-구현">인접행렬의 구현</a></li>
+      <li><a href="#인접리스트의-구현">인접리스트의 구현</a></li>
+    </ul>
+  </li>
+  <li><a href="#비선형-구조의-탐색">비선형 구조의 탐색</a>
+    <ul>
+      <li><a href="#깊이우선탐색dfs">깊이우선탐색(dfs)</a></li>
+      <li><a href="#너비우선탐색bfs">너비우선탐색(bfs)</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
 </ul>
 
             </nav>
           </aside>
         
-        <h2 id="비선형구조의-탐색">비선형구조의 탐색</h2>
+        <h2 id="비선형-구조와-탐색">비선형 구조와 탐색</h2>
 
-<p>비선형구조란 i번째 원소를 탐색한 다음 그 원소와 연결된 다른 원소를 탐색하려고 할 때, 여러 개의 원소가 존재하는 탐색구조를 말한다.<br />
- 일반적으로 자료가 트리나 그래프로 구성되어 있을 경우를 비선형구조라 하고 이러한 트리나 그래프의 모든 정점을 탐색하는 것을 비선형 탐색이라고 이해하면 된다.</p>
+<p>비선형 구조란 i번째 원소를 탐색한 다음 그 원소와 연결된 다른 원소를 탐색하려고 할 때, 여러 개의 원소가 존재하는 탐색구조를 말한다.<br />
+ 일반적으로 자료가 트리나 그래프로 구성되어 있을 경우를 비선형 구조라 하고 이러한 트리나 그래프의 모든 정점을 탐색하는 것을 비선형 탐색이라고 이해하면 된다.</p>
 
-<p>비선형구조는 선형과 달리 자료가 순차적으로 구성되어 있지 않으므로 단순히 반복문을 이용하여 탐색하기에는 어려움이 있다. 그러므로 비선형구조는 스택이나 큐와 같은 자료구 조를 활용하여 탐색하는 것이 일반적이다.</p>
+<p>비선형 구조는 선형과 달리 자료가 순차적으로 구성되어 있지 않으므로 단순히 반복문을 이용하여 탐색하기에는 어려움이 있다. 그러므로 비선형구조는 스택이나 큐와 같은 자료구 조를 활용하여 탐색하는 것이 일반적이다.</p>
 
-<p>비선형구조의 탐색은 크게 <strong>깊이우선탐색(depth first search, dfs)과 너비우선탐색 (breadth firth search, bfs)</strong>으로 나눌 수 있으며, 이 두 가지 탐색법에 대해서 알아본다.</p>
+<p>비선형 구조의 탐색은 크게 <strong>깊이우선탐색(depth first search, dfs)과 너비우선탐색 (breadth firth search, bfs)</strong>으로 나눌 수 있으며, 이 두 가지 탐색법에 대해서 알아본다.</p>
 
-<h3 id="비선형구조">비선형구조</h3>
+<h2 id="비선형-구조">비선형 구조</h2>
 
-<p>비선형구조의 탐색을 다루기 전에 그래프와 트리에 대해서 간단히 알아보자.<br />
+<p>비선형 구조의 탐색을 다루기 전에 그래프와 트리에 대해서 간단히 알아보자.<br />
 트리와 그래프를 이루는 기본 요소를 정점(vertex)과 간선(edge)이라고 한다.</p>
 
 <p><img src="/assets/images/creativealgorithm1.png" alt="Alt text" width="500px" height="300px" /></p>
@@ -433,7 +437,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p><img src="/assets/images/creativealgorithm4.png" alt="Alt text" width="550px" height="300px" /></p>
 
-<h3 id="그래프의-구현">그래프의 구현</h3>
+<h2 id="그래프의-구현">그래프의 구현</h2>
 
 <p>그래프를 구현하는 방법은 인접행렬(adjacency matrix)과 인접리스트(adjacency list)로 크게 나눌 수 있다.</p>
 
@@ -465,7 +469,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 6 7 40
 </code></pre></div></div>
 
-<h4 id="인접행렬의-구현">인접행렬의 구현</h4>
+<h3 id="인접행렬의-구현">인접행렬의 구현</h3>
 
 <p>입력예시를 인접행렬로 받기 위해서는 2차원 배열을 이용한다.<br />
 먼저 최대 정점의 수에 맞추어 2차원 배열을 선언하고 각 배열의 칸에 연결된 정보를 저장한다.<br />
@@ -488,7 +492,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h4 id="인접리스트의-구현">인접리스트의 구현</h4>
+<h3 id="인접리스트의-구현">인접리스트의 구현</h3>
 
 <p>인접행렬로 표현할 때에는 연결되지 않았던 부분까지 모두 표현이 된다. 즉, 각 칸에 0 이라고 기록된 부분은 연결이 되지 않은 부분을 의미한다. 사실 일반적인 그래프에서 행렬 상에서 0이라고 표현되는 부분이 많을 가능성이 크다.</p>
 
@@ -506,6 +510,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p class="notice--info">여러 가지 장점으로 인해 인접리스트를 이용한 방법을 활용하는 경우가 많으므로 반드시 익혀둘 수 있도록 하자.</p>
 
+<h2 id="비선형-구조의-탐색">비선형 구조의 탐색</h2>
+
 <h3 id="깊이우선탐색dfs">깊이우선탐색(dfs)</h3>
 
 <p>그래프 중 회로(cycle)가 없는 그래프를 트리라고 한다. 다음 그림은 트리를 나타낸다. 이 트리의 가장 위에 있는 정점에서 출발하여 모든 정점들을 깊이우선으로 탐색하며, 탐색 하는 순서를 알아보자.</p>
@@ -518,7 +524,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>깊이우선탐색과정에서 3단계 이후 더 이상 진행할 수 있는 정점이 없다. 그 이유는 간선 으로 연결된 정점들 중 아직 방문하지 않은 정점을 방문하기 때문이다.</p>
 
-<p>이처럼 더 이상 진행할 수 없을 때는 다시 이전 정점으로 되돌아가는 과정이 필요하다. 일반적으로 이 과정을 백트랙(backtrack)이라고 한다. 백트랙은 비선형구조의 탐색에서 매 우 중요하다. 백트랙은 스택(stack)이나 재귀함수(recursion)를 이용하면 쉽게 구현할 수 있다.</p>
+<p>이처럼 더 이상 진행할 수 없을 때는 다시 이전 정점으로 되돌아가는 과정이 필요하다. 일반적으로 이 과정을 백트랙(backtrack)이라고 한다. 백트랙은 비선형 구조의 탐색에서 매 우 중요하다. 백트랙은 스택(stack)이나 재귀함수(recursion)를 이용하면 쉽게 구현할 수 있다.</p>
 
 <p><img src="/assets/images/creativealgorithm12.png" alt="Alt text" width="650px" height="300px" /></p>
 
@@ -551,6 +557,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>이 방법은 그래프를 인접리스트에 저장했을 경우에 활용할 수 있다. 전체를 탐색하는데 있어서 반복문의 실행횟수는 모두 m 번이 된다. 일반적으로 인접행렬 보다 속도가 더 빠르기 때문에 자주 활용된다.</p>
 
+<hr />
+
 <h3 id="너비우선탐색bfs">너비우선탐색(bfs)</h3>
 
 <p>너비우선탐색은 깊이우선탐색과는 달리 현재 정점에서 깊이가 1인 정점을 모두 탐색한 뒤 깊이를 늘려가는 방식이다. 위에서 다룬 ‘10개의 정점과 9개의 간선을 가진 트리’를 통해서 너비우선탐색을 살펴보자.</p>
@@ -582,7 +590,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>이 방법은 그래프를 인접리스트에 저장했을 경우에 활용할 수 있으며, 전체를 탐색하는 데 있어서 반복문의 실행횟수는 모두 m번이 된다. 따라서 일반적으로 속도가 인접행렬 보다 더 빠르기 때문에 자주 활용된다.</p>
 
-<h2 id="references">References</h2>
+<h3 id="references">References</h3>
 
 <ul>
   <li>문제해결을 위한 창의적 알고리즘</li>
@@ -607,11 +615,19 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     
       
       
-      <a href="/tags/#mathematics" class="page__taxonomy-item" rel="tag">Mathematics</a><span class="sep">, </span>
+      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#sort" class="page__taxonomy-item" rel="tag">Sort</a>
+      <a href="/tags/#data-structure" class="page__taxonomy-item" rel="tag">Data structure</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#programming" class="page__taxonomy-item" rel="tag">programming</a>
     
     </span>
   </p>
@@ -648,7 +664,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EB%B9%84%EC%84%A0%ED%98%95+%EA%B5%AC%EC%A1%B0%EC%9D%98+%ED%83%90%EC%83%89%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F%25EB%25B9%2584%25EC%2584%25A0%25ED%2598%2595%25EA%25B5%25AC%25EC%25A1%25B0%25EC%259D%2598-%25ED%2583%2590%25EC%2583%2589%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EB%B9%84%EC%84%A0%ED%98%95+%EA%B5%AC%EC%A1%B0%EC%99%80+%ED%83%90%EC%83%89%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F%25EB%25B9%2584%25EC%2584%25A0%25ED%2598%2595%25EA%25B5%25AC%25EC%25A1%25B0%25EC%259D%2598-%25ED%2583%2590%25EC%2583%2589%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F%25EB%25B9%2584%25EC%2584%25A0%25ED%2598%2595%25EA%25B5%25AC%25EC%25A1%25B0%25EC%259D%2598-%25ED%2583%2590%25EC%2583%2589%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 

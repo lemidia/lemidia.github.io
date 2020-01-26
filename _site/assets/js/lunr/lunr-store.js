@@ -29,9 +29,9 @@ var store = [{
         "tags": ["Sort","Mathematics"],
         "url": "http://localhost:4000/algorithm/merge-sort/",
         "teaser":null},{
-        "title": "비선형 구조의 탐색",
-        "excerpt":"비선형구조의 탐색 비선형구조란 i번째 원소를 탐색한 다음 그 원소와 연결된 다른 원소를 탐색하려고 할 때, 여러 개의 원소가 존재하는 탐색구조를 말한다. 일반적으로 자료가 트리나 그래프로 구성되어 있을 경우를 비선형구조라 하고 이러한 트리나 그래프의 모든 정점을 탐색하는 것을 비선형 탐색이라고 이해하면 된다. 비선형구조는 선형과 달리 자료가 순차적으로 구성되어 있지 않으므로 단순히...","categories": ["Algorithm"],
-        "tags": ["Sort","Mathematics"],
+        "title": "비선형 구조와 탐색",
+        "excerpt":"비선형 구조와 탐색 비선형 구조란 i번째 원소를 탐색한 다음 그 원소와 연결된 다른 원소를 탐색하려고 할 때, 여러 개의 원소가 존재하는 탐색구조를 말한다. 일반적으로 자료가 트리나 그래프로 구성되어 있을 경우를 비선형 구조라 하고 이러한 트리나 그래프의 모든 정점을 탐색하는 것을 비선형 탐색이라고 이해하면 된다. 비선형 구조는 선형과 달리 자료가 순차적으로...","categories": ["Algorithm"],
+        "tags": ["DFS","BFS","Data structure","programming"],
         "url": "http://localhost:4000/algorithm/%EB%B9%84%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/",
         "teaser":null},{
         "title": "Restful API Authentication App",
