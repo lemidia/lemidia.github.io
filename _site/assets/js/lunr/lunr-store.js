@@ -29,13 +29,13 @@ var store = [{
         "tags": ["Sort","Mathematics"],
         "url": "http://localhost:4000/algorithm/merge-sort/",
         "teaser":null},{
+        "title": "비선형 구조의 탐색",
+        "excerpt":"비선형구조의 탐색 비선형구조란 i번째 원소를 탐색한 다음 그 원소와 연결된 다른 원소를 탐색하려고 할 때, 여러 개의 원소가 존재하는 탐색구조를 말한다. 일반적으로 자료가 트리나 그래프로 구성되어 있을 경우를 비선형구조라 하고 이러한 트리나 그래프의 모든 정점을 탐색하는 것을 비선형 탐색이라고 이해하면 된다. 비선형구조는 선형과 달리 자료가 순차적으로 구성되어 있지 않으므로 단순히...","categories": ["Algorithm"],
+        "tags": ["Sort","Mathematics"],
+        "url": "http://localhost:4000/algorithm/%EB%B9%84%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/",
+        "teaser":null},{
         "title": "Restful API Authentication App",
         "excerpt":"Restful API Authentication App Used Packages, Libraris, Dependencies and Database in the project. Node.js Express.js: Node.js package nodemon: To restart server Mongoose: DB package MongoDB: To save user data bcryptjs: Encrypt the user’s password so that 3rd party don’t see dotenv: Configuration private setting data @hapi/joi: To validate user input...","categories": ["Development"],
         "tags": ["Development","JavaScript","Node.js","API"],
         "url": "http://localhost:4000/development/restfulauth/",
-        "teaser":null},{
-        "title": "github.io 블로그 시작하기",
-        "excerpt":"GitHub Blog 서비스인 github.io 블로그 시작하기로 했다. GitHub Blog 서비스의 이름은 Pages이다. Pages가 다른 블로그 플랫폼 보다 편한 것 같아서 마음에 든다. 다른 사람들도 같이 많이 사용했으면 좋겠다는 생각이 든다. YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수 있다. 이 글의 제목은 github.io 블로그 시작하기이고 마지막으로 수정된 시간은 2019-04-13...","categories": ["Blog"],
-        "tags": ["Blog"],
-        "url": "http://localhost:4000/blog/first-post/",
         "teaser":null}]
