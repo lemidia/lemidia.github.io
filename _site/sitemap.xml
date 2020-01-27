@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/development/weather-app/</loc>
-<lastmod>2019-07-15T22:06:00+09:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/data%20structure/graph/</loc>
 <lastmod>2019-04-13T22:06:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/data%20structure/queue/</loc>
-<lastmod>2019-09-13T22:06:00+09:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/data%20structure/unionfind/</loc>
 <lastmod>2019-09-13T22:06:00+09:00</lastmod>
 </url>
 <url>
@@ -27,6 +19,18 @@
 <url>
 <loc>http://localhost:4000/algorithm/%EB%B9%84%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/</loc>
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/</loc>
+<lastmod>2019-05-10T22:06:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/data%20structure/unionfind/</loc>
+<lastmod>2019-09-13T22:06:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/development/weather-app/</loc>
+<lastmod>2019-07-15T22:06:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/development/restfulauth/</loc>

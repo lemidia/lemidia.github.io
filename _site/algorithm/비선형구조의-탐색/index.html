@@ -432,6 +432,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>임의의 정점에서 자기 자신으로 연결하고 있는 간선을 자기간선, 임의의 정점에서 다른 정점으로 연결된 간선의 수가 2개 이상일 경우를 다중간선이라고 한다.</p>
 
+<p><img src="/assets/images/creativealgorithm3.png" alt="Alt text" width="550px" height="300px" /></p>
+
 <h3 id="그래프의-차수degree">그래프의 차수(degree)</h3>
 <p>그래프의 임의의 한 정점에서 다른 정점으로 연결된 간선의 수를 차수라고 한다.</p>
 
@@ -563,7 +565,13 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>너비우선탐색은 깊이우선탐색과는 달리 현재 정점에서 깊이가 1인 정점을 모두 탐색한 뒤 깊이를 늘려가는 방식이다. 위에서 다룬 ‘10개의 정점과 9개의 간선을 가진 트리’를 통해서 너비우선탐색을 살펴보자.</p>
 
+<p><img src="/assets/images/creativealgorithm15.png" alt="Alt text" width="650px" height="300px" /></p>
+
 <p>먼저 1단계부터 4단계까지를 살펴보면 1에서 출발하여 깊이가 1인 세 정점을 모 두 순차적으로 방문한다. 계속해서 너비우선탐색의 결과를 살펴보면 다음과 같다.</p>
+
+<p><img src="/assets/images/creativealgorithm16.png" alt="Alt text" width="650px" height="300px" /></p>
+
+<p><img src="/assets/images/creativealgorithm17.png" alt="Alt text" width="650px" height="300px" /></p>
 
 <p>너비우선탐색은 백트랙을 하지 않는다. 대신에 현재 정점에서 깊이가 1인 정점을 모두 방문해야 하므로 큐(queue)라는 선입선출(FIFO) 자료구조를 활용하여 현재 정점에서 깊이가 1 더 깊은 모든 정점을 순차적으로 큐에 저장하여 탐색에 활용한다.<br />
 따라서 STL에서 제 공하는 std::queue()를 활용하는 방법을 익힐 필요가 있다.</p>
@@ -679,7 +687,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 ">Previous</a>
     
     
-      <a href="/development/restfulauth/" class="pagination--pager" title="Restful API Authentication App
+      <a href="/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/" class="pagination--pager" title="전체탐색법
 ">Next</a>
     
   </nav>
@@ -725,7 +733,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> January 15 2020</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> November 15 2019</p>
     
     <p class="archive__item-excerpt" itemprop="description">
 </p>
@@ -742,7 +750,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/merge-sort/" rel="permalink">Merge Sort
+        <a href="/development/weather-app/" rel="permalink">자바스크립트를 이용한 날씨 웹 앱
 </a>
       
     </h2>
@@ -763,47 +771,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2019</p>
     
-    <p class="archive__item-excerpt" itemprop="description">O(nlogn) 비교 기반 분할정복 정렬 알고리즘
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/eratosthenes-sieve/" rel="permalink">Eratosthenes’s Sieve
-</a>
-      
-    </h2>
-    <!--
-       devinlife comments :
-         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
-         기존에는 read_time이 표기. read_time -> date 변경
-
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-
-</p>
-    
-    -->
-    
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2019</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">소수를 빨리 찾을 수 있는 알고리즘
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트를 이용하여 날씨 웹 앱을 만들어보자.
 </p>
   </article>
 </div>
@@ -833,15 +803,53 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
 
-  7 minute read
+  2 minute read
 
 </p>
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 14 2019</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 14 2019</p>
     
     <p class="archive__item-excerpt" itemprop="description">Union Find By Lank With Path Compression
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/" rel="permalink">전체탐색법
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법.
 </p>
   </article>
 </div>
