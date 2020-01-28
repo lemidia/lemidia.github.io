@@ -36,7 +36,7 @@ var store = [{
         "teaser":null},{
         "title": "탐색공간의 배제",
         "excerpt":"Notice: 이 글은 [전체탐색법]의 후행 내용으로서, 먼저 제 블로그의 전체탐색법을 보시고 이 포스트를 보시는 것을 추천드립니다! 탐색공간의 배제 전체탐색법은 대부분의 경우 해를 구할 수 있는 알고리즘이다. 하지만 실행시간이 너무 길어 제한 시간 내에 문제를 해결할 수 없는 경우가 많다. 탐색공간의 배제는 전체탐색 알고리즘을 구현하는 데 있어서 더 이상 탐색하지 않더라도...","categories": ["Algorithm"],
-        "tags": ["DFS","BFS","Data structure","programming","Brute force"],
+        "tags": ["Backtracking","Greedy","Data structure","Programming","Brute force"],
         "url": "http://localhost:4000/algorithm/%ED%83%90%EC%83%89%EA%B3%B5%EA%B0%84%EC%9D%98-%EB%B0%B0%EC%A0%9C/",
         "teaser":null},{
         "title": "Union Find",
