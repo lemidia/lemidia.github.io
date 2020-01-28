@@ -1,0 +1,14 @@
+I"�<ul class="toc__menu">
+  <li><a href="#탐색공간의-배제">탐색공간의 배제</a>
+    <ul>
+      <li><a href="#수학적-배제를-이용한-설계">수학적 배제를 이용한 설계</a></li>
+      <li><a href="#약수의-합">약수의 합</a></li>
+      <li><a href="#소수-구하기">소수 구하기</a>
+        <ul>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+:ET

@@ -34,6 +34,11 @@ var store = [{
         "tags": ["DFS","BFS","Data structure","programming","Brute force"],
         "url": "http://localhost:4000/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/",
         "teaser":null},{
+        "title": "탐색공간의 배제",
+        "excerpt":"Notice: 이 글은 [전체탐색법]의 후행 내용으로서, 먼저 제 블로그의 전체탐색법을 보시고 이 포스트를 보시는 것을 추천드립니다! 탐색공간의 배제 전체탐색법은 대부분의 경우 해를 구할 수 있는 알고리즘이다. 하지만 실행시간이 너무 길어 제한 시간 내에 문제를 해결할 수 없는 경우가 많다. 탐색공간의 배제는 전체탐색 알고리즘을 구현하는 데 있어서 더 이상 탐색하지 않더라도...","categories": ["Algorithm"],
+        "tags": ["DFS","BFS","Data structure","programming","Brute force"],
+        "url": "http://localhost:4000/algorithm/%ED%83%90%EC%83%89%EA%B3%B5%EA%B0%84%EC%9D%98-%EB%B0%B0%EC%A0%9C/",
+        "teaser":null},{
         "title": "Union Find",
         "excerpt":"Union-Find 컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다. 부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 이 A나 B가 어느 부분집합에 속하는지, 또 A와 B가 각각 속한 부분집합 다르다면 이 두 부분집합을 하나의 집합으로 합쳐, 원소들이...","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],
