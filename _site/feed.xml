@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-29T01:40:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">Restful API Authentication App</title><link href="http://localhost:4000/development/restfulauth/" rel="alternate" type="text/html" title="Restful API Authentication App" /><published>2019-11-15T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/development/restfulauth</id><content type="html" xml:base="http://localhost:4000/development/restfulauth/">&lt;h1 id=&quot;restful-api-authentication-app&quot;&gt;Restful API Authentication App&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-29T01:45:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">Restful API Authentication App</title><link href="http://localhost:4000/development/restfulauth/" rel="alternate" type="text/html" title="Restful API Authentication App" /><published>2019-11-15T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/development/restfulauth</id><content type="html" xml:base="http://localhost:4000/development/restfulauth/">&lt;h1 id=&quot;restful-api-authentication-app&quot;&gt;Restful API Authentication App&lt;/h1&gt;
 
 &lt;h2 id=&quot;used-packages-libraris-dependencies-and-database-in-the-project&quot;&gt;Used Packages, Libraris, Dependencies and Database in the project.&lt;/h2&gt;
 &lt;ul&gt;
@@ -1337,7 +1337,7 @@ n의 약수의 합을 출력한다.
 18
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;이 문제는 &lt;a href=&quot;http://localhost:4000/algorithm/전체탐색법/&quot;&gt;전체탐색법&lt;/a&gt;에서 다루었던 약수의 합 문제와 동일한 문제이다. 차이점은 앞의 문제가 입력값의 정의역이 100,000이었던 것에 반해,이 문제에서는 입력값이 100억으로 커졌다는 것이다.&lt;/p&gt;
+&lt;p&gt;이 문제는 &lt;a href=&quot;http://localhost:4000/algorithm/전체탐색법/#약수의-합&quot;&gt;전체탐색법 - 약수의 합&lt;/a&gt;과 동일한 문제이다. 차이점은 앞의 문제가 입력값의 정의역이 100,000이었던 것에 반해,이 문제에서는 입력값이 100억으로 커졌다는 것이다.&lt;/p&gt;
 
 &lt;p&gt;앞의 문제에서 작성했던 풀이는 다음과 같다.&lt;/p&gt;
 
