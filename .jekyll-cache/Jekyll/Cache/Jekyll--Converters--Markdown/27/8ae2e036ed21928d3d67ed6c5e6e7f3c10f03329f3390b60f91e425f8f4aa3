@@ -1,4 +1,4 @@
-I"O<ul class="toc__menu">
+I"�<ul class="toc__menu">
   <li><a href="#전체탐색법">전체탐색법</a>
     <ul>
       <li><a href="#선형구조와-비선형구조의-전체탐색">선형구조와 비선형구조의 전체탐색</a></li>
@@ -11,6 +11,7 @@
       </li>
       <li><a href="#비선형-구조에서의-전체탐색">비선형 구조에서의 전체탐색</a>
         <ul>
+          <li><a href="#계단-오르기">계단 오르기</a></li>
           <li><a href="#연구활동-가는-길">연구활동 가는 길</a></li>
           <li><a href="#references">References</a></li>
         </ul>
