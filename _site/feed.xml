@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-28T17:22:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">Restful API Authentication App</title><link href="http://localhost:4000/development/restfulauth/" rel="alternate" type="text/html" title="Restful API Authentication App" /><published>2019-11-15T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/development/restfulauth</id><content type="html" xml:base="http://localhost:4000/development/restfulauth/">&lt;h1 id=&quot;restful-api-authentication-app&quot;&gt;Restful API Authentication App&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-28T18:57:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">Restful API Authentication App</title><link href="http://localhost:4000/development/restfulauth/" rel="alternate" type="text/html" title="Restful API Authentication App" /><published>2019-11-15T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/development/restfulauth</id><content type="html" xml:base="http://localhost:4000/development/restfulauth/">&lt;h1 id=&quot;restful-api-authentication-app&quot;&gt;Restful API Authentication App&lt;/h1&gt;
 
 &lt;h2 id=&quot;used-packages-libraris-dependencies-and-database-in-the-project&quot;&gt;Used Packages, Libraris, Dependencies and Database in the project.&lt;/h2&gt;
 &lt;ul&gt;
@@ -1096,17 +1096,152 @@ n의 약수의 합을 출력한다.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;이 문제도 비선형구조로 전체탐색을 하여 해를 구할 수 있다.&lt;br /&gt;
-현재 상태에서 1칸 또는 2 칸을 올라갈 수 있으므로, 탐색구조를 다음과 같이 설정할 수 있다.&lt;br /&gt;
-단, 주의할 점은 정확 하게 n칸에 도착했을 때만 한 가지 경우로 처리해야한다는 점이다.&lt;br /&gt;
+현재 상태에서 1칸 또는 2 칸을 올라갈 수 있으므로, 탐색구조를 다음과 같이 설정할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;단, 주의할 점은 정확 하게 n칸에 도착했을 때만 한 가지 경우로 처리해야한다는 점이다.&lt;br /&gt;
 예를 들어 도착점까지 한 칸 남았을 경우에는 2칸을 올라갈 수 없다.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm24.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;위의 탐색 과정으로 5칸의 계단을 오르는 과정을 보면 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm25.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위와 같은 트리를 구성하면서 전체탐색을 하면 n은 5일 때, 방법은 8임을 알 수 있다.&lt;br /&gt;
 이와 같은 구조의 탐색을 소스코드로 구현하면 다음과 같다.&lt;/p&gt;
 
-&lt;p&gt;7행의 조건은 마지막 계단을 넘어가는 경우를 처리한다.&lt;br /&gt;
-이 구문이 없으면 무한 재귀에 빠지게 된다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// --- (a)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 현재 n칸이면 &lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1칸 오르기&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 2칸 오르기&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;scanf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Warning:&lt;/strong&gt; (a)행의 조건은 마지막 계단을 넘어가는 경우를 처리한다. 이 구문이 없으면 무한 재귀에 빠지게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;거스름-돈&quot;&gt;거스름 돈&lt;/h3&gt;
+
+&lt;p&gt;여러분은 실력을 인정받아 전 세계적으로 사용할 수 있는 자동판매기용 프로그램 의 개발을 의뢰받았다. 거스름돈에 사용될 동전의 수를 최소화하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;입력으로 거슬러 줘야할 돈의 액수와 그 나라에서 이용하는 동전의 가짓수 그리고 동전의 종류가 들어오면 여러 가지 방법들 중 가장 적은 동전의 수를 구하는 프로그 램을 작성하시오.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;입력
+첫 번째 줄에는 거슬러 줘야할 돈의 액수 m이 입력된다.&lt;br /&gt;
+( 10 &amp;lt;= m &amp;lt;= 10,000 )&lt;br /&gt;
+다음 줄에는 그 나라에서 사용되는 동전의 종류의 수 n이 입력된다. ( 1 &amp;lt;= n &amp;lt;= 10 )&lt;br /&gt;
+마지막 줄에는 동전의 수만큼의 동전 액수가 오름차순으로 입력된다. ( 10 &amp;lt;= 액수 &amp;lt;= m )&lt;/p&gt;
+
+&lt;p&gt;출력
+최소의 동전의 수를 출력한다.&lt;/p&gt;
+
+&lt;p&gt;입력 예
+730
+5
+10 50 100 500 1250&lt;/p&gt;
+
+&lt;p&gt;출력 예
+6&lt;/p&gt;
+
+&lt;p&gt;이 문제는 매우 잘 알려진 유명한 문제 중 하나로 다양한 방법으로 해결할 수 있는 대표적인 문제이다. 이 단원에서는 전체탐색법을 기반으로 하여 해결하는 방법에 대해서 소개한다. 대부분의 문제들에서도 마찬가지지만 문제를 전체탐색으로 구조화하는 방법에 따라 해법의 계산량이 달라질 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이 문제에서는 2가지 서로 다른 구조화로 해결하는 방법을 소개한다. 먼저 첫 번째 방법은 문제의 상태를 지금까지 지불한 액수로 설정하고, 서로 다른 동전 1개를 이용하여 지불하는 경우를 간선으로 생각할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이 방법으로 구조화하는 방법은 다음 그림과 같다. 이 때 $x$의 값은 지금까지 지불한 액수이며 사용 가능한 동전은 4가지 종류로 10원, 50원, 100원, 500원일 때를 가정한 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm26.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;처음에 0원으로 출발하여 각 동전을 지불해 나가며, 지불할 금액과 일치할 때의 깊이가 지불한 동전의 개수이므로, 지불할 금액과 일치하는 최소 깊이를 구하는 문제가 된다. 만약 지불할 금액과 일치했거나 금액을 초과했을 경우에는 백트랙하면서 탐색을 진행하도록 코 드를 작성하면 된다.&lt;/p&gt;
+
+&lt;p&gt;지불해야할 금액이 120원이고, 사용가능한 동전이 30원, 50원, 60원, 100원일 때의 전체 탐색구조는 다음과 같다. 먼저 처음 깊이 1까지의 구조이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm27.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 30원 이하의 정점들의 전체적인 구조이다. 파란색 정점은 120원 지불에 성공한 것을 나타낸다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm28.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;계속해서 50원과 60원 정점의 전체 탐색구조를 나타낸다. 100원 이하에서는 더 이상의 탐색이 불가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm29.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include&amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;987654321&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;scanf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d %d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;scanf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 프로그램에서의 solve()함수는 다음과 같은 상태를 표현하고 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;solve(mon, d) = “d개의 동전으로 mon원을 사용한 상태”
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 방법은 정확하게 해를 구할 수는 있으나 이론상으로 최대 금액이 10,000원이고 최소 액수가 10원이므로 최대 깊이가 1,000까지 갈 수 있기 때문에 시간 내에 해결할 수 없다.&lt;/p&gt;
+
+&lt;p&gt;시간을 줄이기 위한 다양한 방법이 있지만, 이번에는 다른 구조를 이용하여 해결할 수 있는 방법을 소개한다. 탐색구조를 어떻게 설계하느냐에 따라서 해법의 계산량이 달라질 수 있다는 것을 알고, 문제를 해결할 때, 탐색구조를 어떻게 구성해야하는지 먼저 고민하는 것이 중요하다.&lt;/p&gt;
+
+&lt;p&gt;이번에 소개하는 구조는 이전과는 달리 같은 깊이에서는 같은 동전으로만 지불하는 방법으로 구조를 구성한다. 한 깊이에서 간선의 수는 해당 깊이의 동전을 0개로부터 해당 금액을 최대한 지불할 수 있는 최대한의 수로 설정하여 진행한다. 다음 그림을 통하여 자세 히 알아보자. 동전은 10원, 50원, 100원, 500원이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm29.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;실제 지불할 금액은 120원, 지불가능한 동전의 수는 50원, 60원, 100원일 때의 경우 전체 구조는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm30.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 방법으로 구현한 소스코드는 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;987654321&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;scanf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d %d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+        &lt;span class=&quot;n&quot;&gt;scanf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 프로그램에서의 solve()함수는 다음과 같은 상태를 표현하고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;solve(mon, k, cnt )= “k번째 이하의 동전을 cnt개 사용하여 mon원을 거슬러 준 상태”&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;이 방법은 앞에서 시도했던 방법보다 속도가 획기적으로 빨라진다. 그 이유는 전체 상태를 그려보면 앞의 방법보다 이번에 구조화한 방법의 정점의 수가 훨씬 적기 때문이다. 이와 같이 구조를 어떻게 설계하느냐에 따라 알고리즘의 계산량이 달라지기 때문에, 문제를 해결할 때 먼저 최적의 구조를 설계하는 것이 중요하다.&lt;/p&gt;
 
 &lt;h3 id=&quot;연구활동-가는-길&quot;&gt;연구활동 가는 길&lt;/h3&gt;
 
@@ -1157,8 +1292,9 @@ GSHS는 지역 1이고 A대학교는 지역 n이라고 할 때 대학까지 최�
 이 문제를 해결하는 알고리즘은 여러가지가 알려져 있지만, 어려운 알고리즘을 모르더라도 전체탐색법을 통하여 해결할 수 있다.&lt;/p&gt;
 
 &lt;p&gt;이 문제는 그래프 구조이므로 비선형탐색법으로 해를 구할 수 있다.&lt;br /&gt;
-먼저 출발정점에서 깊이우선탐색을 이용하여 출발점으로부터 도착점까지 가능한 모든 경로에 대해서 구해본다.&lt;br /&gt;
-하나의 경로를 구할 때마다 해를 갱신하면서 최종적으로 가장 적합한 해를 출력한다.&lt;br /&gt;
+먼저 출발정점에서 깊이우선탐색을 이용하여 출발점으로부터 도착점까지 가능한 모든 경로에 대해서 구해본다.&lt;/p&gt;
+
+&lt;p&gt;하나의 경로를 구할 때마다 해를 갱신하면서 최종적으로 가장 적합한 해를 출력한다.&lt;br /&gt;
 주어진 예를 통하여 전체탐색하는 과정을 간단하게 살펴보자.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/creativealgorithm19.png&quot; alt=&quot;Alt text&quot; width=&quot;700px&quot; height=&quot;700px&quot; /&gt;&lt;/p&gt;
@@ -1206,8 +1342,9 @@ GSHS는 지역 1이고 A대학교는 지역 n이라고 할 때 대학까지 최�
 solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 정의하고 있으며, chk배 열이 현재까지 방문한 정점들의 정보를 가지고 있다.&lt;br /&gt;
 다음 정점으로 진행할 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;chk[i]=1&lt;/code&gt; 같이 chk배열에 다음 방문할 정점을 체크하고 만약 백트랙해서 돌아온다면, &lt;code class=&quot;highlighter-rouge&quot;&gt;chk[i]=0&lt;/code&gt; 같이 체크를 해제하며 전체탐색을 진행한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if(V==n)&lt;/code&gt; 부분에서 도착 여부를 확인하여 현재 정점이 도착점이라면, 지금까지의 이동 거리와 현재 까지 구한 해를 비교하여 더 좋은 해가 있으면 해를 갱신한다. 이와 같이 작성할 경우 도시의 수가 n개라고 할 때 O(n!)의 계산이 필요하다.&lt;br /&gt;
-후에 다른 포스트에서 탐색배제를 이용하여 계산복잡도를 향상해본다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if(V==n)&lt;/code&gt; 부분에서 도착 여부를 확인하여 현재 정점이 도착점이라면, 지금까지의 이동 거리와 현재 까지 구한 해를 비교하여 더 좋은 해가 있으면 해를 갱신한다. 이와 같이 작성할 경우 도시의 수가 n개라고 할 때 O(n!)의 계산이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;후에 다른 포스트에서 탐색배제를 이용하여 계산복잡도를 향상해본다.&lt;/p&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
