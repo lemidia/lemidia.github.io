@@ -1,0 +1,22 @@
+I"/<ul class="toc__menu">
+  <li><a href="#선형구조의-탐색">선형구조의 탐색</a>
+    <ul>
+      <li><a href="#순차탐색">순차탐색</a></li>
+      <li><a href="#이분탐색">이분탐색</a>
+        <ul>
+          <li><a href="#최댓값">최댓값</a></li>
+          <li><a href="#3의-배수-게임">3의 배수 게임</a></li>
+          <li><a href="#인접리스트의-구현">인접리스트의 구현</a></li>
+        </ul>
+      </li>
+      <li><a href="#비선형-구조의-탐색">비선형 구조의 탐색</a>
+        <ul>
+          <li><a href="#깊이우선탐색dfs">깊이우선탐색(dfs)</a></li>
+          <li><a href="#너비우선탐색bfs">너비우선탐색(bfs)</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+:ET

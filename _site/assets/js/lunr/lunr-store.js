@@ -1,13 +1,13 @@
 var store = [{
+        "title": "선형구조와 탐색",
+        "excerpt":"선형구조의 탐색 선형구조란 자료의 순서를 유일하게 결정할 수 있는 형태의 구조를 말한다. $i$번째 자료 를 탐색한 다음, $i+1$번째로 탐색해야할 자료가 유일한 형태를 의미한다. 2차원, 3차원 구조라도 순서가 일정하게 정해져 있으면 이는 선형이라고 할 수 있다. 선형구조는 주로 배열과 리스트의 형태로 저장된다. 일반적으로 1차원 배열에 자료를 저장하는 1차원 선형구조와 2차원 이상의...","categories": ["Algorithm"],
+        "tags": ["이분탐색","순차탐색","Data structure","programming"],
+        "url": "http://localhost:4000/algorithm/%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/",
+        "teaser":null},{
         "title": "Graph - 그래프",
         "excerpt":"Graph 정점들과 간선들로 이루어진 집합이다. Definition V: Vertex, E: Edge, G: Graph 그래프 G는 G(V, E)의 집합으로 정의 될 수 있다 =&gt; G = (V, E) V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다. Info: 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다....","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],
         "url": "http://localhost:4000/data%20structure/graph/",
-        "teaser":null},{
-        "title": "layout",
-        "excerpt":"Queue  큐(queue)는 컴퓨터의 기본적인 자료 구조의 한가지로, 먼저 집어 넣은 데이터가 먼저 나오는 FIFO (First In First Out)구조로 저장하는 형식을 말한다. 영어 단어 queue는 표를 사러 일렬로 늘어선 사람들로 이루어진 줄을 말하기도 하며, 먼저 줄을 선 사람이 먼저 나갈 수 있는 상황을 연상하면 된다.      ","categories": ["Data Structure"],
-        "tags": ["programming","Data Structure"],
-        "url": "http://localhost:4000/data%20structure/layout/",
         "teaser":null},{
         "title": "Queue",
         "excerpt":"Queue 큐(queue)는 컴퓨터의 기본적인 자료 구조의 한가지로, 먼저 집어 넣은 데이터가 먼저 나오는 FIFO (First In First Out)구조로 저장하는 형식을 말한다. 영어 단어 queue는 표를 사러 일렬로 늘어선 사람들로 이루어진 줄을 말하기도 하며, 먼저 줄을 선 사람이 먼저 나갈 수 있는 상황을 연상하면 된다. Representation Array: 기본적으로 배열을 사용해서 큐를...","categories": ["Data Structure"],
