@@ -1,4 +1,9 @@
 var store = [{
+        "title": "연결 리스트(Linked List)",
+        "excerpt":"Linked List 배열과 같이 선형 자료구조 이다. 원소들이 메모리 공간상에 연속적으로 저장 되어있지 않고, 그림과 같이 각 원소들이 포인터로 링크되어 있는 자료 구조이다. 하나의 원소를 노드라고 표현하고, 데이터를 저장하는 Data 필드와 그 다음 노드를 가리키는 Next필드로 구성되어 있다. 추가적으로 연결 리스트의 맨 처음 노드를 가리키는 헤드라는 포인터를 두고 있다. 그림을...","categories": ["Data Structure"],
+        "tags": ["programming","Data Structure","Linked List"],
+        "url": "http://localhost:4000/data%20structure/LinkedList/",
+        "teaser":null},{
         "title": "선형구조와 탐색",
         "excerpt":"선형구조의 탐색 선형구조란 자료의 순서를 유일하게 결정할 수 있는 형태의 구조를 말한다. $i$번째 자료 를 탐색한 다음, $i+1$번째로 탐색해야할 자료가 유일한 형태를 의미한다. 2차원, 3차원 구조라도 순서가 일정하게 정해져 있으면 이는 선형이라고 할 수 있다. 선형구조는 주로 배열과 리스트의 형태로 저장된다. 일반적으로 1차원 배열에 자료를 저장하는 1차원 선형구조와 2차원 이상의...","categories": ["Algorithm"],
         "tags": ["이분탐색","순차탐색","Data structure","programming"],
@@ -9,10 +14,20 @@ var store = [{
         "tags": ["programming","Data Structure"],
         "url": "http://localhost:4000/data%20structure/graph/",
         "teaser":null},{
+        "title": "Restful API Authentication App",
+        "excerpt":"Restful API Authentication App Used Packages, Libraris, Dependencies and Database in the project. Node.js Express.js: Node.js package nodemon: To restart server Mongoose: DB package MongoDB: To save user data bcryptjs: Encrypt the user’s password so that 3rd party don’t see dotenv: Configuration private setting data @hapi/joi: To validate user input...","categories": ["Development"],
+        "tags": ["Development","JavaScript","Node.js","API"],
+        "url": "http://localhost:4000/development/restfulauth/",
+        "teaser":null},{
         "title": "Queue",
         "excerpt":"Queue 큐(queue)는 컴퓨터의 기본적인 자료 구조의 한가지로, 먼저 집어 넣은 데이터가 먼저 나오는 FIFO (First In First Out)구조로 저장하는 형식을 말한다. 영어 단어 queue는 표를 사러 일렬로 늘어선 사람들로 이루어진 줄을 말하기도 하며, 먼저 줄을 선 사람이 먼저 나갈 수 있는 상황을 연상하면 된다. Representation Array: 기본적으로 배열을 사용해서 큐를...","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],
         "url": "http://localhost:4000/data%20structure/queue/",
+        "teaser":null},{
+        "title": "자바스크립트를 이용한 날씨 웹 앱",
+        "excerpt":"앱 개요 웹 화면 상으로 사용자의 지역 날씨 상태를 보여주는 웹 어플리케이션. Look 설명 사용자가 웹 앱에 접속하면 사용자로부터 위치정보 엑세스에 대한 허용 여부를 묻는다. 허용이 되면 자바스크립트의 navigator.geolocation으로 부터 사용자의 위도와 경도 값을 읽어낸다. DarkSky API로 부터 받은 사용자 키 값에 위도와 경도값을 넣어준다. API로 부터 읽어낸 JSON 데이터를...","categories": ["Development"],
+        "tags": ["JavaScript","Web","API"],
+        "url": "http://localhost:4000/development/weather-app/",
         "teaser":null},{
         "title": "Eratosthenes's Sieve",
         "excerpt":"에라토스테네스의 체 수학에서 에라토스테네스의 체는 보다 빠르게 소수를 찾는 방법입니다. 고대 그리스 수학자 에라토스테네스가 발견하였습니다. 선행지식: 수학에서 소수란? 소수: 1을 제외한 수 중에서 1과 자기 자신을 제외하고 약수를 가지지 않는 수를 말합니다. 예) 예1) 2는 1과 자기 자신(2)을 제외하고는 약수를 가지지 않습니다. 소수입니다. 예2) 5는 1과 자기 자신(5)을 제외하고는 약수를...","categories": ["Algorithm"],
@@ -43,14 +58,4 @@ var store = [{
         "excerpt":"Union-Find 컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다. 부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 이 A나 B가 어느 부분집합에 속하는지, 또 A와 B가 각각 속한 부분집합 다르다면 이 두 부분집합을 하나의 집합으로 합쳐, 원소들이...","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],
         "url": "http://localhost:4000/data%20structure/unionfind/",
-        "teaser":null},{
-        "title": "자바스크립트를 이용한 날씨 웹 앱",
-        "excerpt":"앱 개요 웹 화면 상으로 사용자의 지역 날씨 상태를 보여주는 웹 어플리케이션. Look 설명 사용자가 웹 앱에 접속하면 사용자로부터 위치정보 엑세스에 대한 허용 여부를 묻는다. 허용이 되면 자바스크립트의 navigator.geolocation으로 부터 사용자의 위도와 경도 값을 읽어낸다. DarkSky API로 부터 받은 사용자 키 값에 위도와 경도값을 넣어준다. API로 부터 읽어낸 JSON 데이터를...","categories": ["Development"],
-        "tags": ["JavaScript","Web","API"],
-        "url": "http://localhost:4000/development/weather-app/",
-        "teaser":null},{
-        "title": "Restful API Authentication App",
-        "excerpt":"Restful API Authentication App Used Packages, Libraris, Dependencies and Database in the project. Node.js Express.js: Node.js package nodemon: To restart server Mongoose: DB package MongoDB: To save user data bcryptjs: Encrypt the user’s password so that 3rd party don’t see dotenv: Configuration private setting data @hapi/joi: To validate user input...","categories": ["Development"],
-        "tags": ["Development","JavaScript","Node.js","API"],
-        "url": "http://localhost:4000/development/restfulauth/",
         "teaser":null}]

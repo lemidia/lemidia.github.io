@@ -1,0 +1,648 @@
+---
+title:  "연결 리스트(Linked List)"
+excerpt: ""
+toc: true
+toc_sticky: true
+# toc_label: "페이지 주요 목차"
+
+categories:
+ - Data Structure
+
+tags:
+  - programming
+  - Data Structure
+  - Linked List
+  
+last_modified_at: 2019-03-21T08:06:00-05:00
+
+header:
+  overlay_image: /assets/images/headerLogo2.jpg
+  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
+  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  #actions:
+  #  - label: "More Info"
+  #    url: "https://unsplash.com"
+
+---
+
+# Linked List
+배열과 같이 선형 자료구조 이다.  
+원소들이 메모리 공간상에 연속적으로 저장 되어있지 않고, 그림과 같이 각 원소들이 포인터로 링크되어 있는 자료 구조이다.
+
+하나의 원소를 노드라고 표현하고, 데이터를 저장하는 Data 필드와 그 다음 노드를 가리키는 Next필드로 구성되어 있다.
+
+추가적으로 연결 리스트의 맨 처음 노드를 가리키는 헤드라는 포인터를 두고 있다.
+
+그림을 참고하자.
+
+![Alt text](/assets/images/LinkedList1.png){: width="600px" height="500px"}
+
+## 배열과 비교해 연결 리스트가 가지는 장점
+
+베열은 유사한 타입의 선형 데이터를 저장하는데 사용될 수 있다.  
+하지만 배열은 다음과 같은 제한을 가진다.
+
+1. 배열 크기가 고정되어 있다.  
+그래서 우리는 배열의 상한크기를 미리 알고 있어야 한다.  
+또한, 일반적으로, 할당된 메모리는 사용량에 관계없이 상한과 동일하다.
+2. 배열에 원소를 삽입하는 연산은 연결 리스트와 비교해 다소 비용이 많이든다.  
+원소를 저장할 공간이 만들어져야 하며, 특정 위치에 값을 삽입한다면 다른 원소를 한칸 씩 쉬프트 해야할 수도 있다.
+
+**연결 리스트가 배열과 비교해 가지는 장점**
+
+1. 동적 크기  
+연결 리스트의 크기는 고정되어 있지 않고, 프로그램 실행중에 동적으로 변할 수 있다.  
+운영체제가 프로그램상의 메모리 공간을 허용하는 한 연결 리스트의 크기를 신경 쓸 필요가 없다.
+2. 원소의 삽입 및 삭제가 수월하다.  
+배열과 비교해 연결 리스트의 삽입 삭제는 노드들 간에 포인터만 설정해주면 된다.  
+새로운 원소를 위해 다른 원소를 위치를 쉬프트 한다든지의 수고를 할 필요가 없다.
+
+## 배열과 비교해 연결 리스트가 가지는 단점
+
+1. 임의 접근이 되지 않는다.  
+배열은 각 원소를 index 번호로 바로 접근할 수 있는 반면(Random access), 연결 리스트에서는 처음 노드부터 순차적으로 탐색해야 한다.
+
+2. 포인터로 인한 메모리상 추가적인 공간이 필요하다.  
+배열과 달리 연결 리스트는 다른 노드를 가리키는 포인터(Next)공간을 추가로 요구한다.
+
+3. 캐시 친화적이지 않다.  
+배열 요소는 연속된 메모리 공간상에 위치하므로 참조 지역성이 좋은 반면, 연결 리스트는 요소들이 링크되어 있고 메모리 상에 흩어져 존재하므로 참조 지역성이 없다.
+
+## Representation
+
+연결 리스트는 첫번째 노드를 가리키는 헤드를 가지고 있다.  
+연결 리스트에 노드가 없다면 헤드는 NULL이다.
+
+![Alt text](/assets/images/LinkedList1-1.png){: width="200px" height="200px"}
+
+노드는 두개의 부분으로 구성되어 있다.
+
+1. Data - 데이터를 저장하는 필드(Integer, Double, String, Object ...)
+2. Next(Pointer Or Reference) - 다음 노드를 참조하는 필드
+
+다음은 자바로 구현한 연결 리스트 클래스이다.
+
+```java
+class LinkedList { 
+    Node head; // head of the list 
+  
+    /* Linked list Node*/
+    static class Node { 
+        int data; 
+        Node next; 
+        Node(int d) 
+        { 
+            data = d; 
+            next = null; 
+        } // Constructor 
+    } 
+}
+```
+
+연결 리스트는 하나의 클래스로 표현되고 있고, 노드는 그 안의 분리된 클래스로 표현되고 있다.  
+
+연결 리스트 클래스의 헤드는 노드를 참조하므로 노드 클래스 타입으로 선언 되어있다.
+
+노드 클래스는 데이터를 저장하는 data필드와 다음 노드를 참조할 수 있는 next필드를 가지고 있다.
+또한 생성자를 가지고 있는데, 이는 노드가 생성될 때 데이터를 d로 초기화하고, 포인터를 null로 초기화하는 역할을 한다.
+
+***
+
+위 클래스를 이용하여 노드 3개를 가진 연결리스트를 자바로 구현해 보자.
+
+```java
+// A simple Java program to introduce a linked list 
+class LinkedList { 
+    Node head; // head of list 
+  
+    /* Linked list Node.  This inner class is made static so that 
+       main() can access it */
+    static class Node { 
+        int data; 
+        Node next; 
+        Node(int d) 
+        { 
+            data = d; 
+            next = null; 
+        } // Constructor 
+    } 
+  
+    /* method to create a simple linked list with 3 nodes*/
+    public static void main(String[] args) 
+    { 
+        /* 빈 연결 리스트 생성 */
+        LinkedList llist = new LinkedList(); 
+  
+        llist.head = new Node(1); 
+        Node second = new Node(2); 
+        Node third = new Node(3); 
+  
+        /* 3개의 노드가 메모리상에 할당된다. 
+          head와 second, third가 각 노드를 참조한다.
+  
+          llist.head        second              third 
+             |                |                  | 
+             |                |                  | 
+         +----+------+     +----+------+     +----+------+ 
+         | 1  | null |     | 2  | null |     |  3 | null | 
+         +----+------+     +----+------+     +----+------+ */
+  
+        llist.head.next = second; // 첫번째 노드와 두번째 노드를 연결한다.
+  
+        /*  첫번째 노드의 next가 두번째 노드를 참조한다.
+  
+         llist.head        second              third 
+            |                |                  | 
+            |                |                  | 
+        +----+------+     +----+------+     +----+------+ 
+        | 1  |  o-------->| 2  | null |     |  3 | null | 
+        +----+------+     +----+------+     +----+------+ */
+  
+        second.next = third; // 세번째 노드와 두번째 노드를 연결한다.
+  
+        /*  두번째 노드의 next가 세번째 노드를 참조한다.
+  
+         llist.head        second              third 
+            |                |                  | 
+            |                |                  | 
+        +----+------+     +----+------+     +----+------+ 
+        | 1  |  o-------->| 2  |  o-------->|  3 | null | 
+        +----+------+     +----+------+     +----+------+ */
+    } 
+} 
+```
+
+## Inserting a node
+
+연결 리스트에 노드를 추가 해보자.  
+
+노드를 추가하는 데에는 3 가지 케이스가 있다.
+
+1. 연결 리스트 맨 앞에 추가 
+2. 특정 노드 뒤에 추가
+3. 연결 리스트 맨 뒤에 추가
+
+### 연결 리스트 맨 앞에 추가 
+
+1. 추가할 노드를 할당한다.
+2. 노드에 데이터를 넣는다.
+3. 추가할 노드의 next 포인터가 첫번째 노드를 참조하게 한다.
+4. 헤드가 추가한 노드를 참조하게 함으로써 처음 노드임을 가리킨다.
+
+![Alt text](/assets/images/LinkedList2.png){: width="600px" height="300px"}
+
+다음은 위의 연산을 자바로 구현한 것이다.
+
+```java
+/* This function is in LinkedList class. Inserts a 
+   new Node at front of the list. */
+public void push(int new_data) 
+{ 
+    /* 1 & 2: Allocate the Node & 
+              Put in the data*/
+    Node new_node = new Node(new_data); 
+  
+    /* 3. Make next of new Node as head */
+    new_node.next = head; 
+  
+    /* 4. Move the head to point to new Node */
+    head = new_node; 
+} 
+```
+
+이 연산의 시간복잡도는 O(1)이 된다.
+
+### 특정 노드 뒤에 추가 
+
+1. 특정 노드가 null인지 확인한다.  
+null이면 아무런 작업이 수행되지 않는다.
+2. 추가할 노드를 할당한다.
+3. 추가할 노드에 데이터를 넣는다.
+4. 추가할 노드가 특정노드가 참조하는 다음 노드를 참조하게 한다. 
+5. 특정 노드가 추가할 노드를 참조하게 한다.
+
+![Alt text](/assets/images/LinkedList3.png){: width="600px" height="300px"}
+
+다음은 위의 연산을 자바로 구현한 것이다.
+
+```java
+/* This function is in LinkedList class. 
+   Inserts a new node after the given prev_node. */
+public void insertAfter(Node prev_node, int new_data) 
+{ 
+    /* 1. Check if the given Node is null */
+    if (prev_node == null) 
+    { 
+        System.out.println("The given previous node cannot be null"); 
+        return; 
+    } 
+  
+    /* 2. Allocate the Node & 
+       3. Put in the data*/
+    Node new_node = new Node(new_data); 
+  
+    /* 4. Make next of new Node as next of prev_node */
+    new_node.next = prev_node.next; 
+  
+    /* 5. make next of prev_node as new_node */
+    prev_node.next = new_node; 
+} 
+```
+
+이 연산의 시간복잡도는 O(1)이 된다.
+
+### 연결 리스트 맨 뒤에 추가
+
+1. 추가할 노드를 할당한다.
+2. 추가할 노드에 데이터를 넣는다.
+3. 연결 리스트가 null이면, 헤드가 추가할 노드를 참조하게 함으로써 연산을 끝낸다.
+4. 그렇지 않다면, 처음 노드부터 탐색을 시작하여 마지막 노드를 찾는다. 
+5. 마지막 노드가 추가할 노드를 참조하게 한다.
+
+![Alt text](/assets/images/LinkedList4.png){: width="600px" height="300px"}
+
+다음은 위의 연산을 자바로 구현한 것이다.
+
+```java
+
+// Appends a new node at the end. 
+public void append(int new_data) 
+{ 
+    /* 1. Allocate the Node & 
+       2. Put in the data */
+    Node new_node = new Node(new_data); 
+  
+    /* 3. If the Linked List is empty, then make the 
+           new node as head */
+    if (head == null) 
+    { 
+        head = new Node(new_data); 
+        return; 
+    } 
+    /* 4. Else traverse till the last node */
+    Node last = head;  
+    while (last.next != null) 
+        last = last.next; 
+  
+    /* 5. Change the next of last node */
+    last.next = new_node; 
+    return; 
+} 
+```
+
+이 연산의 시간복잡도는 탐색으로 인하여 O(n)이 된다.  
+연결 리스트의 끝 노드의 정보를 가지고 있는 tail 포인터를 둔다면, 이 연산의 시간복잡도는 O(1)이 된다.
+
+다음은 위의 연산들을 모두 사용한 자바 코드이다.
+
+
+```java
+// A complete working Java program to demonstrate all insertion methods 
+// on linked list 
+class LinkedList 
+{ 
+    Node head;  // head of list 
+  
+    /* Linked list Node*/
+    class Node 
+    { 
+        int data; 
+        Node next; 
+        Node(int d) {data = d; next = null; } 
+    } 
+  
+    /* Inserts a new Node at front of the list. */
+    public void push(int new_data) 
+    { 
+        /* 1 & 2: Allocate the Node & 
+                  Put in the data*/
+        Node new_node = new Node(new_data); 
+  
+        /* 3. Make next of new Node as head */
+        new_node.next = head; 
+  
+        /* 4. Move the head to point to new Node */
+        head = new_node; 
+    } 
+  
+    /* Inserts a new node after the given prev_node. */
+    public void insertAfter(Node prev_node, int new_data) 
+    { 
+        /* 1. Check if the given Node is null */
+        if (prev_node == null) 
+        { 
+            System.out.println("The given previous node cannot be null"); 
+            return; 
+        } 
+  
+        /* 2 & 3: Allocate the Node & 
+                  Put in the data*/
+        Node new_node = new Node(new_data); 
+  
+        /* 4. Make next of new Node as next of prev_node */
+        new_node.next = prev_node.next; 
+  
+        /* 5. make next of prev_node as new_node */
+        prev_node.next = new_node; 
+    } 
+     
+    /* Appends a new node at the end.  This method is  
+       defined inside LinkedList class shown above */
+    public void append(int new_data) 
+    { 
+        /* 1. Allocate the Node & 
+           2. Put in the data */
+        Node new_node = new Node(new_data); 
+  
+        /* 3. If the Linked List is empty, then make the 
+              new node as head */
+        if (head == null) 
+        { 
+            head = new Node(new_data); 
+            return; 
+        } 
+  
+        /* 4. Else traverse till the last node */
+        Node last = head;  
+        while (last.next != null) 
+            last = last.next; 
+  
+        /* 5. Change the next of last node */
+        last.next = new_node; 
+        return; 
+    } 
+  
+    /* This function prints contents of linked list starting from 
+        the given node */
+    public void printList() 
+    { 
+        Node tnode = head; 
+        while (tnode != null) 
+        { 
+            System.out.print(tnode.data+" "); 
+            tnode = tnode.next; 
+        } 
+    } 
+  
+    /* Driver program to test above functions. Ideally this function 
+       should be in a separate user class.  It is kept here to keep 
+       code compact */
+    public static void main(String[] args) 
+    { 
+        /* Start with the empty list */
+        LinkedList llist = new LinkedList(); 
+  
+        // Insert 6.  So linked list becomes 6->NUllist 
+        llist.append(6); 
+  
+        // Insert 7 at the beginning. So linked list becomes 
+        // 7->6->NUllist 
+        llist.push(7); 
+  
+        // Insert 1 at the beginning. So linked list becomes 
+        // 1->7->6->NUllist 
+        llist.push(1); 
+  
+        // Insert 4 at the end. So linked list becomes 
+        // 1->7->6->4->NUllist 
+        llist.append(4); 
+  
+        // Insert 8, after 7. So linked list becomes 
+        // 1->7->8->6->4->NUllist 
+        llist.insertAfter(llist.head.next, 8); 
+  
+        System.out.println("\nCreated Linked list is: "); 
+        llist.printList(); 
+    } 
+} 
+// This code is contributed by Rajat Mishra 
+```
+
+```
+Output:
+Created Linked list is:  1  7  8  6  4
+```
+
+## Deleting a node
+
+이번에는 연결 리스트에서 특정 키 값을 갖고 있는 노드를 삭제 해보자.
+
+1. 삭제될 노드를 참조할 temp 포인터와 그 이전 노드를 참조하는 prev 포인터를 둔다.
+2. temp는 헤드를 참조하게 함으로써 처음 노드를 참조하게 한다.
+3. 만약 삭제될 노드가 처음 노드라면, 헤드가 temp 다음 노드를 참조하게 하고 연산을 끝낸다.
+4. 그렇지 않다면, 삭제할 키 값을 가지고 있는 노드를 탐색한다.
+5. 탐색함에 따라 삭제될 노드와 그 이전 노드 정보를 가지고 있는 temp, prev 포인터들을 갱신한다.
+6. temp가 null이거나 삭제될 키 값을 가진 노드를 찾으면 반복문을 빠져나온다.  
+7. temp가 null이면 원하는 키값을 가진 노드를 찾지 못한 것이므로 아무런 작업도 하지 않고 연산을 끝낸다. 
+8. 그렇지 않다면 찾은 것이므로, prev 포인터가 temp.next 참조하게 함으로써 작업을 끝낸다.
+
+![Alt text](/assets/images/LinkedList5.png){: width="600px" height="300px"}
+
+다음은 위의 연산을 자바로 구현한 것이다.
+
+```java
+ /* Given a key, deletes the first occurrence of key in linked list */
+    void deleteNode(int key) 
+    { 
+        // 1 & 2. Store head node to temp, prev
+        Node temp = head, prev = null; 
+  
+        // 3. If head node itself holds the key to be deleted 
+        if (temp != null && temp.data == key) 
+        { 
+            head = temp.next; // Changed head 
+            return; 
+        } 
+  
+        // 4. Search for the key to be deleted, keep track of the 
+        // previous node as we need to change temp.next 
+        while (temp != null && temp.data != key) // 6.
+        { 
+            // 5. keep track of the previous node
+            //    as we need to change temp.next 
+            prev = temp;        
+            temp = temp.next; 
+        }     
+  
+        // 7. If key was not present in linked list 
+        if (temp == null) return; 
+  
+        // 8. Unlink the node from linked list 
+        prev.next = temp.next; 
+    } 
+
+```
+
+이 연산의 시간복잡도는 O(n)이 된다.  
+순수 삭제연산은 O(1)이지만, 삭제될 키 값을 찾아 탐색하는 연산이 추가되었으므로 O(n)이 된다.
+
+## Undirected and Directed Graph
+
+그래프는 방향 그래프 또는 비방향 그래프가 될 수 있다.  
+
+비방향 그래프는 두 정점 간의 간선에 방향이 없다.  
+A - B의 비방향 간선이 있다면, 이것은 A -> B로, B -> A로의 탐색이 가능하다는 것을 의미한다.
+
+방향 그래프는 두 정점 간의 간선에 방향을 가지고 있다.  
+A -> B의 방향 간선이 있다면, 이것은 A -> B로의 탐색이 가능, 그러나 B -> A로의 탐색이 가능하지 않다는 것을 의미
+
+![Alt text](/assets/images/graphs_directed_undirected.png){: width="600px" height="500px"}
+## Unweighted and weighted Graph
+
+두 정점 간의 간선에 추가 정보가 없다면 Unweighted(비가중치) 그래프.  
+두 정점 간의 간선에 추가 정보가 있다면 weighted(가중치) 그래프.
+
+![Alt text](/assets/images/weightedunweighted.jpeg){: width="550px" height="500px"}
+
+## Representation
+그래프를 표현하는 2가지 방법을 알아본다.
+### 인접 행렬(Adjacency matrix)
+
+2차원 행렬로 표현하는 방법.  
+행은 출발 정점을 나타내고 열을 도착 정점을 나타낸다. 꼭짓점 x에서 꼭짓점 y로 변이 존재하면 행렬 성분 x행 y열의 값은 1이고 그렇지 않으면 0이다.
+
+![Alt text](/assets/images/graph-representations-undir.png)
+
+**Note:** 그래프가 100개의 정점과 1개의 간선으로 이루어져 있어도, 인접행렬 표현 시 100x100 크기의 매트릭스를 써야한다. 즉, 비교적 적은 간선의 그래프를 표현하는데에는 불필요한 공간이 많이 소비된다. 
+{: .notice--warning}
+
+### 인접 리스트(Adjacency list)
+인접 리스트를 이용하여 그래프를 표현하는 방법  
+이 표현에서는, 각 정점이 인접리스트 배열로 표현이 되어 있고, 자신과 인접한 노드들을 리스트로 연결한다.
+
+**표현방식:** A - B 와 같이 방향성이 없을 때는 A의 인접리스트에 B 원소를 추가하고, B의 뒤에도 A를 추가한다.  
+A -> B 와 같이 방향성이 있을 때는 A의 인접리스트에 B 원소만 추가한다.
+{: .notice--info}
+
+![Alt text](/assets/images/graph-representations-adj.png)
+
+**Note:** 위 그래프는 방향 그래프임에 주의하라.  
+A 정점은 B와 C 노드와 이웃하므로 A의 인접리스트 뒤로 B와 C의 원소가 따라 붙는다.  
+B 정점은 D와 E 노드와 이웃하므로 B의 인접리스트 뒤로 D와 E의 원소가 따라 붙는다.  
+{: .notice--warning}
+
+**Pros**:
+인접 행렬 방식에 비해 메모리 공간을 많이 절약할 수 있다.  
+각 정점들 간의 이웃관계를 보다 쉽고 확실하게 표현할 수 있다.
+{: .notice--info}
+
+**Cons**:
+두 정점이 서로 연결되어 있는지 찾는 연산은 인접 행렬에 비해 다소 느리다.
+{: .notice--danger}
+
+## Implementation
+
+### Example Graph
+예제에서 나타내고자 하는 그래프는 다음과 같다.
+
+``` 
+Graph G (Bidirectional): 
+V = (0, 1, 2, 3, 4)
+E = (0, 1), (0, 2), (1, 2), (1, 3), (2, 4), (3, 4)
+
+G:
+0 ------ 2
+|      /   \
+|    /      4
+|  /       /
+1 ------ 3 
+```
+
+위 그래프로 부터 표현되어지는 인접 리스트는 다음과 같다.
+
+```java
+0 => 1 => 2       // 0번 정점은 1, 2번 정점과 연결되어 있다.
+1 => 0 => 2 => 3  // 1번 정점은 0, 2, 3번 정점과 연결되어 있다.
+2 => 0 => 1 => 4  // 2번 정점은 0, 1, 4번 정점과 연결되어 있다.
+3 => 1 => 4       // 3번 정점은 1, 4번 정점과 연결되어 있다.
+4 => 2 => 3
+```
+
+### Graph Class
+```java
+public class Graph {
+    private int V; // 그래프의 정점 갯수
+    private LinkedList<Integer> adjListArray[]; // 그래프의 정점을 저장할 인접리스트 배열
+
+    public Graph(int V) { // 그래프 생성자, 정점과 인접리스트 배열을 초기화 한다.
+        this.V = V;
+        adjListArray = new LinkedList[V]; // 인접리스트 배열 생성
+        for (int i = 0; i < V; i++) {
+            adjListArray[i] = new LinkedList<>(); // 인접리스트 노드 초기화 및 생성
+        }
+    }
+}
+
+```
+
+### addEdge
+```java
+// 양방향 간선 정보 저장
+static void addEdge(Graph graph, int src, int dest) { 
+    graph.adjListArray[src].add(dest); // src -> dest
+    graph.adjListArray[dest].add(src); // dest -> src
+}
+```
+***
+
+
+### Graph.java
+```java
+import java.util.LinkedList;
+
+public class Graph {
+    private int V; // 그래프의 정점 갯수
+    LinkedList<Integer> adjListArray[]; // 그래프의 정점을 저장할 인접리스트 배열
+
+    public Graph(int V) { // 그래프 생성자, 정점과 인접리스트 배열을 초기화 한다.
+        this.V = V;
+        adjListArray = new LinkedList[V];
+        for (int i = 0; i < V; i++) {
+            adjListArray[i] = new LinkedList<>();
+        }
+    }
+    // 그래프 출력 메소드
+    public void printGraph() {
+        for (int v = 0; v < V; v++) {
+            System.out.print(v);
+            for (Integer i : adjListArray[v]) {
+                System.out.print(" => " + i);
+            }
+            System.out.print("\n");
+        }
+    }
+    // 양방향 간선 생성 메소드
+    static void addEdge(Graph graph, int src, int dest) {
+        graph.adjListArray[src].add(dest);
+        graph.adjListArray[dest].add(src);
+    }
+
+
+    public static void main(String[] args) {
+        int V = 5; // 정점의 갯수는 5개 (0, 1, 2, 3, 4)
+        Graph graph = new Graph(V); // 그래프 초기화
+
+        addEdge(graph, 0, 1); // 0번과 1번을 정점으로 하는 간선을 생성한다.
+        addEdge(graph, 0, 2); // 0번과 2번을 정점으로 하는 간선을 생성한다.
+        addEdge(graph, 1, 2); // 1번과 2번을 정점으로 하는 간선을 생성한다.
+        addEdge(graph, 1, 3);
+        addEdge(graph, 2, 4);
+        addEdge(graph, 3, 4);
+
+        graph.printGraph();
+    }
+}
+```
+```java
+Output:
+0 => 1 => 2       // 0번 정점은 1, 2번 정점과 연결되어 있다.
+1 => 0 => 2 => 3  // 1번 정점은 0, 2, 3번 정점과 연결되어 있다.
+2 => 0 => 1 => 4  // 2번 정점은 0, 1, 4번 정점과 연결되어 있다.
+3 => 1 => 4       // 3번 정점은 1, 4번 정점과 연결되어 있다.
+4 => 2 => 3       // 4번 정점은 2, 3번 정점과 연결되어 있다.
+```
+
+
+## References
+[Graph - Wikipedia](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))  
+[Graph - javapoint](https://www.javatpoint.com/breadth-first-search-algorithm)
