@@ -2,13 +2,11 @@
 main:
   # - title: "Quick-Start Guide"
   #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  - title: "About"
-    url: /about/
   - title: "Categories"
     url: /categories/
-  - title: "Development"
-    url: /categories/development/
   - title: "Algorithm"
     url: /categories/algorithm/
   - title: "Data Structure"
     url: /categories/datastructure/
+  - title: "Development"
+    url: /categories/development/

@@ -1,4 +1,4 @@
-I"á
+I"„
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -12,15 +12,13 @@
           <span class="site-subtitle">Development & Algorithm</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about/" >About</a>
-            </li><li class="masthead__menu-item">
               <a href="/categories/" >Categories</a>
-            </li><li class="masthead__menu-item">
-              <a href="/categories/development/" >Development</a>
             </li><li class="masthead__menu-item">
               <a href="/categories/algorithm/" >Algorithm</a>
             </li><li class="masthead__menu-item">
               <a href="/categories/datastructure/" >Data Structure</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
