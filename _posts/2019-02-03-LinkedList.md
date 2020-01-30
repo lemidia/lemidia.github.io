@@ -35,7 +35,7 @@ header:
 
 그림을 참고하자.
 
-![Alt text](/assets/images/LinkedList1.png){: width="600px" height="500px"}
+![Alt text](/assets/images/LinkedList1.png){: width="600px" height="300px"}
 
 ## 배열과 비교해 연결 리스트가 가지는 장점
 
@@ -191,7 +191,7 @@ class LinkedList {
 
 ![Alt text](/assets/images/LinkedList2.png){: width="600px" height="300px"}
 
-다음은 위의 연산을 자바로 구현한 것이다.
+다음은 위의 연산을 구현한 자바 메소드이다.
 
 ```java
 /* This function is in LinkedList class. Inserts a 
@@ -223,7 +223,7 @@ null이면 아무런 작업이 수행되지 않는다.
 
 ![Alt text](/assets/images/LinkedList3.png){: width="600px" height="300px"}
 
-다음은 위의 연산을 자바로 구현한 것이다.
+다음은 위의 연산을 구현한 자바 메소드이다.
 
 ```java
 /* This function is in LinkedList class. 
@@ -261,7 +261,7 @@ public void insertAfter(Node prev_node, int new_data)
 
 ![Alt text](/assets/images/LinkedList4.png){: width="600px" height="300px"}
 
-다음은 위의 연산을 자바로 구현한 것이다.
+다음은 위의 연산을 구현한 자바 메소드이다.
 
 ```java
 
@@ -293,7 +293,7 @@ public void append(int new_data)
 이 연산의 시간복잡도는 탐색으로 인하여 O(n)이 된다.  
 연결 리스트의 끝 노드의 정보를 가지고 있는 tail 포인터를 둔다면, 이 연산의 시간복잡도는 O(1)이 된다.
 
-다음은 위의 연산들을 모두 사용한 자바 코드이다.
+다음은 위 연산을 포한한 예제 자바 코드이다.
 
 
 ```java
@@ -438,7 +438,7 @@ Created Linked list is:  1  7  8  6  4
 
 ![Alt text](/assets/images/LinkedList5.png){: width="600px" height="300px"}
 
-다음은 위의 연산을 자바로 구현한 것이다.
+다음은 위의 연산을 구현한 자바 메소드이다.
 
 ```java
  /* Given a key, deletes the first occurrence of key in linked list */
@@ -476,5 +476,112 @@ Created Linked list is:  1  7  8  6  4
 이 연산의 시간복잡도는 O(n)이 된다.  
 순수 삭제연산은 O(1)이지만, 삭제될 키 값을 찾아 탐색하는 연산이 추가되었으므로 O(n)이 된다.
 
+## 특정 키 값의 노드 찾기
+
+연결 리스트에서 특정 키 값 x를 가진 노드를 찾아보자.  
+
+**search** 메소드는 키 값 x를 가진 노드가 존재하면 true, 존재하지 않으면 false를 리턴한다.
+
+1. 리스트를 순회할 current를 헤드로 초기화한다.
+2. current가 null 아닐 때 까지 반복한다.  
+null이면 while 빠져나와 false 리턴하고 연산을 끝낸다.
+3. current가 참조하는 노드의 데이터가 x라면 true 리턴하고 연산을 끝낸다.
+4. 그렇지 않다면 다음 노드를 참조하고 2번으로 다시 간다.
+
+다음은 위의 연산을 구현한 자바 메소드이다.
+
+```java
+//Checks whether the value x is present in linked list 
+    public boolean search(Node head, int x) 
+    { 
+        Node current = head;    // 1 포인터 초기화
+        while (current != null) // 2. current가 null 아닐 때 까지 반복한다
+        { 
+            if (current.data == x) 
+                return true;    //3. 찾았다
+            current = current.next; // 4. 다음 노드를 참조한다
+        } 
+        return false;    // 데이터를 찾지 못하였다
+    } 
+```
+
+다음은 위 연산을 포한한 예제 자바 코드이다.
+
+```java
+// Iterative Java program to search an element 
+// in linked list 
+  
+//Node class 
+class Node 
+{ 
+    int data; 
+    Node next; 
+    Node(int d) 
+    { 
+        data = d; 
+        next = null; 
+    } 
+} 
+  
+//Linked list class 
+class LinkedList 
+{ 
+    Node head;    //Head of list 
+  
+    //Inserts a new node at the front of the list 
+    public void push(int new_data) 
+    { 
+        //Allocate new node and putting data 
+        Node new_node = new Node(new_data); 
+  
+        //Make next of new node as head 
+        new_node.next = head; 
+  
+        //Move the head to point to new Node 
+        head = new_node; 
+    } 
+  
+    //Checks whether the value x is present in linked list 
+    public boolean search(Node head, int x) 
+    { 
+        Node current = head;    //Initialize current 
+        while (current != null) 
+        { 
+            if (current.data == x) 
+                return true;    //data found 
+            current = current.next; 
+        } 
+        return false;    //data not found 
+    } 
+  
+    //Driver function to test the above functions 
+    public static void main(String args[]) 
+    { 
+  
+        //Start with the empty list 
+        LinkedList llist = new LinkedList(); 
+  
+        /*Use push() to construct below list 
+        14->21->11->30->10  */
+        llist.push(10); 
+        llist.push(30); 
+        llist.push(11); 
+        llist.push(21); 
+        llist.push(14); 
+  
+        if (llist.search(llist.head, 21)) 
+            System.out.println("Yes"); 
+        else
+            System.out.println("No"); 
+    } 
+} 
+// This code is contributed by Pratik Agarwal 
+```
+
+```
+Output
+
+Yes
+```
 ## References
 [GeeksforGeeks](https://www.geeksforgeeks.org/)  
