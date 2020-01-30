@@ -35,7 +35,7 @@ header:
 
 그림을 참고하자.
 
-![Alt text](/assets/images/LinkedList1.png){: width="600px" height="300px"}
+![Alt text](/assets/images/Linkedlist1.png){: width="600px" height="300px"}
 
 ## 배열과 비교해 연결 리스트가 가지는 장점
 
@@ -579,9 +579,15 @@ class LinkedList
 ```
 
 ```
-Output
-
+Output:
 Yes
+```
+## 연결 리스트 연산들의 시간복잡도
+```
+시간복잡도 - 최악 기준      
+
+접근     검색      삽입     삭제	
+O(n)    O(n)	 O(1)	 O(1)	  
 ```
 ## References
 [GeeksforGeeks](https://www.geeksforgeeks.org/)  

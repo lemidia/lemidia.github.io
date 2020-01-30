@@ -1,4 +1,4 @@
-I"5�<h1 id="linked-list">Linked List</h1>
+I"�<h1 id="linked-list">Linked List</h1>
 <p>배열과 같이 선형 자료구조 이다.<br />
 원소들이 메모리 공간상에 연속적으로 저장 되어있지 않고, 그림과 같이 각 원소들이 포인터로 링크되어 있는 자료 구조이다.</p>
 
@@ -8,7 +8,7 @@
 
 <p>그림을 참고하자.</p>
 
-<p><img src="/assets/images/LinkedList1.png" alt="Alt text" width="600px" height="500px" /></p>
+<p><img src="/assets/images/LinkedList1.png" alt="Alt text" width="600px" height="300px" /></p>
 
 <h2 id="배열과-비교해-연결-리스트가-가지는-장점">배열과 비교해 연결 리스트가 가지는 장점</h2>
 
@@ -178,7 +178,7 @@
 
 <p><img src="/assets/images/LinkedList2.png" alt="Alt text" width="600px" height="300px" /></p>
 
-<p>다음은 위의 연산을 자바로 구현한 것이다.</p>
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* This function is in LinkedList class. Inserts a 
    new Node at front of the list. */</span>
@@ -211,7 +211,7 @@ null이면 아무런 작업이 수행되지 않는다.</li>
 
 <p><img src="/assets/images/LinkedList3.png" alt="Alt text" width="600px" height="300px" /></p>
 
-<p>다음은 위의 연산을 자바로 구현한 것이다.</p>
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* This function is in LinkedList class. 
    Inserts a new node after the given prev_node. */</span>
@@ -250,7 +250,7 @@ null이면 아무런 작업이 수행되지 않는다.</li>
 
 <p><img src="/assets/images/LinkedList4.png" alt="Alt text" width="600px" height="300px" /></p>
 
-<p>다음은 위의 연산을 자바로 구현한 것이다.</p>
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1">// Appends a new node at the end. </span>
@@ -281,7 +281,7 @@ null이면 아무런 작업이 수행되지 않는다.</li>
 <p>이 연산의 시간복잡도는 탐색으로 인하여 O(n)이 된다.<br />
 연결 리스트의 끝 노드의 정보를 가지고 있는 tail 포인터를 둔다면, 이 연산의 시간복잡도는 O(1)이 된다.</p>
 
-<p>다음은 위의 연산들을 모두 사용한 자바 코드이다.</p>
+<p>다음은 위 연산을 포한한 예제 자바 코드이다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// A complete working Java program to demonstrate all insertion methods </span>
 <span class="c1">// on linked list </span>
@@ -425,7 +425,7 @@ Created Linked list is:  1  7  8  6  4
 
 <p><img src="/assets/images/LinkedList5.png" alt="Alt text" width="600px" height="300px" /></p>
 
-<p>다음은 위의 연산을 자바로 구현한 것이다.</p>
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cm">/* Given a key, deletes the first occurrence of key in linked list */</span>
     <span class="kt">void</span> <span class="nf">deleteNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
@@ -564,9 +564,14 @@ null이면 while 빠져나와 false 리턴하고 연산을 끝낸다.</li>
 <span class="c1">// This code is contributed by Pratik Agarwal </span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output
-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output:
 Yes
+</code></pre></div></div>
+<h2 id="연결-리스트-연산들의-시간복잡도">연결 리스트 연산들의 시간복잡도</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>시간복잡도 - 최악 기준      
+
+접근     검색      삽입     삭제	
+O(n)    O(n)	 O(1)	 O(1)	  
 </code></pre></div></div>
 <h2 id="references">References</h2>
 <p><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></p>
