@@ -1,0 +1,37 @@
+I"<ul class="toc__menu">
+  <li><a href="#스택stack">스택(Stack)</a>
+    <ul>
+      <li><a href="#스택의-기본-연산">스택의 기본 연산</a>
+        <ul>
+          <li><a href="#push">Push</a></li>
+          <li><a href="#pop---스택에서-원소를-삭제한다">Pop - 스택에서 원소를 삭제한다.</a></li>
+          <li><a href="#peek">Peek</a></li>
+          <li><a href="#isempty">isEmpty</a></li>
+        </ul>
+      </li>
+      <li><a href="#스택의-응용">스택의 응용</a></li>
+      <li><a href="#구현">구현</a></li>
+      <li><a href="#배열을-이용한-스택-구현">배열을 이용한 스택 구현</a>
+        <ul>
+          <li><a href="#스택-클래스-프로퍼티">스택 클래스 프로퍼티</a></li>
+          <li><a href="#스택에-원소를-삽입하는-연산">스택에 원소를 삽입하는 연산</a></li>
+          <li><a href="#스택에서-원소를-삭제하는-연산">스택에서 원소를 삭제하는 연산</a></li>
+          <li><a href="#스택에서-top이-가리키는-원소를-반환하는-연산">스택에서 top이 가리키는 원소를 반환하는 연산</a></li>
+          <li><a href="#스택이-빈-공간인지-확인하는-연산">스택이 빈 공간인지 확인하는 연산</a></li>
+        </ul>
+      </li>
+      <li><a href="#inserting-a-node">Inserting a node</a>
+        <ul>
+          <li><a href="#연결-리스트-맨-앞에-추가">연결 리스트 맨 앞에 추가</a></li>
+          <li><a href="#특정-노드-뒤에-추가">특정 노드 뒤에 추가</a></li>
+          <li><a href="#연결-리스트-맨-뒤에-추가">연결 리스트 맨 뒤에 추가</a></li>
+        </ul>
+      </li>
+      <li><a href="#deleting-a-node">Deleting a node</a></li>
+      <li><a href="#특정-키-값의-노드-찾기">특정 키 값의 노드 찾기</a></li>
+      <li><a href="#연결-리스트-연산들의-시간복잡도">연결 리스트 연산들의 시간복잡도</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

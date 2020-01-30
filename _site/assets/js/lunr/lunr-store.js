@@ -4,6 +4,11 @@ var store = [{
         "tags": ["programming","Data Structure","Linked List"],
         "url": "http://localhost:4000/data%20structure/LinkedList/",
         "teaser":null},{
+        "title": "스택(Stack)",
+        "excerpt":"스택(Stack) 스택은 원소의 특정한 순서를 유지하고 특정 연산을 가지고 있는 선형 자료구조이다. 스택은 후입선출의 선형 자료 구조로서, 한쪽 끝에서만 삽입 및 삭제가 수행된다. 나중에 들어간 원소가 먼저 들어온 원소보다 먼저 나간다 하여 후입선출이라 불리게 된다. 스택은 또한 Top이라 불리는 포인터를 가지고 있는데 이는, 스택의 맨 위의 원소를 가리킨다.(그림상) 스택의 기본...","categories": ["Data Structure"],
+        "tags": ["programming","Data Structure","Linked List","Array","Stack"],
+        "url": "http://localhost:4000/data%20structure/Stack/",
+        "teaser":null},{
         "title": "선형구조와 탐색",
         "excerpt":"선형구조의 탐색 선형구조란 자료의 순서를 유일하게 결정할 수 있는 형태의 구조를 말한다. $i$번째 자료 를 탐색한 다음, $i+1$번째로 탐색해야할 자료가 유일한 형태를 의미한다. 2차원, 3차원 구조라도 순서가 일정하게 정해져 있으면 이는 선형이라고 할 수 있다. 선형구조는 주로 배열과 리스트의 형태로 저장된다. 일반적으로 1차원 배열에 자료를 저장하는 1차원 선형구조와 2차원 이상의...","categories": ["Algorithm"],
         "tags": ["이분탐색","순차탐색","Data structure","programming"],

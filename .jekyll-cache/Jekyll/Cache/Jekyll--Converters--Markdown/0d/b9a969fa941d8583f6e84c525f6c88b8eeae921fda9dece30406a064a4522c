@@ -1,0 +1,567 @@
+I"��<h1 id="스택stack">스택(Stack)</h1>
+<p>스택은 원소의 특정한 순서를 유지하고 특정 연산을 가지고 있는 선형 자료구조이다.</p>
+
+<p>스택은 후입선출의 선형 자료 구조로서, 한쪽 끝에서만 삽입 및 삭제가 수행된다.<br />
+나중에 들어간 원소가 먼저 들어온 원소보다 먼저 나간다 하여 후입선출이라 불리게 된다.</p>
+
+<p>스택은 또한 Top이라 불리는 포인터를 가지고 있는데 이는, 스택의 맨 위의 원소를 가리킨다.(그림상)</p>
+
+<p><img src="/assets/images/stack1.png" alt="Alt text" width="500px" height="300px" /></p>
+
+<h2 id="스택의-기본-연산">스택의 기본 연산</h2>
+
+<p>스택이 가지고 있는 연산들을 보자.</p>
+
+<h3 id="push">Push</h3>
+
+<p>스택에 원소를 삽입한다.<br />
+스택이 Full이라면 Overflow 에러가 난다.</p>
+
+<p><img src="/assets/images/stack2.png" alt="Alt text" width="500px" height="300px" /></p>
+
+<p class="notice--warning"><strong>Notice:</strong> 새로운 원소가 삽입됨에 따라 Top이 10을 가리키고 있다.</p>
+
+<h3 id="pop---스택에서-원소를-삭제한다">Pop - 스택에서 원소를 삭제한다.</h3>
+
+<p>스택에서 원소를 삭제한다.<br />
+스택이 빈 공간이면, Underflow 에러가 난다.</p>
+
+<p><img src="/assets/images/stack3.png" alt="Alt text" width="500px" height="300px" /></p>
+
+<p class="notice--warning"><strong>Notice:</strong> 기존 원소가 삭제됨에 따라 Top이 93을 가리키고 있다.</p>
+
+<h3 id="peek">Peek</h3>
+<p>스택에서 Top 가리키고 있는 원소를 반환한다.</p>
+
+<p class="notice--warning"><strong>Notice:</strong> 원소가 삽입, 삭제 되는 것이 아닌 원소 반환이므로 Top의 위치는 변화가 없다.</p>
+
+<p><img src="/assets/images/stack4.png" alt="Alt text" width="300px" height="300px" /></p>
+
+<h3 id="isempty">isEmpty</h3>
+<p>스택이 빈 공간이라면 true, 아니라면 false를 반환한다.</p>
+
+<h2 id="스택의-응용">스택의 응용</h2>
+
+<p>스택은 많은 곳에서 응용되어 쓰인다.</p>
+
+<ol>
+  <li>괄호의 균형성 검사. ex) (()) 짝이 맞는지</li>
+  <li>웹브라우저의 앞으로 가기 또는 뒤로 가기</li>
+  <li>그래프 알고리즘 중에서 위상정렬이나 강한연결요소</li>
+  <li>대표적 백트래킹 문제 - N-Queen, Knight tour, rat in a maze, sudoku</li>
+  <li>스택을 이용한 여러 알고리즘 문제 - 하노이 탑, 트리순회, 히스토그램 면적 등</li>
+  <li>중위식 표기법의 후위식 표기법으로의 변환</li>
+</ol>
+
+<h2 id="구현">구현</h2>
+
+<p>스택을 구현하는데에는 크게 두 가지 방법이 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LinkedList</span> <span class="o">{</span> 
+    <span class="nc">Node</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// head of the list </span>
+  
+    <span class="cm">/* Linked list Node*/</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">data</span><span class="o">;</span> 
+        <span class="nc">Node</span> <span class="n">next</span><span class="o">;</span> 
+        <span class="nc">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> 
+            <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+        <span class="o">}</span> <span class="c1">// Constructor </span>
+    <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>연결 리스트는 하나의 클래스로 표현되고 있고, 노드는 그 안의 분리된 클래스로 표현되고 있다.</p>
+
+<p>연결 리스트 클래스의 헤드는 노드를 참조하므로 노드 클래스 타입으로 선언 되어있다.</p>
+
+<p>노드 클래스는 데이터를 저장하는 data필드와 다음 노드를 참조할 수 있는 next필드를 가지고 있다.
+또한 생성자를 가지고 있는데, 이는 노드가 생성될 때 데이터를 d로 초기화하고, 포인터를 null로 초기화하는 역할을 한다.</p>
+
+<hr />
+
+<p>위 클래스를 이용하여 노드 3개를 가진 연결리스트를 자바로 구현해 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// A simple Java program to introduce a linked list </span>
+<span class="kd">class</span> <span class="nc">LinkedList</span> <span class="o">{</span> 
+    <span class="nc">Node</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// head of list </span>
+  
+    <span class="cm">/* Linked list Node.  This inner class is made static so that 
+       main() can access it */</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">data</span><span class="o">;</span> 
+        <span class="nc">Node</span> <span class="n">next</span><span class="o">;</span> 
+        <span class="nc">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> 
+            <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+        <span class="o">}</span> <span class="c1">// Constructor </span>
+    <span class="o">}</span> 
+  
+    <span class="cm">/* method to create a simple linked list with 3 nodes*/</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="cm">/* 빈 연결 리스트 생성 */</span>
+        <span class="nc">LinkedList</span> <span class="n">llist</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">();</span> 
+  
+        <span class="n">llist</span><span class="o">.</span><span class="na">head</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> 
+        <span class="nc">Node</span> <span class="n">second</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> 
+        <span class="nc">Node</span> <span class="n">third</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span> 
+  
+        <span class="cm">/* 3개의 노드가 메모리상에 할당된다. 
+          head와 second, third가 각 노드를 참조한다.
+  
+          llist.head        second              third 
+             |                |                  | 
+             |                |                  | 
+         +----+------+     +----+------+     +----+------+ 
+         | 1  | null |     | 2  | null |     |  3 | null | 
+         +----+------+     +----+------+     +----+------+ */</span>
+  
+        <span class="n">llist</span><span class="o">.</span><span class="na">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">second</span><span class="o">;</span> <span class="c1">// 첫번째 노드와 두번째 노드를 연결한다.</span>
+  
+        <span class="cm">/*  첫번째 노드의 next가 두번째 노드를 참조한다.
+  
+         llist.head        second              third 
+            |                |                  | 
+            |                |                  | 
+        +----+------+     +----+------+     +----+------+ 
+        | 1  |  o--------&gt;| 2  | null |     |  3 | null | 
+        +----+------+     +----+------+     +----+------+ */</span>
+  
+        <span class="n">second</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">third</span><span class="o">;</span> <span class="c1">// 세번째 노드와 두번째 노드를 연결한다.</span>
+  
+        <span class="cm">/*  두번째 노드의 next가 세번째 노드를 참조한다.
+  
+         llist.head        second              third 
+            |                |                  | 
+            |                |                  | 
+        +----+------+     +----+------+     +----+------+ 
+        | 1  |  o--------&gt;| 2  |  o--------&gt;|  3 | null | 
+        +----+------+     +----+------+     +----+------+ */</span>
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h2 id="inserting-a-node">Inserting a node</h2>
+
+<p>연결 리스트에 노드를 추가 해보자.</p>
+
+<p>노드를 추가하는 데에는 3 가지 케이스가 있다.</p>
+
+<ol>
+  <li>연결 리스트 맨 앞에 추가</li>
+  <li>특정 노드 뒤에 추가</li>
+  <li>연결 리스트 맨 뒤에 추가</li>
+</ol>
+
+<h3 id="연결-리스트-맨-앞에-추가">연결 리스트 맨 앞에 추가</h3>
+
+<ol>
+  <li>추가할 노드를 할당한다.</li>
+  <li>노드에 데이터를 넣는다.</li>
+  <li>추가할 노드의 next 포인터가 첫번째 노드를 참조하게 한다.</li>
+  <li>헤드가 추가한 노드를 참조하게 함으로써 처음 노드임을 가리킨다.</li>
+</ol>
+
+<p><img src="/assets/images/Linkedlist2.png" alt="Alt text" width="600px" height="300px" /></p>
+
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* This function is in LinkedList class. Inserts a 
+   new Node at front of the list. */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">new_data</span><span class="o">)</span> 
+<span class="o">{</span> 
+    <span class="cm">/* 1 &amp; 2: Allocate the Node &amp; 
+              Put in the data*/</span>
+    <span class="nc">Node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+  
+    <span class="cm">/* 3. Make next of new Node as head */</span>
+    <span class="n">new_node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> 
+  
+    <span class="cm">/* 4. Move the head to point to new Node */</span>
+    <span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span><span class="o">;</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<p>이 연산의 시간복잡도는 O(1)이 된다.</p>
+
+<h3 id="특정-노드-뒤에-추가">특정 노드 뒤에 추가</h3>
+
+<ol>
+  <li>특정 노드가 null인지 확인한다.<br />
+null이면 아무런 작업이 수행되지 않는다.</li>
+  <li>추가할 노드를 할당한다.</li>
+  <li>추가할 노드에 데이터를 넣는다.</li>
+  <li>추가할 노드가 특정노드가 참조하는 다음 노드를 참조하게 한다.</li>
+  <li>특정 노드가 추가할 노드를 참조하게 한다.</li>
+</ol>
+
+<p><img src="/assets/images/Linkedlist3.png" alt="Alt text" width="600px" height="300px" /></p>
+
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* This function is in LinkedList class. 
+   Inserts a new node after the given prev_node. */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertAfter</span><span class="o">(</span><span class="nc">Node</span> <span class="n">prev_node</span><span class="o">,</span> <span class="kt">int</span> <span class="n">new_data</span><span class="o">)</span> 
+<span class="o">{</span> 
+    <span class="cm">/* 1. Check if the given Node is null */</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">prev_node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The given previous node cannot be null"</span><span class="o">);</span> 
+        <span class="k">return</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="cm">/* 2. Allocate the Node &amp; 
+       3. Put in the data*/</span>
+    <span class="nc">Node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+  
+    <span class="cm">/* 4. Make next of new Node as next of prev_node */</span>
+    <span class="n">new_node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">prev_node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+  
+    <span class="cm">/* 5. make next of prev_node as new_node */</span>
+    <span class="n">prev_node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">new_node</span><span class="o">;</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<p>이 연산의 시간복잡도는 O(1)이 된다.</p>
+
+<h3 id="연결-리스트-맨-뒤에-추가">연결 리스트 맨 뒤에 추가</h3>
+
+<ol>
+  <li>추가할 노드를 할당한다.</li>
+  <li>추가할 노드에 데이터를 넣는다.</li>
+  <li>연결 리스트가 null이면, 헤드가 추가할 노드를 참조하게 함으로써 연산을 끝낸다.</li>
+  <li>그렇지 않다면, 처음 노드부터 탐색을 시작하여 마지막 노드를 찾는다.</li>
+  <li>마지막 노드가 추가할 노드를 참조하게 한다.</li>
+</ol>
+
+<p><img src="/assets/images/Linkedlist4.png" alt="Alt text" width="600px" height="300px" /></p>
+
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// Appends a new node at the end. </span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">append</span><span class="o">(</span><span class="kt">int</span> <span class="n">new_data</span><span class="o">)</span> 
+<span class="o">{</span> 
+    <span class="cm">/* 1. Allocate the Node &amp; 
+       2. Put in the data */</span>
+    <span class="nc">Node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+  
+    <span class="cm">/* 3. If the Linked List is empty, then make the 
+           new node as head */</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+        <span class="k">return</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="cm">/* 4. Else traverse till the last node */</span>
+    <span class="nc">Node</span> <span class="n">last</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>  
+    <span class="k">while</span> <span class="o">(</span><span class="n">last</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> 
+        <span class="n">last</span> <span class="o">=</span> <span class="n">last</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+  
+    <span class="cm">/* 5. Change the next of last node */</span>
+    <span class="n">last</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">new_node</span><span class="o">;</span> 
+    <span class="k">return</span><span class="o">;</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<p>이 연산의 시간복잡도는 탐색으로 인하여 O(n)이 된다.<br />
+연결 리스트의 끝 노드의 정보를 가지고 있는 tail 포인터를 둔다면, 이 연산의 시간복잡도는 O(1)이 된다.</p>
+
+<p>다음은 위 연산을 포한한 예제 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// A complete working Java program to demonstrate all insertion methods </span>
+<span class="c1">// on linked list </span>
+<span class="kd">class</span> <span class="nc">LinkedList</span> 
+<span class="o">{</span> 
+    <span class="nc">Node</span> <span class="n">head</span><span class="o">;</span>  <span class="c1">// head of list </span>
+  
+    <span class="cm">/* Linked list Node*/</span>
+    <span class="kd">class</span> <span class="nc">Node</span> 
+    <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">data</span><span class="o">;</span> 
+        <span class="nc">Node</span> <span class="n">next</span><span class="o">;</span> 
+        <span class="nc">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span><span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="o">}</span> 
+    <span class="o">}</span> 
+  
+    <span class="cm">/* Inserts a new Node at front of the list. */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">new_data</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="cm">/* 1 &amp; 2: Allocate the Node &amp; 
+                  Put in the data*/</span>
+        <span class="nc">Node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+  
+        <span class="cm">/* 3. Make next of new Node as head */</span>
+        <span class="n">new_node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> 
+  
+        <span class="cm">/* 4. Move the head to point to new Node */</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="cm">/* Inserts a new node after the given prev_node. */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertAfter</span><span class="o">(</span><span class="nc">Node</span> <span class="n">prev_node</span><span class="o">,</span> <span class="kt">int</span> <span class="n">new_data</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="cm">/* 1. Check if the given Node is null */</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">prev_node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The given previous node cannot be null"</span><span class="o">);</span> 
+            <span class="k">return</span><span class="o">;</span> 
+        <span class="o">}</span> 
+  
+        <span class="cm">/* 2 &amp; 3: Allocate the Node &amp; 
+                  Put in the data*/</span>
+        <span class="nc">Node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+  
+        <span class="cm">/* 4. Make next of new Node as next of prev_node */</span>
+        <span class="n">new_node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">prev_node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+  
+        <span class="cm">/* 5. make next of prev_node as new_node */</span>
+        <span class="n">prev_node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">new_node</span><span class="o">;</span> 
+    <span class="o">}</span> 
+     
+    <span class="cm">/* Appends a new node at the end.  This method is  
+       defined inside LinkedList class shown above */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">append</span><span class="o">(</span><span class="kt">int</span> <span class="n">new_data</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="cm">/* 1. Allocate the Node &amp; 
+           2. Put in the data */</span>
+        <span class="nc">Node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+  
+        <span class="cm">/* 3. If the Linked List is empty, then make the 
+              new node as head */</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+            <span class="k">return</span><span class="o">;</span> 
+        <span class="o">}</span> 
+  
+        <span class="cm">/* 4. Else traverse till the last node */</span>
+        <span class="nc">Node</span> <span class="n">last</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>  
+        <span class="k">while</span> <span class="o">(</span><span class="n">last</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> 
+            <span class="n">last</span> <span class="o">=</span> <span class="n">last</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+  
+        <span class="cm">/* 5. Change the next of last node */</span>
+        <span class="n">last</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">new_node</span><span class="o">;</span> 
+        <span class="k">return</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="cm">/* This function prints contents of linked list starting from 
+        the given node */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printList</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="nc">Node</span> <span class="n">tnode</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> 
+        <span class="k">while</span> <span class="o">(</span><span class="n">tnode</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">tnode</span><span class="o">.</span><span class="na">data</span><span class="o">+</span><span class="s">" "</span><span class="o">);</span> 
+            <span class="n">tnode</span> <span class="o">=</span> <span class="n">tnode</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+  
+    <span class="cm">/* Driver program to test above functions. Ideally this function 
+       should be in a separate user class.  It is kept here to keep 
+       code compact */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="cm">/* Start with the empty list */</span>
+        <span class="nc">LinkedList</span> <span class="n">llist</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">();</span> 
+  
+        <span class="c1">// Insert 6.  So linked list becomes 6-&gt;NUllist </span>
+        <span class="n">llist</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span> 
+  
+        <span class="c1">// Insert 7 at the beginning. So linked list becomes </span>
+        <span class="c1">// 7-&gt;6-&gt;NUllist </span>
+        <span class="n">llist</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span> 
+  
+        <span class="c1">// Insert 1 at the beginning. So linked list becomes </span>
+        <span class="c1">// 1-&gt;7-&gt;6-&gt;NUllist </span>
+        <span class="n">llist</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> 
+  
+        <span class="c1">// Insert 4 at the end. So linked list becomes </span>
+        <span class="c1">// 1-&gt;7-&gt;6-&gt;4-&gt;NUllist </span>
+        <span class="n">llist</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span> 
+  
+        <span class="c1">// Insert 8, after 7. So linked list becomes </span>
+        <span class="c1">// 1-&gt;7-&gt;8-&gt;6-&gt;4-&gt;NUllist </span>
+        <span class="n">llist</span><span class="o">.</span><span class="na">insertAfter</span><span class="o">(</span><span class="n">llist</span><span class="o">.</span><span class="na">head</span><span class="o">.</span><span class="na">next</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span> 
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\nCreated Linked list is: "</span><span class="o">);</span> 
+        <span class="n">llist</span><span class="o">.</span><span class="na">printList</span><span class="o">();</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+<span class="c1">// This code is contributed by Rajat Mishra </span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output:
+Created Linked list is:  1  7  8  6  4
+</code></pre></div></div>
+
+<h2 id="deleting-a-node">Deleting a node</h2>
+
+<p>이번에는 연결 리스트에서 특정 키 값을 갖고 있는 노드를 삭제 해보자.</p>
+
+<ol>
+  <li>삭제될 노드를 참조할 temp 포인터와 그 이전 노드를 참조하는 prev 포인터를 둔다.</li>
+  <li>temp는 헤드를 참조하게 함으로써 처음 노드를 참조하게 한다.</li>
+  <li>만약 삭제될 노드가 처음 노드라면, 헤드가 temp 다음 노드를 참조하게 하고 연산을 끝낸다.</li>
+  <li>그렇지 않다면, 삭제할 키 값을 가지고 있는 노드를 탐색한다.</li>
+  <li>탐색함에 따라 삭제될 노드와 그 이전 노드 정보를 가지고 있는 temp, prev 포인터들을 갱신한다.</li>
+  <li>temp가 null이거나 삭제될 키 값을 가진 노드를 찾으면 반복문을 빠져나온다.</li>
+  <li>temp가 null이면 원하는 키값을 가진 노드를 찾지 못한 것이므로 아무런 작업도 하지 않고 연산을 끝낸다.</li>
+  <li>그렇지 않다면 찾은 것이므로, prev 포인터가 temp.next 참조하게 함으로써 작업을 끝낸다.</li>
+</ol>
+
+<p><img src="/assets/images/Linkedlist5.png" alt="Alt text" width="600px" height="300px" /></p>
+
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cm">/* Given a key, deletes the first occurrence of key in linked list */</span>
+    <span class="kt">void</span> <span class="nf">deleteNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="c1">// 1 &amp; 2. Store head node to temp, prev</span>
+        <span class="nc">Node</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">head</span><span class="o">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+  
+        <span class="c1">// 3. If head node itself holds the key to be deleted </span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">temp</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">temp</span><span class="o">.</span><span class="na">data</span> <span class="o">==</span> <span class="n">key</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="n">head</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// Changed head </span>
+            <span class="k">return</span><span class="o">;</span> 
+        <span class="o">}</span> 
+  
+        <span class="c1">// 4. Search for the key to be deleted, keep track of the </span>
+        <span class="c1">// previous node as we need to change temp.next </span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">temp</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">temp</span><span class="o">.</span><span class="na">data</span> <span class="o">!=</span> <span class="n">key</span><span class="o">)</span> <span class="c1">// 6.</span>
+        <span class="o">{</span> 
+            <span class="c1">// 5. keep track of the previous node</span>
+            <span class="c1">//    as we need to change temp.next </span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>        
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+        <span class="o">}</span>     
+  
+        <span class="c1">// 7. If key was not present in linked list </span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">temp</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span> 
+  
+        <span class="c1">// 8. Unlink the node from linked list </span>
+        <span class="n">prev</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+    <span class="o">}</span> 
+
+</code></pre></div></div>
+
+<p>이 연산의 시간복잡도는 O(n)이 된다.<br />
+순수 삭제연산은 O(1)이지만, 삭제될 키 값을 찾아 탐색하는 연산이 추가되었으므로 O(n)이 된다.</p>
+
+<h2 id="특정-키-값의-노드-찾기">특정 키 값의 노드 찾기</h2>
+
+<p>연결 리스트에서 특정 키 값 x를 가진 노드를 찾아보자.</p>
+
+<p><strong>search</strong> 메소드는 키 값 x를 가진 노드가 존재하면 true, 존재하지 않으면 false를 리턴한다.</p>
+
+<ol>
+  <li>리스트를 순회할 current를 헤드로 초기화한다.</li>
+  <li>current가 null 아닐 때 까지 반복한다.<br />
+null이면 while 빠져나와 false 리턴하고 연산을 끝낸다.</li>
+  <li>current가 참조하는 노드의 데이터가 x라면 true 리턴하고 연산을 끝낸다.</li>
+  <li>그렇지 않다면 다음 노드를 참조하고 2번으로 다시 간다.</li>
+</ol>
+
+<p>다음은 위의 연산을 구현한 자바 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Checks whether the value x is present in linked list </span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">search</span><span class="o">(</span><span class="nc">Node</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>    <span class="c1">// 1 포인터 초기화</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">current</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">// 2. current가 null 아닐 때 까지 반복한다</span>
+        <span class="o">{</span> 
+            <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">data</span> <span class="o">==</span> <span class="n">x</span><span class="o">)</span> 
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>    <span class="c1">//3. 찾았다</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// 4. 다음 노드를 참조한다</span>
+        <span class="o">}</span> 
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>    <span class="c1">// 데이터를 찾지 못하였다</span>
+    <span class="o">}</span> 
+</code></pre></div></div>
+
+<p>다음은 위 연산을 포한한 예제 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Iterative Java program to search an element </span>
+<span class="c1">// in linked list </span>
+  
+<span class="c1">//Node class </span>
+<span class="kd">class</span> <span class="nc">Node</span> 
+<span class="o">{</span> 
+    <span class="kt">int</span> <span class="n">data</span><span class="o">;</span> 
+    <span class="nc">Node</span> <span class="n">next</span><span class="o">;</span> 
+    <span class="nc">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> 
+        <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+  
+<span class="c1">//Linked list class </span>
+<span class="kd">class</span> <span class="nc">LinkedList</span> 
+<span class="o">{</span> 
+    <span class="nc">Node</span> <span class="n">head</span><span class="o">;</span>    <span class="c1">//Head of list </span>
+  
+    <span class="c1">//Inserts a new node at the front of the list </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">new_data</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="c1">//Allocate new node and putting data </span>
+        <span class="nc">Node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">new_data</span><span class="o">);</span> 
+  
+        <span class="c1">//Make next of new node as head </span>
+        <span class="n">new_node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> 
+  
+        <span class="c1">//Move the head to point to new Node </span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="c1">//Checks whether the value x is present in linked list </span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">search</span><span class="o">(</span><span class="nc">Node</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>    <span class="c1">//Initialize current </span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">current</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">data</span> <span class="o">==</span> <span class="n">x</span><span class="o">)</span> 
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>    <span class="c1">//data found </span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>    <span class="c1">//data not found </span>
+    <span class="o">}</span> 
+  
+    <span class="c1">//Driver function to test the above functions </span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[])</span> 
+    <span class="o">{</span> 
+  
+        <span class="c1">//Start with the empty list </span>
+        <span class="nc">LinkedList</span> <span class="n">llist</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">();</span> 
+  
+        <span class="cm">/*Use push() to construct below list 
+        14-&gt;21-&gt;11-&gt;30-&gt;10  */</span>
+        <span class="n">llist</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> 
+        <span class="n">llist</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> 
+        <span class="n">llist</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span> 
+        <span class="n">llist</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">21</span><span class="o">);</span> 
+        <span class="n">llist</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">14</span><span class="o">);</span> 
+  
+        <span class="k">if</span> <span class="o">(</span><span class="n">llist</span><span class="o">.</span><span class="na">search</span><span class="o">(</span><span class="n">llist</span><span class="o">.</span><span class="na">head</span><span class="o">,</span> <span class="mi">21</span><span class="o">))</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Yes"</span><span class="o">);</span> 
+        <span class="k">else</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"No"</span><span class="o">);</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+<span class="c1">// This code is contributed by Pratik Agarwal </span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output:
+Yes
+</code></pre></div></div>
+<h2 id="연결-리스트-연산들의-시간복잡도">연결 리스트 연산들의 시간복잡도</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>시간복잡도 - 최악 기준      
+
+접근     검색      삽입     삭제	
+O(n)    O(n)	 O(1)	 O(1)	  
+</code></pre></div></div>
+<h2 id="references">References</h2>
+<p><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></p>
+:ET
