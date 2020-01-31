@@ -44,6 +44,11 @@ var store = [{
         "tags": ["JavaScript","Web","API"],
         "url": "http://localhost:4000/development/weather-app/",
         "teaser":null},{
+        "title": "버블소트(Bubble Sort)",
+        "excerpt":"Bubble(버블 정렬) 비교 기반 정렬 알고리즘이다. 다른 O(nlongn)의 성능을 내는 정렬 알고리즘에 비해 성능이 좋지 않으므로 실무에서는 교육용 목적으로 사용 되어진다. 더 효율적인 정렬 알고리즘인 팀소트(Timsort)가 머지소트(Merge sort)는 인기있는 프로그래밍 언어(java, python)의 내장 정렬 라이브러리로 사용되고 있다. Algorithm 밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다. 처음 원소를...","categories": ["Algorithm"],
+        "tags": ["Sort","Mathematics"],
+        "url": "http://localhost:4000/algorithm/bubble-sort/",
+        "teaser":null},{
         "title": "Eratosthenes's Sieve",
         "excerpt":"에라토스테네스의 체 수학에서 에라토스테네스의 체는 보다 빠르게 소수를 찾는 방법입니다. 고대 그리스 수학자 에라토스테네스가 발견하였습니다. 선행지식: 수학에서 소수란? 소수: 1을 제외한 수 중에서 1과 자기 자신을 제외하고 약수를 가지지 않는 수를 말합니다. 예) 예1) 2는 1과 자기 자신(2)을 제외하고는 약수를 가지지 않습니다. 소수입니다. 예2) 5는 1과 자기 자신(5)을 제외하고는 약수를...","categories": ["Algorithm"],
         "tags": ["Data Structure","Mathematics"],

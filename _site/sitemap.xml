@@ -37,6 +37,10 @@
 <lastmod>2019-07-15T22:06:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/algorithm/bubble-sort/</loc>
+<lastmod>2019-05-10T22:06:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/algorithm/eratosthenes-sieve/</loc>
 <lastmod>2019-09-13T22:06:00+09:00</lastmod>
 </url>
@@ -83,6 +87,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page3/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page4/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/google75dbf5986dc0180c.html</loc>
