@@ -14,6 +14,11 @@ var store = [{
         "tags": ["이분탐색","순차탐색","Data structure","programming"],
         "url": "http://localhost:4000/algorithm/%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/",
         "teaser":null},{
+        "title": "트리",
+        "excerpt":"트리(Tree) 트리는 부모와 자식간의 관계가 계층적으로 구성되는 자료구조이다. 하나의 노드가 여러개의 자식들을, 다시 자식들은 다른 자식들을 가질 수 있는 구조이다. 다음 그림은 전형적인 트리를 보여준다. 트리 용어 트리에 쓰이는 용어들을 알아보자. 루트(Root) 트리의 계층적 구조상 가장 위에 위치한 노드를 지칭한다. 위의 그림에서 A가 루트이다. 루트는 유일하게 부모 노드가 없는 노드이다....","categories": ["Data Structure"],
+        "tags": ["programming","Data Structure","Linked List","Tree"],
+        "url": "http://localhost:4000/data%20structure/Tree/",
+        "teaser":null},{
         "title": "Graph - 그래프",
         "excerpt":"Graph 정점들과 간선들로 이루어진 집합이다. Definition V: Vertex, E: Edge, G: Graph 그래프 G는 G(V, E)의 집합으로 정의 될 수 있다 =&gt; G = (V, E) V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다. Info: 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다....","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],

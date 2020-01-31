@@ -1,0 +1,599 @@
+I"��<h1 id="트리tree">트리(Tree)</h1>
+
+<p>트리는 부모와 자식간의 관계가 계층적으로 구성되는 자료구조이다.<br />
+하나의 노드가 여러개의 자식들을, 다시 자식들은 다른 자식들을 가질 수 있는 구조이다.</p>
+
+<p>다음 그림은 전형적인 트리를 보여준다.</p>
+
+<p><img src="/assets/images/tree1.png" alt="Alt text" width="500px" height="300px" /></p>
+
+<h2 id="트리-용어">트리 용어</h2>
+<p>트리에 쓰이는 용어들을 알아보자.</p>
+
+<h3 id="루트root">루트(Root)</h3>
+<p>트리의 계층적 구조상 가장 위에 위치한 노드를 지칭한다.<br />
+위의 그림에서 A가 루트이다.</p>
+
+<p class="notice--info">루트는 유일하게 부모 노드가 없는 노드이다.</p>
+
+<h3 id="리프-노드reaf-node">리프 노드(Reaf Node)</h3>
+<p>아무런 자식도 가지지 않는 노드를 리프 노드라고 한다.<br />
+위의 그림에서 E, F, C, G, H가 리프 노드이다.</p>
+
+<h3 id="조상-노드ancestor">조상 노드(Ancestor)</h3>
+<p>특정 노드에서 루트로의 선행자가 이에 해당한다.<br />
+노드 F의 조상 노드는 B, A가 된다.</p>
+
+<h3 id="형제-노드sibling">형제 노드(Sibling)</h3>
+<p>같은 부모를 가지는 노드들을 형제 노드라고 한다.<br />
+위의 그림에서 B, C, D가 형제 노드이다.</p>
+
+<h3 id="서브-트리sub-tree">서브 트리(Sub Tree)</h3>
+<p>위의 그림에서 A가 null이 아니면, 그 밑의 자식 트리 T1, T2, T3를 노드 A의 서브 트리라고 한다.</p>
+
+<h3 id="레벨level">레벨(Level)</h3>
+<p>트리는 계층적 구조로서 레벨을 가지고 있다.<br />
+루트는 0레벨이며, 밑 자식으로 갈수록 레벨이 1씩 커진다.</p>
+
+<h1 id="이진-트리">이진 트리</h1>
+
+<p>한 노드가 최대 2개의 자식 노드를 가질 수 있는 트리를 이진 트리라고 한다.<br />
+한 노드의 왼쪽에 오는 자식을 왼쪽 자식 노드, 오른쪽에 오는 자식을 오른쪽 자식 노드라고 부른다.</p>
+
+<h2 id="이진-트리-표현">이진 트리 표현</h2>
+
+<p>이진 트리를 어떻게 표현하고 구현할 수 있을지 알아본다.</p>
+
+<p>이진 트리 클래스는 최상위 노드를 가리키는 root 레퍼런스를 갖고 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BinaryTree</span> 
+<span class="o">{</span> 
+    <span class="c1">// Root of Binary Tree </span>
+    <span class="nc">Node</span> <span class="n">root</span><span class="o">;</span> 
+  
+    <span class="c1">// Constructors </span>
+    <span class="nc">BinaryTree</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">key</span><span class="o">);</span> 
+    <span class="o">}</span> 
+  
+    <span class="nc">BinaryTree</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="n">root</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>또한 이진 트리 클래스는 각 노드를 표현할 노드 클래스를 가지고 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Node</span> 
+<span class="o">{</span> 
+    <span class="kt">int</span> <span class="n">key</span><span class="o">;</span> 
+    <span class="nc">Node</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">;</span> 
+  
+    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">item</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="n">key</span> <span class="o">=</span> <span class="n">item</span><span class="o">;</span> 
+        <span class="n">left</span> <span class="o">=</span> <span class="n">right</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<p>노드는 다음과 같은 부분으로 구성된다.</p>
+
+<ol>
+  <li>Data - 데이터를 저장하는 필드</li>
+  <li>왼쪽 자식에 대한 레퍼런스</li>
+  <li>오른쪽 자식에 대한 레퍼런스</li>
+</ol>
+
+<h2 id="전체-코드">전체 코드</h2>
+
+<p>위의 표현들을 이용하여 트리를 만들어보고 이해해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Class containing left and right child of current 
+   node and key value*/</span>
+  
+<span class="c1">// A Java program to introduce Binary Tree </span>
+<span class="kd">class</span> <span class="nc">BinaryTree</span> 
+<span class="o">{</span> 
+    <span class="c1">// Root of Binary Tree </span>
+    <span class="nc">Node</span> <span class="n">root</span><span class="o">;</span> 
+  
+    <span class="c1">// Constructors </span>
+    <span class="nc">BinaryTree</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">key</span><span class="o">);</span> 
+    <span class="o">}</span> 
+  
+    <span class="nc">BinaryTree</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="n">root</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+    <span class="o">}</span> 
+
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> 
+    <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">key</span><span class="o">;</span> 
+        <span class="nc">Node</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">;</span> 
+  
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">item</span><span class="o">)</span> 
+        <span class="o">{</span> 
+        <span class="n">key</span> <span class="o">=</span> <span class="n">item</span><span class="o">;</span> 
+        <span class="n">left</span> <span class="o">=</span> <span class="n">right</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="nc">BinaryTree</span> <span class="n">tree</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BinaryTree</span><span class="o">();</span> 
+  
+        <span class="cm">/*create root*/</span>
+        <span class="n">tree</span><span class="o">.</span><span class="na">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> 
+  
+        <span class="n">tree</span><span class="o">.</span><span class="na">root</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> 
+        <span class="n">tree</span><span class="o">.</span><span class="na">root</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span> 
+        <span class="n">tree</span><span class="o">.</span><span class="na">root</span><span class="o">.</span><span class="na">left</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BinaryTree tree = new BinaryTree(); 
+</code></pre></div></div>
+
+<p>이진 트리를 생성하는 구문이다.<br />
+아직은 아무런 노드가 없으므로 root 레퍼런스는 null이다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> tree.root = new Node(1);
+</code></pre></div></div>
+<p>노드를 할당하여 1을 넣고, 트리의 root 레퍼런스가 할당된 노드를 가리키게 한다.</p>
+
+<p>그림으로 표현하면 다음과 같다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              1 
+            /   \ 
+          null  null 
+</code></pre></div></div>
+
+<p>1번 노드는 루트가 되었다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tree.root.left = new Node(2); 
+tree.root.right = new Node(3); 
+</code></pre></div></div>
+<p>노드를 할당하여 2을 넣고, 트리의 root 왼쪽 자식 레퍼런스가 할당된 노드를 가리키게 한다.
+노드를 할당하여 3을 넣고, 트리의 root 오른쪽 자식 레퍼런스가 할당된 노드를 가리키게 한다.</p>
+
+<p>그림으로 표현하면 다음과 같다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                1 
+             /    \ 
+            2       3 
+          /   \    /  \ 
+        null null null null
+</code></pre></div></div>
+
+<p>2, 3번 노드는 1번 노드의 자식이 되었다.</p>
+<h3 id="push">Push</h3>
+
+<p>스택에 원소를 삽입한다.<br />
+스택이 Full이라면 Overflow 에러가 난다.</p>
+
+<p><img src="/assets/images/stack2.png" alt="Alt text" width="500px" height="300px" /></p>
+
+<p class="notice--warning"><strong>Notice:</strong> 새로운 원소가 삽입됨에 따라 Top이 10을 가리키고 있다.</p>
+
+<h3 id="pop---스택에서-원소를-삭제한다">Pop - 스택에서 원소를 삭제한다.</h3>
+
+<p>스택에서 원소를 삭제한다.<br />
+스택이 빈 공간이면, Underflow 에러가 난다.</p>
+
+<p><img src="/assets/images/stack3.png" alt="Alt text" width="500px" height="300px" /></p>
+
+<p class="notice--warning"><strong>Notice:</strong> 기존 원소가 삭제됨에 따라 Top이 93을 가리키고 있다.</p>
+
+<h3 id="peek">Peek</h3>
+<p>스택에서 Top 가리키고 있는 원소를 반환한다.</p>
+
+<p class="notice--warning"><strong>Notice:</strong> 원소가 삽입, 삭제 되는 것이 아닌 원소 반환이므로 Top의 위치는 변화가 없다.</p>
+
+<p><img src="/assets/images/stack4.png" alt="Alt text" width="300px" height="300px" /></p>
+
+<h3 id="isempty">isEmpty</h3>
+<p>스택이 빈 공간이라면 true, 아니라면 false를 반환한다.</p>
+
+<h2 id="스택의-응용">스택의 응용</h2>
+
+<p>스택은 많은 곳에서 응용되어 쓰인다.</p>
+
+<ol>
+  <li>괄호의 균형성 검사. ex) (()) 짝이 맞는지</li>
+  <li>웹브라우저의 앞으로 가기 또는 뒤로 가기</li>
+  <li>그래프 알고리즘 중에서 위상정렬이나 강한연결요소</li>
+  <li>대표적 백트래킹 문제 - N-Queen, Knight tour, rat in a maze, sudoku</li>
+  <li>스택을 이용한 여러 알고리즘 문제 - 하노이 탑, 트리순회, 히스토그램 면적 등</li>
+  <li>중위식 표기법의 후위식 표기법으로의 변환</li>
+</ol>
+
+<h2 id="구현">구현</h2>
+
+<p>스택을 구현하는 데에는 크게 두 가지 방법이 있다.</p>
+
+<ul>
+  <li>배열을 이용</li>
+  <li>연결 리스트를 이용</li>
+</ul>
+
+<p>먼저 배열을 이용한 스택 구현을 보자.</p>
+
+<h2 id="배열을-이용한-스택-구현">배열을 이용한 스택 구현</h2>
+
+<h3 id="스택-클래스의-프로퍼티와-생성자">스택 클래스의 프로퍼티와 생성자</h3>
+
+<p>스택의 최대 크기를 결정하는 MAX 상수, top 포인터, 원소를 담을 배열을 선언한다.<br />
+스택이 생성되면 top을 -1로 초기화할 생성자를 선언한다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Stack</span> <span class="o">{</span> 
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span> 
+    <span class="kt">int</span> <span class="n">top</span><span class="o">;</span> 
+    <span class="kt">int</span> <span class="n">a</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">MAX</span><span class="o">];</span> <span class="c1">// Maximum size of Stack </span>
+
+    <span class="kd">public</span> <span class="nf">Stack</span><span class="o">()</span> <span class="c1">// Constructor of Stack Class</span>
+    <span class="o">{</span> 
+        <span class="n">top</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+<h3 id="스택-클래스의-메서드---push">스택 클래스의 메서드 - push</h3>
+
+<p>스택에 원소를 삽입하는 메서드이다.</p>
+
+<p>top이 배열의 끝(MAX-1)을 가리키고 있으면 스택은 다 차서 더 이상 원소 삽입이 안되므로 에러 메세지를 출력하고 false를 리턴한다.</p>
+
+<p>그렇지 않다면 top을 한 칸 올리고 그 자리에 원소를 삽입한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> 
+<span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">top</span> <span class="o">&gt;=</span> <span class="o">(</span><span class="no">MAX</span> <span class="o">-</span> <span class="mi">1</span><span class="o">))</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack Overflow"</span><span class="o">);</span> 
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="k">else</span> <span class="o">{</span> 
+        <span class="n">a</span><span class="o">[++</span><span class="n">top</span><span class="o">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="s">" pushed into stack"</span><span class="o">);</span> 
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="스택-클래스의-메서드---pop">스택 클래스의 메서드 - pop</h3>
+
+<p>스택에서 원소를 삭제하는 메서드이다.</p>
+
+<p>top이 0보다 작으면 스택은 빈 공간이므로 에러 메세지를 출력하고 false를 리턴한다.</p>
+
+<p>그렇지 않다면 top이 가리키는 원소를 리턴하고 top은 한 칸 감소한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">pop</span><span class="o">()</span> 
+<span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">top</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack Underflow"</span><span class="o">);</span> 
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="k">else</span> <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">top</span><span class="o">--];</span> 
+        <span class="k">return</span> <span class="n">x</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="스택-클래스의-메서드---peek">스택 클래스의 메서드 - peek</h3>
+
+<p>스택의 top이 가리키는 원소를 반환하는 메서드이다.</p>
+
+<p>top이 0보다 작으면 스택은 빈 공간이므로 에러 메세지를 출력하고 false를 리턴한다.</p>
+
+<p>그렇지 않다면 top이 가리키는 원소를 리턴한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">peek</span><span class="o">()</span> 
+<span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">top</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack Underflow"</span><span class="o">);</span> 
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="k">else</span> <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">top</span><span class="o">];</span> 
+        <span class="k">return</span> <span class="n">x</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="스택-클래스의-메서드---isempty">스택 클래스의 메서드 - isEmpty</h3>
+
+<p>스택이 빈 공간인지 확인하는 메서드이다.</p>
+
+<p>top이 0보다 작으면 스택은 빈 공간이므로 true 리턴</p>
+
+<p>그렇지 않다면 원소가 있다는 뜻이므로 false 리턴</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">peek</span><span class="o">()</span> 
+<span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> 
+<span class="o">{</span> 
+    <span class="k">return</span> <span class="o">(</span><span class="n">top</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">);</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="전체-코드-1">전체 코드</h3>
+
+<p>다음은 배열을 이용하여 스택을 구현한 전체 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Java program to implement basic stack 
+operations */</span>
+<span class="kd">class</span> <span class="nc">Stack</span> <span class="o">{</span> 
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span> 
+    <span class="kt">int</span> <span class="n">top</span><span class="o">;</span> 
+    <span class="kt">int</span> <span class="n">a</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">MAX</span><span class="o">];</span> <span class="c1">// Maximum size of Stack </span>
+  
+    <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="k">return</span> <span class="o">(</span><span class="n">top</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">);</span> 
+    <span class="o">}</span> 
+    <span class="nc">Stack</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="n">top</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="kt">boolean</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">top</span> <span class="o">&gt;=</span> <span class="o">(</span><span class="no">MAX</span> <span class="o">-</span> <span class="mi">1</span><span class="o">))</span> <span class="o">{</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack Overflow"</span><span class="o">);</span> 
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">else</span> <span class="o">{</span> 
+            <span class="n">a</span><span class="o">[++</span><span class="n">top</span><span class="o">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="s">" pushed into stack"</span><span class="o">);</span> 
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+  
+    <span class="kt">int</span> <span class="nf">pop</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">top</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack Underflow"</span><span class="o">);</span> 
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">else</span> <span class="o">{</span> 
+            <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">top</span><span class="o">--];</span> 
+            <span class="k">return</span> <span class="n">x</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+  
+    <span class="kt">int</span> <span class="nf">peek</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">top</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack Underflow"</span><span class="o">);</span> 
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">else</span> <span class="o">{</span> 
+            <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">top</span><span class="o">];</span> 
+            <span class="k">return</span> <span class="n">x</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+  
+<span class="c1">// Driver code </span>
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[])</span> 
+    <span class="o">{</span> 
+        <span class="nc">Stack</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">();</span> 
+        <span class="n">s</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> 
+        <span class="n">s</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span> 
+        <span class="n">s</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span> <span class="o">+</span> <span class="s">" Popped from stack"</span><span class="o">);</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output :
+10 pushed into stack
+20 pushed into stack
+30 pushed into stack
+30 popped from stack
+</code></pre></div></div>
+
+<h2 id="연결-리스트-이용한-스택-구현">연결 리스트 이용한 스택 구현</h2>
+
+<h3 id="연결-리스트를-이용한-스택-클래스-표현">연결 리스트를 이용한 스택 클래스 표현</h3>
+
+<p>스택의 top을 표현할 StackNode 타입의 root 레퍼런스 가지고 있다.</p>
+
+<p>또한, 스택 원소 즉, 노드를 표현할 내부 클래스를 가지고 있다.<br />
+내부 클래스인 스택 노드 클래스는 데이터를 담을 data 변수, 다음 원소를 가리키는 next 레퍼런스 변수를 가지고 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StackAsLinkedList</span> <span class="o">{</span>
+    <span class="nc">StackNode</span> <span class="n">root</span><span class="o">;</span> 
+
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">StackNode</span> <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">data</span><span class="o">;</span> 
+        <span class="nc">StackNode</span> <span class="n">next</span><span class="o">;</span> 
+        <span class="nc">StackNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="스택-클래스의-메서드---push-1">스택 클래스의 메서드 - push</h3>
+
+<p>데이터를 받아 노드를 할당한다.</p>
+
+<p>스택이 빈 공간이면 단순히 root가 새로 생성된 노드를 가리키게 한다.</p>
+
+<p>빈 공간이 아니라면 임시 레퍼런스 변수 temp가 root를 가리키게한다.<br />
+root는 새로 생성된 노드를 가리키게 하고, 새로 생성된 노드는 temp를 가리키게 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> 
+<span class="o">{</span> 
+    <span class="nc">StackNode</span> <span class="n">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StackNode</span><span class="o">(</span><span class="n">data</span><span class="o">);</span> 
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="n">root</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="k">else</span> <span class="o">{</span> 
+        <span class="nc">StackNode</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span> 
+        <span class="n">root</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span> 
+        <span class="n">newNode</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">data</span> <span class="o">+</span> <span class="s">" pushed to stack"</span><span class="o">);</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="스택-클래스의-메서드---pop-1">스택 클래스의 메서드 - pop</h3>
+
+<p>스택이 빈 공간이면 에러 메세지를 출력하고 int 최소 값을 반환한다.<br />
+(여기서는 Integer.MIN_VALUE는 빈 공간임을 표시하는 수로 쓰였다.)</p>
+
+<p>빈 공간이 아니라면 popped 변수에 값을 담고, root는 다음 변수를 가리키게 한다.<br />
+popped을 리턴한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="o">()</span> 
+<span class="o">{</span> 
+    <span class="kt">int</span> <span class="n">popped</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack is Empty"</span><span class="o">);</span> 
+    <span class="o">}</span> 
+    <span class="k">else</span> <span class="o">{</span> 
+        <span class="n">popped</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">data</span><span class="o">;</span> 
+        <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="k">return</span> <span class="n">popped</span><span class="o">;</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="스택-클래스의-메서드---peek-1">스택 클래스의 메서드 - peek</h3>
+
+<p>스택이 빈 공간이면 에러 메세지를 출력하고 int 최소 값을 반환한다.<br />
+(여기서도 Integer.MIN_VALUE는 빈 공간임을 표시하는 수로 쓰였다.)</p>
+
+<p>빈 공간이 아니라면 root가 가리키는 값을 리턴한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">peek</span><span class="o">()</span> 
+<span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack is empty"</span><span class="o">);</span> 
+        <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="k">else</span> <span class="o">{</span> 
+        <span class="k">return</span> <span class="n">root</span><span class="o">.</span><span class="na">data</span><span class="o">;</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="스택-클래스의-메서드---isempty-1">스택 클래스의 메서드 - isEmpty</h3>
+
+<p>스택이 빈 공간 즉, root가 null이면 true 리턴, 아니라면 false 리턴</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> 
+<span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+    <span class="o">}</span> 
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+
+<h3 id="전체-코드-2">전체 코드</h3>
+
+<p>다음은 연결 리스트를 이용하여 스택을 구현한 전체 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StackAsLinkedList</span> <span class="o">{</span> 
+  
+    <span class="nc">StackNode</span> <span class="n">root</span><span class="o">;</span> 
+  
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">StackNode</span> <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">data</span><span class="o">;</span> 
+        <span class="nc">StackNode</span> <span class="n">next</span><span class="o">;</span> 
+  
+        <span class="nc">StackNode</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+  
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="nc">StackNode</span> <span class="n">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StackNode</span><span class="o">(</span><span class="n">data</span><span class="o">);</span> 
+  
+        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="n">root</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">else</span> <span class="o">{</span> 
+            <span class="nc">StackNode</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span> 
+            <span class="n">root</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span> 
+            <span class="n">newNode</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">data</span> <span class="o">+</span> <span class="s">" pushed to stack"</span><span class="o">);</span> 
+    <span class="o">}</span> 
+  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="kt">int</span> <span class="n">popped</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack is Empty"</span><span class="o">);</span> 
+        <span class="o">}</span> 
+        <span class="k">else</span> <span class="o">{</span> 
+            <span class="n">popped</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">data</span><span class="o">;</span> 
+            <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">return</span> <span class="n">popped</span><span class="o">;</span> 
+    <span class="o">}</span> 
+  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">peek</span><span class="o">()</span> 
+    <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Stack is empty"</span><span class="o">);</span> 
+            <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        <span class="k">else</span> <span class="o">{</span> 
+            <span class="k">return</span> <span class="n">root</span><span class="o">.</span><span class="na">data</span><span class="o">;</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span> 
+  
+        <span class="nc">StackAsLinkedList</span> <span class="n">sll</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StackAsLinkedList</span><span class="o">();</span> 
+  
+        <span class="n">sll</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> 
+        <span class="n">sll</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span> 
+        <span class="n">sll</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> 
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sll</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span> <span class="o">+</span> <span class="s">" popped from stack"</span><span class="o">);</span> 
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Top element is "</span> <span class="o">+</span> <span class="n">sll</span><span class="o">.</span><span class="na">peek</span><span class="o">());</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output :
+10 pushed to stack
+20 pushed to stack
+30 pushed to stack
+30 popped from stack
+Top element is 20
+</code></pre></div></div>
+
+<h2 id="스택-연산들의-시간복잡도">스택 연산들의 시간복잡도</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>시간복잡도 - 최악 기준      
+
+push    pop      peek    isEmpty	
+O(1)    O(1)	 O(1)	 O(1)	  
+</code></pre></div></div>
+<h2 id="references">References</h2>
+<p><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></p>
+:ET
