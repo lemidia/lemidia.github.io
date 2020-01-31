@@ -135,85 +135,13 @@ procedure bubbleSort(A : list of sortable items)
 end procedure
 ```
 
-## Java로 구현 - 재귀적(Top-down, Recursive)
-**설명**: 재귀적으로 서브배열의 크기가 1이 될 때까지 계속 분할을 진행합니다.  
-분할된 배열들을 정렬하고 합병합니다.
-{: .notice--warning}
-```java
-// @author lemidia
-public class MergeSort {
-    static void divide(int data[], int p, int r){
-        if(p < r){
-            int q = (p+r)/2; // Middle
-            divide(data, p, q); // Left
-            divide(data, q+1, r); // Right
-            merge(data, p, q, r); // Merge
-        }
-    }
-
-    static void merge(int data[], int p, int q, int r){
-        int i = p; int j = q+1; int k = p;
-        int temp[] = new int[data.length];
-
-        for (int l = p; l < r+1 ; l++) {
-            if (i <= q && (j > r || data[i] < data[j])){
-                temp[k++] = data[i++];
-            }else
-                temp[k++] = data[j++];
-        }
-        for(int l = p; l <= r; l++){
-            data[l] = temp[l];
-        }
-
-        /*
-        while (i<=q && j<=r){
-            if(data[i] <= data[j]){
-                temp[k++] = data[i++];
-            }else{
-                temp[k++] = data[j++];
-            }
-        }
-        while (i<=q)
-            temp[k++] = data[i++];
-        while (j<=r)
-            temp[k++] = data[j++];
-        for(int l = p; l<=r; l++){
-            data[l] = temp[l];
-        }
-        */
-
-    }
-
-    public static void main(String[] args) {
-        int limit = 10;
-        int arr[] = new int[limit];
-
-        for(int i = limit-1; i >= 0; --i){
-            arr[i] = limit-i;
-        }
-        divide(arr, 0, limit-1);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-}
-```
-
-```java
-1 2 3 4 5 6 7 8 9 10 
-```
-
 ## 시간복잡도
 ```markdown 
-최악 시간복잡도	O(n log n)
-최선 시간복잡도	O(n log n)
-평균 시간복잡도	일반적으로, O(n log n)
+최악 시간복잡도	$O(n^2)$
+최선 시간복잡도	$O(n)$
+평균 시간복잡도	$O(n^2)$
 ```
-**쉬운 설명**: 배열의 원소가 n개일 때 깊이는 log(n)만큼 진행 됩니다. (매번 2개씩 분할 되므로)  
-각 깊이마다 n개의 원소들이 제자리를 찾아 스왑됩니다.  
-그래서 시간복잡도는 깊이 * n개의 원소 즉, **nlog(n)**이 됩니다.
-{: .notice--warning}
 
 ## References
 
-[Merge Sort - wikipedia](https://en.wikipedia.org/wiki/Merge_sort)
+[Bubble Sort - wikipedia]
