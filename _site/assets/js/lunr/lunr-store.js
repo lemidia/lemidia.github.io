@@ -19,6 +19,11 @@ var store = [{
         "tags": ["programming","Data Structure","Linked List","Tree"],
         "url": "http://localhost:4000/data%20structure/Tree/",
         "teaser":null},{
+        "title": "트리의 순회",
+        "excerpt":"트리의 순회(Tree Traversal) 트리를 순회하는데 여러가지 방법이 있지만 이번 포스트에서는 그 중 깊이우선탐색(DFS)의 성질을 가진 3가지 순회 방법을 알아본다. 다음은 트리를 순회하는 대표적인 3가지 방법이다. (깊이우선탐색(DFS)) Inorder - 중위 순회 Preorder - 전위 순회 Postorder - 후위 순회 3가지 순회들은 다음의 공통된 패턴을 가지고 있다. (L) 현재 노드의 왼쪽 서브트리를...","categories": ["Algorithm"],
+        "tags": ["programming","Traversal","DFS","Tree"],
+        "url": "http://localhost:4000/algorithm/treeTraversal/",
+        "teaser":null},{
         "title": "Graph - 그래프",
         "excerpt":"Graph 정점들과 간선들로 이루어진 집합이다. Definition V: Vertex, E: Edge, G: Graph 그래프 G는 G(V, E)의 집합으로 정의 될 수 있다 =&gt; G = (V, E) V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다. Info: 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다....","categories": ["Data Structure"],
         "tags": ["programming","Data Structure"],

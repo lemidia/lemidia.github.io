@@ -1,0 +1,151 @@
+I"�&<h1 id="트리의-순회tree-traversal">트리의 순회(Tree Traversal)</h1>
+
+<p>트리를 순회하는데 여러가지 방법이 있지만 이번 포스트에서는 그 중 깊이우선탐색(DFS)의 성질을 가진 3가지 순회 방법을 알아본다.</p>
+
+<p>다음은 트리를 순회하는 대표적인 3가지 방법이다. (깊이우선탐색(DFS))</p>
+
+<ol>
+  <li>Inorder - 중위 순회</li>
+  <li>Preorder - 전위 순회</li>
+  <li>Postorder - 후위 순회</li>
+</ol>
+
+<p>3가지 순회들은 다음의 공통된 패턴을 가지고 있다.</p>
+
+<p>(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.<br />
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.<br />
+(N) 현재 노드를 방문한다.</p>
+
+<p>모든 노드에 대해서, 이 패턴들이 실행되는 순서에 따라 3가지 순회 방법이 결정되게 된다.</p>
+
+<p class="notice--info">여기서 <strong>‘재귀적으로’</strong>라는 말은 작업이 다른 <strong>서브루틴으로 분기</strong>된다는 뜻이다.<br />
+서브루틴에서의 작업이 끝나게 되면 다시 현재의 작업으로 <strong>백트랙</strong>하게 된다.</p>
+
+<h2 id="inorder---중위-순회">Inorder - 중위 순회</h2>
+
+<p>트리의 중위 순회를 위해서 루트 노드 부터 모든 노드에 대해 다음의 작업을 수행한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>중위 순회(LNR)
+
+현재 노드가 null인지 확인한다.  
+아니라면 다음의 순서대로 순회를 한다.  
+
+(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.  
+(N) 현재 노드를 방문한다.  
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.  
+</code></pre></div></div>
+<p>다음의 그림은 Inorder의 예를 보여준다.</p>
+
+<p><img src="/assets/images/treeTraversal1.png" alt="Alt text" width="350px" height="350px" /></p>
+
+<p>위의 그림에서 볼 수 있듯이, 어떤 노드가 처리되기 전에 왼쪽 서브트리가 먼저 처리되고(L) 그 다음 해당 노드가 처리되고(N) 그 다음 오른쪽 서브트리 처리된다(R).</p>
+
+<p class="notice--warning">모든 노드에 대해서 (L), (R) 연산들은 재귀적으로 수행이 된다.</p>
+
+<p>다음은 위를 구현한 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Recursive function to perform in-order traversal of the tree</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">inorder</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="c1">// 현재 노드가 null이면 리턴</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="c1">// 재귀적으로 왼쪽 서브트리를 탐색한다.</span>
+	<span class="n">inorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+
+	<span class="c1">// 현재 노드의 데이터를 출력한다. (방문)</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">data</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 오른쪽 서브트리를 탐색한다.</span>
+	<span class="n">inorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="preorder----전위-순회">Preorder -  전위 순회</h2>
+
+<p>트리의 전위 순회를 위해서 루트 노드 부터 모든 노드에 대해 다음의 작업을 수행한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전위 순회(NLR)
+
+현재 노드가 null인지 확인한다.  
+아니라면 다음의 순서대로 순회를 한다.  
+
+(N) 현재 노드를 방문한다.  
+(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.  
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.  
+</code></pre></div></div>
+<p>다음의 그림은 Preorder의 예를 보여준다.</p>
+
+<p><img src="/assets/images/treeTraversal3.png" alt="Alt text" width="350px" height="350px" /></p>
+
+<p>위의 그림에서 볼 수 있듯이, 해당 노드가 처리되고(N) 그 다음 왼쪽 서브트리가 처리되고(L) 마지막으로 오른쪽 서브트리가 처리된다(R).</p>
+
+<p class="notice--warning">모든 노드에 대해서 (L), (R) 연산들은 재귀적으로 수행이 된다.</p>
+
+<p>다음은 위를 구현한 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Recursive function to perform pre-order traversal of the tree</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">preorder</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="c1">// return if the current node is empty</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="c1">// 현재 노드의 데이터를 출력한다. (방문)</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">data</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 왼쪽 서브트리를 탐색한다.</span>
+	<span class="n">preorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 오른쪽 서브트리를 탐색한다.</span>
+	<span class="n">preorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="postorder---후위-순회">Postorder - 후위 순회</h2>
+
+<p>트리의 후위 순회를 위해서 루트 노드 부터 모든 노드에 대해 다음의 작업을 수행한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>후위 순회(LRN)
+
+현재 노드가 null인지 확인한다.  
+아니라면 다음의 순서대로 순회를 한다.  
+
+(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.  
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.  
+(N) 현재 노드를 방문한다.  
+</code></pre></div></div>
+<p>다음의 그림은 Postorder의 예를 보여준다.</p>
+
+<p><img src="/assets/images/treeTraversal2.png" alt="Alt text" width="350px" height="350px" /></p>
+
+<p>위의 그림에서 볼 수 있듯이, 해당 노드가 처리되기 전에 왼쪽 서브트리가 먼저 처리되고(L) 그 다음 오른쪽 서브트리 처리되고(R) 마지막으로 해당 노드가 처리된다(N).</p>
+
+<p class="notice--warning">모든 노드에 대해서 (L), (R) 연산들은 재귀적으로 수행이 된다.</p>
+
+<p>다음은 위를 구현한 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Recursive function to perform post-order traversal of the tree</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">postorder</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="c1">// return if the current node is empty</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="c1">// 재귀적으로 왼쪽 서브트리를 탐색한다.</span>
+	<span class="n">postorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 오른쪽 서브트리를 탐색한다.</span>
+	<span class="n">postorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+
+  <span class="c1">// 현재 노드의 데이터를 출력한다. (방문)</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">data</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></p>
+:ET

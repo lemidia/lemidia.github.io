@@ -1,0 +1,876 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>트리의 순회 - Dev.Gyeong</title>
+<meta name="description" content="대표적인 트리 순회 방법을 알아보자 ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dev.Gyeong">
+<meta property="og:title" content="트리의 순회">
+<meta property="og:url" content="http://localhost:4000/algorithm/treeTraversal/">
+
+
+  <meta property="og:description" content="대표적인 트리 순회 방법을 알아보자 ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerLogo2.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-03-01T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2019-04-11T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/treeTraversal/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dev.Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dev.Gyeong Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <!-- mathjax -->
+    
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo4.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Dev.Gyeong
+          <span class="site-subtitle">Development & Algorithm</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/algorithm/" >Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/datastructure/" >Data Structure</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/headerLogo2.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          트리의 순회
+
+        
+      </h1>
+      
+        <p class="page__lead">대표적인 트리 순회 방법을 알아보자
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Love to Coding</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:your.name@email.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="트리의 순회">
+    <meta itemprop="description" content="대표적인 트리 순회 방법을 알아보자">
+    <meta itemprop="datePublished" content="2019-03-01T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2019-04-11T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#트리의-순회tree-traversal">트리의 순회(Tree Traversal)</a>
+    <ul>
+      <li><a href="#inorder---중위-순회">Inorder - 중위 순회</a></li>
+      <li><a href="#preorder----전위-순회">Preorder -  전위 순회</a></li>
+      <li><a href="#postorder---후위-순회">Postorder - 후위 순회</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="트리의-순회tree-traversal">트리의 순회(Tree Traversal)</h1>
+
+<p>트리를 순회하는데 여러가지 방법이 있지만 이번 포스트에서는 그 중 깊이우선탐색(DFS)의 성질을 가진 3가지 순회 방법을 알아본다.</p>
+
+<p>다음은 트리를 순회하는 대표적인 3가지 방법이다. (깊이우선탐색(DFS))</p>
+
+<ol>
+  <li>Inorder - 중위 순회</li>
+  <li>Preorder - 전위 순회</li>
+  <li>Postorder - 후위 순회</li>
+</ol>
+
+<p>3가지 순회들은 다음의 공통된 패턴을 가지고 있다.</p>
+
+<p>(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.<br />
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.<br />
+(N) 현재 노드를 방문한다.</p>
+
+<p>모든 노드에 대해서, 이 패턴들이 실행되는 순서에 따라 3가지 순회 방법이 결정되게 된다.</p>
+
+<p class="notice--info">여기서 <strong>‘재귀적으로’</strong>라는 말은 작업이 다른 <strong>서브루틴으로 분기</strong>된다는 뜻이다.<br />
+서브루틴에서의 작업이 끝나게 되면 다시 현재의 작업으로 <strong>백트랙</strong>하게 된다.</p>
+
+<h2 id="inorder---중위-순회">Inorder - 중위 순회</h2>
+
+<p>트리의 중위 순회를 위해서 루트 노드 부터 모든 노드에 대해 다음의 작업을 수행한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>중위 순회(LNR)
+
+현재 노드가 null인지 확인한다.  
+아니라면 다음의 순서대로 순회를 한다.  
+
+(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.  
+(N) 현재 노드를 방문한다.  
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.  
+</code></pre></div></div>
+<p>다음의 그림은 Inorder의 예를 보여준다.</p>
+
+<p><img src="/assets/images/treeTraversal1.png" alt="Alt text" width="350px" height="350px" /></p>
+
+<p>위의 그림에서 볼 수 있듯이, 어떤 노드가 처리되기 전에 왼쪽 서브트리가 먼저 처리되고(L) 그 다음 해당 노드가 처리되고(N) 그 다음 오른쪽 서브트리 처리된다(R).</p>
+
+<p class="notice--warning">모든 노드에 대해서 (L), (R) 연산들은 재귀적으로 수행이 된다.</p>
+
+<p>다음은 위를 구현한 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Recursive function to perform in-order traversal of the tree</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">inorder</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="c1">// 현재 노드가 null이면 리턴</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="c1">// 재귀적으로 왼쪽 서브트리를 탐색한다.</span>
+	<span class="n">inorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+
+	<span class="c1">// 현재 노드의 데이터를 출력한다. (방문)</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">data</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 오른쪽 서브트리를 탐색한다.</span>
+	<span class="n">inorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="preorder----전위-순회">Preorder -  전위 순회</h2>
+
+<p>트리의 전위 순회를 위해서 루트 노드 부터 모든 노드에 대해 다음의 작업을 수행한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전위 순회(NLR)
+
+현재 노드가 null인지 확인한다.  
+아니라면 다음의 순서대로 순회를 한다.  
+
+(N) 현재 노드를 방문한다.  
+(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.  
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.  
+</code></pre></div></div>
+<p>다음의 그림은 Preorder의 예를 보여준다.</p>
+
+<p><img src="/assets/images/treeTraversal3.png" alt="Alt text" width="350px" height="350px" /></p>
+
+<p>위의 그림에서 볼 수 있듯이, 해당 노드가 처리되고(N) 그 다음 왼쪽 서브트리가 처리되고(L) 마지막으로 오른쪽 서브트리가 처리된다(R).</p>
+
+<p class="notice--warning">모든 노드에 대해서 (L), (R) 연산들은 재귀적으로 수행이 된다.</p>
+
+<p>다음은 위를 구현한 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Recursive function to perform pre-order traversal of the tree</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">preorder</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="c1">// return if the current node is empty</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="c1">// 현재 노드의 데이터를 출력한다. (방문)</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">data</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 왼쪽 서브트리를 탐색한다.</span>
+	<span class="n">preorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 오른쪽 서브트리를 탐색한다.</span>
+	<span class="n">preorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="postorder---후위-순회">Postorder - 후위 순회</h2>
+
+<p>트리의 후위 순회를 위해서 루트 노드 부터 모든 노드에 대해 다음의 작업을 수행한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>후위 순회(LRN)
+
+현재 노드가 null인지 확인한다.  
+아니라면 다음의 순서대로 순회를 한다.  
+
+(L) 현재 노드의 왼쪽 서브트리를 재귀적으로 순회한다.  
+(R) 현재 노드의 오른쪽 서브트리를 재귀적으로 순회한다.  
+(N) 현재 노드를 방문한다.  
+</code></pre></div></div>
+<p>다음의 그림은 Postorder의 예를 보여준다.</p>
+
+<p><img src="/assets/images/treeTraversal2.png" alt="Alt text" width="350px" height="350px" /></p>
+
+<p>위의 그림에서 볼 수 있듯이, 해당 노드가 처리되기 전에 왼쪽 서브트리가 먼저 처리되고(L) 그 다음 오른쪽 서브트리 처리되고(R) 마지막으로 해당 노드가 처리된다(N).</p>
+
+<p class="notice--warning">모든 노드에 대해서 (L), (R) 연산들은 재귀적으로 수행이 된다.</p>
+
+<p>다음은 위를 구현한 자바 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Recursive function to perform post-order traversal of the tree</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">postorder</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="c1">// return if the current node is empty</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="c1">// 재귀적으로 왼쪽 서브트리를 탐색한다.</span>
+	<span class="n">postorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+
+	<span class="c1">// 재귀적으로 오른쪽 서브트리를 탐색한다.</span>
+	<span class="n">postorder</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+
+  <span class="c1">// 현재 노드의 데이터를 출력한다. (방문)</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">data</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#programming" class="page__taxonomy-item" rel="tag">programming</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#traversal" class="page__taxonomy-item" rel="tag">Traversal</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tree" class="page__taxonomy-item" rel="tag">Tree</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-11">April 11, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%ED%8A%B8%EB%A6%AC%EC%9D%98+%EC%88%9C%ED%9A%8C%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2FtreeTraversal%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2FtreeTraversal%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2FtreeTraversal%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/data%20structure/Tree/" class="pagination--pager" title="트리
+">Previous</a>
+    
+    
+      <a href="/data%20structure/graph/" class="pagination--pager" title="Graph - 그래프
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/data%20structure/unionfind/" rel="permalink">Union Find
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 14 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Union Find By Lank With Path Compression
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%ED%83%90%EC%83%89%EA%B3%B5%EA%B0%84%EC%9D%98-%EB%B0%B0%EC%A0%9C/" rel="permalink">탐색공간의 배제
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">전체탐색에서 불필요한 공간을 탐색하지 않음으로써 알고리즘의 효율을 향상하는 방법
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/" rel="permalink">전체탐색법
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EB%B9%84%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/" rel="permalink">비선형 구조와 탐색
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">비선형 구조가 무엇이고 이를 어떻게 탐색할 수 있는지 알아본다.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Dev.Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/algorithm/treeTraversal/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/algorithm/treeTraversal"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

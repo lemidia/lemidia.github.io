@@ -1,0 +1,33 @@
+I"�<ul class="toc__menu">
+  <li><a href="#트리의-순회tree-traversal">트리의 순회(Tree Traversal)</a>
+    <ul>
+      <li><a href="#중위-순회">중위 순회</a></li>
+      <li><a href="#트리-용어">트리 용어</a>
+        <ul>
+          <li><a href="#루트root">루트(Root)</a></li>
+          <li><a href="#리프-노드reaf-node">리프 노드(Reaf Node)</a></li>
+          <li><a href="#조상-노드ancestor">조상 노드(Ancestor)</a></li>
+          <li><a href="#형제-노드sibling">형제 노드(Sibling)</a></li>
+          <li><a href="#서브-트리sub-tree">서브 트리(Sub Tree)</a></li>
+          <li><a href="#레벨level">레벨(Level)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#이진-트리">이진 트리</a>
+    <ul>
+      <li><a href="#이진-트리의-종류">이진 트리의 종류</a>
+        <ul>
+          <li><a href="#full-binary-tree">Full Binary Tree</a></li>
+          <li><a href="#complete-binary-tree">Complete Binary Tree</a></li>
+          <li><a href="#perfect-binary-tree">Perfect Binary Tree</a></li>
+          <li><a href="#degenerate-or-pathological-tree">Degenerate (or pathological) tree</a></li>
+        </ul>
+      </li>
+      <li><a href="#이진-트리-표현">이진 트리 표현</a></li>
+      <li><a href="#트리-예제-코드">트리 예제 코드</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET
