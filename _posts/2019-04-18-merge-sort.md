@@ -1,6 +1,6 @@
 ---
-title:  "Merge Sort"
-excerpt: "O(nlogn) 비교 기반 분할정복 정렬 알고리즘"
+title:  "합병 정렬(Merge Sort)"
+excerpt: "O(nlogn)의 비교 기반 분할 정복 정렬 알고리즘"
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"
@@ -43,11 +43,11 @@ use_math: true
 4. 결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.
 5. 복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.
 
-![Alt text](/assets/images/merge.gif)
+![Alt text](/assets/images/merge.gif){: width="400px" height="400px"}
 
 ## Analysis
 
-![Alt text](/assets/images/merge-sort-rec.png)
+![Alt text](/assets/images/merge-sort-rec.png){: width="500px" height="500px"}
 
 **Note:** 7개의 원소가 들어있는 배열에 재귀적 병합 정렬을 적용했을 때 우리가 상상할 수 있는 그림입니다.  
 배열의 원소가 1개가 될 때까지 원래 배열의 1/2씩 분할을 계속 진행합니다.  

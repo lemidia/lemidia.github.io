@@ -1,5 +1,5 @@
 ---
-title:  "트리의 순회"
+title:  "트리의 순회(Tree Traversal)"
 excerpt: "대표적인 트리 순회 방법을 알아보자"
 toc: true
 toc_sticky: true

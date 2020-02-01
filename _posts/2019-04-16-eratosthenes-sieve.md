@@ -1,6 +1,6 @@
 ---
-title:  "Eratosthenes's Sieve"
-excerpt: "소수를 빨리 찾을 수 있는 알고리즘"
+title:  "에라토스테네스의 체(Eratosthenes's Sieve)"
+excerpt: "소수의 여부를 보다 효율적으로 알 수 있는 알고리즘"
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"

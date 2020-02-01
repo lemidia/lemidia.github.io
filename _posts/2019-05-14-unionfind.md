@@ -1,5 +1,5 @@
 ---
-title:  "Union Find"
+title:  "유니온 파인드(Union Find, Disjoint Set)"
 excerpt: "Union Find By Lank With Path Compression"
 toc: true
 toc_sticky: true

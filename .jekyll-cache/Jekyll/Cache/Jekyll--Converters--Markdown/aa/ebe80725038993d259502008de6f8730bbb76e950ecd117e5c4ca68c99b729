@@ -1,0 +1,115 @@
+I"J.<h1 id="merge-sort합병-정렬">Merge Sort(합병 정렬)</h1>
+
+<p>합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘입니다.<br />
+일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나입니다.
+존 폰 노이만이 1945년에 개발했습니다.</p>
+
+<hr />
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다.</p>
+
+<ol>
+  <li>리스트의 길이가 1 이하이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는</li>
+  <li>분할(divide) : 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다.</li>
+  <li>정복(conquer) : 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.</li>
+  <li>결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.</li>
+  <li>복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.</li>
+</ol>
+
+<p><img src="/assets/images/merge.gif" alt="Alt text" width="450px" height="400px" /></p>
+
+<h2 id="analysis">Analysis</h2>
+
+<p><img src="/assets/images/merge-sort-rec.png" alt="Alt text" width="300px" height="400px" /></p>
+
+<p class="notice--warning"><strong>Note:</strong> 7개의 원소가 들어있는 배열에 재귀적 병합 정렬을 적용했을 때 우리가 상상할 수 있는 그림입니다.<br />
+배열의 원소가 1개가 될 때까지 원래 배열의 1/2씩 분할을 계속 진행합니다.<br />
+배열의 원소가 1개가 되면 병합을 진행합니다.<br />
+[38][27]<br />
+38은 27보다 크므로 두 원소가 스왑되어 합병됩니다.<br />
+[43][3]<br />
+43은 3보다 크므로 두 원소가 스왑되어 합병됩니다.<br />
+[27, 38] [3, 43]<br />
+27과 3이 스왑되고 38과 43은 그대로 배열에 들어갑니다.<br />
+이와 마찬가지로 다른 분할 배열들도 위와 같이 진행됩니다.</p>
+
+<h2 id="java로-구현---재귀적top-down-recursive">Java로 구현 - 재귀적(Top-down, Recursive)</h2>
+<p class="notice--warning"><strong>설명</strong>: 재귀적으로 서브배열의 크기가 1이 될 때까지 계속 분할을 진행합니다.<br />
+분할된 배열들을 정렬하고 합병합니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @author lemidia</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MergeSort</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">p</span><span class="o">,</span> <span class="kt">int</span> <span class="n">r</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">p</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">){</span>
+            <span class="kt">int</span> <span class="n">q</span> <span class="o">=</span> <span class="o">(</span><span class="n">p</span><span class="o">+</span><span class="n">r</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span> <span class="c1">// Middle</span>
+            <span class="n">divide</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">p</span><span class="o">,</span> <span class="n">q</span><span class="o">);</span> <span class="c1">// Left</span>
+            <span class="n">divide</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span> <span class="c1">// Right</span>
+            <span class="n">merge</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">p</span><span class="o">,</span> <span class="n">q</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span> <span class="c1">// Merge</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">p</span><span class="o">,</span> <span class="kt">int</span> <span class="n">q</span><span class="o">,</span> <span class="kt">int</span> <span class="n">r</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">p</span><span class="o">;</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">p</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">temp</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">p</span><span class="o">;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">+</span><span class="mi">1</span> <span class="o">;</span> <span class="n">l</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">q</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">j</span> <span class="o">&gt;</span> <span class="n">r</span> <span class="o">||</span> <span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">[</span><span class="n">j</span><span class="o">])){</span>
+                <span class="n">temp</span><span class="o">[</span><span class="n">k</span><span class="o">++]</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">++];</span>
+            <span class="o">}</span><span class="k">else</span>
+                <span class="n">temp</span><span class="o">[</span><span class="n">k</span><span class="o">++]</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">j</span><span class="o">++];</span>
+        <span class="o">}</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">p</span><span class="o">;</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">;</span> <span class="n">l</span><span class="o">++){</span>
+            <span class="n">data</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">[</span><span class="n">l</span><span class="o">];</span>
+        <span class="o">}</span>
+
+        <span class="cm">/*
+        while (i&lt;=q &amp;&amp; j&lt;=r){
+            if(data[i] &lt;= data[j]){
+                temp[k++] = data[i++];
+            }else{
+                temp[k++] = data[j++];
+            }
+        }
+        while (i&lt;=q)
+            temp[k++] = data[i++];
+        while (j&lt;=r)
+            temp[k++] = data[j++];
+        for(int l = p; l&lt;=r; l++){
+            data[l] = temp[l];
+        }
+        */</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">limit</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="o">--</span><span class="n">i</span><span class="o">){</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">limit</span><span class="o">-</span><span class="n">i</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">divide</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span> 
+</code></pre></div></div>
+
+<h2 id="시간복잡도">시간복잡도</h2>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>최악 시간복잡도	O(n log n)
+최선 시간복잡도	O(n log n)
+평균 시간복잡도	일반적으로, O(n log n)
+</code></pre></div></div>
+<p class="notice--warning"><strong>쉬운 설명</strong>: 배열의 원소가 n개일 때 깊이는 log(n)만큼 진행 됩니다. (매번 2개씩 분할 되므로)<br />
+각 깊이마다 n개의 원소들이 제자리를 찾아 스왑됩니다.<br />
+그래서 시간복잡도는 깊이 * n개의 원소 즉, <strong>nlog(n)</strong>이 됩니다.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Merge_sort">Merge Sort - wikipedia</a></p>
+:ET
