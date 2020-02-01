@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-02T01:03:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">Union Find</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="Union Find" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-09-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h2 id=&quot;union-find&quot;&gt;Union-Find&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-02T01:16:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dev.Gyeong</title><subtitle>An amazing website.</subtitle><author><name>Gyeong</name></author><entry><title type="html">Union Find</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="Union Find" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-09-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h2 id=&quot;union-find&quot;&gt;Union-Find&lt;/h2&gt;
 &lt;p&gt;컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다.&lt;/p&gt;
 
 &lt;p&gt;부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 
@@ -1915,26 +1915,28 @@ x는 &amp;gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}
 
 &lt;p&gt;인접한 두 원소를 비교하여 기준에 따라 스왑하고, 한 칸씩 옆으로 가면서 이를 n번째 원소까지 반복한다.&lt;/p&gt;
 
-&lt;p&gt;이를 모든 원소에 대해 n번 반복한다. (최적화에 따라 n번 보다 더 낮아질 수 있다.)&lt;/p&gt;
+&lt;p&gt;이를 모든 원소에 대해 n번 반복한다.&lt;br /&gt;
+(최적화를 하면 배열의 원소 위치상태에 따라 횟수가 n번 보다 낮아질 수 있다.)&lt;/p&gt;
 
-&lt;p&gt;다른 O(nlongn)의 성능을 내는 정렬 알고리즘에 비해 성능이 좋지 않으므로 실무에서는 교육용 목적으로 사용 되어진다.&lt;/p&gt;
+&lt;p&gt;다른 O(nlongn)의 성능을 내는 정렬 알고리즘에 비해 성능이 좋지 않으므로 실무에서는 사용되지 않고 교육용 목적으로 사용 되어진다.&lt;/p&gt;
 
-&lt;p class=&quot;notice--info&quot;&gt;더 효율적인 정렬 알고리즘인 팀소트(Timsort)가 머지소트(Merge sort)는 인기있는 프로그래밍 언어(java, python)의 내장 정렬 라이브러리로 사용되고 있다.&lt;/p&gt;
+&lt;p class=&quot;notice--info&quot;&gt;더 효율적인 정렬 알고리즘인 팀소트(Timsort)나 머지소트(Merge sort)가 인기있는 프로그래밍 언어(java, python)의 내장 정렬 라이브러리로 사용되고 있다.&lt;/p&gt;
 &lt;hr /&gt;
 
 &lt;h2 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h2&gt;
 
-&lt;p&gt;밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있다.&lt;/p&gt;
+&lt;p&gt;밑의 애니메이션을 먼저 보고 알고리즘을 읽으면 이해가 빠를 수 있다.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;처음 원소를 시작으로 n번째 원소까지 차례대로 옆 원소와 오른쪽으로 비교하며 스왑을 진행한다.&lt;/li&gt;
+  &lt;li&gt;처음 원소를 시작으로 n번째 원소까지 차례대로 인접한 원소와 오른쪽으로 비교하며 스왑을 진행한다.&lt;/li&gt;
   &lt;li&gt;n번째 원소와 비교가 끝이나면 n번째 원소는 정렬이 완료된 것이다.&lt;/li&gt;
-  &lt;li&gt;처음 원소부터 n-1번째 원소까지 1번과 같이 수행한다.&lt;/li&gt;
+  &lt;li&gt;다시 처음 원소부터 n-1번째 원소까지 인접한 원소와 비교하며 필요하면 스왑을 한다.&lt;/li&gt;
   &lt;li&gt;n-1번째 원소와 비교가 끝이나면 n-1번째 원소는 정렬이 완료된 것이다.&lt;/li&gt;
-  &lt;li&gt;이를 반복하여 n-2..n-3..2번째 원소까지 정렬이 완료되면 정렬이 완료된 것이다.&lt;/li&gt;
+  &lt;li&gt;이를 반복하여, n-2..n-3..2번째 원소까지 정렬이 완료되면 알고리즘은 끝이난다.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bubblesort1.gif&quot; alt=&quot;Alt text&quot; width=&quot;400px&amp;quot;, height=&amp;quot;500px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Animation - Bubble sort&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/bubblesort1.gif&quot; alt=&quot;Alt text&quot; width=&quot;400px&amp;quot;, height=&amp;quot;500px&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;analysis&quot;&gt;Analysis&lt;/h2&gt;
 
@@ -2093,7 +2095,7 @@ x는 &amp;gt;= $\sqrt {x}$ * $\sqrt {x}$으로 표현 할 수 있고, $\sqrt {x}
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bubble_sort&quot;&gt;Bubble Sort - wikipedia&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="Sort" /><category term="Mathematics" /><summary type="html">비교기반 정렬 알고리즘</summary></entry><entry><title type="html">자바스크립트를 이용한 날씨 웹 앱</title><link href="http://localhost:4000/development/weather-app/" rel="alternate" type="text/html" title="자바스크립트를 이용한 날씨 웹 앱" /><published>2019-04-10T00:00:00+09:00</published><updated>2019-07-15T22:06:00+09:00</updated><id>http://localhost:4000/development/weather-app</id><content type="html" xml:base="http://localhost:4000/development/weather-app/">&lt;h2 id=&quot;앱-개요&quot;&gt;앱 개요&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bubble_sort&quot;&gt;Bubble Sort - wikipedia&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="Sort" /><category term="Array" /><category term="Mathematics" /><summary type="html">비교기반 정렬 알고리즘</summary></entry><entry><title type="html">자바스크립트를 이용한 날씨 웹 앱</title><link href="http://localhost:4000/development/weather-app/" rel="alternate" type="text/html" title="자바스크립트를 이용한 날씨 웹 앱" /><published>2019-04-10T00:00:00+09:00</published><updated>2019-07-15T22:06:00+09:00</updated><id>http://localhost:4000/development/weather-app</id><content type="html" xml:base="http://localhost:4000/development/weather-app/">&lt;h2 id=&quot;앱-개요&quot;&gt;앱 개요&lt;/h2&gt;
 
 &lt;p&gt;웹 화면 상으로 사용자의 지역 날씨 상태를 보여주는 웹 어플리케이션.&lt;/p&gt;
 

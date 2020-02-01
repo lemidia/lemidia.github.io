@@ -45,8 +45,8 @@ var store = [{
         "url": "http://localhost:4000/development/weather-app/",
         "teaser":null},{
         "title": "버블소트(Bubble Sort)",
-        "excerpt":"Bubble(버블 정렬) 비교 기반 정렬 알고리즘이다. 정렬이 실행되면서 마치 형태가 거품이 수면위로 떠오르는 것 같은 모양을 한다고 하여 붙여진 이름이다. 인접한 두 원소를 비교하여 기준에 따라 스왑하고, 한 칸씩 옆으로 가면서 이를 n번째 원소까지 반복한다. 이를 모든 원소에 대해 n번 반복한다. (최적화에 따라 n번 보다 더 낮아질 수 있다.) 다른...","categories": ["Algorithm"],
-        "tags": ["Sort","Mathematics"],
+        "excerpt":"Bubble(버블 정렬) 비교 기반 정렬 알고리즘이다. 정렬이 실행되면서 마치 형태가 거품이 수면위로 떠오르는 것 같은 모양을 한다고 하여 붙여진 이름이다. 인접한 두 원소를 비교하여 기준에 따라 스왑하고, 한 칸씩 옆으로 가면서 이를 n번째 원소까지 반복한다. 이를 모든 원소에 대해 n번 반복한다. (최적화를 하면 배열의 원소 위치상태에 따라 횟수가 n번 보다...","categories": ["Algorithm"],
+        "tags": ["Sort","Array","Mathematics"],
         "url": "http://localhost:4000/algorithm/bubble-sort/",
         "teaser":null},{
         "title": "Eratosthenes's Sieve",
