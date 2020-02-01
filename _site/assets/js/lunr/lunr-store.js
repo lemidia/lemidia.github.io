@@ -45,7 +45,7 @@ var store = [{
         "url": "http://localhost:4000/development/weather-app/",
         "teaser":null},{
         "title": "버블소트(Bubble Sort)",
-        "excerpt":"Bubble(버블 정렬) 비교 기반 정렬 알고리즘이다. 다른 O(nlongn)의 성능을 내는 정렬 알고리즘에 비해 성능이 좋지 않으므로 실무에서는 교육용 목적으로 사용 되어진다. 더 효율적인 정렬 알고리즘인 팀소트(Timsort)가 머지소트(Merge sort)는 인기있는 프로그래밍 언어(java, python)의 내장 정렬 라이브러리로 사용되고 있다. Algorithm 밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다. 처음 원소를...","categories": ["Algorithm"],
+        "excerpt":"Bubble(버블 정렬) 비교 기반 정렬 알고리즘이다. 정렬이 실행되면서 마치 형태가 거품이 수면위로 떠오르는 것 같은 모양을 한다고 하여 붙여진 이름이다. 인접한 두 원소를 비교하여 기준에 따라 스왑하고, 한 칸씩 옆으로 가면서 이를 n번째 원소까지 반복한다. 이를 모든 원소에 대해 n번 반복한다. (최적화에 따라 n번 보다 더 낮아질 수 있다.) 다른...","categories": ["Algorithm"],
         "tags": ["Sort","Mathematics"],
         "url": "http://localhost:4000/algorithm/bubble-sort/",
         "teaser":null},{
