@@ -18,8 +18,8 @@ minimal_mistakes_skin    : "default" # "default", "air", "aqua", "contrast", "da
 locale                   : "en-US"
 title                    : "Code Factory"
 title_separator          : "-"
-subtitle                 : "Development & Algorithm" # site tagline that appears below site title in masthead
-name                     : "Code Factory"
+subtitle                 : "Inspiration of Computer science" # site tagline that appears below site title in masthead
+name                     : "Gyeong"
 description              : "An amazing website."
 url                      : "https://lemidia.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
