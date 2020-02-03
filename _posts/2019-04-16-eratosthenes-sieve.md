@@ -23,8 +23,8 @@ header:
   #    url: "https://unsplash.com"
 
 use_math: true
----
 
+---
 # 에라토스테네스의 체
 
 수학에서 에라토스테네스의 체는 보다 빠르게 소수를 찾는 방법입니다.  

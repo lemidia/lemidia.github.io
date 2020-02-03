@@ -1,0 +1,131 @@
+I"�
+<div class="feature__wrapper">
+
+  
+
+    
+
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/home_algorithm.png" alt="customizable" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">전체탐색법</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/" class="btn btn--warning">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+    
+
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/home_datastructure.png" alt="fully responsive" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">탐색공간의 배제</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>전체탐색에서 불필요한 공간을 탐색하지 않음으로써 알고리즘의 효율을 향상하는 방법.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/algorithm/%ED%83%90%EC%83%89%EA%B3%B5%EA%B0%84%EC%9D%98-%EB%B0%B0%EC%A0%9C/" class="btn btn--info">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+    
+
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/home_development.png" alt="100% free" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">선형구조와 탐색</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>선형구조가 무엇인지 알아보고 순차탐색과 이분탐색을 활용하여 간단한 문제를 해결할 수 있다.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/algorithm/%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/" class="btn btn--primary">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+    
+
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/home_algorithm.png" alt="customizable" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">전체탐색법</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/" class="btn btn--warning">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+:ET

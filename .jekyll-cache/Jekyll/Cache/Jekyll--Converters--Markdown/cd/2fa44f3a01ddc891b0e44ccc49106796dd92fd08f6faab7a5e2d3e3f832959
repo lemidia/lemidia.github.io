@@ -1,0 +1,102 @@
+I"�
+<div class="feature__wrapper">
+
+  
+
+    
+
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/home_algorithm.png" alt="customizable" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">전체탐색법</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법</p>
+
+            </div>
+          
+
+          
+            <p><a href="/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/" class="btn btn--warning">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+    
+
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/home_datastructure.png" alt="fully responsive" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Data Structure</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>자료를 효율적으로 구성하고 저장하는 법을 배웁니다.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/categories/datastructure/" class="btn btn--info">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+    
+
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/home_development.png" alt="100% free" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Development</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>여러가지 개발글 Web, javascript, Node.js 계속 추가 중…</p>
+
+            </div>
+          
+
+          
+            <p><a href="/categories/development/" class="btn btn--primary">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+<p>ㅇㅇ</p>
+:ET

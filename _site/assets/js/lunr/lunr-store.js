@@ -55,7 +55,7 @@ var store = [{
         "url": "http://localhost:4000/algorithm/quick-sort/",
         "teaser":null},{
         "title": "선택 정렬(Selection Sort)-예정 포스트",
-        "excerpt":" ","categories": ["Algorithm"],
+        "excerpt":"선택 정렬  ","categories": ["Algorithm"],
         "tags": ["Sort","Array"],
         "url": "http://localhost:4000/algorithm/selection-sort/",
         "teaser":null},{
