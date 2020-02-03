@@ -32,7 +32,7 @@ use_math: true
 
 ## Look
 
-![Alt](/assets/images/weather.png ){: width="500px" height="500px"}
+![Alt](/assets/images/weather.png){: width="500px" height="500px"}
 
 ## 설명
 
