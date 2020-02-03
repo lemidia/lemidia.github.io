@@ -5,6 +5,8 @@ layout: category
 author_profile: true
 taxonomy: Algorithm
 
+toc_ads : true
+
 feature_row:
   - image_path: /assets/images/home_algorithm.png
     alt: "customizable"
@@ -34,5 +36,5 @@ feature_row:
     url: "/algorithm/비선형구조의-탐색/"
     btn_class: "btn--warning"
     btn_label: "Learn more"
-    
+
 ---
