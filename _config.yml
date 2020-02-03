@@ -295,6 +295,7 @@ defaults:
       share: true
       related: true
       toc_ads: true
+      toc_sticky: true
 # _pages
   - scope:
       path: "_pages"
@@ -307,3 +308,4 @@ defaults:
       share: true
       related: false
       toc_ads: true
+      toc_sticky: true
