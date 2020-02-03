@@ -80,12 +80,12 @@ ins {
  https://github.com/mmistakes/minimal-mistakes/issues/306 */
  ins.adsbygoogle {
   border-bottom: none !important;
-  margin-bottom: 1em;
+  margin-bottom: 1em !important; 
 }
 
 .toc-custom {
   border-bottom: none !important;
-  margin-top: 5em;
+  margin-top: 3em !important;
 }
 
 del a {
