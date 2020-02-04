@@ -10,12 +10,18 @@
   width: 100%;
   clear: both;
   margin-top: 3em;
-  color: $muted-text-color;
   -webkit-animation: $intro-transition;
   animation: $intro-transition;
   -webkit-animation-delay: 0.45s;
   animation-delay: 0.45s;
-  background-color: $footer-background-color;
+
+  // Gyeong modified below
+  color: white;
+  background-color: darken($color: #1b212b, $amount: 0);
+  .page__footer-follow .social-icons .svg-inline--fa {
+    color: #fff;
+  }
+  // background-color: $footer-background-color;
 
   footer {
     @include clearfix;
@@ -84,3 +90,12 @@
     }
   }
 }
+
+// Gyeong added
+.page__footer-copyright img{
+  max-width: 20px;
+  display: inline-block;
+  margin: 0 3px;
+  height: auto;
+}
+
