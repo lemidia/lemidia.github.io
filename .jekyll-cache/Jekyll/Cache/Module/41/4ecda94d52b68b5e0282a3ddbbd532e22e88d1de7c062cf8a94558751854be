@@ -1,4 +1,4 @@
-I"À<div class="page__footer-follow">
+I"<div class="page__footer-follow">
   <ul class="social-icons">
     
       <li><strong>Follow:</strong></li>
@@ -29,5 +29,5 @@
 </div>
 
 <div class="page__footer-copyright">&copy; 2020 Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
-Hosted by Github Pages.</div>
+Hosted by Github Pages.  Made with <i class="fa fa-heart fa-lg" style="color: #ff0000 ;"></i> by Gyeong</div>
 :ET
