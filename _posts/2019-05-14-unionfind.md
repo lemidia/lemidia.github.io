@@ -18,6 +18,7 @@ header:
   overlay_image: /assets/images/headerLogo2.jpg
   overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  teaser: /assets/images/withoutunionbylank.png
   #actions:
   #  - label: "More Info"
   #    url: "https://unsplash.com"
@@ -383,5 +384,4 @@ class unionFind {
 
 ## References
 [Wikipedi - Union Find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure#by_size)
-
 [Algocoding - Union Find](https://algocoding.wordpress.com/2014/09/19/union-find-data-structure-disjoint-set-data-structure/)

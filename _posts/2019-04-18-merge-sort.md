@@ -18,6 +18,7 @@ header:
   overlay_image: /assets/images/headerLogo2.jpg
   overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  teaser: /assets/images/merge-sort-rec.png
   #actions:
   #  - label: "More Info"
   #    url: "https://unsplash.com"
@@ -62,6 +63,7 @@ use_math: true
 {: .notice--warning}
 
 ## Java로 구현 - 재귀적(Top-down, Recursive)
+
 **설명**: 재귀적으로 서브배열의 크기가 1이 될 때까지 계속 분할을 진행합니다.  
 분할된 배열들을 정렬하고 합병합니다.
 {: .notice--warning}
