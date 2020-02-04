@@ -54,6 +54,23 @@
   }
 }
 
+// Gyeong added
+.page__footer-copyright img{
+  max-width: 20px;
+  display: inline-block;
+  margin: 0 3px;
+  height: auto;
+}
+
+@media screen and (max-width:767px){
+  .page__footer-copyright img{
+    max-width: 15px;
+    display: inline-block;
+    margin: 0 2px;
+    height: auto;
+  }
+}
+
 .page__footer-copyright {
   font-family: $global-font-family;
   font-size: $type-size-7;
@@ -92,11 +109,4 @@
   }
 }
 
-// Gyeong added
-.page__footer-copyright img{
-  max-width: 20px;
-  display: inline-block;
-  margin: 0 3px;
-  height: auto;
-}
 
