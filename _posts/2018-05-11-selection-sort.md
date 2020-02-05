@@ -42,9 +42,7 @@ use_math: true
 
 ## 알고리즘
 
-![alt](/assets/images/Selection-Sort-Animation.gif){: width="100px" height="371px" .align-right}
-
-다음은 선택 정렬의 알고리즘이다.
+다음은 선택 정렬의 알고리즘이다. (오름차순)
 
 1. 먼저, 정렬될 리스트에서 가장 **최소값**을 찾는다.  
 2. 1번에서 찾은 값을 정렬될 리스트의 **맨 처음** 위치한 값과 바꾼다. **(1 pass)**
@@ -56,6 +54,47 @@ use_math: true
 이처럼, n개의 원소를 가진 리스트는 선택 정렬로 n-1번의 패스를 거쳐 정렬이 된다. 
 
 비교하는 것이 상수 시간에 이루어진다는 가정 아래, n개의 주어진 리스트를 위와 같은 방법으로 정렬하는 데에는 $O(n^2)$ 만큼의 시간이 걸린다.
+
+***
+
+다음은 선택 정렬의 **애니메이션**이다.
+
+![alt](/assets/images/Selection-Sort-Animation.gif){: width="500px" height="300px" .align-center}
+
+## 예제
+
+다음 예제를 보고 알고리즘을 이해해 보자.
+
+```
+다음과 같은 리스트가 있다고 하자.  
+
+List = [64 25 12 22 11] - index: 0...4
+
+List = [정렬 완료 | 미정렬]
+
+1 pass: List[0...4]를 순회하여 최소값인 11을 찾고  
+        이를 0번째 인덱스 위치의 64와 스왑한다.
+
+List = [11 | 25 12 22 64]
+
+2 pass: List[1...4]를 순회하여 최소값인 12을 찾고
+        이를 1번째 인덱스 위치의 25와 스왑한다.
+
+List = [11 12 | 25 22 64]
+
+3 pass: List[2...4]를 순회하여 최소값인 22을 찾고  
+        이를 2번째 인덱스 위치의 25와 스왑한다.
+
+List = [11 12 22 | 25 64]
+
+4 pass: List[3...4]를 순회하여 최소값인 25을 찾고  
+이를 3번째 인덱스 위치의 25와 스왑한다.
+
+List = [11 12 22 25 | 64]
+
+n-1번의 pass로 리스트의 정렬이 완료되었다.
+```
+
 
 ## 구현
 
@@ -116,6 +155,21 @@ void selectionSort(int[] list) {
 
 ## 시간복잡도 & 공간복잡도
 
+**시간복잡도 분석**
+
+$n$ $(n-1...1)$개의 원소를 매 패스마다 스캔하여 적절한 위치와 스왑한다.  
+n개의 원소가 있다면 $n-1$의 패스를 가진다.
+
+$$(n - 1) + (n - 2) +...+ 1 = \sum_{i=1}^{n-1} i$$
+
+등차수열에 의해,
+
+$$\sum _{i=1}^{n-1}i={\frac {(n-1)+1}{2}}(n-1)={\frac {1}{2}}n(n-1)={\frac {1}{2}}(n^{2}-n)$$
+
+비교의 측면에서 볼 때, 복잡도는 $O(n^2)$이다.  
+
+교환은 매 패스마다 한 번씩 일어난다. 즉, $n-1$번 복잡도는 $O(n)$  
+(마지막 원소는 이미 정렬되어 있다.)
 ```
 **Selection sort**
 
@@ -123,15 +177,20 @@ Class	            정렬 알고리즘
 
 Data structure	    배열
 
-Worst-case          О(n2) 비교
+Worst-case          О(n^2) 비교
 performance         О(n) 교환
 
-Best-case           О(n2) 비교
+Best-case           О(n^2) 비교
 performance         О(n) 교환
 
-Average             О(n2) 비교
+Average             О(n^2) 비교
 performance         О(n) 교환
 
 Worst-case          O(1) 추가 공간
 space complexity	
 ```
+
+## References
+
+[Selection sort](https://en.wikipedia.org/wiki/Selection_sort)  
+[Selection sort - GIF](https://medium.com/@notestomyself)

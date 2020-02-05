@@ -1,0 +1,126 @@
+I"J%<h1 id="선택-정렬">선택 정렬</h1>
+
+<p>선택 정렬은 <strong>비교기반 제자리 정렬</strong> 알고리즘이다.<br />
+복잡도는 $O(n^2)$이므로 큰 리스트에는 비효율적이며, 유사한 삽입 정렬보다 성능이 더 떨어지는 것이 일반적이다. 선택 정렬은 단순함이 특징이며 특정한 상황(메모리가 제한적인 경우)에서는 더 복잡한 알고리즘보다 성능상 우위가 있다.</p>
+
+<p><strong>비교기반과 제자리 정렬 이란?</strong></p>
+
+<p class="notice--warning"><strong>비교기반:</strong> 원소들을 정렬할 때 <strong>원소들의 순서</strong>에만 의존하는 것을 의미.<br />
+비교하는 원소들이 숫자거나, 문자열이거나, 심지어는 복잡한 객체에 대해서도 <strong>순서</strong>가 결정되어 있다면 적용할 수 있다.</p>
+<p class="notice--primary"><strong>제자리 정렬:</strong> 원소들의 개수에 비해서 충분히 무시할 만한 저장 공간만을 더 사용하는 정렬 알고리즘들을 의미.<br />
+예를 들어 <strong>삽입 정렬</strong>은 이미 주어진 원소들을 옮긴 뒤 적절한 위치에 원소를 삽입하는 연산을 반복하는데, 이 과정에서 원소들을 담는 공간 외에 추가로 사용될 수 있는 공간은 옮겨지는 <strong>원소가 저장되는 공간과 루프 변수</strong> 정도에 불과하다.</p>
+
+<h2 id="알고리즘">알고리즘</h2>
+
+<p>다음은 선택 정렬의 알고리즘이다. (오름차순)</p>
+
+<ol>
+  <li>먼저, 정렬될 리스트에서 가장 <strong>최소값</strong>을 찾는다.</li>
+  <li>1번에서 찾은 값을 정렬될 리스트의 <strong>맨 처음</strong> 위치한 값과 바꾼다. <strong>(1 pass)</strong></li>
+  <li>맨 처음 위치를 제외한 나머지 리스트의 원소들에 대해서 이를 반복한다.</li>
+</ol>
+
+<p class="notice--info"><strong>1 pass:</strong> 정렬이 되지않은 리스트에서 최소값을 선택해, 리스트의 적절한 위치에 넣는다.</p>
+
+<p>이처럼, n개의 원소를 가진 리스트는 선택 정렬로 n-1번의 패스를 거쳐 정렬이 된다.</p>
+
+<p>비교하는 것이 상수 시간에 이루어진다는 가정 아래, n개의 주어진 리스트를 위와 같은 방법으로 정렬하는 데에는 $O(n^2)$ 만큼의 시간이 걸린다.</p>
+
+<hr />
+
+<p>다음은 선택 정렬의 <strong>애니메이션</strong>이다.</p>
+
+<p><img src="/assets/images/Selection-Sort-Animation.gif" alt="alt" width="500px" height="300px" class="align-center" /></p>
+
+<h2 id="예제">예제</h2>
+
+<p>다음과 같은 리스트가 있다고 하자.</p>
+
+<p>List = [64 25 12 22 11]</p>
+
+<ul>
+  <li>1 pass: List[0…4]를 순회하여 최소값인 11을 찾고, 이를 첫번째 위치의 64와 바꾼다.<br />
+arr[] = 11 25 12 22 64</li>
+</ul>
+
+<h2 id="구현">구현</h2>
+
+<p>다음은 선택 정렬을 C로 구현한 코드이다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* a[0] to a[aLength-1] is the array to sort */</span>
+<span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">aLength</span><span class="p">;</span> <span class="c1">// initialise to a's length</span>
+
+<span class="cm">/* advance the position through the entire array */</span>
+<span class="cm">/*   (could do i &lt; aLength-1 because single element is also min element) */</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">aLength</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* find the min element in the unsorted a[i .. aLength-1] */</span>
+
+    <span class="cm">/* assume the min is the first element */</span>
+    <span class="kt">int</span> <span class="n">jMin</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="cm">/* test against elements after i to find the smallest */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">aLength</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="cm">/* if this element is less, then it is the new minimum */</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">jMin</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="cm">/* found new minimum; remember its index */</span>
+            <span class="n">jMin</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">jMin</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">jMin</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<hr />
+<p>다음은 선택 정렬을 자바로 구현한 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">selectionSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">indexMin</span><span class="o">,</span> <span class="n">temp</span><span class="o">;</span>
+
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="c1">// Lowest position</span>
+        <span class="n">indexMin</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">list</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">[</span><span class="n">indexMin</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">indexMin</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="c1">// Swap</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">list</span><span class="o">[</span><span class="n">indexMin</span><span class="o">];</span>
+        <span class="n">list</span><span class="o">[</span><span class="n">indexMin</span><span class="o">]</span> <span class="o">=</span> <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="시간복잡도--공간복잡도">시간복잡도 &amp; 공간복잡도</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>**Selection sort**
+
+Class	            정렬 알고리즘
+
+Data structure	    배열
+
+Worst-case          О(n2) 비교
+performance         О(n) 교환
+
+Best-case           О(n2) 비교
+performance         О(n) 교환
+
+Average             О(n2) 비교
+performance         О(n) 교환
+
+Worst-case          O(1) 추가 공간
+space complexity	
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Selection_sort">Selection sort</a>
+<a href="https://medium.com/@notestomyself">Selection sort - GIF</a></p>
+:ET
