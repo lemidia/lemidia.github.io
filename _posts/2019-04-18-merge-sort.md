@@ -32,7 +32,6 @@ use_math: true
 일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나입니다.
 존 폰 노이만이 1945년에 개발했습니다.
 
-***
 
 ## Algorithm
 
@@ -44,7 +43,9 @@ use_math: true
 4. 결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.
 5. 복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.
 
-![Alt text](/assets/images/merge.gif){: width="400px" height="400px"}
+**Animation - Merge sort**
+
+![Alt text](/assets/images/merge.gif){: width="400px" height="400px" }
 
 ## Analysis
 

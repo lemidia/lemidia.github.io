@@ -65,7 +65,7 @@ use_math: true
 ```
 다음의 그림은 Inorder의 예를 보여준다.
 
-![Alt text](/assets/images/treeTraversal1.png){: width="350px" height="350px"}
+![Alt text](/assets/images/treeTraversal1.png){: width="350px" height="350px" .align-center}
 
 위의 그림에서 볼 수 있듯이, 어떤 노드가 처리되기 전에 왼쪽 서브트리가 먼저 처리되고(L) 그 다음 해당 노드가 처리되고(N) 그 다음 오른쪽 서브트리 처리된다(R).  
 
@@ -94,7 +94,7 @@ public static void inorder(TreeNode root)
 }
 ```
 
-## Preorder -  전위 순회
+## Preorder - 전위 순회
 
 트리의 전위 순회를 위해서 루트 노드 부터 모든 노드에 대해 다음의 작업을 수행한다.
 
@@ -110,7 +110,7 @@ public static void inorder(TreeNode root)
 ```
 다음의 그림은 Preorder의 예를 보여준다.
 
-![Alt text](/assets/images/treeTraversal3.png){: width="350px" height="350px"}
+![Alt text](/assets/images/treeTraversal3.png){: width="350px" height="350px" .align-center}
 
 위의 그림에서 볼 수 있듯이, 해당 노드가 처리되고(N) 그 다음 왼쪽 서브트리가 처리되고(L) 마지막으로 오른쪽 서브트리가 처리된다(R).
 
@@ -154,7 +154,7 @@ public static void preorder(TreeNode root)
 ```
 다음의 그림은 Postorder의 예를 보여준다.
 
-![Alt text](/assets/images/treeTraversal2.png){: width="350px" height="350px"}
+![Alt text](/assets/images/treeTraversal2.png){: width="350px" height="350px" .align-center}
 
 위의 그림에서 볼 수 있듯이, 해당 노드가 처리되기 전에 왼쪽 서브트리가 먼저 처리되고(L) 그 다음 오른쪽 서브트리 처리되고(R) 마지막으로 해당 노드가 처리된다(N).
 
