@@ -12,7 +12,7 @@ tags:
   - Sort
   - Array
   
-last_modified_at: 2019-05-10T08:06:00-05:00
+last_modified_at: 2019-07-10T08:06:00-05:00
 
 header:
   overlay_image: /assets/images/headerLogo2.jpg
@@ -184,6 +184,8 @@ Printing sorted elements . . .
 101 
 */
 ```
+
+다음은 선택 정렬을 java로 구현한 코드이다.
 
 ```java
 public class InsertionSort {  
