@@ -60,7 +60,6 @@ use_math: true
 다음은 선택 정렬의 **애니메이션**이다.
 
 ![alt](/assets/images/Selection-Sort-Animation.gif){: width="500px" height="300px" .align-center}
-
 ## 예제
 
 다음 예제를 보고 알고리즘을 이해해 보자.
