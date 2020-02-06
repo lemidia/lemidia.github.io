@@ -1,6 +1,6 @@
 ---
-title:  "최소 스패닝 트리(Minimum Spanning Tree)"
-excerpt: "비방향 그래프에서 간선들의 가중치 합이 최소가 되도록 구성되는 스패닝 트리"
+title:  "스패닝 트리와 최소 스패닝 트리(Minimum Spanning Tree)"
+excerpt: "스패닝 트리와 최소 스패닝 트리가 무엇인지 알아본다."
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"
@@ -101,7 +101,7 @@ Fundamental cycles = E - V + 1.
 이러한, 스패닝 트리의 하나의 간선(가지)만을 포함하는 cut sets을 Fundamental cut sets이라고 한다.
 
 
-# 최소 스패닝 트리
+# 최소 스패닝 트리(Minimum spanning tree)
 
 위의 스패닝 트리를 이해했다면 최소 스패닝 트리의 개념은 간단하다.
 
