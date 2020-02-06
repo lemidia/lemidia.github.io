@@ -110,7 +110,7 @@ public static void inorder(TreeNode root)
 ```
 다음의 그림은 Preorder의 예를 보여준다.
 
-![Alt text](/assets/images/treeTraversal3.png){: width="350px" height="350px" .align-center}
+![Alt text](/assets/images/preorder.png){: width="350px" height="350px" .align-center}
 
 위의 그림에서 볼 수 있듯이, 해당 노드가 처리되고(N) 그 다음 왼쪽 서브트리가 처리되고(L) 마지막으로 오른쪽 서브트리가 처리된다(R).
 
