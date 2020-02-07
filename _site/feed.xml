@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-07T07:37:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">유니온 파인드(Union Find, Disjoint Set)</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="유니온 파인드(Union Find, Disjoint Set)" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-09-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h2 id=&quot;union-find&quot;&gt;Union-Find&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-08T03:30:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">유니온 파인드(Union Find, Disjoint Set)</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="유니온 파인드(Union Find, Disjoint Set)" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-09-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h2 id=&quot;union-find&quot;&gt;Union-Find&lt;/h2&gt;
 &lt;p&gt;컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다.&lt;/p&gt;
 
 &lt;p&gt;부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 
@@ -925,10 +925,6 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if(V==n)&lt;/code&gt; 부분에서 도착 여부를 확인하여 현재 정점이 도착점이라면, 지금까지의 이동 거리와 현재 까지 구한 해를 비교하여 더 좋은 해가 있으면 해를 갱신한다. 이와 같이 작성할 경우 도시의 수가 n개라고 할 때 O(n!)의 계산이 필요하다.&lt;/p&gt;
 
 &lt;p&gt;후에 다른 포스트에서 탐색배제를 이용하여 계산복잡도를 향상해본다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/preorder.png&quot; alt=&quot;Alt text&quot; width=&quot;350px&quot; height=&quot;350px&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/treeTraversal2.png&quot; alt=&quot;Alt text&quot; width=&quot;350px&quot; height=&quot;350px&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
