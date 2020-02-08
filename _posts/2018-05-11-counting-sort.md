@@ -201,6 +201,12 @@ space complexity
 * n은 원소의 개수, k는 음수가 아닌 키 값의 범위
 ```
 
+## 참고하면 좋은 자료
+
+카운팅 소트를 시각화한 애니메이션으로 참고하면 좋다.
+
+[Counting Sort visualization](https://www.cs.usfca.edu/~galles/visualization/CountingSort.html)
+
 ## Reference
 
 [Counting sort - wikipedia](https://en.wikipedia.org/wiki/Counting_sort)  

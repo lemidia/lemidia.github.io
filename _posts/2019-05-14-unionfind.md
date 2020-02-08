@@ -25,7 +25,7 @@ header:
 
 ---
 
-## Union-Find
+# Union-Find
 컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다.
 
 부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 
@@ -39,7 +39,7 @@ header:
 
 Union-Find represented as a tree:
 
-![Alt text](/assets/images/unionfindrepresented.png)
+![Alt text](/assets/images/unionfindrepresented.png){: width="500px" height="100px" .align-center}
 
 우리는 이를  "1 Dimention Array"로 표현이 가능합니다.
 ```java
@@ -66,7 +66,8 @@ public void makeSet() {
 
 Make set operation:
 
-![Alt text](/assets/images/makeset.png)
+![Alt text](/assets/images/makeset.png){: width="500px" height="100px" .align-center}
+
 
 배열의 상태는 아래와 같습니다.
 
@@ -95,7 +96,8 @@ int find(x) { // Recursive function
 
 Find(1) returns 2:
 
-![Alt text](/assets/images/find1.png)
+![Alt text](/assets/images/find1.png){: width="500px" height="100px" .align-center}
+
 
 현재 배열의 상태입니다.
 ```java
@@ -122,13 +124,15 @@ find(5)를 수행하면  parent[5] == 5  두 값이 같습니다.
 
 Make set operation:  
 
-![Alt text](/assets/images/makeset.png)
+![Alt text](/assets/images/makeset.png){: width="500px" height="100px" .align-center}
+
 
 처음에 이렇게 7개의 서로 다른 부분집합이 있습니다. (자기 자신이 트리의 루트)
 
 Union:
 
-![Alt text](/assets/images/union1.png)
+![Alt text](/assets/images/union1.png){: width="500px" height="100px" .align-center}
+
 
 union(2,1), union(4,3), union(6,5)를 수행하면 위 그림처럼 트리가 구성됩니다.  
 2의 루트는 2이고 1의 루트도 1 자기 자신입니다.  
@@ -145,7 +149,8 @@ union(2, 4)를 하면 아래 그림처럼 됩니다.
 
 Union(2, 4):
 
-![Alt text](/assets/images/union(2.4).png)
+![Alt text](/assets/images/union(2.4).png){: width="500px" height="100px" .align-center}
+
 
 ```java
 void union(int x, int y) {
@@ -175,7 +180,8 @@ parent[i] = [3, 1, 3, 3, 5, 5, 7]
 
 편향 트리:
 
-![Alt text](/assets/images/sqwed.png)
+![Alt text](/assets/images/sqwed.png){: width="250px" height="250px" .align-center}
+
 
 우리는 여기서 한 가지 개선을 할 수 있습니다.  
 5번에서 1번 까지(5 - 4 - 3- 2 - 1)의 경로에 있는 모든 원소는 전부 루트를 1로 갖습니다.  
@@ -187,7 +193,8 @@ find(n) 연산 수행 시 시간 복잡도는 상수 시간 O(1)이 됩니다.
 
 Union-Find with path compression:
 
-![Alt text](/assets/images/ufwithpc.png)
+![Alt text](/assets/images/ufwithpc.png){: width="500px" height="400px" .align-center}
+
 
 find(5) 연산 수행 시 5에서 루트 1로 가는 경로에 있는 모든 원소를 재귀 호출이나 For loop을 이용해서 1을 루트로 바로 가리키게 구현할 수 있습니다.
  
@@ -213,14 +220,16 @@ int find(x){
  
 우리는 여기서 랭크라는 표현을 쓰는데, 트리의 높이는 위에서 살펴본 path compresstion에 의해서 줄어들 수 있고 업데이트되지 않기 때문입니다. 그래서 랭크라는 표현을 씁니다.
 
-![Alt text](/assets/images/withoutunionbylank.png)
+![Alt text](/assets/images/withoutunionbylank.png){: width="500px" height="500px" .align-center}
+
 
 어떤 원소 u가 한 트리의 루트이고 랭크 r을 가진다고 하면 유니온 바이 랭크 연산 하에  
 그 트리의 노드 수는 최소 2^r이 되고, 랭크 r로 같은 두 트리를 Union by rank 하면  
 랭크는 1 높아지게 되고 노드의 수는 2^r + 2^r = 2^(r+1)가 됩니다.  
 노드의 수는 2배가 되고 랭크는 1 높아지므로 연산 수행 시간이 O(log n)로 보장됩니다.  
 
-![Alt text](/assets/images/ufranklog2.jpeg)
+![Alt text](/assets/images/ufranklog2.jpeg){: width="300px" height="300px" .align-center}
+
  
 원소마다 랭크 정보를 유지하기 위해서 Make set의 for loop에 rank [i] = 0을 추가해 줍니다.
 
@@ -256,9 +265,12 @@ void union(int x, int y)
 
 유니온 파인드는 무향 그래프에서의 사이클 존재 유무를 판별할 때 사용될 수 있습니다. (단, 셀프 루프는 없어야 합니다.)
  
-또, 크루스칼 알고리즘에서 최소 스패닝 트리를 찾는데에 사용됩니다.
+또한, 크루스칼 알고리즘에서 최소 스패닝 트리를 찾는데에 자료구조로서 사용됩니다.
  
 최소 스패닝 트리는 노드의 수가 n개 일 때 n-1개의 최소 비용의 간선으로 이루어진 트리로서 그래프에서 최소비용의 간선을 선택함에 있어 만들어지는 트리에서 사이클이 존재하지 않아야 하기에 사이클을 형성 유무 판별에 유니온 파인드가 사용됩니다.
+
+**Link:** [크루스칼 알고리즘]({{site.url}}{{base.url}}/algorithm/kruskal/) 글 보러가기.
+{: .notice--info}
 
 ### Union by Lank with Path Compression
 

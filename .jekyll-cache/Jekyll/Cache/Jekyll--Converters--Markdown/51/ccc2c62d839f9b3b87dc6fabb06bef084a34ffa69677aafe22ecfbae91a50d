@@ -1,0 +1,145 @@
+I"�(<p class="notice--warning"><strong>들어가기 전에:</strong> 크루스칼 알고리즘에는 다음의 선행지식이 필요합니다.</p>
+<ul>
+  <li><a href="http://localhost:4000/data%20structure/spanning-tree/">스패닝 트리와 최소 스패닝 트리</a></li>
+  <li><a href="http://localhost:4000/data%20structure/unionfind/">Union Find - 서로소 집합</a></li>
+</ul>
+
+<hr />
+
+<h1 id="크루스칼-알고리즘kruskals-algorithm">크루스칼 알고리즘(Kruskal’s Algorithm)</h1>
+
+<p><strong>크루스칼 알고리즘(Kruskal’s Algorithm)</strong>은 연결 가중치 그래프(connected weighted graph)에서 <strong>최소 스패닝 트리(Minimum spanning tree)</strong>를 찾는 알고리즘이다. 알고리즘 과정에서 볼 때 그래프의 숲(forest)관점에서 여러개의 트리 중 서로 다른 집합의 두 트리를 연결하는 <strong>가능한 최소 가중치 간선(least possible weighted edge)</strong>을 찾는 작업을 수행한다.</p>
+
+<p>그래프 이론에서는 <strong>그리디 알고리즘</strong>의 하나로서 알고리즘의 <strong>매 과정마다 최소 가중치 간선</strong>을 하나씩 선택해 추가하는 작업을 하면서 연결 가중치 그래프에서 <strong>최소 스패닝 트리</strong>를 찾는다. 그리하여 모든 정점을 포함하고 간선들의 서브셋인 스패닝 트리를 형성하게 하고, 생성된 스패닝 트리의 모든 간선의 <strong>가중치 합을 최소</strong>로 만든다.</p>
+
+<p>그래프가 <strong>연결 그래프가 아니라면</strong>, 크루스칼 알고리즘은 <strong>최소 스패닝 숲(Minimum spanning forest)</strong>을 찾는다. (비 연결 그래프 내의 각 연결된 그래프에서의 최소 스패닝 트리)</p>
+
+<h2 id="알고리즘">알고리즘</h2>
+
+<p><strong>크루스칼 알고리즘이 어떻게 동작하는지 살펴보자.</strong></p>
+
+<p>그래프 G가 주어졌다고 하자. (여기서는, 비 연결 그래프, 연결 그래프 구분하지 않는다.)</p>
+
+<ul>
+  <li>
+    <p>그래프 G의 모든 정점이 분리된 트리들의 집합인 숲(Forest) F를 생성한다.<br />
+여기서 숲은 분리된 트리들의 집합이다. (a set of trees)</p>
+  </li>
+  <li>
+    <p>그래프 G의 모든 간선을 포함하는 집합 S를 생성한다.</p>
+  </li>
+  <li>
+    <p>While 집합 S가 공집합이 아니고 &amp;&amp; 숲 F가 스패닝 트리가 아니면</p>
+    <ul>
+      <li>집합 S에서 가장 최소 가중치의 간선을 하나 선택하고 S로 부터 삭제한다.</li>
+      <li>선택된 간선이 서로 다른 두 트리를 연결한다면 숲 F에 선택된 간선을 추가한다.<br />
+  이것은 두 트리를 하나의 트리로 합치는 것이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>알고리즘이 끝나고, 그래프 G가 <strong>비 연결 그래프</strong> 였다면 숲 F는 다중 컴포넌트(Trees)의 <strong>최소 스패닝 숲(MSF)</strong>을 형성하고, 그래프 G가 <strong>연결 그래프</strong> 였다면 숲 F는 단일 컴포넌트의 <strong>최소 스패닝 트리(MST)</strong>를 형성하게 된다.</p>
+
+<hr />
+
+<p><strong>다음은 크루스칼 알고리즘의 Animation이다.</strong></p>
+
+<p><img src="/assets/images/Kruskal-Animation.gif" alt="Alt" /></p>
+
+<ul>
+  <li>파란색 간선은 현재 집합 S에서 선택한 간선</li>
+  <li>빨간색 간선은 집합 S에서 선택한 간선을 숲 F에 추가한 간선이다.</li>
+</ul>
+
+<h2 id="의사코드">의사코드</h2>
+
+<p>다음은 크루스칼 알고리즘의 의사코드이다. (Union Find 자료구조 사용)</p>
+
+<p class="notice--warning"><strong>Warning:</strong> 의사코드에는 <strong><a href="http://localhost:4000/data%20structure/unionfind/">Union Find - 서로소 집합</a></strong> 자료구조가 사용이 되므로 모른다면 반드시 알고와야 이해가 가능하다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">algorithm</span> <span class="n">Kruskal</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="n">is</span>
+    <span class="c1">// 공집합으로 초기화</span>
+    <span class="n">A</span> <span class="o">:=</span> <span class="err">∅</span>
+    <span class="c1">// 그래프 G의 모든 정점에 대해서</span>
+    <span class="k">for</span> <span class="n">each</span> <span class="n">v</span> <span class="err">∈</span> <span class="n">G</span><span class="p">.</span><span class="n">V</span> <span class="k">do</span>
+        <span class="c1">// 모든 정점들을 하나의 독립된 트리로 만들어 준다.</span>
+        <span class="n">MAKE</span><span class="o">-</span><span class="n">SET</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="c1">// 그래프 G의 모든 간선들에 대해서 (간선들은 전부 오름차순으로 나열 되어있다.)</span>
+    <span class="k">for</span> <span class="n">each</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="n">in</span> <span class="n">G</span><span class="p">.</span><span class="n">E</span> <span class="n">ordered</span> <span class="n">by</span> <span class="n">weight</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">increasing</span> <span class="k">do</span>
+        <span class="c1">// u와 v가 속한 집합이 서로 다르면 (서로 다른 집합의 트리라면)</span>
+        <span class="k">if</span> <span class="n">FIND</span><span class="o">-</span><span class="n">SET</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="err">≠</span> <span class="n">FIND</span><span class="o">-</span><span class="n">SET</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">then</span>
+           <span class="c1">// u, v를 정점으로 하는 간선 (u, v)를 집합 A에 포함 시킨다.</span>
+           <span class="n">A</span> <span class="o">:=</span> <span class="n">A</span> <span class="err">∪</span> <span class="p">{(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)}</span>
+           <span class="c1">// 두 집합 u, v를 하나의 집합으로 합친다.</span>
+           <span class="n">UNION</span><span class="p">(</span><span class="n">FIND</span><span class="o">-</span><span class="n">SET</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">FIND</span><span class="o">-</span><span class="n">SET</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">A</span>
+</code></pre></div></div>
+
+<h2 id="예제">예제</h2>
+
+<p><strong>예를 들어 크루스칼 알고리즘이 어떻게 동작하는지 하나씩 알아보자.</strong></p>
+
+<p>다음의 그래프에서 크루스칼 알고리즘을 적용해 최소 스패닝 트리를 찾아본다.</p>
+
+<p><strong>Graph G:</strong></p>
+
+<p><img src="/assets/images/kruskal-algorithm-example.png" alt="Alt" class="align-center" /></p>
+
+<hr />
+
+<p>다음은 위 그래프의 가중치 간선들의 정보이다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edge	AE   AD   AC   AB   BC   CD   DE
+Weight	6    10   4    1    3    5    2
+</code></pre></div></div>
+
+<p>먼저, 간선들을 가중치에 따라 오름차순으로 정렬한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edge	AB   DE   BC   AC   CD   AE   AD
+Weight	1    2    3    4    5    6    10
+</code></pre></div></div>
+<hr />
+
+<p><strong>MST 구축을 시작한다.</strong></p>
+
+<p>위 간선 집합에서 <strong>가중치가 1로 제일 작은</strong> 최소 가중치 간선인 AB를 선택한다.<br />
+정점 A와 정점B는 서로 다른 집합이므로 간선 AB를 MST에 추가한다.</p>
+
+<p><strong>MST:</strong>
+<img src="/assets/images/kruskal-algorithm-solution.png" alt="Alt" class="align-center" /></p>
+
+<p>이번에는 AB를 선택했으니 그 다음으로 가중치가 작은 간선을 선택한다. 여기서는 가중치가 2인 간선 DE를 선택한다.</p>
+
+<p>정점D와 정점E는 서로 다른 집합이므로 간선 DE를 MST에 추가한다.</p>
+
+<p><strong>MST:</strong>
+<img src="/assets/images/kruskal-algorithm-solution1.png" alt="Alt" class="align-center" /></p>
+
+<p>계속해서, DE를 선택했으니 그 다음으로 가중치가 작은 간선을 선택한다. 여기서는 가중치가 3인 간선 BC를 선택한다.</p>
+
+<p>정점B와 정점C는 서로 다른 집합이므로 간선 BC를 MST에 추가한다.</p>
+
+<p><strong>MST:</strong>
+<img src="/assets/images/kruskal-algorithm-solution2.png" alt="Alt" class="align-center" /></p>
+
+<p>계속해서, BC를 선택했으니 그 다음으로 가중치가 작은 간선을 선택한다. 여기서는 가중치가 4인 간선 AC를 선택한다.</p>
+
+<p>그러나 정점A와 정점C는 서로 이미 같은 집합에 속해 있다. 따라서 간선 AC를 추가하면 <strong>사이클이 생긴다는 것</strong>을 알 수 있다.</p>
+
+<p><strong>MST:</strong>
+<img src="/assets/images/kruskal-algorithm-solution2-1.png" alt="Alt" class="align-center" /></p>
+
+<p>MST는 트리이므로 사이클이 없어야 하는다는 것을 알고있다.
+따라서, 간선 AC는 버린다.</p>
+
+<p>계속해서, 간선 AC 다음으로 가중치가 작은 간선을 선택한다. 여기서는 가중치가 5인 간선 CD를 선택한다.</p>
+
+<p>정점C와 정점D는 서로 다른 집합이므로 해당 정점들을 끝점으로 하는 간선을 추가해도 사이클을 형성하지 않는다. 간선 CD를 MST에 추가한다.</p>
+
+<p><strong>MST:</strong>
+<img src="/assets/images/kruskal-algorithm-solution3.png" alt="Alt" class="align-center" /></p>
+
+<p>이로서 <strong>그래프 G의 모든 정점</strong>을 포함하고 <strong>4개(V-1)의 간선</strong>으로 구성되는 <strong>최소 스패닝 트리(MST)</strong>가 완성이 되었다.</p>
+
+<p>이 스패닝 트리의 가중치 합은 11로서 그래프 G에서 나올 수 있는 스패닝 트리 중 가장 작은 가중치의 합을 가진 트리가 된다.</p>
+:ET
