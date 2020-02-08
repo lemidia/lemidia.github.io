@@ -395,5 +395,5 @@ class unionFind {
 ```
 
 ## References
-[Wikipedi - Union Find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure#by_size)
-[Algocoding - Union Find](https://algocoding.wordpress.com/2014/09/19/union-find-data-structure-disjoint-set-data-structure/)
+[Union Find - Wikipedia](https://en.wikipedia.org/wiki/Disjoint-set_data_structure#by_size)  
+[Union Find - Algocoding](https://algocoding.wordpress.com/2014/09/19/union-find-data-structure-disjoint-set-data-structure/)

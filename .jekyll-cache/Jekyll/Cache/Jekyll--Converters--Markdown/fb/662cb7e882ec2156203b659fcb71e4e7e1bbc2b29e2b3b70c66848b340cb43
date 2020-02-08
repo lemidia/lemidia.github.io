@@ -1,4 +1,4 @@
-I"��<h1 id="union-find">Union-Find</h1>
+I"��<h1 id="union-find">Union-Find</h1>
 <p>컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조입니다.</p>
 
 <p>부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하겠습니다. 
@@ -353,6 +353,6 @@ find(n) 연산 수행 시 시간 복잡도는 상수 시간 O(1)이 됩니다.</
 </code></pre></div></div>
 
 <h2 id="references">References</h2>
-<p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure#by_size">Wikipedi - Union Find</a>
+<p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure#by_size">Union Find- Wikipedia</a><br />
 <a href="https://algocoding.wordpress.com/2014/09/19/union-find-data-structure-disjoint-set-data-structure/">Algocoding - Union Find</a></p>
 :ET
