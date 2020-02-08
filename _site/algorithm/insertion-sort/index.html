@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Code Factory">
 <meta property="og:title" content="삽입 정렬(Insertion Sort)">
-<meta property="og:url" content="http://localhost:4000/algorithm/insertion-sort-copy/">
+<meta property="og:url" content="http://localhost:4000/algorithm/insertion-sort/">
 
 
   <meta property="og:description" content="Stable and In-place 알고리즘 ">
@@ -46,7 +46,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/algorithm/insertion-sort-copy/">
+<link rel="canonical" href="http://localhost:4000/algorithm/insertion-sort/">
 
 
 
@@ -232,7 +232,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
 
-  7 minute read
+  11 minute read
 
 </p>
       
@@ -716,21 +716,22 @@ space complexity    O(1) 추가 공간
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%82%BD%EC%9E%85+%EC%A0%95%EB%A0%AC%28Insertion+Sort%29%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Finsertion-sort-copy%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EC%82%BD%EC%9E%85+%EC%A0%95%EB%A0%AC%28Insertion+Sort%29%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Finsertion-sort%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Finsertion-sort-copy%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Finsertion-sort%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Finsertion-sort-copy%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Finsertion-sort%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/algorithm/binary-search/" class="pagination--pager" title="이분 탐색(Binary Search)-예정 포스트
+">Previous</a>
     
     
-      <a href="/algorithm/BFS/" class="pagination--pager" title="너비우선탐색(Breath First Search, BFS)-예정 포스트
+      <a href="/algorithm/kruskal/" class="pagination--pager" title="크루스칼 알고리즘(Kruskal’s Algorithm)
 ">Next</a>
     
   </nav>
@@ -778,7 +779,7 @@ space complexity    O(1) 추가 공간
 
 
 
-  4 minute read
+  6 minute read
 
 </p>
     
@@ -824,13 +825,13 @@ space complexity    O(1) 추가 공간
 
 
 
-  11 minute read
+  16 minute read
 
 </p>
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 21 2019</p>
     
     <p class="archive__item-excerpt" itemprop="description">전체탐색에서 불필요한 공간을 탐색하지 않음으로써 알고리즘의 효율을 향상하는 방법
 </p>
@@ -870,7 +871,7 @@ space complexity    O(1) 추가 공간
 
 
 
-  10 minute read
+  15 minute read
 
 </p>
     
@@ -891,17 +892,9 @@ space complexity    O(1) 추가 공간
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-      <div class="archive__item-teaser">
-        <img src=
-          
-            "/assets/images/creativealgorithm1.png"
-          
-          alt="">
-      </div>
-    
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/%EB%B9%84%EC%84%A0%ED%98%95%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%83%90%EC%83%89/" rel="permalink">비선형 구조와 탐색(Non-linear Structure and Search)
+        <a href="/algorithm/eratosthenes-sieve/" rel="permalink">에라토스테네스의 체(Eratosthenes’s Sieve)
 </a>
       
     </h2>
@@ -916,15 +909,15 @@ space complexity    O(1) 추가 공간
 
 
 
-  4 minute read
+  5 minute read
 
 </p>
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2019</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2019</p>
     
-    <p class="archive__item-excerpt" itemprop="description">비선형 구조가 무엇이고 이를 어떻게 탐색할 수 있는지 알아본다.
+    <p class="archive__item-excerpt" itemprop="description">소수의 여부를 보다 효율적으로 알 수 있는 알고리즘
 </p>
   </article>
 </div>
@@ -1019,8 +1012,8 @@ Hosted by Github Pages.  Made with <img src="/assets/images/love.svg" alt=""> by
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/algorithm/insertion-sort-copy/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/algorithm/insertion-sort copy"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "http://localhost:4000/algorithm/insertion-sort/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/algorithm/insertion-sort"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
