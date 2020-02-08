@@ -1,0 +1,16 @@
+I"'<ul class="toc__menu">
+  <li><a href="#크루스칼-알고리즘kruskals-algorithm">크루스칼 알고리즘(Kruskal’s Algorithm)</a>
+    <ul>
+      <li><a href="#알고리즘">알고리즘</a></li>
+      <li><a href="#의사코드">의사코드</a></li>
+      <li><a href="#예제">예제</a></li>
+      <li><a href="#구현">구현</a>
+        <ul>
+          <li><a href="#kruskals-algorithm---c-code">Kruskal’s algorithm - C++ Code</a></li>
+        </ul>
+      </li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET
