@@ -1,4 +1,0 @@
-I"�<p>깊이우선탐색(DFS)은 트리나 그래프 상에서 탐색을 위한 알고리즘이다. 이 알고리즘은 대게 루트 노드부터 시작하여 실행이 이루어지지만, 그래프의 경우에는 임의의 노드를 루트노드로 정하게 된다.</p>
-
-<p>The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.</p>
-:ET
