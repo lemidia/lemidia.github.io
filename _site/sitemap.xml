@@ -13,10 +13,6 @@
 <lastmod>2019-07-10T22:06:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/algorithm/kruskal/</loc>
-<lastmod>2019-05-10T22:06:00+09:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/algorithm/quick-sort/</loc>
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
 </url>
@@ -34,6 +30,10 @@
 </url>
 <url>
 <loc>http://localhost:4000/algorithm/counting-sort/</loc>
+<lastmod>2019-05-10T22:06:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/algorithm/DFS-Implementation/</loc>
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
 </url>
 <url>

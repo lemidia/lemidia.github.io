@@ -1,0 +1,4 @@
+I"k<p>트리나 그래프 상에서 탐색을 위한 알고리즘이다.</p>
+
+<p>Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.</p>
+:ET
