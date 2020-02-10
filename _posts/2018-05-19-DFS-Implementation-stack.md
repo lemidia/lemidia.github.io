@@ -205,57 +205,60 @@ if (!visited[v]){
 
 **위의 예제 그래프를 사용한 전체 코드는 다음과 같다.**
 
-### Graph.java
+### DFS_Stack.java
 ```java
 import java.util.LinkedList;
 import java.util.Stack;
 
-public class Graph {
-    int vertex;
-    LinkedList<Integer> list[];
+public class DFSIterative {
+    
+    static class Graph{
+        int vertex;
+        LinkedList<Integer> list[];
 
-    public Graph(int vertex) {
-        this.vertex = vertex;
-        list = new LinkedList[vertex];
-        for (int i = 0; i <vertex ; i++) {
-            list[i] = new LinkedList<>();
+        public Graph(int vertex) {
+            this.vertex = vertex;
+            list = new LinkedList[vertex];
+            for (int i = 0; i <vertex ; i++) {
+                list[i] = new LinkedList<>();
+            }
         }
-    }
 
-    public void addEdge(int source, int destination){
-        list[source].addFirst(destination);
-        list[destination].addFirst(source);
-    }
+        public void addEdge(int source, int destination){
+            list[source].addFirst(destination);
+            list[destination].addFirst(source);
+        }
 
-    public void DFS(int start){
-        System.out.print("Depth First Traversal: ");
-        boolean[] visited = new boolean[vertex];
-        Stack<Integer> stack = new Stack<Integer>();
-        stack.push(start);
-        while (!stack.isEmpty()){
-            int v = stack.pop();
-            if (!visited[v]){
-                System.out.print(v + " ");
-                visited[v] = true;
-                for (int i = 0; i < list[v].size(); i++){
-                    int dest = list[v].get(i);
-                    if (!visited[dest])
-                        stack.push(dest);
+        public void DFS(int start){
+            System.out.print("Depth First Traversal: ");
+            boolean[] visited = new boolean[vertex];
+            Stack<Integer> stack = new Stack<Integer>();
+            stack.push(start);
+            while (!stack.isEmpty()){
+                int v = stack.pop();
+                if (!visited[v]){
+                    System.out.print(v + " ");
+                    visited[v] = true;
+                    for (int i = 0; i < list[v].size(); i++){
+                        int dest = list[v].get(i);
+                        if (!visited[dest])
+                            stack.push(dest);
+                    }
                 }
             }
         }
-    }
 
-    public void printGraph(){
-        for (int i = 0; i <vertex ; i++) {
-            LinkedList<Integer> nodeList = list[i];
-            if(nodeList.isEmpty()==false) {
-                System.out.print("source = " + i + " is connected to nodes: ");
-                for (int j = 0; j < nodeList.size(); j++) {
-                    System.out.print(" " + nodeList.get(j));
+        public void printGraph(){
+            for (int i = 0; i <vertex ; i++) {
+                LinkedList<Integer> nodeList = list[i];
+                if(nodeList.isEmpty()==false) {
+                    System.out.print("source = " + i + " is connected to nodes: ");
+                    for (int j = 0; j < nodeList.size(); j++) {
+                        System.out.print(" " + nodeList.get(j));
+                    }
                 }
+                System.out.println();
             }
-            System.out.println();
         }
     }
 
