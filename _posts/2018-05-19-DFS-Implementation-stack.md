@@ -32,7 +32,12 @@ use_math: true
 
 **깊이우선탐색 글 참고하기**
 
-- [Depth First Search]({{site.url}}{{base.url}}/algorithm/DFS/)  
+- [Depth First Search]({{site.url}}{{base.url}}/algorithm/DFS/) 
+
+**그래프의 구현 글 참고하기**
+
+- [Graph]({{site.url}}{{base.url}}/data%20structure/graph/)  
+
 
 ***
 

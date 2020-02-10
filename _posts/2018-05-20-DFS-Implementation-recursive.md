@@ -21,7 +21,7 @@ last_modified_at: 2019-05-10T08:06:00-05:00
 
 header:
   overlay_image: /assets/images/headerLogo2.jpg
-  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
+  overlay_filter: 0.2 # same as adding an opacity of 0.5 to a black background
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   #actions:
   #  - label: "More Info"
@@ -33,6 +33,11 @@ use_math: true
 **깊이우선탐색 글 참고하기**
 
 - [Depth First Search]({{site.url}}{{base.url}}/algorithm/DFS/)  
+
+**그래프의 구현 글 참고하기**
+
+- [Graph]({{site.url}}{{base.url}}/data%20structure/graph/)  
+
 
 ***
 
