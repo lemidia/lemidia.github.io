@@ -205,13 +205,13 @@ if (!visited[v]){
 
 **위의 예제 그래프를 사용한 전체 코드는 다음과 같다.**
 
-### DFS_Stack.java
+### DFSIterative.java
 ```java
 import java.util.LinkedList;
 import java.util.Stack;
 
 public class DFSIterative {
-    
+
     static class Graph{
         int vertex;
         LinkedList<Integer> list[];

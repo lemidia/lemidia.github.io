@@ -1,4 +1,4 @@
-I"D<ul class="toc__menu">
+I"R<ul class="toc__menu">
   <li><a href="#깊이우선탐색depth-first-search-dfs">깊이우선탐색(Depth First Search, DFS</a>
     <ul>
       <li><a href="#알고리즘">알고리즘</a></li>
@@ -7,7 +7,7 @@
         <ul>
           <li><a href="#의사코드">의사코드</a></li>
           <li><a href="#자바-프로그램">자바 프로그램</a></li>
-          <li><a href="#graphjava">Graph.java</a></li>
+          <li><a href="#dfsiterativejava">DFSIterative.java</a></li>
         </ul>
       </li>
       <li><a href="#references">References</a></li>
