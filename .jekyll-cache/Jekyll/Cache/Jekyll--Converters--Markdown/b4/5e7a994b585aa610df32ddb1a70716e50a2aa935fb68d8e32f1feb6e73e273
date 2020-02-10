@@ -1,4 +1,4 @@
-I"-/<h1 id="깊이우선탐색depth-first-search-dfs">깊이우선탐색(Depth First Search, DFS)</h1>
+I"�/<h1 id="깊이우선탐색depth-first-search-dfs">깊이우선탐색(Depth First Search, DFS)</h1>
 
 <p>깊이우선탐색(DFS)은 트리나 그래프 혹은 다른 구조 상에서 탐색을 위한 알고리즘이다. 이 알고리즘은 루트 노드를 시작으로(그래프의 경우에는 임의의 노드를 루트 노드로 정하게 된다.) 탐색을 하다가 더 이상 갈 수 없어 백트랙 하기 전까지 가능한 한 가지를 따라 깊게 멀리 탐색한다.</p>
 
@@ -157,7 +157,8 @@ Output: v로 부터 탐색 가능한 모든 정점들</p>
 <p>프로그래밍 언어로의 구현은 다음 글을 참고하면 좋다.</p>
 
 <ul>
-  <li><a href="http://localhost:4000/algorithm/DFS-Implementation/">DFS Implementation In Java</a></li>
+  <li><a href="http://localhost:4000/algorithm/DFS-Implementation/">DFS Implementation Using Recursion</a></li>
+  <li><a href="http://localhost:4000/algorithm/DFS-Implementation/">DFS Implementation Using Stack</a></li>
 </ul>
 
 <h2 id="시간-복잡도--공간-복잡도">시간 복잡도 &amp; 공간 복잡도</h2>
