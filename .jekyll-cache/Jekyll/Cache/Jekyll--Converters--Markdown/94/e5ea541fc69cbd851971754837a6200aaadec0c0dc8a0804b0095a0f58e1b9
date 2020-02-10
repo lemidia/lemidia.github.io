@@ -1,0 +1,279 @@
+I"o<p><strong>깊이우선탐색 글 참고하기</strong></p>
+
+<ul>
+  <li><a href="http://localhost:4000/algorithm/DFS/">Depth First Search</a></li>
+</ul>
+
+<hr />
+
+<p class="notice--warning">이번 글에서는 <strong>재귀 함수</strong>를 사용한 DFS를 이해하고 구현해 봅니다.</p>
+
+<h1 id="깊이우선탐색depth-first-search-dfs">깊이우선탐색(Depth First Search, DFS</h1>
+
+<p>깊이우선탐색(DFS)은 트리나 그래프 혹은 다른 구조 상에서 탐색을 위한 알고리즘이다. 이 알고리즘은 루트 노드를 시작으로(그래프의 경우에는 임의의 노드를 루트 노드로 정하게 된다.) 탐색을 하다가 더 이상 갈 수 없어 백트랙 하기 전까지 가능한 한 가지를 따라 깊게 멀리 탐색한다.</p>
+
+<p>시간 및 공간 복잡도 분석은 많은 응용분야에 따라 다른데, 이론적인 컴퓨터 과학 분야에서 DFS는 전체 그래프를 탐색하는데 사용되기 때문에 수행 시간은 선형인 $O(|V|+|E| )$가 된다. 공간 복잡도면을 보면 DFS는 경로상의 현재 탐색하고 있는 정점과 경로상 이미 방문한 정점들의 스택을 저장하고 있기 때문에 최악 $O(|V|)$의 공간을 요구한다. ($|V|$는 정점의 수, $|E|$는 간선의 수이다.)</p>
+
+<h2 id="알고리즘">알고리즘</h2>
+
+<p>재귀 함수를 이용한 DFS 알고리즘은 다음과 같은 순서로 실행된다.</p>
+
+<ol>
+  <li>
+    <p>탐색을 시작할 스타팅 노드를 매개변수로 하여 DFS 함수를 실행한다.</p>
+  </li>
+  <li>
+    <p>현재 탐색 정점을 방문 표시한다.</p>
+  </li>
+  <li>
+    <p>현재 정점에 인접한 모든 정점 중에서 방문하지 않은 정점을 재귀적으로 탐색한다.<br />
+현재 정점에 인접한 모든 정점을 방문 하였으면 이전 정점으로 백트래킹 한다.</p>
+  </li>
+  <li>
+    <p>2번으로 간다.</p>
+  </li>
+</ol>
+
+<h2 id="예제">예제</h2>
+
+<p><strong>예를 들어 DFS 알고리즘을 이해 해보자.</strong></p>
+
+<p class="notice--warning"><strong>방문 우선순위:</strong> 현재 정점과 인접한 정점이 <strong>여러개면</strong> 번호가 <strong>[작은 순서대로]</strong> 방문한다.</p>
+
+<p>아래와 같은 정점 5개로 이루어진 비방향 그래프로 DFS를 시작한다.</p>
+
+<p>탐색은 0번 정점부터 시작한다고 가정한다.</p>
+
+<p><img src="/assets/images/graph-dfs-recursive-0.jpg" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>DFS 함수로 0번 정점을 방문한다.<br />
+0번 정점의 인접 정점들 중에서 1번 정점을 재귀적으로 탐색한다.</p>
+
+<p><img src="/assets/images/dfs-recursive0.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>위 알고리즘에 따라 탐색을 시작할 0번 정점을 스택에 넣는다.</p>
+
+<p><img src="/assets/images/dfs-recursive1.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>스택에서 가장 위에있는 원소를 하나 꺼낸다. (여기서는 제일 왼쪽 칸이 top이다.)
+0번 정점을 방문표시 하고 0번 정점과 인접한 정점들 중에서 방문하지 않는 정점들을 모두 스택에 넣는다.</p>
+
+<p>0번 정점과 1, 2, 3번 정점이 인접해 있다. 위의 방문 우선순위에 따라 인접한 정점이 <strong>여러개면</strong> 번호가 <strong>[작은 순서대로]</strong> 방문해야 하므로 3, 2, 1순으로 스택에 삽입한다. (후입 선출)</p>
+
+<p><img src="/assets/images/dfs-recursive2.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>계속해서, 스택에서 가장 위에있는 1번 정점을 꺼낸다.
+1번 정점을 방문표시 하고 1번 정점과 인접한 정점들 중에서 방문하지 않는 정점들을 모두 스택에 넣는다.<br />
+여기서는 2번 정점을 스택에 삽입한다.</p>
+
+<p><img src="/assets/images/dfs-recursive3.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>그 다음, 스택에서 가장 위에있는 2번 정점을 꺼낸다.
+2번 정점을 방문표시 하고 2번 정점과 인접한 정점들 중에서 방문하지 않는 정점들을 모두 스택에 넣는다.<br />
+여기서는 4번 정점을 스택에 삽입한다.</p>
+
+<p><img src="/assets/images/dfs-recursive4.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>그 다음, 스택에서 가장 위에있는 4번 정점을 꺼낸다.
+4번 정점을 방문표시 하고 4번 정점과 인접한 정점들 중에서 방문하지 않는 정점들을 모두 스택에 넣는다.<br />
+4번 정점과 인접한 정점 중에서는 방문하지 않은 정점들이 없으므로 다음 스탭으로 간다.</p>
+
+<p><img src="/assets/images/dfs-recursive5.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>그 다음, 스택에서 가장 위에있는 3번 정점을 꺼낸다.
+3번 정점을 방문표시 하고 3번 정점과 인접한 정점들 중에서 방문하지 않는 정점들을 모두 스택에 넣는다.<br />
+3번 정점과 인접한 정점 중에서는 방문하지 않은 정점들이 없으므로 다음 스탭으로 간다.</p>
+
+<p><img src="/assets/images/dfs-recursive6.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p><img src="/assets/images/dfs-recursive7.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p><img src="/assets/images/dfs-recursive8.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p><img src="/assets/images/dfs-recursive9.png" alt="Alt text" width="550px" height="100px" class="align-center" /></p>
+
+<p>알고리즘 2번에 의해 스택이 모두 비었으니 알고리즘을 끝낸다.</p>
+
+<p><strong>스택을 이용한 DFS의 방문순서는 <code class="highlighter-rouge">0 1 2 4 3</code> 순이다.</strong></p>
+
+<h2 id="구현">구현</h2>
+
+<h3 id="의사코드">의사코드</h3>
+
+<p>스택을 이용한 반복적인 방법</p>
+
+<p>Input: 그래프 G, 그래프 G의 정점 v<br />
+Output: v로 부터 탐색 가능한 모든 정점들</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">procedure</span> <span class="n">DFS</span><span class="o">-</span><span class="n">iterative</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="n">is</span>
+    <span class="n">let</span> <span class="n">S</span> <span class="n">be</span> <span class="n">a</span> <span class="n">stack</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">S</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span> <span class="k">do</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="n">is</span> <span class="n">not</span> <span class="n">labeled</span> <span class="n">as</span> <span class="n">discovered</span> <span class="n">then</span>
+            <span class="n">label</span> <span class="n">v</span> <span class="n">as</span> <span class="n">discovered</span>
+            <span class="k">for</span> <span class="n">all</span> <span class="n">edges</span> <span class="n">from</span> <span class="n">v</span> <span class="n">to</span> <span class="n">w</span> <span class="n">in</span> <span class="n">G</span><span class="p">.</span><span class="n">adjacentEdges</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">do</span>
+                <span class="k">if</span> <span class="n">w</span> <span class="n">is</span> <span class="n">not</span> <span class="n">labeled</span> <span class="n">as</span> <span class="n">discovered</span> <span class="n">then</span> 
+                  <span class="n">S</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>한 구문씩 보자.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">let S be a stack:</code> S라는 스택을 하나 생성한다. 현재 방문 정점의 인접 정점들을 담는다.</li>
+  <li><code class="highlighter-rouge">S.push(v):</code> 탐색하고자 하는 시작 정점 v를 스택에 push한다.</li>
+  <li>while S is not empty do: 스택이 빈 공간이 아닐 때 까지 아래 연산들을 반복한다.
+    <ul>
+      <li><code class="highlighter-rouge">v = S.pop():</code>현재 탐색 하고 있는 정점을 v에 넣는다.</li>
+      <li><code class="highlighter-rouge">if v is not labeled as discovered then label v as discovered:</code> 만약 v가 탐색되지 않았으면, 탐색 완료 표시를 한다.</li>
+      <li><code class="highlighter-rouge">for all edges from v to w in G.adjacentEdges(v) do if w is not labeled as discovered then S.push(w):</code> 현재 정점 v의 모든 인접한 정점 w를 스택에 넣는다. (w가 방문되지 않았으면)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="자바-프로그램">자바 프로그램</h3>
+
+<p>위 의사코드를 바탕으로 <strong>스택을 이용한 DFS 알고리즘</strong> 자바 코드는 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">DFS</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">){</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">vertex</span><span class="o">];</span>
+    <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+    <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">v</span><span class="o">]){</span>
+            <span class="n">visited</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">[</span><span class="n">v</span><span class="o">].</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+                <span class="kt">int</span> <span class="n">dest</span> <span class="o">=</span> <span class="n">list</span><span class="o">[</span><span class="n">v</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">dest</span><span class="o">])</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">dest</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위의 코드 설명</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">vertex</span><span class="o">];</span>
+<span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+</code></pre></div></div>
+
+<p>방문할 인접 정점들을 저장할 Stack과 정점들의 방문 표시를 할 visited[] 배열을 선언한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+</code></pre></div></div>
+<p>탐색을 시작할 스타팅 노드를 스택에 넣는다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){}</span>
+</code></pre></div></div>
+<p>스택이 빈 공간이 아닐 때 까지 다음을 실행한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">v</span><span class="o">]){</span>
+  <span class="n">visited</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">[</span><span class="n">v</span><span class="o">].</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+      <span class="kt">int</span> <span class="n">dest</span> <span class="o">=</span> <span class="n">list</span><span class="o">[</span><span class="n">v</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">dest</span><span class="o">])</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">dest</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>스택에서 정점 하나를 꺼내 방문하지 않았으면 방문 표시를 하고 그 정점에 인접한 모든 정점을 스택에 넣는다.(방문 하지 않은 정점들만)</p>
+
+<hr />
+
+<p><strong>위의 예제 그래프를 사용한 전체 코드는 다음과 같다.</strong></p>
+
+<h3 id="graphjava">Graph.java</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Stack</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Graph</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">vertex</span><span class="o">;</span>
+    <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">[];</span>
+
+    <span class="kd">public</span> <span class="nf">Graph</span><span class="o">(</span><span class="kt">int</span> <span class="n">vertex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">vertex</span> <span class="o">=</span> <span class="n">vertex</span><span class="o">;</span>
+        <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">[</span><span class="n">vertex</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="n">vertex</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">source</span><span class="o">,</span> <span class="kt">int</span> <span class="n">destination</span><span class="o">){</span>
+        <span class="n">list</span><span class="o">[</span><span class="n">source</span><span class="o">].</span><span class="na">addFirst</span><span class="o">(</span><span class="n">destination</span><span class="o">);</span>
+        <span class="n">list</span><span class="o">[</span><span class="n">destination</span><span class="o">].</span><span class="na">addFirst</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">DFS</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Depth First Traversal: "</span><span class="o">);</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">vertex</span><span class="o">];</span>
+        <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+            <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">v</span><span class="o">]){</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">v</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">[</span><span class="n">v</span><span class="o">].</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+                    <span class="kt">int</span> <span class="n">dest</span> <span class="o">=</span> <span class="n">list</span><span class="o">[</span><span class="n">v</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                    <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">dest</span><span class="o">])</span>
+                        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">dest</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printGraph</span><span class="o">(){</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="n">vertex</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">nodeList</span> <span class="o">=</span> <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">nodeList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()==</span><span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"source = "</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">" is connected to nodes: "</span><span class="o">);</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nodeList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">" "</span> <span class="o">+</span> <span class="n">nodeList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Graph</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Graph</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">printGraph</span><span class="o">();</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">DFS</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output:
+
+source = 0 is connected to nodes:  3 2 1
+source = 1 is connected to nodes:  2 0
+source = 2 is connected to nodes:  4 1 0
+source = 3 is connected to nodes:  0
+source = 4 is connected to nodes:  2
+Depth First Traversal: 0 1 2 4 3 
+Process finished with exit code 0
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Depth-first_search#Properties">Wikipedia</a></li>
+  <li><a href="https://www.javatpoint.com/depth-first-search-algorithm">JavaTpoint</a></li>
+  <li><a href="https://algorithms.tutorialhorizon.com/graph-depth-first-traversal/">Algorithms</a></li>
+</ul>
+:ET

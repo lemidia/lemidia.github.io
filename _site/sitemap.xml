@@ -33,11 +33,15 @@
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/algorithm/DFS-Implementation/</loc>
+<loc>http://localhost:4000/algorithm/DFS/</loc>
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/algorithm/DFS/</loc>
+<loc>http://localhost:4000/algorithm/DFS-Implementation-stack/</loc>
+<lastmod>2019-05-10T22:06:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/algorithm/DFS-Implementation-recursive/</loc>
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
 </url>
 <url>
@@ -166,6 +170,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page8/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page9/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/google75dbf5986dc0180c.html</loc>
