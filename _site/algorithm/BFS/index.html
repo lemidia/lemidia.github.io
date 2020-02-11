@@ -392,10 +392,11 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
               
                 <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
                 <ul class="toc__menu">
-  <li><a href="#너비우선탐색">너비우선탐색</a>
+  <li><a href="#너비우선탐색breadth-first-search">너비우선탐색(Breadth First Search)</a>
     <ul>
       <li><a href="#예제">예제</a></li>
       <li><a href="#의사코드">의사코드</a></li>
+      <li><a href="#구현">구현</a></li>
       <li><a href="#applications">Applications</a></li>
       <li><a href="#시간복잡도-및-공간복잡도">시간복잡도 및 공간복잡도</a></li>
     </ul>
@@ -422,7 +423,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
             </nav>
           </aside>
         
-        <h1 id="너비우선탐색">너비우선탐색</h1>
+        <h1 id="너비우선탐색breadth-first-search">너비우선탐색(Breadth First Search)</h1>
 
 <p>너비우선탐색(BFS)은 트리나 그래프 혹은 다른 구조 상에서 탐색을 위한 알고리즘이다. 이 알고리즘은 루트 노드를 시작으로(그래프의 경우에는 임의의 노드를 루트 노드로 정하게 된다.) 다음 레벨로 가기전에 현재 레벨에서 인접한 모든 이웃노드들을 탐색한다.</p>
 
@@ -599,25 +600,22 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   </li>
   <li>
     <p><code class="highlighter-rouge">while Q is not empty do</code>: Queue가 빈 공간이 아닐 때 까지 아래를 반복한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">v := Q.dequeue()</code>: 현재 방문할 정점 v를 Queue에서 꺼낸다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">for all edges from v to w in G.adjacentEdges(v) do</code>: v와 인접한 모든 정점 w에 대하여</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">if w is not labeled as discovered then</code>: w가 방문표시 되지 않았으면</p>
 
     <ul>
       <li>
-        <p><code class="highlighter-rouge">v := Q.dequeue()</code>: 현재 방문할 정점 v를 Queue에서 꺼낸다.</p>
+        <p><code class="highlighter-rouge">label w as discovered</code>: w를 방문표시 하고</p>
       </li>
       <li>
-        <p><code class="highlighter-rouge">for all edges from v to w in G.adjacentEdges(v) do</code>: v와 인접한 모든 정점 w에 대하여</p>
-      </li>
-      <li>
-        <p><code class="highlighter-rouge">if w is not labeled as discovered then</code>: w가 방문표시 되지 않았으면</p>
-
-        <ul>
-          <li>
-            <p><code class="highlighter-rouge">label w as discovered</code>: w를 방문표시 하고</p>
-          </li>
-          <li>
-            <p><code class="highlighter-rouge">Q.enqueue(w)</code>: w를 Queue에 넣는다.</p>
-          </li>
-        </ul>
+        <p><code class="highlighter-rouge">Q.enqueue(w)</code>: w를 Queue에 넣는다.</p>
       </li>
     </ul>
   </li>
@@ -626,6 +624,14 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <p>위에서 살펴본 예제와 이 의사코드의 한 가지 차이점이 있다면 예제에서는 정점을 큐에서 꺼낼 때 방문표시를 하는 반면, 의사코드 방식에서는 인접 정점들을 큐에 넣을 때 같이 방문표시를 한다는 것이다.</p>
 
 <p>정점의 방문표시를 큐에 꺼낼 때 하거나 큐에 넣을 때 하는것은 어느 구현을 하느냐에 따라 정해진다.</p>
+
+<h2 id="구현">구현</h2>
+
+<p>프로그래밍 언어로의 구현은 다음 글을 참고하면 좋다.</p>
+
+<ul>
+  <li><a href="http://localhost:4000/algorithm/BFS-Implementation/">BFS Implementation Using Queue</a></li>
+</ul>
 
 <h2 id="applications">Applications</h2>
 
@@ -750,7 +756,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 ">Previous</a>
     
     
-      <a href="/algorithm/greedy/" class="pagination--pager" title="그리디 알고리즘(Greedy Algorithm)-예정 포스트
+      <a href="/algorithm/BFS-Implementation/" class="pagination--pager" title="너비우선탐색(Breadth First Search, BFS) - 구현
 ">Next</a>
     
   </nav>
