@@ -1,0 +1,145 @@
+I"3<h1 id="spfa">SPFA</h1>
+
+<p>The Shortest Path Faster Algorithm (SPFA)는 Bellman–Ford algorithm를 개선한 알고리즘 으로서, 방향 가중치 그래프에서 단일 출발 정점 최단 거리를 계산한다. 이 SPFA는 무작위 희소 그래프에서 잘 동작한다고 알려져 있고, 음수 가중치 간선을 가진 그래프에서도 적합하다. 그러나 최악 시간복잡도는 Bellman–Ford algorithm과 같기 때문에, 음수 가중치 간선이 없는 그래프의 경우에는 최악 시간복잡도를 고려한다면 Dijkstra’s algorithm이 더 적합하다고 볼 수 있다.</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>방향 가중치 그래프가 주어지고 $G = (V, E)$ 그리고 출발 정점을 $s$라고 하자. SPFA는 출발 정점 $s$으로부터 다른 모든 정점 $v$로의 최단 경로를 찾는다. $s$로 부터 $v$로의 최단 경로 거리는 각 정점 $v$에 대하여 $d(v)$에 저장된다.</p>
+
+<p>SPFA는 각 정점의 인접 정점을 필요하다면 변 경감(Edge relaxation)하기 위해 각 정점을 후보자로 사용한다.
+이 점은 Bellman–Ford algorithm과 같다. 하지만 Bellman–Ford algorithm과 비교했을 때의 개선점은 모든 정점들을 무조건 적으로 연산을 시도하기 보다는 SPFA는 후보자 정점에 대한 Queue를 가지고, 어떤 정점에 대해 그 정점이 변 경감 연산이 이루어졌을 때만 후보자 정점으로서 Queue에 삽입을 한다. 이런 행동들은 변 경감 연산이 실행될 정점이 없을 때까지 반복된다.</p>
+
+<hr />
+
+<p><strong>다음은 SPFA의 의사코드이다.</strong></p>
+
+<p>$Q$는 변 경감 연산이 되고 난 후의 후보자를 담을 Queue를 의미한다.<br />
+$w(u,v)$는 간선 $(u,v)$의 간선 가중치를 의미한다.</p>
+
+<p>Q 안에 v의 존재 유무를 판단하기 위해 추가적인 배열이 필요하다. (이 의사코드에는 없다.)</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="mi">0</span> <span class="n">procedure</span> <span class="n">Shortest</span><span class="o">-</span><span class="n">Path</span><span class="o">-</span><span class="n">Faster</span><span class="o">-</span><span class="n">Algorithm</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+ <span class="mi">1</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">vertex</span> <span class="n">v</span> <span class="err">≠</span> <span class="n">s</span> <span class="n">in</span> <span class="n">V</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+ <span class="mi">2</span>        <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">:=</span> <span class="err">∞</span>
+ <span class="mi">3</span>    <span class="n">d</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">:=</span> <span class="mi">0</span>
+ <span class="mi">4</span>    <span class="n">offer</span> <span class="n">s</span> <span class="n">into</span> <span class="n">Q</span>
+ <span class="mi">5</span>    <span class="k">while</span> <span class="n">Q</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+ <span class="mi">6</span>        <span class="n">u</span> <span class="o">:=</span> <span class="n">poll</span> <span class="n">Q</span>
+ <span class="mi">7</span>        <span class="k">for</span> <span class="n">each</span> <span class="n">edge</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="n">in</span> <span class="n">E</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+ <span class="mi">8</span>            <span class="k">if</span> <span class="n">d</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">then</span>
+ <span class="mi">9</span>                <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">:=</span> <span class="n">d</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="mi">10</span>                <span class="k">if</span> <span class="n">v</span> <span class="n">is</span> <span class="n">not</span> <span class="n">in</span> <span class="n">Q</span> <span class="n">then</span>
+<span class="mi">11</span>                    <span class="n">offer</span> <span class="n">v</span> <span class="n">into</span> <span class="n">Q</span>
+</code></pre></div></div>
+
+<p>한 구문씩 보자.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">vertex</span> <span class="n">v</span> <span class="err">≠</span> <span class="n">s</span> <span class="n">in</span> <span class="n">V</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="mi">2</span>        <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">:=</span> <span class="err">∞</span>
+</code></pre></div></div>
+<p>그래프 G의 출발 정점 s를 제외한 모든 정점 v에 대하여 s로부터 각 v에 대한 최단경로 거리 d(v)를 INF로 초기화 한다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="mi">3</span>    <span class="n">d</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">:=</span> <span class="mi">0</span>
+ <span class="mi">4</span>    <span class="n">offer</span> <span class="n">s</span> <span class="n">into</span> <span class="n">Q</span>
+</code></pre></div></div>
+
+<p>먼저 출발 정점 s의 최단경로 거리를 0으로 초기화하고 s를 Q에 넣는다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span>    <span class="k">while</span> <span class="n">Q</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+</code></pre></div></div>
+
+<p>큐가 빌 때 까지 아래 연산들을 반복한다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">6</span>    <span class="n">u</span> <span class="o">:=</span> <span class="n">poll</span> <span class="n">Q</span>
+<span class="mi">7</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">edge</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="n">in</span> <span class="n">E</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Q에서 정점하나를 꺼내 u라 하고, 그래프 G에서 u와 인접한 정점 v와의 간선 (u, v)에 대하여</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">8</span>    <span class="k">if</span> <span class="n">d</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">then</span>
+<span class="mi">9</span>       <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">:=</span> <span class="n">d</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</code></pre></div></div>
+<p>s로부터 u로의 최단경로 거리 d(u) + 간선 (u, v)의 값이 s로부터 v로의 최단경로 거리 d(v)보다 작다면 d(v)값을 d(u) + w(u, v)로 업데이트 한다. (Edge Relaxation)</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">10</span>      <span class="k">if</span> <span class="n">v</span> <span class="n">is</span> <span class="n">not</span> <span class="n">in</span> <span class="n">Q</span> <span class="n">then</span>
+<span class="mi">11</span>          <span class="n">offer</span> <span class="n">v</span> <span class="n">into</span> <span class="n">Q</span>
+</code></pre></div></div>
+<p>변 경감 연산(Edge Relaxation)이 된 정점 v가 현재 Q에 없으면, v를 Q에 추가한다.</p>
+
+<h2 id="예제">예제</h2>
+
+<p>예를 들어 SPFA가 어떻게 동작하는지 알아본다.</p>
+
+<p>예제 그래프는 다음과 같다.</p>
+
+<p><img src="/assets/images/SPFA-0.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>시작 정점으로 부터 모든 정점까지의 최단거리 d(v)를 무한대(INF)로 초기화 한다.<br />
+d(s)는 0으로 초기화 한다.<br />
+Queue에 시작 정점 0을 넣는다.</p>
+
+<p><code class="highlighter-rouge">Queue : [0]</code></p>
+
+<p>Queue가 빌 때 까지 아래 연산을 반복한다.</p>
+
+<p><img src="/assets/images/SPFA-1.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>Queue에서 원소 하나를 pop한다.<br />
+0번 정점과 인접한 정점 1번에 대하여 <code class="highlighter-rouge">d(0) + w(0, 1) &lt; d(1): 0 + 4 &lt; INF</code>이므로 
+d(1)을 4로 업데이트 한다.</p>
+
+<p>업데이트 되었으므로 1번 정점을 Queue에 넣는다.</p>
+
+<p><code class="highlighter-rouge">Queue : [1]</code></p>
+
+<p><img src="/assets/images/SPFA-2.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>0번 정점과 인접한 정점 2번에 대하여 <code class="highlighter-rouge">d(0) + w(0, 2) &lt; d(1): 0 + 2 &lt; INF</code>이므로 
+d(2)을 2로 업데이트 한다.</p>
+
+<p>업데이트 되었으므로 2번 정점을 Queue에 넣는다.</p>
+
+<p><code class="highlighter-rouge">Queue : [1 2]</code></p>
+
+<p><img src="/assets/images/SPFA-3.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>Queue에서 원소 하나를 pop한다.<br />
+1번 정점과 인접한 정점 2번에 대하여 <code class="highlighter-rouge">d(1) + w(1, 2) &lt; d(2): 4 + 5 &gt; 2</code>이므로 
+d(2)를 업데이트 하지 않는다.</p>
+
+<p><code class="highlighter-rouge">Queue : [2]</code></p>
+
+<p><img src="/assets/images/SPFA-4.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>1번 정점과 인접한 정점 3번에 대하여 <code class="highlighter-rouge">d(1) + w(1, 3) &lt; d(3): 4 + 10 &lt; INF</code>이므로 
+d(3)을 14로 업데이트 한다.</p>
+
+<p>업데이트 되었으므로 3번 정점을 Queue에 넣는다.</p>
+
+<p><code class="highlighter-rouge">Queue : [2, 3]</code></p>
+
+<p><img src="/assets/images/SPFA-5.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>Queue에서 원소 하나를 pop한다.<br />
+2번 정점과 인접한 정점 4번에 대하여 <code class="highlighter-rouge">d(2) + w(2, 4) &lt; d(4): 2 + 3 &lt; INF</code>이므로 
+d(4)을 5로 업데이트 한다.</p>
+
+<p>업데이트 되었으므로 5번 정점을 Queue에 넣는다.</p>
+
+<p><code class="highlighter-rouge">Queue : [3, 5]</code></p>
+
+<p><img src="/assets/images/SPFA-6.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-5.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-7.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-8.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-9.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-10.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-11.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+:ET

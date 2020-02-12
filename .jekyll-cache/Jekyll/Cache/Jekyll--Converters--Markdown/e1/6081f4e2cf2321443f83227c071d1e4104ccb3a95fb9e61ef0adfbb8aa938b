@@ -1,0 +1,59 @@
+I"�<h1 id="spfa">SPFA</h1>
+
+<p>The Shortest Path Faster Algorithm (SPFA)는 Bellman–Ford algorithm를 개선한 알고리즘 으로서, 방향 가중치 그래프에서 단일 출발 정점 최단 거리를 계산한다. 이 SPFA는 무작위 희소 그래프에서 잘 동작한다고 알려져 있고, 음수 가중치 간선을 가진 그래프에서도 적합하다. 그러나 최악 시간복잡도는 Bellman–Ford algorithm과 같기 때문에, 음수 가중치 간선이 없는 그래프의 경우에는 최악 시간복잡도를 고려한다면 Dijkstra’s algorithm이 더 적합하다고 볼 수 있다.</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>방향 가중치 그래프가 주어지고 $G = (V, E)$ 그리고 출발 정점을 $s$라고 하자. SPFA는 출발 정점 $s$으로부터 다른 모든 정점 $v$으로의 최단 경로를 찾는다.the SPFA algorithm finds the shortest path from {\displaystyle s}s, to each vertex {\displaystyle v}v, in the graph. The length of the shortest path from {\displaystyle s}s, to {\displaystyle v}v is stored in {\displaystyle d(v)}{\displaystyle d(v)} for each vertex {\displaystyle v}v.</p>
+
+<p>The basic idea of SPFA is the same as Bellman–Ford algorithm in that each vertex is used as a candidate to relax its adjacent vertices. The improvement over the latter is that instead of trying all vertices blindly, SPFA maintains a queue of candidate vertices and adds a vertex to the queue only if that vertex is relaxed. This process repeats until no more vertex can be relaxed.</p>
+
+<p>Below is the pseudo-code of the algorithm.[4] Here {\displaystyle Q}Q is a first-in, first-out queue of candidate vertices, and {\displaystyle w(u,v)}{\displaystyle w(u,v)} is the edge weight of {\displaystyle (u,v)}(u,v).</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="mi">0</span> <span class="n">procedure</span> <span class="n">Shortest</span><span class="o">-</span><span class="n">Path</span><span class="o">-</span><span class="n">Faster</span><span class="o">-</span><span class="n">Algorithm</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+ <span class="mi">1</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">vertex</span> <span class="n">v</span> <span class="err">≠</span> <span class="n">s</span> <span class="n">in</span> <span class="n">V</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+ <span class="mi">2</span>        <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">:=</span> <span class="err">∞</span>
+ <span class="mi">3</span>    <span class="n">d</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">:=</span> <span class="mi">0</span>
+ <span class="mi">4</span>    <span class="n">offer</span> <span class="n">s</span> <span class="n">into</span> <span class="n">Q</span>
+ <span class="mi">5</span>    <span class="k">while</span> <span class="n">Q</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+ <span class="mi">6</span>        <span class="n">u</span> <span class="o">:=</span> <span class="n">poll</span> <span class="n">Q</span>
+ <span class="mi">7</span>        <span class="k">for</span> <span class="n">each</span> <span class="n">edge</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="n">in</span> <span class="n">E</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+ <span class="mi">8</span>            <span class="k">if</span> <span class="n">d</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">then</span>
+ <span class="mi">9</span>                <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">:=</span> <span class="n">d</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="mi">10</span>                <span class="k">if</span> <span class="n">v</span> <span class="n">is</span> <span class="n">not</span> <span class="n">in</span> <span class="n">Q</span> <span class="n">then</span>
+<span class="mi">11</span>                    <span class="n">offer</span> <span class="n">v</span> <span class="n">into</span> <span class="n">Q</span>
+</code></pre></div></div>
+
+<p>The basic idea of SPFA is the same as Bellman–Ford algorithm in that each vertex is used as a candidate to relax its adjacent vertices. The improvement over the latter is that instead of trying all vertices blindly, SPFA maintains a queue of candidate vertices and adds a vertex to the queue only if that vertex is relaxed. This process repeats until no more vertex can be relaxed.</p>
+
+<p><img src="/assets/images/SPFA-0.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>The performance of the algorithm is strongly determined by the order in which candidate vertices are used to relax other vertices. In fact, if {\displaystyle Q}Q is a priority queue, then the algorith</p>
+
+<p><img src="/assets/images/SPFA-1.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>(and does not have to be in the queue anymore). However, the relaxation by {\displaystyle x}x might cause some other vertices to become capable of causing rel</p>
+
+<p><img src="/assets/images/SPFA-2.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p>axation. If there exists some {\displaystyle dist[x]&gt;dist[w]+wt(w,x)}{\displaystyle dist[x]&gt;dist[w]+wt(w,x)} such that before the current loop iteration, then {\displaystyle w}w is already in the queue. If this condition</p>
+
+<p><img src="/assets/images/SPFA-3.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-4.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-5.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-6.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-7.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-8.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-9.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-10.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/SPFA-11.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
+
+:ET
