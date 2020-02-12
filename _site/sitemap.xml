@@ -61,7 +61,7 @@
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/algorithm/SPFS/</loc>
+<loc>http://localhost:4000/algorithm/SPFA/</loc>
 <lastmod>2019-05-10T22:06:00+09:00</lastmod>
 </url>
 <url>
@@ -177,6 +177,10 @@
 </url>
 <url>
 <loc>http://localhost:4000/page9/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/images/SPFA-img.png.pdf</loc>
+<lastmod>2020-02-12T08:00:20+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/assets/images/breadth-first-search0%20copy.png.pdf</loc>
