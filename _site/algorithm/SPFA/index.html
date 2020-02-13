@@ -232,7 +232,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
 
-  23 minute read
+  21 minute read
 
 </p>
       
@@ -394,7 +394,6 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 <ul class="toc__menu">
   <li><a href="#spfashortest-path-faster-algorithm">SPFA(Shortest Path Faster Algorithm)</a>
     <ul>
-      <li><a href="#approach---수정-예정">Approach - 수정 예정</a></li>
       <li><a href="#algorithm">Algorithm</a></li>
       <li><a href="#step-by-step">Step by step</a></li>
       <li><a href="#implementation">Implementation</a></li>
@@ -425,24 +424,25 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
             </nav>
           </aside>
         
-        <h1 id="spfashortest-path-faster-algorithm">SPFA(Shortest Path Faster Algorithm)</h1>
+        <p><strong>Graph 글 참고하기</strong></p>
 
-<p>The Shortest Path Faster Algorithm (SPFA)는 Bellman–Ford algorithm를 개선한 알고리즘 으로서, 방향 가중치 그래프에서 단일 출발 정점 최단 거리를 계산한다. 이 SPFA는 무작위 희소 그래프에서 잘 동작한다고 알려져 있고, 음수 가중치 간선을 가진 그래프에서도 적합하다. 그러나 최악 시간복잡도는 Bellman–Ford algorithm과 같기 때문에, 음수 가중치 간선이 없는 그래프의 경우에는 최악 시간복잡도를 고려한다면 Dijkstra’s algorithm이 더 적합하다고 볼 수 있다.</p>
+<ul>
+  <li><a href="http://localhost:4000/data%20structure/graph/">Graph</a></li>
+</ul>
 
-<h2 id="approach---수정-예정">Approach - 수정 예정</h2>
-<p>All the shortest paths algorithms discussed in this article have the same basic approach. At their core, they compute not the shortest paths themselves, but the distances. Using information computed in order to compute the distances, one can easily then reconstruct the paths themselves. They begin with the knowledge that the distance from any vertex to itself is zero, and they overestimate all other distances they need. (By this it is meant that they find a number d_{i,j} for each pair (i,j) under consideration such that the distance from i to j is less than or equal to d_{i,j}.) If (i,j) \in E, then the initial overestimate for the distance from i to j is the weight of the edge (i,j); otherwise it is infinite. At some point, all overestimates will be refined, perhaps gradually, perhaps at once, so that once the algorithm has terminated, they are exactly the correct distances.</p>
+<p><strong>Queue 글 참고하기</strong></p>
 
-<p>Relaxation
-There are theoretically many ways to refine overestimates but a specific way, known as relaxation, is used in all the algorithms discussed in this article. Relaxation can take place when three conditions are met:</p>
+<ul>
+  <li><a href="http://localhost:4000/data%20structure/queue/">Queue</a></li>
+</ul>
 
-<p>The currently best overestimate for the distance from some vertex i to some vertex k is d_1;
-The currently best overestimate for the distance from k to some vertex j is d_2,
-The currently best overestimate for the distance from i to j is greater than d_1+d_2. (This includes the case in which it is infinite.)
-Relaxation refines the best overestimate for the distance from i to j by setting it to d_1+d_2, which is better than its current value.</p>
+<hr />
 
-<p>Theorem: When the distances from u to all other vertices are all overestimated, but no relaxations are possible, then those distances are all known correctly. Contrapositively, if at there exists v \in V such that the distance from u to v is not correctly known, then relaxation must be possible somewhere in the graph.</p>
+<h1 id="spfashortest-path-faster-algorithm">SPFA(Shortest Path Faster Algorithm)</h1>
 
-<p>Proof: By induction on the number of edges in some shortest path from u to v (which we can take to be simple). It is vacuously true when this is zero or one, because all paths of length zero or one were accounted for in the initial overestimates. Assume the path has at least two edges, and denote by s the last vertex on the path before v. If the distance from u to s or from s to v is not known, then by the inductive hypothesis, we are done. Otherwise, notice that the path contains two subpaths, one from u to s and one from s to v (the latter is trivial as it consists of a single edge), and that each of these must itself be a shortest path, otherwise we could replace it with a shorter path to obtain a shorter path from u to v, a contradiction. Now, as the distances from u to s and s to v are correctly known, and the correct distance from u to v is exactly the sum of the distances from u to s and s to v (as these values equal the weights of the aforementioned subpaths), and our overestimate of the distance from u to v is incorrect, it must be strictly greater than the sum of the distances from u to s and s to v. Hence (u,v) can be relaxed. _\blacksquare</p>
+<p><strong>The Shortest Path Faster Algorithm (SPFA)</strong>는 Bellman–Ford algorithm 을 개선한 알고리즘 으로서, 방향 가중치 그래프에서 단일 출발 정점 최단 거리를(Single source shortest path distance) 계산한다. 다른 여타 <strong>Bellman–Ford algorithm</strong> 이나 <strong>Dijkstra’s algorithm</strong> 과 같은 <strong>Single source shortest path algorithm</strong> 처럼 <strong>SPFA</strong>도 <strong>변 경감(Edge relaxation)</strong>을 핵심 연산으로 하여 동작한다.</p>
+
+<p>이 SPFA는 무작위 희소 그래프에서 잘 동작한다고 알려져 있고, <strong>음수 가중치 간선(Nagative weighted edge)</strong>을 가진 그래프에서도 적합하다. 그러나 최악 시간복잡도는 $O(|V|\cdot|E|)$ 로서 Bellman–Ford algorithm과 같기 때문에, 음수 가중치 간선이 없는 그래프의 경우에는 최악 시간복잡도를 고려한다면 Dijkstra’s algorithm이 더 적합하다고 볼 수 있다.</p>
 
 <h2 id="algorithm">Algorithm</h2>
 
@@ -455,10 +455,12 @@ Relaxation refines the best overestimate for the distance from i to j by setting
 
 <p><strong>다음은 SPFA의 의사코드이다.</strong></p>
 
+<p>Input: 그래프 G, 시작 정점 s</p>
+
 <p>$Q$는 변 경감 연산이 되고 난 후의 후보자를 담을 Queue를 의미한다.<br />
 $w(u,v)$는 간선 $(u,v)$의 간선 가중치를 의미한다.</p>
 
-<p>Q 안에 v의 존재 유무를 판단하기 위해 추가적인 배열이 필요하다. (이 의사코드에는 없다.)</p>
+<p class="notice--warning"><strong>Notice:</strong> Q 안에 v의 존재 유무를 판단하기 위해 구현 시에는 이를 추적하기 위한 추가적인 자료구조가 요구된다.</p>
 
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="mi">0</span> <span class="n">procedure</span> <span class="n">Shortest</span><span class="o">-</span><span class="n">Path</span><span class="o">-</span><span class="n">Faster</span><span class="o">-</span><span class="n">Algorithm</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
  <span class="mi">1</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">vertex</span> <span class="n">v</span> <span class="err">≠</span> <span class="n">s</span> <span class="n">in</span> <span class="n">V</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -473,8 +475,9 @@ $w(u,v)$는 간선 $(u,v)$의 간선 가중치를 의미한다.</p>
 <span class="mi">10</span>                <span class="k">if</span> <span class="n">v</span> <span class="n">is</span> <span class="n">not</span> <span class="n">in</span> <span class="n">Q</span> <span class="n">then</span>
 <span class="mi">11</span>                    <span class="n">offer</span> <span class="n">v</span> <span class="n">into</span> <span class="n">Q</span>
 </code></pre></div></div>
+<hr />
 
-<p>한 구문씩 보자.</p>
+<p>하나씩 보자.</p>
 
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">vertex</span> <span class="n">v</span> <span class="err">≠</span> <span class="n">s</span> <span class="n">in</span> <span class="n">V</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="mi">2</span>        <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">:=</span> <span class="err">∞</span>
@@ -510,9 +513,7 @@ $w(u,v)$는 간선 $(u,v)$의 간선 가중치를 의미한다.</p>
 
 <h2 id="step-by-step">Step by step</h2>
 
-<p>예를 들어 SPFA가 어떻게 동작하는지 알아본다.</p>
-
-<p>예제 그래프는 다음과 같다.</p>
+<p>실제 그래프를 예로 들어 SPFA가 어떻게 동작하는지 알아보자.</p>
 
 <p>0번을 시작 정점으로 하여 5번 정점으로의 최단 경로를 구한다.</p>
 
@@ -525,8 +526,6 @@ d(s)는 0으로 초기화 한다.</p>
 
 <p>Queue에 시작 정점 0을 넣는다.<br />
 <code class="highlighter-rouge">Queue : [0]</code></p>
-
-<p>Queue가 빌 때 까지 아래 연산을 반복한다.</p>
 
 <p><img src="/assets/images/SPFA-1.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
 
@@ -615,15 +614,71 @@ d(5)을 20로 업데이트 한다.</p>
 
 <p>큐가 비었으므로 SPFA가 완료되었다.</p>
 
-<p><code class="highlighter-rouge">Queue : [ ]</code></p>
-
-<p>0번 부터 5번으로의 최단경로는 빨간선을 따라간 경로이고 그 거리는 20이다.ㄴ</p>
+<p>0번 부터 5번으로의 최단경로는 <strong>빨간선</strong>을 따라간 경로이고 그 거리는 <strong>20</strong>이다.</p>
 
 <p><img src="/assets/images/SPFA-11.png" alt="Alt text" width="400px" height="300px" class="align-center" /></p>
 
 <h2 id="implementation">Implementation</h2>
 
-<p>다음은 SPFA를 구현한 자바 코드이다.</p>
+<p>다음은 위 의사코드를 바탕으로 SPFA를 구현한 자바 메소드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">void</span> <span class="nf">shortestPathFasterAlgorithm</span><span class="o">(</span><span class="kt">int</span> <span class="n">s</span><span class="o">){</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="n">onQueue</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span> <span class="no">INF</span><span class="o">);</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+    <span class="n">dist</span><span class="o">[</span><span class="n">s</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="n">onQueue</span><span class="o">[</span><span class="n">s</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+        <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        <span class="n">onQueue</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="n">graph</span><span class="o">[</span><span class="n">cur</span><span class="o">]){</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">cost</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]){</span>
+                <span class="n">dist</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">cost</span><span class="o">;</span> <span class="c1">// Edge Relaxation</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>현재 Queue에서 정점 $v$의 존재 유무를 추적하기 위해 위 코드에서는 <code class="highlighter-rouge">onQueue[]</code> 를 사용한다.</p>
+
+<hr />
+
+<p>그래프의 가중치 간선 정보를 구성하기 위해 아래의 Edge 클래스를 사용한다.</p>
+
+<p><code class="highlighter-rouge">to</code>는 다음 인접 정점의 번호, cost는 간선 비용(가중치)를 나타낸다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">...</span>
+<span class="c1">// static ArrayList&lt;Edge&gt; [] graph;</span>
+<span class="o">...</span>
+
+<span class="kd">static</span> <span class="kd">class</span> <span class="nc">Edge</span><span class="o">{</span>
+    <span class="kt">int</span> <span class="n">to</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">cost</span><span class="o">;</span>
+
+    <span class="c1">// Constructor</span>
+    <span class="kd">public</span> <span class="nf">Edge</span><span class="o">(</span><span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cost</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">to</span> <span class="o">=</span> <span class="n">to</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">cost</span> <span class="o">=</span> <span class="n">cost</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+<p><strong>다음은 SPFA를 구현한 자바 코드이다.</strong></p>
+
+<p>그래프의 입력은 예제 그래프를 사용하였고, 최단경로를 추적하고 구성하기 위해 pred[]배열을 선언한 뒤 SPFA의 실행 중에 어느 한 포인트에서 정점 u, v가 있고(정점 v가 u에 의해 relaxation 되어지는 정점), relaxation 되어진 정점 v가 있으면, 그 정점을 relaxation하게 만든 정점 u가 최단경로 상의 이전 노드 이므로 <code class="highlighter-rouge">pred[e.to] = cur;</code>를 하여 경로를 구축한다. 그 다음 <code class="highlighter-rouge">printPathReconstruction</code>함수로 경로를 출력한다.</p>
+
+<p>이 프로그램은 최단경로 거리와 그 경로를 출력한다.</p>
+
+<ul>
+  <li>Input: Graph G, start vertex</li>
+  <li>Output: Distance of shortest path of Graph G, shortest path of Graph G</li>
+</ul>
+
+<p>시작 정점은 0번이다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
@@ -631,19 +686,27 @@ d(5)을 20로 업데이트 한다.</p>
 
 <span class="cm">/**
  * This program is to find Shortest path in weighted graph using SPFA.
- * Time Complexity : Worst case : O(VE) same as Standard Bellman ford, Average case : O(E) - not proved
+ * Time Complexity : Worst case : O(VE) same as Standard Bellman ford
+ *                   Average case : O(E) - not proved
  *
  * @author Lemidia(Gyeong)
  */</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShortestPathFasterAlgorithm</span><span class="o">{</span>
 
-    <span class="kd">static</span> <span class="kt">int</span> <span class="n">dist</span><span class="o">[];</span>
+     <span class="c1">// the number of vertices in Graph G</span>
     <span class="kd">static</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+    <span class="c1">// Shortest distance from s to each vertex v</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">dist</span><span class="o">[];</span>
+    <span class="c1">// for construct shortest path</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">pred</span><span class="o">[];</span>
     <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Edge</span><span class="o">&gt;</span> <span class="o">[]</span> <span class="n">graph</span><span class="o">;</span>
     <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">INF</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+    <span class="c1">// For check whether the vertex is on queue or not</span>
     <span class="kd">static</span> <span class="kt">boolean</span> <span class="n">onQueue</span><span class="o">[];</span>
 
+
+    <span class="c1">// Init Graph G</span>
     <span class="kd">static</span> <span class="kt">void</span> <span class="nf">createGraph</span><span class="o">(){</span>
         <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
@@ -651,6 +714,7 @@ d(5)을 20로 업데이트 한다.</p>
         <span class="o">}</span>
     <span class="o">}</span>
 
+    <span class="c1">// Add weighted direct edges.</span>
     <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cost</span><span class="o">){</span>
         <span class="nc">Edge</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="n">to</span><span class="o">,</span> <span class="n">cost</span><span class="o">);</span>
         <span class="n">graph</span><span class="o">[</span><span class="n">from</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
@@ -658,19 +722,20 @@ d(5)을 20로 업데이트 한다.</p>
 
     <span class="kd">static</span> <span class="kt">void</span> <span class="nf">shortestPathFasterAlgorithm</span><span class="o">(</span><span class="kt">int</span> <span class="n">s</span><span class="o">){</span>
         <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
         <span class="n">onQueue</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
         <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span> <span class="no">INF</span><span class="o">);</span>
-        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
         <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
         <span class="n">dist</span><span class="o">[</span><span class="n">s</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
         <span class="n">onQueue</span><span class="o">[</span><span class="n">s</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-
         <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
             <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
             <span class="n">onQueue</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
             <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="n">graph</span><span class="o">[</span><span class="n">cur</span><span class="o">]){</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">cost</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]){</span>
                     <span class="n">dist</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">cost</span><span class="o">;</span> <span class="c1">// Edge Relaxation</span>
+                    <span class="n">pred</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">// store previous node</span>
                     <span class="k">if</span> <span class="o">(</span><span class="n">onQueue</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">==</span> <span class="kc">false</span><span class="o">){</span> <span class="c1">// Node(e.to) is not in the queue</span>
                         <span class="n">onQueue</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                         <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">);</span>
@@ -680,32 +745,36 @@ d(5)을 20로 업데이트 한다.</p>
         <span class="o">}</span>
     <span class="o">}</span>
 
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printPathReconstruction</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">){</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">end</span> <span class="o">==</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">pathReconstruction</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">pred</span><span class="o">[</span><span class="n">end</span><span class="o">]);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">" -&gt; "</span> <span class="o">+</span> <span class="n">end</span> <span class="o">);</span>
+    <span class="o">}</span>
+
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
         <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
-        <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
-        <span class="nc">StringTokenizer</span> <span class="n">st</span><span class="o">;</span>
 
-        <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
         <span class="n">createGraph</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-            <span class="n">addEdge</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">())-</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">())-</span><span class="mi">1</span><span class="o">,</span>
-                    <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">()));</span>
-        <span class="o">}</span>
-        <span class="n">shortestPathFasterAlgorithm</span><span class="o">(</span><span class="n">s</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="no">INF</span><span class="o">)</span>
-                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"INF"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
-            <span class="k">else</span>
-                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">i</span><span class="o">]).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">sb</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">11</span><span class="o">);</span>
+        <span class="n">addEdge</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
 
+        <span class="n">shortestPathFasterAlgorithm</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Shortest path distance : "</span> <span class="o">+</span> <span class="n">dist</span><span class="o">[</span><span class="mi">5</span><span class="o">]);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Shortest path : "</span><span class="o">);</span>
+        <span class="n">printPathReconstruction</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
     <span class="o">}</span>
+
     <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Edge</span><span class="o">{</span>
         <span class="kt">int</span> <span class="n">to</span><span class="o">;</span>
         <span class="kt">int</span> <span class="n">cost</span><span class="o">;</span>
@@ -718,33 +787,47 @@ d(5)을 20로 업데이트 한다.</p>
 <span class="o">}</span>
 </code></pre></div></div>
 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output:
+
+Shortest path distance : 20
+Shortest path : 0 -&gt; 2 -&gt; 4 -&gt; 3 -&gt; 5
+</code></pre></div></div>
+
 <h2 id="optimization-techniques">Optimization techniques</h2>
 
 <p><strong>Small Label First (SLF) technique.</strong></p>
+
+<p>변 경감(Edge relaxation) 되어진 정점 $v$를 항상 Queue 뒤에 추가하였지만 이 technique에서는 그 추가되어진 정점 $v$의 $d(v)$와 Queue의 맨 앞 정점의 거리 $d(front(Q))$를 비교하고 $d(v)$가 더 작다면 $d(v)$를 Queue의 맨 앞으로 보낸다. 이 technique은 front에 원소 추가를 요구하므로 front와 rear 전부 pop(), offer()연산을 지원하는 Deque(데크) 자료구조를 사용함으로써 구현할 수 있다.</p>
+
+<p>위 SPFA 자바 메소드에서 <code class="highlighter-rouge">Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();</code>를 <code class="highlighter-rouge">Deque&lt;Integer&gt; queue = new LinkedList&lt;&gt;();</code>로 하여 Deque를 사용한다.</p>
+
+<p><strong>다음은 이 technique의 의사코드이다.</strong></p>
 
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">procedure</span> <span class="n">Small</span><span class="o">-</span><span class="n">Label</span><span class="o">-</span><span class="n">First</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
      <span class="k">if</span> <span class="n">d</span><span class="p">(</span><span class="n">back</span><span class="p">(</span><span class="n">Q</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">(</span><span class="n">front</span><span class="p">(</span><span class="n">Q</span><span class="p">))</span> <span class="n">then</span>
          <span class="n">u</span> <span class="o">:=</span> <span class="n">pop</span> <span class="n">back</span> <span class="n">of</span> <span class="n">Q</span>
          <span class="n">push</span> <span class="n">u</span> <span class="n">into</span> <span class="n">front</span> <span class="n">of</span> <span class="n">Q</span>
 </code></pre></div></div>
+<hr />
 
-<p>SPFA에 최적화를 적용한 코드이다.</p>
+<p><strong>다음은 SPFA에 위 최적화를 적용한 코드이다.</strong></p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">void</span> <span class="nf">shortestPathFasterAlgorithm</span><span class="o">(</span><span class="kt">int</span> <span class="n">s</span><span class="o">){</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
     <span class="n">onQueue</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
     <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span> <span class="no">INF</span><span class="o">);</span>
     <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
     <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
     <span class="n">dist</span><span class="o">[</span><span class="n">s</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="n">onQueue</span><span class="o">[</span><span class="n">s</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-
     <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
         <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
         <span class="n">onQueue</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
         <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="n">graph</span><span class="o">[</span><span class="n">cur</span><span class="o">]){</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">cost</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]){</span>
                 <span class="n">dist</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">]</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">cost</span><span class="o">;</span> <span class="c1">// Edge Relaxation</span>
+                <span class="n">pred</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">// store previous node</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">onQueue</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">==</span> <span class="kc">false</span><span class="o">){</span> <span class="c1">// Node(e.to) is not in the queue</span>
                     <span class="n">onQueue</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
                     <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">to</span><span class="o">);</span>
@@ -758,10 +841,13 @@ d(5)을 20로 업데이트 한다.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+<hr />
 
 <p><strong>Large Label Last (LLL) technique.</strong></p>
 
-<p>After line 11, we update the queue so that the first element is smaller than the average, and any element larger than the average is moved to the end of the queue. The pseudo-code is:</p>
+<p>Queue의 front 원소의 값이 현재 Queue에 들어있는 모든 정점의 평균보다 작게 하기 위해, Queue에 들어있는 모드 정점 $v$의 평균을 구하고, Queue 앞에서 부터 평균보다 큰 값을 가진 정점 $v$들을 Queue의 맨 뒤로 보내는 연산이다. 평균보다 작은 값을 가진 정점 $v$가 나오면 loop를 빠져나온다.</p>
+
+<p><strong>다음은 이 technique의 의사코드이다.</strong></p>
 
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">procedure</span> <span class="n">Large</span><span class="o">-</span><span class="n">Label</span><span class="o">-</span><span class="n">Last</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
      <span class="n">x</span> <span class="o">:=</span> <span class="n">average</span> <span class="n">of</span> <span class="n">d</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="n">Q</span>
