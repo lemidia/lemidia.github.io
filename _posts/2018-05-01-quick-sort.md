@@ -1,5 +1,5 @@
 ---
-title:  "퀵 소트(Quick Sort)-예정 포스트"
+title:  "퀵 소트(Quick Sort)"
 excerpt: "평균 O(nlogn)의 분할 정복 정렬 알고리즘"
 toc: true
 toc_sticky: true
