@@ -1,4 +1,4 @@
-I"�x<h1 id="quick-sort">Quick sort</h1>
+I"Dy<h1 id="quick-sort">Quick sort</h1>
 
 <p>퀵 소트(Quick sort)는 효율적인 비교기반 정렬 알고리즘으로 영국의 컴퓨터 과학자 Tony Hoare에 의해 1959
 년에 개발되었다. 이 정렬 알고리즘은 현재 여러 프로그래밍 언어의 공식 정렬 라이브러리로 채택이 되었고, 실무에서도 많이 쓰이고 있다.  구현이 잘 되었을 때는 시간복잡도 $O(nlogn)$의 <strong>머지 소트</strong>나 <strong>힙 소트</strong>보다 두 배에서 세 배 정도 빨라질 수 있다.</p>
@@ -293,6 +293,7 @@
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">partition</span><span class="o">(</span><span class="kt">int</span> <span class="n">arr</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">){</span>
         <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span>
         <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="c1">// The median is placed at the end of the array.</span>
         <span class="n">medianOfThree</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span>
         <span class="kt">int</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
 
@@ -364,11 +365,11 @@ After sorting: [1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 14, 15]
 
 <p>The worst-case performance : $O(n^2)$</p>
 
-<p>The best-case performance : $O(nlogn)$ or $O(n)$ (세 개의 분할, 동일 원소 값))</p>
+<p>The best-case performance : $O(nlogn)$ or $O(n)$ (세 개의 분할, 동일 원소 값)</p>
 
 <p>The average-case performance : $O(nlogn)$</p>
 
-<p>The worst-case performance : $O(n)$의 추가 공간</p>
+<p>The worst-case space requirement : $O(n)$의 보조 공간</p>
 
 <h2 id="references">References</h2>
 

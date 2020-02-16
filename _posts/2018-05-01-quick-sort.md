@@ -307,7 +307,9 @@ public class QuickSort {
     public static int partition(int arr[], int start, int end){
         int left = start;
         int right = end-1;
+        // The median is placed at the end of the array. (end)
         medianOfThree(arr, start, end);
+        // Pivot points to median
         int pivot = end;
 
         // Loop until left is less than or equal right
@@ -379,11 +381,11 @@ After sorting: [1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 14, 15]
 
 The worst-case performance : $O(n^2)$
 
-The best-case performance : $O(nlogn)$ or $O(n)$ (세 개의 분할, 동일 원소 값))
+The best-case performance : $O(nlogn)$ or $O(n)$ (세 개의 분할, 동일 원소 값)
 
 The average-case performance : $O(nlogn)$
 
-The worst-case performance : $O(n)$의 추가 공간 
+The worst-case space requirement : $O(n)$의 보조 공간 
 
 
 ## References
