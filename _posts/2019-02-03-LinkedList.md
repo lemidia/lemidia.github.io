@@ -35,7 +35,7 @@ header:
 
 그림을 참고하자.
 
-![Alt text](/assets/images/Linkedlist1.png){: width="600px" height="300px"}
+![Alt text](/assets/images/Linkedlist1.png){: width="600px" height="100px" .align-center}
 
 ## 배열과 비교해 연결 리스트가 가지는 장점
 
@@ -73,7 +73,7 @@ header:
 연결 리스트는 첫번째 노드를 가리키는 헤드를 가지고 있다.  
 연결 리스트에 노드가 없다면 헤드는 NULL이다.
 
-![Alt text](/assets/images/Linkedlist1-1.png){: width="200px" height="200px"}
+![Alt text](/assets/images/Linkedlist1-1.png){: width="150px" height="100px" .align-center}
 
 노드는 두개의 부분으로 구성되어 있다.
 
@@ -189,7 +189,7 @@ class LinkedList {
 3. 추가할 노드의 next 포인터가 첫번째 노드를 참조하게 한다.
 4. 헤드가 추가한 노드를 참조하게 함으로써 처음 노드임을 가리킨다.
 
-![Alt text](/assets/images/Linkedlist2.png){: width="600px" height="300px"}
+![Alt text](/assets/images/Linkedlist2.png){: width="600px" height="100px" .align-center}
 
 다음은 위의 연산을 구현한 자바 메소드이다.
 
@@ -221,7 +221,7 @@ null이면 아무런 작업이 수행되지 않는다.
 4. 추가할 노드가 특정노드가 참조하는 다음 노드를 참조하게 한다. 
 5. 특정 노드가 추가할 노드를 참조하게 한다.
 
-![Alt text](/assets/images/Linkedlist3.png){: width="600px" height="300px"}
+![Alt text](/assets/images/Linkedlist3.png){: width="600px" height="100px" .align-center}
 
 다음은 위의 연산을 구현한 자바 메소드이다.
 
@@ -259,7 +259,7 @@ public void insertAfter(Node prev_node, int new_data)
 4. 그렇지 않다면, 처음 노드부터 탐색을 시작하여 마지막 노드를 찾는다. 
 5. 마지막 노드가 추가할 노드를 참조하게 한다.
 
-![Alt text](/assets/images/Linkedlist4.png){: width="600px" height="300px"}
+![Alt text](/assets/images/Linkedlist4.png){: width="600px" height="100px" .align-center}
 
 다음은 위의 연산을 구현한 자바 메소드이다.
 
@@ -436,7 +436,7 @@ Created Linked list is:  1  7  8  6  4
 7. temp가 null이면 원하는 키값을 가진 노드를 찾지 못한 것이므로 아무런 작업도 하지 않고 연산을 끝낸다. 
 8. 그렇지 않다면 찾은 것이므로, prev 포인터가 temp.next 참조하게 함으로써 작업을 끝낸다.
 
-![Alt text](/assets/images/Linkedlist5.png){: width="600px" height="300px"}
+![Alt text](/assets/images/Linkedlist5.png){: width="600px" height="100px" .align-center}
 
 다음은 위의 연산을 구현한 자바 메소드이다.
 

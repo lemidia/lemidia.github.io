@@ -1,4 +1,4 @@
-I"�<h1 id="linked-list">Linked List</h1>
+I"��<h1 id="linked-list">Linked List</h1>
 <p>배열과 같이 선형 자료구조 이다.<br />
 원소들이 메모리 공간상에 연속적으로 저장 되어있지 않고, 그림과 같이 각 원소들이 포인터로 링크되어 있는 자료 구조이다.</p>
 
@@ -8,7 +8,7 @@
 
 <p>그림을 참고하자.</p>
 
-<p><img src="/assets/images/Linkedlist1.png" alt="Alt text" width="600px" height="300px" /></p>
+<p><img src="/assets/images/Linkedlist1.png" alt="Alt text" width="600px" height="100px" class="align-center" /></p>
 
 <h2 id="배열과-비교해-연결-리스트가-가지는-장점">배열과 비교해 연결 리스트가 가지는 장점</h2>
 
