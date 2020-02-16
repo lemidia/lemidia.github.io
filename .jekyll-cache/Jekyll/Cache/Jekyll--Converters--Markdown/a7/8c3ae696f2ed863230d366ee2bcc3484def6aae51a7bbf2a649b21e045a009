@@ -1,0 +1,18 @@
+I"ß<ul class="toc__menu">
+  <li><a href="#spfashortest-path-faster-algorithm">SPFA(Shortest Path Faster Algorithm)</a>
+    <ul>
+      <li><a href="#algorithm">Algorithm</a></li>
+      <li><a href="#step-by-step">Step by step</a></li>
+      <li><a href="#implementation">Implementation</a></li>
+      <li><a href="#optimization-techniques">Optimization techniques</a>
+        <ul>
+          <li><a href="#small-label-first-slf-technique">Small Label First (SLF) technique.</a></li>
+          <li><a href="#large-label-last-lll-technique">Large Label Last (LLL) technique.</a></li>
+        </ul>
+      </li>
+      <li><a href="#running-time">Running time</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

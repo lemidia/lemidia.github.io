@@ -164,10 +164,10 @@ public class CountingSort {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int input[] = { 2, 1, 4, 5, 7, 1, 1, 8, 9, 10, 11, 14, 15, 3, 2, 4 };
-		System.out.println("Orginal Array " + Arrays.toString(input));
+		System.out.println("Orginal Array: " + Arrays.toString(input));
 		CountingSort c = new CountingSort();
 		int[] B = c.sort(input);
-		System.out.println("Sorted Array : " + Arrays.toString(B));
+		System.out.println("Sorted Array: " + Arrays.toString(B));
 	}
 }
 
@@ -175,8 +175,8 @@ public class CountingSort {
 
 ```
 Output:
-Orginal Array [2, 1, 4, 5, 7, 1, 1, 8, 9, 10, 11, 14, 15, 3, 2, 4]
-Sorted Array : [0, 1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 14, 15]
+Orginal Array: [2, 1, 4, 5, 7, 1, 1, 8, 9, 10, 11, 14, 15, 3, 2, 4]
+Sorted Array: [0, 1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 14, 15]
 ```
 
 ## 시간복잡도 & 공간 복잡도

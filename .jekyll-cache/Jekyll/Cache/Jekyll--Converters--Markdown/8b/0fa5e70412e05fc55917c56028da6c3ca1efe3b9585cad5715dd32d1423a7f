@@ -1,0 +1,260 @@
+I"?Y<h1 id="quick-sort">Quick sort</h1>
+
+<p>퀵 소트(Quick sort)는 효율적인 비교기반 정렬 알고리즘으로 영국의 컴퓨터 과학자 Tony Hoare에 의해 1959
+년에 개발되었다. 이 정렬 알고리즘은 현재 여러 프로그래밍 언어의 공식 정렬 라이브러리로 채택이 되었고, 실무에서도 많이 쓰이고 있다.  구현이 잘 되었을 때는 시간복잡도 $O(nlogn)$의 <strong>머지 소트</strong>나 <strong>힙 소트</strong>보다 두 배에서 세 배 정도 빨라질 수 있다.</p>
+
+<p>퀵 소트는 분할 정복 알고리즘이다. 배열에서 원소를 두 부분의 서브 배열(sub-array)로 나눌 기준이 되는 피봇(pivot)을 선택하고 피봇 값 보다 크고 작음에 따라 원소를 두 부분의 서브 배열로 나눈다. 피봇을 기준으로 두 서브 배열이 부분 정렬이 되면, 서브 배열은 다시 재귀적(recursively)으로 위와 같이 정렬이 되어진다.</p>
+
+<p>퀵 소트에서 원소가 피봇을 기준으로 두 부분의 서브 배열로 분할 되는 것은 약간의 변수와 같은 상수적 메모리 공간 $O(1)$만을 요구하는 <strong>제자리 정렬(in-place)</strong>의 속성을 만족 할 수 있다.</p>
+
+<p>퀵 소트는 비교기반 정렬 알고리즘으로서 원소들이 크고 작음의 관계에 따라 상대적인 위치가 정해지게 된다. 대소 관계를 정의할 수 있는 형태는 이 비교기반에 따라 정렬이 가능해진다. 또한 현재 퀵 소트의 효율적인 알고리즘은 <strong>안정 정렬(Stable sort)</strong>이 아니다. 이 것은 같은 값을 가진 원소의 상대적인 위치가 정렬이 되고 난 후에는 변할 수도 있다는 것을 의미한다.</p>
+
+<p>퀵 소트의 시간복잡도 분석에 따르면 평균적인 상황에서는(서브 배열의 크기를 25% or 75%로 나눌 수 있는 피봇을 원소로 선정) $n$개의 원소를 정렬할 때 성능이 $O(nlogn)$, 최악의 상황에서는(서브 배열이 매 단계마다 1크기 만큼 줄어드는 상황) 성능이 $O(n^2)$임을 보인다. 최악의 경우는 대부분 많이 드물며 세부 구현에 따라 복잡도가 다소 달라질 수 있다.</p>
+
+<p><strong>안정 정렬과 제자리 정렬 이란?</strong></p>
+
+<p class="notice--warning"><strong>안정 정렬:</strong> 정렬이 끝나면 <strong>같은 키값</strong>을 가진 원소들의 <strong>상대적인 순서</strong>가 변하지 않는 것을 의미.<br />
+안정 정렬 알고리즘으로는 <strong>삽입 정렬, 머지 소트, 카운팅 소트</strong> 등이 있다.</p>
+<p class="notice--primary"><strong>제자리 정렬:</strong> 원소들의 개수에 비해서 충분히 무시할 만한 저장 공간만을 더 사용하는 정렬 알고리즘들을 의미.<br />
+예를 들어 <strong>삽입 정렬</strong>은 이미 주어진 원소들을 옮긴 뒤 적절한 위치에 원소를 삽입하는 연산을 반복하는데, 이 과정에서 원소들을 담는 공간 외에 추가로 사용될 수 있는 공간은 옮겨지는 <strong>원소가 저장되는 공간과 루프 변수</strong> 정도에 불과하다.</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>퀵 소트는 분할 정복 알고리즘으로 피봇 원소를 기준으로 입력 배열을 두개의 부분 배열로 나눈다.(하나는 피봇 보다 작거나 같은 원소들, 하나는 피봇보다 큰 원소들) 그리고 나뉜 두개의 부분 배열을 각각 재귀적으로 다시 분할 정복 정렬 한다.</p>
+
+<p>다음은 퀵 소트의 알고리즘이다. (오름차순 기준)</p>
+
+<ol>
+  <li>
+    <p>배열에서 <strong>피봇(pivot)</strong>을 하나 선정한다.</p>
+  </li>
+  <li>
+    <p>피봇 값을 기준으로 배열의 원소들을 <strong>두 개의 부분 배열</strong>로 구분한다. 피봇보다 작은 원소는 피봇의 <strong>앞의 부분 배열</strong>에, 피봇보다 큰 원소는 피봇의 <strong>뒷 부분 배열</strong>에 놓는다. 구분이 완료되면 피봇을 배열의 최종적인 위치(원소들을 기준으로 절대적으로 위치해야만 하는 특정 위치)에 놓는다. 이 두 번째 스텝을 <strong>분할(Partition)</strong>이라고 한다.</p>
+  </li>
+  <li>
+    <p>피봇을 기준으로 나뉜 두 부분 배열에 대해 위의 <strong>1, 2번 연산들을 재귀적</strong>으로 적용한다.</p>
+  </li>
+</ol>
+
+<h2 id="step-by-step">Step by Step</h2>
+
+<p>실제 예를 들어 퀵 소트가 어떻게 동작 되는지 알아본다.</p>
+
+<p><strong>가정</strong></p>
+
+<ul>
+  <li>원소를 오름차순으로 정렬한다.</li>
+  <li>피봇은 배열의 맨 마지막 원소로 선정한다. (피봇 선정 방법은 여러가지가 있다.)</li>
+  <li>배열의 크기가 1 이하에 대해서는 퀵 소트를 수행하지 않는다. (크기가 1인 배열은 이미 정렬이 되어있다.)</li>
+</ul>
+
+<hr />
+
+<p>위 알고리즘의 2번째 스텝 <strong>분할(Partition)</strong>을 세분화하여 보면 다음과 같다.</p>
+
+<ol>
+  <li>
+    <p>배열의 맨 첫번째 원소를 가리키는(인덱스 0) Left 포인터를 둔다.</p>
+  </li>
+  <li>
+    <p>피봇 바로 앞의 원소를 가리키는(피봇 인덱스 -1) Right 포인터를 둔다.</p>
+  </li>
+  <li>
+    <p>Left 포인터가 Right 포인터보다 작거나 같을 때 까지, Left 포인터가 가리키는 원소가 피봇보다 크거나 같을 때 까지 Left 포인터 위치를 1씩 증가시킨다.</p>
+  </li>
+  <li>
+    <p>Left 포인터가 Right 포인터보다 작거나 같을 때 까지, Right 포인터가 가리키는 원소가 피봇보다 작을 때 까지 Right 포인터 위치를 1씩 감소시킨다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Left &gt; Right</code>가 아니라면 Left와 Right 포인터가 가리키는 원소를 서로 스왑한다.
+3번으로 간다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Left &gt; Right</code>이라면 Left가 가리키는 원소와 피봇 원소를 서로 스왑 함으로써 피봇의 최종적인 위치가 정해진다.</p>
+  </li>
+  <li>
+    <p>피봇 위치를 반환한다.</p>
+  </li>
+</ol>
+
+<hr />
+
+<p>다음은 예제에 사용될 배열이다.</p>
+
+<p><img src="/assets/images/quick-sort1.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p>맨 마지막 원소를 피봇으로 선정한다.</p>
+
+<p><img src="/assets/images/quick-sort2.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p>Left 포인터는 배열의 0 번째 인덱스를 가리키고, Right 포인터는 배열의 n-1 번째 원소를 가리킨다.</p>
+
+<p>Left 포인터는 피봇보다</p>
+
+<p><img src="/assets/images/quick-sort3.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort4.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort5.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort6.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort7.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort8.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort9.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort10.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort11.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort12.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort13.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort14.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort15.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort16.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort17.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort18.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort19.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort20.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort21.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort22.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort23.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort24.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort25.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort26.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<p><img src="/assets/images/quick-sort27.png" alt="Alt text" width="500px" height="300px" class="align-center" /></p>
+
+<h2 id="implementation---java-code">Implementation - java code</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ *
+ * This program is to sort an array using quick sort algorithm by ascending manner
+ * Applied Hoare partition scheme and median of three method as a pivot selecting
+ *
+ * This implementation is not stable sorting in which the relative position of
+ * two elements with the same value is preserved
+ *
+ * partition:
+ *
+ * Select a pivot using median of three method
+ * Arrange an element that less than or equal pivot key to the left side of pivot
+ * Arrange an element that greater than pivot key to the right side of pivot
+ *
+ * quickSort:
+ *
+ * recursively Sort left side and right side of pivot respectively
+ *
+ *
+ * Time Complexity:
+ *
+ * Average case performance: O(nlogn) where n is the number of item in an array
+ *
+ * Worst case performance: O(n^2)
+ *
+ * Best case performance: O(nlogn)
+ *
+ *
+ * Space complexity:
+ *
+ * Worst case space: O(n) auxiliary (naive)
+ *
+ * @author Gyeong
+ *
+ */</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QuickSort</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">quickSort</span><span class="o">(</span><span class="kt">int</span> <span class="n">arr</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">){</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="o">){</span>
+            <span class="kt">int</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">partition</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span> <span class="c1">// partition</span>
+            <span class="n">quickSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">pivot</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// sort left side of pivot recursively</span>
+            <span class="n">quickSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">pivot</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span> <span class="c1">// sort right side of pivot recursively</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">partition</span><span class="o">(</span><span class="kt">int</span> <span class="n">arr</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="n">medianOfThree</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+
+        <span class="c1">// Loop until left is less than or equal right</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
+            <span class="c1">// Searching for the item that is greater than pivot item</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">arr</span><span class="o">[</span><span class="n">pivot</span><span class="o">])</span>
+                <span class="n">left</span><span class="o">++;</span>
+            <span class="c1">// Searching for the item that is less than or equal pivot item</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">pivot</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">])</span>
+                <span class="n">right</span><span class="o">--;</span>
+            <span class="c1">// when right is less than left, sub array was sorted</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">left</span> <span class="o">&gt;</span> <span class="n">right</span><span class="o">)</span>
+                <span class="k">break</span><span class="o">;</span>
+
+            <span class="c1">// Elements smaller than the pivot are placed on the left side of pivot</span>
+            <span class="c1">// Elements larger than the pivot are placed on the right side of pivot</span>
+            <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
+
+            <span class="n">left</span><span class="o">++;</span>
+            <span class="n">right</span><span class="o">--;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// Arrange pivot item to the proper position of the array</span>
+        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">pivot</span><span class="o">);</span>
+
+        <span class="c1">// return pivot index</span>
+        <span class="k">return</span> <span class="n">left</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Find the median of three numbers and place it at the end of the array</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">medianOfThree</span><span class="o">(</span><span class="kt">int</span> <span class="n">arr</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">){</span>
+        <span class="c1">// The smallest of the three numbers is placed before two numbers </span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">mid</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">])</span>
+            <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">left</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">])</span>
+            <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">right</span><span class="o">,</span> <span class="n">left</span><span class="o">);</span>
+        <span class="c1">// then compare the second and third numbers to determine the median</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">mid</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">])</span>
+            <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">swap</span><span class="o">(</span><span class="kt">int</span> <span class="n">arr</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">a</span><span class="o">];</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">b</span><span class="o">];</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">b</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">arr</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">11</span><span class="o">,</span> <span class="mi">14</span><span class="o">,</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Before sorting: "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr</span><span class="o">));</span>
+        <span class="n">quickSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"After sorting: "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output:
+
+Before sorting: [2, 1, 4, 5, 7, 1, 1, 8, 9, 10, 11, 14, 15, 3, 2, 4]
+After sorting: [1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 14, 15]
+</code></pre></div></div>
+:ET

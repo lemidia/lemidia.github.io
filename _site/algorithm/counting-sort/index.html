@@ -567,18 +567,18 @@ Count[]을 보자. 여기서 <code class="highlighter-rouge">Count[input[i]]</co
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 		<span class="c1">// TODO Auto-generated method stub</span>
 		<span class="kt">int</span> <span class="n">input</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">11</span><span class="o">,</span> <span class="mi">14</span><span class="o">,</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span> <span class="o">};</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Orginal Array "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">input</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Orginal Array: "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">input</span><span class="o">));</span>
 		<span class="nc">CountingSort</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountingSort</span><span class="o">();</span>
 		<span class="kt">int</span><span class="o">[]</span> <span class="no">B</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sorted Array : "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="no">B</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sorted Array: "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="no">B</span><span class="o">));</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 
 </code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output:
-Orginal Array [2, 1, 4, 5, 7, 1, 1, 8, 9, 10, 11, 14, 15, 3, 2, 4]
-Sorted Array : [0, 1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 14, 15]
+Orginal Array: [2, 1, 4, 5, 7, 1, 1, 8, 9, 10, 11, 14, 15, 3, 2, 4]
+Sorted Array: [0, 1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 14, 15]
 </code></pre></div></div>
 
 <h2 id="시간복잡도--공간-복잡도">시간복잡도 &amp; 공간 복잡도</h2>

@@ -397,7 +397,12 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <li><a href="#algorithm">Algorithm</a></li>
       <li><a href="#step-by-step">Step by step</a></li>
       <li><a href="#implementation">Implementation</a></li>
-      <li><a href="#optimization-techniques">Optimization techniques</a></li>
+      <li><a href="#optimization-techniques">Optimization techniques</a>
+        <ul>
+          <li><a href="#small-label-first-slf-technique">Small Label First (SLF) technique.</a></li>
+          <li><a href="#large-label-last-lll-technique">Large Label Last (LLL) technique.</a></li>
+        </ul>
+      </li>
       <li><a href="#running-time">Running time</a></li>
       <li><a href="#references">References</a></li>
     </ul>
@@ -795,7 +800,7 @@ Shortest path : 0 -&gt; 2 -&gt; 4 -&gt; 3 -&gt; 5
 
 <h2 id="optimization-techniques">Optimization techniques</h2>
 
-<p><strong>Small Label First (SLF) technique.</strong></p>
+<h3 id="small-label-first-slf-technique"><strong>Small Label First (SLF) technique.</strong></h3>
 
 <p>변 경감(Edge relaxation) 되어진 정점 $v$를 항상 Queue 뒤에 추가하였지만 이 technique에서는 그 추가되어진 정점 $v$의 $d(v)$와 Queue의 맨 앞 정점의 거리 $d(front(Q))$를 비교하고 $d(v)$가 더 작다면 $d(v)$를 Queue의 맨 앞으로 보낸다. 이 technique은 front에 원소 추가를 요구하므로 front와 rear 전부 pop(), offer()연산을 지원하는 Deque(데크) 자료구조를 사용함으로써 구현할 수 있다.</p>
 
@@ -808,7 +813,6 @@ Shortest path : 0 -&gt; 2 -&gt; 4 -&gt; 3 -&gt; 5
          <span class="n">u</span> <span class="o">:=</span> <span class="n">pop</span> <span class="n">back</span> <span class="n">of</span> <span class="n">Q</span>
          <span class="n">push</span> <span class="n">u</span> <span class="n">into</span> <span class="n">front</span> <span class="n">of</span> <span class="n">Q</span>
 </code></pre></div></div>
-<hr />
 
 <p><strong>다음은 SPFA에 위 최적화를 적용한 코드이다.</strong></p>
 
@@ -843,7 +847,7 @@ Shortest path : 0 -&gt; 2 -&gt; 4 -&gt; 3 -&gt; 5
 </code></pre></div></div>
 <hr />
 
-<p><strong>Large Label Last (LLL) technique.</strong></p>
+<h3 id="large-label-last-lll-technique"><strong>Large Label Last (LLL) technique.</strong></h3>
 
 <p>Queue의 front 원소의 값이 현재 Queue에 들어있는 모든 정점의 평균보다 작게 하기 위해, Queue에 들어있는 모드 정점 $v$의 평균을 구하고, Queue 앞에서 부터 평균보다 큰 값을 가진 정점 $v$들을 Queue의 맨 뒤로 보내는 연산이다. 평균보다 작은 값을 가진 정점 $v$가 나오면 loop를 빠져나온다.</p>
 
