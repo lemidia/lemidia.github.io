@@ -1,0 +1,9 @@
+I";<h1 id="recursion">Recursion</h1>
+<p>컴퓨터 과학에서의 Recursion은 어떤 문제를 그 문제의 더 작은 사례를 해결함으로써 행해지는 해결 방법론이다.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Quick sort - wikipedia</a><br />
+<a href="https://www.codingeek.com/algorithms/quick-sort-algorithm-explanation-implementation-and-complexity/">Quick sort - codingeek</a><br />
+<a href="https://www.programiz.com/dsa/quick-sort">Quick sort - programiz</a></p>
+:ET

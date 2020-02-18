@@ -1,6 +1,6 @@
 ---
 title:  "퀵 소트(Quick Sort)"
-excerpt: "효율적인 비교기반 분할 정복 정렬 알고리즘"
+excerpt: "효율적인 비교기반 분할정복 정렬 알고리즘"
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"

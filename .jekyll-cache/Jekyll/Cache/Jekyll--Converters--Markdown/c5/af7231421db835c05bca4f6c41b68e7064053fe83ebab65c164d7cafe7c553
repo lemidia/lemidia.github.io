@@ -1,0 +1,17 @@
+I"W<h1 id="recursion">Recursion</h1>
+<p>컴퓨터 과학에서의 <strong>Recursion</strong>은 어떤 문제가 그 문제의 <strong>더 작은 사례의 해결</strong>에 의존해 해결되는 방법론이다. 재귀적인 문제는 반복적인 방법으로도 풀어질 수 있는데 그렇게 되기 위해선 런 타임 이전에 더 작은 사례를 식별하고 인덱스화 해야한다. 컴퓨터 과학 그리고 프로그래밍에서 Recursion은 함수가 자기 코드(own code) 안에서 <strong>자기 자신</strong>을 호출함으로 재귀적인 문제를 해결한다. Recursion은 많은 종류의 문제에서 적용될 수 있고 컴퓨터 과학에서의 중요한 이론이므로 잘 알아둘 필요가 있다.</p>
+
+<p>대부분의 프로그래밍 언어는 함수가 자기 코드(own code) 안에서 <strong>자기 자신</strong>을 호출하는 방식으로 재귀를 지원한다. 함수적 프로그래밍 언어는 반복적인 구조를 정의하지 않으므로 오직 재귀적인 방법에만 의존해 문제를 해결한다.</p>
+
+<p>함수안에서 자기 자신을 반복적으로 호출하는 재귀적인 방식을 사용하면 콜스택의 크기가 계속 커져 모든 호출과 연관된 입력 크기의 합과 같아질 수 있고, 이는 반복적인 방법으로 쉽게 해결이 가능한 문제의 경우 재귀를 적용했을 때의 효율성이 떨어진다는 것을 말한다. 또한 재귀적인 방법을 적용할 때 다소 큰 문제에 대해서는 tail call 같은 최적화 기술을 사용하는 것이 필수적이다.</p>
+
+<h2 id="recursive-functions-and-algorithms">Recursive functions and algorithms</h2>
+
+<p>컴퓨터 과학에서 어떤 문제를 해결하는 일반적인 방법 중의 하나는 <strong>분할 정복(Divide and conquer)</strong>이라는 것을 사용하는 것이다. 분할 정복은 어떤 문제를 같은 타입의 <strong>더 작은 문제들로 분할</strong>해 이를 해결하고 다시 합쳐 원래의 문제를 해결하는 방법론을 말한다. 문제에 따라서는 해당 문제의 더 작은 사례들이 겹칠 수가 있어 같은 문제를 반복적으로 풀지않고, 계산 시간을 절약하기 위해 더 작은 문제들의 솔루션을 저장한 <strong>동적표 또는 룩업 테이블</strong>(Dynamic table or look up table)를 구성하는데, 이를 함께 적용한 방법을 이를 동적 프로그래밍 또는 메모이제이션(dynamic programming or memoization)이라 부른다.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Quick sort - wikipedia</a><br />
+<a href="https://www.codingeek.com/algorithms/quick-sort-algorithm-explanation-implementation-and-complexity/">Quick sort - codingeek</a><br />
+<a href="https://www.programiz.com/dsa/quick-sort">Quick sort - programiz</a></p>
+:ET
