@@ -1,0 +1,14 @@
+I"�<ul class="toc__menu">
+  <li><a href="#이분-탐색binary-search">이분 탐색(Binary Search)</a>
+    <ul>
+      <li><a href="#algorithm">Algorithm</a>
+        <ul>
+          <li><a href="#procedure">Procedure</a></li>
+          <li><a href="#alternative-procedure">Alternative procedure</a></li>
+        </ul>
+      </li>
+      <li><a href="#duplicate-elements">Duplicate elements</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

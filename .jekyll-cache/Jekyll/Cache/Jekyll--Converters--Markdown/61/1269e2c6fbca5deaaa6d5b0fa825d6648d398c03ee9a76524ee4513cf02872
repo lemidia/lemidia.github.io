@@ -1,0 +1,181 @@
+I"�=<h1 id="이분-탐색binary-search">이분 탐색(Binary Search)</h1>
+
+<p>컴퓨터 과학(Computer science)에서 <strong>이분 탐색(Binary Search)</strong>은 <strong>정렬된 배열(Sorted array)</strong>에서 찾고자 하는 값의 <strong>존재 유무나 위치</strong>를 찾는 알고리즘이다. 이분 탐색은 찾고자 하는 값을 배열의 중간 원소와 비교한다. 두 개의 값이 같지 않다면, 찾고자 하는 값이 놓여있지 않다고 판단되는 배열의 반은 탐색 범위에서 제외되고 나머지 반을 다시 탐색한다. 이것을 찾고자 하는 값이 나올 때까지 반복하는데, 탐색 공간이 빈 공간(크기가 0)이 되어 탐색이 끝나게 되면 해당 배열에서 찾고자 하는 값이 없다는 것을 의미한다.</p>
+
+<p>탐색을 수행할 배열의 원소 개수가 $n$개일 때 이분 탐색은 복잡도 면에서 최악의 경우 <strong>$O(logn)$의 로그적</strong> 시간에 동작한다. 앞에서 부터 순서대로 하나씩 탐색하는 순차 혹은 선형 탐색(linear search)과 비교하면 작은 크기의 배열을 제외할 시 이분 탐색이 더 빠르다고 할 수 있다. 순차 탐색은 탐색에 있어 배열의 원소 순서에 제약이 없지만 이분 탐색은 원소의 정렬이 완료된 배열에서 탐색이 가능하다.</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>가장 일반적인 알고리즘을 보자.</p>
+
+<p>배열은 오름차순으로 정렬되어 있다고 가정하고 시작한다. 먼저 찾고자 하는 값을 배열의 중간 위치의 원소 값과 비교한다. 찾고자 하는 값이 중간 위치의 원소 값과 일치하면 그 중간 원소의 위치를 반환하고 알고리즘을 끝낸다. 찾고자 하는 값이 중간 원소의 값보다 작다면 중간 원소를 기준으로 오른쪽의 값들은 찾고자 하는 값들보다 크므로 탐색을 수행할 필요가 없다. 따라서 왼쪽 반에 대해서 이분 탐색을 수행한다. 찾고자 하는 값이 중간 원소의 값보다 그다면 중간 원소를 기준으로 왼쪽의 값들은 찾고자 하는 값들보다 작으므로 탐색을 수행할 필요가 없다. 따라서 오른쪽 반에 대해서 이분 탐색을 수행한다. 이것을 원하는 값을 찾을 때 까지 수행한다. 탐색을 수행하다가 탐색 범위의 크기가 0이 되면 배열에서 찾고자 하는 값이 없다는 것을 의미한다.</p>
+
+<h3 id="procedure">Procedure</h3>
+
+<p>$n$개의 원소로 이루어진 $A_0,A_1,A_2,…,A_{n-1}$ 배열 $A$가 주어지고 원소들은 오름차순 $A_0 \leq A_1 \leq A_2 \leq … \leq A_{n-1}$ 으로 정렬되어 있다. 그리고 찾고자 하는 값 $T$가 주어진다.</p>
+
+<p><strong>다음의 절차로 배열 $A$에서 값 $T$를 찾는다.</strong></p>
+
+<ol>
+  <li>
+    <p>배열의 맨 처음 인덱스를 가리키는 $L$을 $0$으로 배열의 맨 끝 인덱스를 가리키는 $R$을 $n-1$로 놓는다.</p>
+  </li>
+  <li>
+    <p>$L \gt R$ 이면 탐색 공간의 크기가 0이 되고 배열에서 찾고자 하는 값이 없다는 것을 의미하므로 알고리즘을 종료한다.</p>
+  </li>
+  <li>
+    <p>배열의 중간 인덱스 원소를 가리키는 $m$을 $\lfloor\frac{L + R}{2}\rfloor$로 놓는다. $\lfloor x \rfloor$, floor 기호는 $x$ 값 보다 크거나 같은 수 중 가장 작은 정수를 의미한다. 예) $\lfloor\frac{1+2}{2}\rfloor$ = 1이다.</p>
+  </li>
+  <li>
+    <p>$A_m \lt T$이면 $L$을 $m+1$로 놓고 2번으로 간다.</p>
+  </li>
+  <li>
+    <p>$A_m \gt T$이면 $R$을 $m-1$로 놓고 2번으로 간다.</p>
+  </li>
+  <li>
+    <p>$A_m = T$ 이면 $m$을 반환하고 알고리즘을 종료한다.</p>
+  </li>
+</ol>
+
+<p><strong>다음은 위 절차에 대한 의사코드이다.</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="n">is</span>
+    <span class="n">L</span> <span class="o">:=</span> <span class="mi">0</span>
+    <span class="n">R</span> <span class="o">:=</span> <span class="n">n</span> <span class="err">−</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">L</span> <span class="err">≤</span> <span class="n">R</span> <span class="k">do</span>
+        <span class="n">m</span> <span class="o">:=</span> <span class="n">floor</span><span class="p">((</span><span class="n">L</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">T</span> <span class="n">then</span>
+            <span class="n">L</span> <span class="o">:=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">T</span> <span class="n">then</span>
+            <span class="n">R</span> <span class="o">:=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="o">:</span>
+            <span class="k">return</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="n">unsuccessful</span>
+</code></pre></div></div>
+
+<h3 id="alternative-procedure">Alternative procedure</h3>
+
+<p>위에서 알아본 방법에서는 탐색의 매 반복 마다 중간 값 원소와 $T$를 비교하는 구문이 있다면, 이번 방법에서는 $L = R$이 같을 때에만 값이 같은지 체크를 수행한다. 이 방법은 위의 방법에 비해 비교 구문을 하나 제거하였기에 루프에서 빠른 비교를 가능하게 하지만 평균 상황에서 한 번의 반복을 더 요구한다.</p>
+
+<p><strong>다음의 절차로 배열 $A$에서 값 $T$를 찾는다.</strong></p>
+
+<ol>
+  <li>
+    <p>배열의 맨 처음 인덱스를 가리키는 $L$을 $0$으로 배열의 맨 끝 인덱스를 가리키는 $R$을 $n-1$으로 놓는다.</p>
+  </li>
+  <li>while $L \neq R$
+    <ol>
+      <li>
+        <p>배열의 중간 인덱스 원소를 가리키는 $m$을 $\lceil\frac{L + R}{2}\rceil$로 놓는다. $\lceil x \rceil$, ceil 기호는 $x$ 값 보다 크거나 같은 수 중 가장 작은 정수를 의미한다. 예) $\lceil\frac{1+2}{2}\rceil$ = 2이다.</p>
+      </li>
+      <li>
+        <p>$A_m \gt T$이면 $R$을 $m-1$로 놓는다.</p>
+      </li>
+      <li>
+        <p>$A_m \leq T$이면 $L$을 $m$으로 놓는다.</p>
+      </li>
+    </ol>
+  </li>
+  <li>이제 $L = R$ 이다.  $A_L = T$ 이면 $L$을 반환한다. 아니라면, unsuccessful을 반환한다.</li>
+</ol>
+
+<p>다음은 위 절차에 대한 의사코드이다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="n">binary_search_alternative</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="n">is</span>
+    <span class="n">L</span> <span class="o">:=</span> <span class="mi">0</span>
+    <span class="n">R</span> <span class="o">:=</span> <span class="n">n</span> <span class="err">−</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">L</span> <span class="o">!=</span> <span class="n">R</span> <span class="k">do</span>
+        <span class="n">m</span> <span class="o">:=</span> <span class="n">ceil</span><span class="p">((</span><span class="n">L</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">T</span> <span class="n">then</span>
+            <span class="n">R</span> <span class="o">:=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="o">:</span>
+            <span class="n">L</span> <span class="o">:=</span> <span class="n">m</span>
+    <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span> <span class="n">then</span>
+        <span class="k">return</span> <span class="n">L</span>
+    <span class="k">return</span> <span class="n">unsuccessful</span>
+</code></pre></div></div>
+
+<h2 id="duplicate-elements">Duplicate elements</h2>
+
+<p>앞에서 알아본 방법에 의해 이분 탐색은 배열에서 찾고자 하는 값의 위치를 반환하는데, 중복된 값이 존재해도 마찬가지로 동작한다. 정렬된 배열 $[1,2,3,4,4,5,6,7]$이 있고 찾고자 하는 값이 4일 때, 위에서 알아본 방법에 의해 각각 4번째 위치(3번 인덱스)와 5번째 위치(4번 인덱스)를 반환할 것이다. 처음 알아본 방법은 4번째 위치를 반환할 것이다. 하지만 처음 알아본 방법은 중복된 값이 있으면 그 중에서 제일 처음 값을 반환하지 않는데, 만약 배열 $[1,2,4,4,4,5,6,7]$이 있다고 하면 처음 방법은 4번째 값을 반환하고, 중복된 첫번째 값(3번째 위치)을 반환하지 않는다. 특정 문제나 상황에서 배열에 찾고자 하는 값의 중복된 값이 존재하고 그 값들 중 가장 왼쪽 값 또는 가장 오른쪽 값을 찾아야 하는 경우가 있다. 배열 $[1,2,4,4,4,5,6,7]$에서 값 4의 가장 왼쪽 값은 3번째 위치의 4이고, 가장 오른쪽 값은 5번째 위치의 4이다. 위에서 알아본 Alternative procedure는 배열에서 찾고자 하는 값이 존재하면, 찾고자 하는 값들 중 가장 왼쪽의 위치를 반환한다.</p>
+
+<h3 id="procedure-for-finding-the-leftmost-element">Procedure for finding the leftmost element</h3>
+
+<p>다음은 중복된 값들 중 가장 왼쪽에 있는 값을 찾는 알고리즘이다.</p>
+
+<ol>
+  <li>
+    <p>배열의 맨 처음 인덱스를 가리키는 $L$을 $0$으로 배열의 맨 끝 인덱스를 가리키는 $R$을 $n$으로 놓는다.</p>
+  </li>
+  <li>while $L \lt R$
+    <ol>
+      <li>
+        <p>배열의 중간 인덱스 원소를 가리키는 $m$을 $\lfloor\frac{L + R}{2}\rfloor$로 놓는다.</p>
+      </li>
+      <li>
+        <p>$A_m \lt T$이면 $L$을 $m+1$로 놓는다.</p>
+      </li>
+      <li>
+        <p>$A_m \geq T$이면 $R$을 $m$으로 놓는다.</p>
+      </li>
+    </ol>
+  </li>
+  <li>$L$을 반환한다.</li>
+</ol>
+
+<p>위의 과정을 거치고, $L \lt n$ $and$ $A_L = T$ 이면 $A_L$은 $T$와 같은 가장 왼쪽에 있는 원소이다. $T$가 배열에 있다면 $L$은 $T$의 가장 왼쪽 원소 위치를 가리키는 동시에 $T$보다 작은 원소들의 개수를 의미한다. 이것을 $Rank$라고 한다. $T$가 배열에 없다면 $L$은 $T$보다 작은 원소들의 개수를 의미한다.</p>
+
+<p>다음은 위 알고리즘의 의사코드이다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="n">binary_search_leftmost</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">L</span> <span class="o">:=</span> <span class="mi">0</span>
+    <span class="n">R</span> <span class="o">:=</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="n">R</span><span class="o">:</span>
+        <span class="n">m</span> <span class="o">:=</span> <span class="n">floor</span><span class="p">((</span><span class="n">L</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">T</span><span class="o">:</span>
+            <span class="n">L</span> <span class="o">:=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="o">:</span>
+            <span class="n">R</span> <span class="o">:=</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="n">L</span>
+</code></pre></div></div>
+
+<h3 id="procedure-for-finding-the-rightmost-element">Procedure for finding the rightmost element</h3>
+
+<p>다음은 중복된 값들 중 가장 오른쪽에 있는 값을 찾는 알고리즘이다.</p>
+
+<ol>
+  <li>
+    <p>배열의 맨 처음 인덱스를 가리키는 $L$을 $0$으로 배열의 맨 끝 인덱스를 가리키는 $R$을 $n$으로 놓는다.</p>
+  </li>
+  <li>while $L \lt R$
+    <ol>
+      <li>
+        <p>배열의 중간 인덱스 원소를 가리키는 $m$을 $\lfloor\frac{L + R}{2}\rfloor$로 놓는다.</p>
+      </li>
+      <li>
+        <p>$A_m \gt T$이면 $R$을 $m$으로 놓는다.</p>
+      </li>
+      <li>
+        <p>$A_m \leq T$이면 $L$을 $m+1$로 놓는다.</p>
+      </li>
+    </ol>
+  </li>
+  <li>$R-1$을 반환한다.</li>
+</ol>
+
+<p>위의 과정을 거치고, $R \gt 0$ $and$ $A_{R-1} = T$ 이면 $A_{R-1}$은 $T$와 같은 가장 오른쪽에 있는 원소이다. $T$가 배열에 있다면 $R-1$은 $T$의 위치를 가리킨다. $T$가 배열에 없다면 $L$은 $T$보다 작은 원소들의 개수를 의미한다.</p>
+
+<p>다음은 위 알고리즘의 의사코드이다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="n">binary_search_leftmost</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">L</span> <span class="o">:=</span> <span class="mi">0</span>
+    <span class="n">R</span> <span class="o">:=</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="n">R</span><span class="o">:</span>
+        <span class="n">m</span> <span class="o">:=</span> <span class="n">floor</span><span class="p">((</span><span class="n">L</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">T</span><span class="o">:</span>
+            <span class="n">L</span> <span class="o">:=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="o">:</span>
+            <span class="n">R</span> <span class="o">:=</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="n">L</span>
+</code></pre></div></div>
+:ET

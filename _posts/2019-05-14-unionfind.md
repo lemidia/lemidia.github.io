@@ -1,6 +1,6 @@
 ---
 title:  "유니온 파인드(Union Find, Disjoint Set)"
-excerpt: "Union Find By Lank With Path Compression"
+excerpt: "중복되지 않는 부분집합들의 원소 정보를 조작하고 저장하는 자료구조"
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"
@@ -39,7 +39,7 @@ header:
 
 Union-Find represented as a tree:
 
-![Alt text](/assets/images/unionfindrepresented.png){: width="500px" height="100px" .align-center}
+![Alt text](/assets/images/unionfindrepresented.png){: width="400px" height="100px" .align-center}
 
 우리는 이를  "1 Dimention Array"로 표현이 가능합니다.
 ```java
