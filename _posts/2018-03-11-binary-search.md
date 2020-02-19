@@ -196,3 +196,61 @@ function binary_search_rightmost(A, n, T):
 - **nearest neighbor:** predcessor와 successor 중 더 가까운 쪽이 nearest neighbor가 된다.
 
 - **Range queries:** 두 값의 $Rank$를 안다면 첫번째 값 보다 크거나 같고 두번째 값보다 작은 원소의 개수는 두 $Rank$의 값의 차이이다. 이 개수는 범위의 끝점이 개수로 카운팅 되어야 하는가와 배열에서 해당 범위의 끝점이 target value와 일치 하는가에 따라 하나씩 증가 또는 감소할 수 있다.
+
+## Avoid integer overflow
+
+C++이나 java와 같은 프로그래밍 언어에서는 signed int가 4bytes의 공간을 차지한다. 이는 정수 값으로 -2147483648$(2^{31})$ ~ 2147483647$(2^{31}-1)$의 값을 표현 할 수 있다.
+
+문제는 중간 원소의 위치를 계산하는 과정에서 $L + R$을 할 때 interger의 범위를 넘을 수가 있다.
+
+- ```(L + R)/2 > 2147483647``` 
+
+Integer overflow를 피하기 위해서는 다음의 트릭을 쓸 수 있다.
+
+- ```L + (R - L)/2``` 또는 ```R - (R - L)/2```
+
+```R-L```을 함으로써 overflow를 피하고 이를 반으로 나누면 양 끝점에서 부터 중간 원소 까지의 떨어진 거리 Offset이 된다.
+이를 맨 처음 인덱스에 더하거나, 맨 끝 인덱스에서 빼면 중간 원소의 위치가 계산된다.
+
+이 트릭은 중간 위치를 정확하게 계산하면서 Integer 범위 안의 매우 큰 값에 대해서도 두 정수를 더할 때 Integer overflow를 방지한다.
+
+
+## performance
+
+비교 횟수와 관련해, 이분 탐색의 성능은 이분 탐색이 만드는 이진 트리에서의 프로시저의 실행을 통해 분석할 수 있다. 트리의 루트 원소는 배열에서의 중간 위치의 원소이다. 배열의 중간 위치 원소를 기준으로 왼쪽 반은 루트 노드의 왼쪽 자식 트리이고, 오른쪽 반은 루트 노드의 오른쪽 자식 트리이다. 그 밑의 자식 트리들도 이와 같이 만들어 진다. 루트 노드를 시작으로 찾고자 하는 값과의 대소 비교를 통해 어느쪽 자식을 탐색할지 정해진다.
+
+![Alt text](/assets/images/binary-search1.png){: width="200px" height="100px" .align-center}
+
+위의 그림은 배열이 ```[20, 30, 40, 50, 80, 90, 100]```일 때, 이분 검색이 그리는 트리를 나타내고 있다.  
+Target value가 40일 때, 그림처럼 루트 노드에서부터 비교를 시작해서 50, 30, 40순으로 탐색을 한다.
+
+
+![Alt text](/assets/images/binary-search2.png){: width="500px" height="100px" .align-center}
+
+시간적인 측면에서 보면 이분 검색은 최악의 경우, 찾고자 하는 값이 배열에 있을 때, 비교 반복 횟수를 $\lfloor log_2(n) + 1 \rfloor$번 만든다. 최악의 경우 찾고자 하는 원소가 트리의 가장 깊은 곳에 있어 $\lfloor log_2(n) + 1 \rfloor$만큼의 비교 검색을 수행해야 하기 때문이다.
+
+찾고자 하는 값이 배열에 없을 때도 최악의 경우가 있을 수 있는데, n이 2의 제곱 수 이거나 탐색이 트리의 가장 깊은 곳에서 끝나면 비교 반복 횟수는 $\lfloor log_2(n) + 1 \rfloor$이 된다. 그렇지 않고, 탐색이 두번째로 가장 깊은 곳에서 끝나면 비교 반복 횟수는 1 줄어든 $\lfloor log_2(n)\rfloor$이 된다.
+
+평균적인 상황에서는 모든 원소가 동일하게 검색될 가능성이 있다고 가정하면, 이분 탐색은 $\lfloor log_2(n) \rfloor + 1 - (2^{\lfloor log_2(n) + 1 \rfloor} - \lfloor log_2(n) -2 \rfloor)/n$의 비교 반복 횟수를 만든다. 이 값은 n이 커질 수록 대략적으로 $\lfloor log_2(n) - 1 \rfloor$ 값에 근접해진다.
+
+최선의 상황에서는 찾고자 하는 값이 배열의 중앙에 있어 한번 만에 찾는 경우이다. 이는 한번의 비교 반복 횟수 만으로 원소를 반환하는 경우이다. - $O(1)$
+
+공간적인 측면에서 보면 이분 탐색을 반복적인 방법으로 구현했을 시, 약간의 포인터 혹은 변수들은 $O(1)$의 공간을 요구한다. 또한 처음 프로그램이 호출될 때 단일 콜 스택 $O(1)$의 공간을 요구한다. 반복적인 방법은 다른 변수나 추가적인 Recursive call을 만들지 않기 때문에 전체적으로 $O(1)$의 공간만을 요구한다.
+
+재귀적인 방법으로 구현할 시, 탐색의 매 단계마다 재귀 호출을 하는데, 이는 지금의 함수 호출 정보를 담은 스택 프레임(Stack frame)을 콜 스택(Call stack)에 저장하고 다시 재귀 호출을 한다는 것을 의미한다. 이분 탐색의 레벨 깊이가 m일 때 최악의 경우 m개의 스택 프레임이 만들어지므로 공간 복잡도는 이 레벨 깊이에 비례한다. 원소의 개수가 $n$개일 때 최대 레벨은 $\lfloor log_2n \rfloor + 1$개가 되므로 전체적으로 최악 $O(log_2n$)의 공간복잡도가 된다. 
+
+## Time & Space Complexity
+
+- Worst Case performance: $O(log_2n)$
+
+- Average Case performance: $O(log_2n)$
+
+- Best Case performance: $O(1)$
+
+- Worst Case Space Complexity: Iterative: $O(1)$, Recursive: $O(log_2n)$ due to call stack
+
+## References
+
+- [Binary Search](https://www.techiedelight.com/binary-search/)
+- [Binary Search](https://en.m.wikipedia.org/wiki/Binary_search_algorithm#Procedure_for_finding_the_leftmost_element)  
+- [Binary Search - Space Complexity](https://stackoverflow.com/questions/26564646/space-complexity-of-iterative-vs-recursive-binary-search-tree)

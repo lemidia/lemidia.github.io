@@ -1,0 +1,22 @@
+I"�<ul class="toc__menu">
+  <li><a href="#이분-탐색binary-search">이분 탐색(Binary Search)</a>
+    <ul>
+      <li><a href="#algorithm">Algorithm</a>
+        <ul>
+          <li><a href="#procedure">Procedure</a></li>
+          <li><a href="#alternative-procedure">Alternative procedure</a></li>
+        </ul>
+      </li>
+      <li><a href="#duplicate-elements">Duplicate elements</a>
+        <ul>
+          <li><a href="#procedure-for-finding-the-leftmost-element">Procedure for finding the leftmost element</a></li>
+          <li><a href="#procedure-for-finding-the-rightmost-element">Procedure for finding the rightmost element</a></li>
+        </ul>
+      </li>
+      <li><a href="#approximate-matches">Approximate matches</a></li>
+      <li><a href="#performance">performance</a></li>
+      <li><a href="#time--space-complexity">Time &amp; Space Complexity</a></li>
+    </ul>
+  </li>
+</ul>
+:ET
