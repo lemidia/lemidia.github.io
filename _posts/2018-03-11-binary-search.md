@@ -13,7 +13,7 @@ tags:
   - Tree
   - binary Search
   
-last_modified_at: 2019-05-10T08:06:00-05:00
+last_modified_at: 2019-01-10T08:06:00-05:00
 
 header:
   overlay_image: /assets/images/headerLogo2.jpg
@@ -199,9 +199,9 @@ function binary_search_rightmost(A, n, T):
 
 ## Avoid integer overflow
 
-C++이나 java와 같은 프로그래밍 언어에서는 signed int가 4bytes의 공간을 차지한다. 이는 정수 값으로 -2147483648$(2^{31})$ ~ 2147483647$(2^{31}-1)$의 값을 표현 할 수 있다.
+C++이나 java와 같은 프로그래밍 언어에서는 Signed int가 4bytes의 공간을 차지한다. 이는 정수 값으로 -2147483648$(2^{31})$ ~ 2147483647$(2^{31}-1)$의 값을 표현 할 수 있다.
 
-문제는 중간 원소의 위치를 계산하는 과정에서 $L + R$을 할 때 interger의 범위를 넘을 수가 있다.
+문제는 중간 원소의 위치를 계산하는 과정에서 $L + R$을 할 때 Interger의 범위를 넘을 수가 있다.
 
 - ```(L + R)/2 > 2147483647``` 
 
