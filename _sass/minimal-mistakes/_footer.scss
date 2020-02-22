@@ -28,7 +28,7 @@
     @include clearfix;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2em;
+    margin-top: 0.5em;
     max-width: 100%;
     padding: 0 1em 2em;
 
@@ -55,6 +55,32 @@
 }
 
 // Gyeong added
+
+.page__footer-title{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 1rem 0;
+
+  p{
+    height: 1.1em;
+    margin-bottom: 0em;
+    margin-top: 0em;
+  }
+
+  img{
+    max-width: 50px;
+    display: inline-block;
+    margin-right: 0.6rem;
+    height: auto;
+  }
+
+  span{
+    font-size: 0.65em;
+  }
+
+}
+
 .page__footer-copyright img{
   max-width: 20px;
   display: inline-block;
