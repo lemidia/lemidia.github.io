@@ -10,37 +10,42 @@
 </head>
 <body>
 
-    <div class="current">
-        <p class="current-location">Loading Location Data ...</p>
-        <p class="current-time">Loading Location Data ...</p>
-    </div>
+    <div class="container">
 
-    <div class="pm-container">
-        <p>미세먼지 (pm 10)</p>
-        <div class="pm-container-icon">
-            <i id=pm10-icon class="far fa-laugh-beam"></i>
+        <div class="current">
+            <p class="current-location">Loading Location Data ...</p>
+            <p class="current-time">Loading Location Data ...</p>
         </div>
-        <div class="pm-container-value-measure">
-            <span class="pm10-value">?</span>
-            <span>㎍/㎥</span>
-        </div>
-        <div id="pm10-condition" class="pm-condition">Loading Data ... </div>
-        <div id="pm10-description" class="pm-description">Loading Data ... </div>
-    </div>
 
-    <div class="pm-container">
-        <p>초미세먼지 (pm 2.5)</p>
-        <div class="pm-container-icon">
-            <i id=pm25-icon class="far fa-laugh-beam"></i>
+        <div class="pm-container">
+            <p>미세먼지 (pm 10)</p>
+            <div class="pm-container-icon">
+                <i id=pm10-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="pm-container-value-measure">
+                <span class="pm10-value">?</span>
+                <span>㎍/㎥</span>
+            </div>
+            <div id="pm10-condition" class="pm-condition">Loading Data ... </div>
+            <div id="pm10-description" class="pm-description">Loading Data ... </div>
         </div>
-        <div class="pm-container-value-measure">
-            <span class="pm25-value">?</span>
-            <span>㎍/㎥</span>
-        </div>
-        <div id="pm25-condition" class="pm-condition">Loading Data ... </div>
-        <div id="pm25-description" class="pm25-description">Loading Data ... </div>
-    </div>
 
+        <div class="pm-container">
+            <p>초미세먼지 (pm 2.5)</p>
+            <div class="pm-container-icon">
+                <i id=pm25-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+            </div>
+            <div class="pm-container-value-measure">
+                <span class="pm25-value">?</span>
+                <span>㎍/㎥</span>
+            </div>
+            <div id="pm25-condition" class="pm-condition">Loading Data ... </div>
+            <div id="pm25-description" class="pm25-description">Loading Data ... </div>
+        </div>
+
+        
+    </div>
     
 
     <footer>
@@ -51,6 +56,7 @@
             에어코리아(실시간 대기환경정보)</a></p>
     </footer>
     <script src="./index.js"></script>
+
 </body>
 
 </html>

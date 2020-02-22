@@ -189,7 +189,7 @@ window.addEventListener('load', () =>{
         icon.className = WTO_Standard[currentGrade].emoji
 
         // Set background color based on highestGrade 
-        let background = document.querySelector('body')
+        let background = document.querySelector('.container')
         background.style.background = WTO_Standard[highestGrade].background
 
     }
