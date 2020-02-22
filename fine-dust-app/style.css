@@ -5,7 +5,7 @@
 }
 
 body{
-    height: 90vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -17,15 +17,16 @@ body{
 }
 
 footer{
-    background-color:rgb(89, 184, 121);
+    background-color:rgb(89, 184, 160);
     position: absolute;
-    bottom: 0;
+    display: block;
+    bottom: 0px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 10rem;
+    height: 15vh;
     font-size: 1rem;
 }
 
@@ -49,7 +50,8 @@ footer .link{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    
+    position: absolute;
+    top: 1rem;
     margin-bottom: 5rem;
 }
 
@@ -73,7 +75,7 @@ footer .link{
 
 .pm-container-icon i{
     font-size: 8rem;
-    
+    padding: 1rem;
 }
 
 .pm-container-value-measure{
@@ -84,45 +86,38 @@ footer .link{
     font-size: 2rem;
 }
 
-.pm
-
-.temperature{
-    flex-direction: row;
-    align-items: baseline;
-}
-
-.temperature-description{
-    font-size: 2rem;
-    transform: translateX(20%);
-}
-
-.degree-section{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transform: translateX(30%);
-}
-
-.degree-section span{
-    margin: 7px;
-    font-size: 35px;
-}
-
-.degree-section h2{
-    font-size: 40px;
-}
 
 @media screen and (max-width:550px){
-    .location-timezone{
-        margin-right: 3rem;
+    body{
+       font-size: 1rem;
     }
 
-    .degree-section{
-        margin-right: 6rem;
-        font-size: 30px;
+    .pm-container{
+        margin-bottom: 3rem;
     }
 
-    .temperature-description{
-        transform: translateX(-20%);
+    .pm-container-icon i{
+        font-size: 5rem;
+    }
+
+    .pm-container p{
+        font-size: 1.3rem;
+    }
+    
+    .pm-container-value-measure{
+        font-size: 1.5rem;
+    }
+
+    .pm-condition{
+        font-size: 1.5rem;
+    }
+
+    footer{
+        font-size: 0.8rem;
+    }
+
+    footer .love-icon{
+        width: 0.8rem;
+        height: 0.8rem;
     }
 }
