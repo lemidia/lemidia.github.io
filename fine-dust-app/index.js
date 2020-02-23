@@ -91,7 +91,7 @@ window.addEventListener('load', () =>{
             2:{
                 condition: '좋음',
                 description: '현재 공기가 좋습니다 ^o^ ',
-                background: 'linear-gradient(rgb(77, 210, 255), rgb(0, 172, 230))',
+                background: 'linear-gradient(rgba(77, 210, 255, 0.5), rgba(0, 172, 230, 1))',
                 emoji: 'far fa-grin-alt'
             },
             3:{
@@ -162,12 +162,10 @@ window.addEventListener('load', () =>{
     
         let pm10ValueElement = document.querySelector('.pm10-value')
         let pm10ConditionElement = document.getElementById('pm10-condition')
-        let pm10DescriptionElement = document.getElementById('pm10-description')
 
         // Set value
         pm10ValueElement.textContent = pm10Value
         pm10ConditionElement.textContent = WTO_Standard[currentGrade].condition
-        pm10DescriptionElement.textContent = WTO_Standard[currentGrade].description
 
         // Set emoji
         let icon = document.getElementById('pm10-icon')
@@ -179,11 +177,9 @@ window.addEventListener('load', () =>{
     
         let pm25ValueElement = document.querySelector('.pm25-value')
         let pm25ConditionElement = document.getElementById('pm25-condition')
-        let pm25DescriptionElement = document.getElementById('pm25-description')
 
         pm25ValueElement.textContent = pm25Value
         pm25ConditionElement.textContent = WTO_Standard[currentGrade].condition
-        pm25DescriptionElement.textContent = WTO_Standard[currentGrade].description
 
         icon = document.getElementById('pm25-icon')
         icon.className = WTO_Standard[currentGrade].emoji
@@ -191,6 +187,16 @@ window.addEventListener('load', () =>{
         // Set background color based on highestGrade 
         let background = document.querySelector('.container')
         background.style.background = WTO_Standard[highestGrade].background
+        
+        // Set worst case pm 
+        let pmConditionElement = document.getElementById('pm-condition')
+        let pmDescriptionElement = document.getElementById('pm-description')
+
+        pmConditionElement.textContent = WTO_Standard[highestGrade].condition
+        pmDescriptionElement.textContent = WTO_Standard[highestGrade].description
+
+        icon = document.getElementById('pm-icon')
+        icon.className = WTO_Standard[highestGrade].emoji
 
     }
 
