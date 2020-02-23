@@ -85,13 +85,13 @@ window.addEventListener('load', () =>{
             1:{
                 condition: '아주 좋음',
                 description: '현재 공기가 매우 좋습니다 ^o^! ',
-                background: 'linear-gradient(rgb(51, 133, 255), rgb(0, 82, 204))',
+                background: 'linear-gradient(rgb(51, 133, 255), rgb(45, 97, 175))',
                 emoji: 'far fa-laugh-beam'
             },
             2:{
                 condition: '좋음',
                 description: '현재 공기가 좋습니다 ^o^ ',
-                background: 'linear-gradient(rgba(90, 210, 255, 0.8), rgba(0, 172, 230, 1))',
+                background: 'linear-gradient(rgb(79, 163, 202), rgb(31, 115, 163))',
                 emoji: 'far fa-grin-alt'
             },
             3:{
@@ -103,7 +103,7 @@ window.addEventListener('load', () =>{
             4:{
                 condition: '보통',
                 description: '밖에 나갈 때 마스크를 착용해주세요.',
-                background: 'linear-gradient(rgb(0, 179, 60), rgb(0, 77, 26))',
+                background: 'linear-gradient(rgb(62, 182, 126), rgb(33, 107, 62))',
                 emoji: 'far fa-meh'
             },
             5:{
@@ -127,10 +127,11 @@ window.addEventListener('load', () =>{
             8:{
                 condition: '최악',
                 description: '미세먼지 최악입니다. 나가지 마세요.',
-                background: 'linear-gradient(rgb(71, 107, 107), rgb(31, 46, 46))',
+                background: 'linear-gradient(rgb(58, 61, 66), rgb(31, 46, 46))',
                 emoji: 'far fa-dizzy'
             }
         }
+
 
         function getPm10Grade(value){
             if (value < 16) {
@@ -208,7 +209,7 @@ window.addEventListener('load', () =>{
         let background = document.querySelector('.container')
         background.style.background = WTO_Standard[highestGrade].background
         
-        // Set worst case pm 
+        // Set worst case pm based on highestGrade
         let pmConditionElement = document.getElementById('pm-condition')
         let pmDescriptionElement = document.getElementById('pm-description')
 
