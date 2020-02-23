@@ -79,7 +79,7 @@ window.addEventListener('load', () =>{
         let currentLocation = document.querySelector('.current-location')
         let currentTime = document.querySelector('.current-time')
         currentLocation.textContent = '현재 측정 장소: ' + stationName
-        currentTime.textContent = '현재 시간: ' + dataTime
+        currentTime.textContent = '업데이트 시간: ' + dataTime
 
         const WTO_Standard = {
             1:{
@@ -91,7 +91,7 @@ window.addEventListener('load', () =>{
             2:{
                 condition: '좋음',
                 description: '현재 공기가 좋습니다 ^o^ ',
-                background: 'linear-gradient(rgba(77, 210, 255, 0.5), rgba(0, 172, 230, 1))',
+                background: 'linear-gradient(rgba(90, 210, 255, 0.8), rgba(0, 172, 230, 1))',
                 emoji: 'far fa-grin-alt'
             },
             3:{
@@ -132,7 +132,7 @@ window.addEventListener('load', () =>{
             }
         }
 
-        function getGrade(value){
+        function getPm10Grade(value){
             if (value < 16) {
                 return 1
             }else if (value < 31) {
@@ -151,12 +151,32 @@ window.addEventListener('load', () =>{
                 return 8
             }
         }
+
+        function getPm25Grade(value){
+            if (value < 9) {
+                return 1
+            }else if (value < 10) {
+                return 2
+            }else if (value < 21) {
+                return 3
+            }else if (value < 25) {
+                return 4
+            }else if (value < 38) {
+                return 5
+            }else if (value < 51) {
+                return 6
+            }else if (value < 76) {
+                return 7
+            }else {
+                return 8
+            }
+        }
         
         // highestGrade among all values, base value is 1
         let highestGrade = 1
         
         // pm10
-        let currentGrade = getGrade(pm10Value)
+        let currentGrade = getPm10Grade(pm10Value)
         // if currentGrade is greater than the highestGrade then update
         highestGrade = currentGrade > highestGrade ? currentGrade : highestGrade
     
@@ -172,7 +192,7 @@ window.addEventListener('load', () =>{
         icon.className = WTO_Standard[currentGrade].emoji
 
         // pm 2.5
-        currentGrade = getGrade(pm25Value)
+        currentGrade = getPm25Grade(pm25Value)
         highestGrade = currentGrade > highestGrade ? currentGrade : highestGrade
     
         let pm25ValueElement = document.querySelector('.pm25-value')
