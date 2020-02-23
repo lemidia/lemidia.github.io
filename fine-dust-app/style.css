@@ -28,7 +28,7 @@ footer{
     align-items: center;
     text-align: center;
     width: 100%;
-    padding: 20px 30px;
+    padding: 20px 20px;
     font-size: 1rem;
 }
 
@@ -64,7 +64,6 @@ footer .link{
     justify-content: space-around;
     align-items: center;
     margin-bottom: 4rem;
-    font-size: 1.3rem;
 }
 
 .pm-container p{
@@ -88,6 +87,40 @@ footer .link{
     font-size: 1.5rem;
 }
 
-@media screen and (max-width:1px){
+@media screen and (max-width:500px){
+    footer{
+        font-size: 11px;
+    }
+
+    footer .love-icon{
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+
+    .pm-container{
+        height: 15rem;
+        margin-bottom: 2rem;
+    }
+
+    .pm-container p{
+        font-size: 1.3rem;
+    }
     
+    .pm-container-icon i{
+        font-size: 6rem;
+        margin: 0rem 1rem;
+    }
+    
+    .pm-container-value-measure{
+        font-size: 1.5rem;
+    }
+    
+    .pm-condition{
+        font-size: 1.5rem;
+    }
+    
+    .pm-description{
+        font-size: 1.3rem;
+    }
+
 }
