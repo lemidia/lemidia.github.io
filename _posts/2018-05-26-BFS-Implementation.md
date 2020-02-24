@@ -351,5 +351,5 @@ Breath First Search : 1 2 3 4 5 6 7 8 9 10 11 12
 
 ## References 
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Depth-first_search#Properties)  
-- [JavaTpoint](https://www.javatpoint.com/depth-first-search-algorithm)  
+- [Wikipedia](https://en.wikipedia.org/wiki/Breadth-first_search)  
+- [JavaTpoint](https://www.javatpoint.com/breadth-first-search-algorithm)  
