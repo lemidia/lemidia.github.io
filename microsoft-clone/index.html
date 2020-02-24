@@ -8,6 +8,10 @@
     <title>microsoft official homepage</title>
 </head>
 <body>
+    <div class="menu-btn">
+        <i class="fas fa-bars fa-2x"></i>
+    </div>
+
     <div class="container">
         <!-- Nav-->
         <nav class="main-nav">
@@ -236,5 +240,10 @@
         </div>
     </footer>
 
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', () => {
+            document.querySelector('.main-menu').classList.toggle('show')
+        })
+    </script>
 </body>
 </html>
