@@ -63,6 +63,8 @@ window.addEventListener('load', () =>{
                     .then(res => res.json())
                     .then(data => {
 
+                        console.log(data);
+
                         const {dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue} = data.list[0];
                         setElement(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue)
                     })
@@ -82,6 +84,12 @@ window.addEventListener('load', () =>{
         currentTime.textContent = '업데이트 시간: ' + dataTime
 
         const WTO_Standard = {
+            '-':{
+                condition: '데이터 없음',
+                description: '현재 측정소에서 수집된 데이터가 없습니다 ',
+                background: 'linear-gradient(rgb(51, 133, 255), rgb(45, 97, 175))',
+                emoji: 'fas fa-times'
+            },
             1:{
                 condition: '아주 좋음',
                 description: '현재 공기가 매우 좋습니다 ^o^! ',
@@ -134,7 +142,9 @@ window.addEventListener('load', () =>{
 
 
         function getPm10Grade(value){
-            if (value < 16) {
+            if (value === '-'){
+                return '-'
+            }else if (value < 16) {
                 return 1
             }else if (value < 31) {
                 return 2
@@ -154,7 +164,9 @@ window.addEventListener('load', () =>{
         }
 
         function getPm25Grade(value){
-            if (value < 9) {
+            if (value === '-'){
+                return '-'
+            }else if (value < 9) {
                 return 1
             }else if (value < 10) {
                 return 2
@@ -174,12 +186,15 @@ window.addEventListener('load', () =>{
         }
         
         // highestGrade among all values, base value is 1
-        let highestGrade = 1
+        let highestGrade = -1
         
         // pm10
         let currentGrade = getPm10Grade(pm10Value)
         // if currentGrade is greater than the highestGrade then update
-        highestGrade = currentGrade > highestGrade ? currentGrade : highestGrade
+
+        if (currentGrade !== '-'){
+            highestGrade = currentGrade > highestGrade ? currentGrade : highestGrade
+        }
     
         let pm10ValueElement = document.querySelector('.pm10-value')
         let pm10ConditionElement = document.getElementById('pm10-condition')
@@ -194,7 +209,9 @@ window.addEventListener('load', () =>{
 
         // pm 2.5
         currentGrade = getPm25Grade(pm25Value)
-        highestGrade = currentGrade > highestGrade ? currentGrade : highestGrade
+        if (currentGrade !== '-'){
+            highestGrade = currentGrade > highestGrade ? currentGrade : highestGrade
+        }
     
         let pm25ValueElement = document.querySelector('.pm25-value')
         let pm25ConditionElement = document.getElementById('pm25-condition')
@@ -206,6 +223,10 @@ window.addEventListener('load', () =>{
         icon.className = WTO_Standard[currentGrade].emoji
 
         // Set background color based on highestGrade 
+        if (highestGrade === -1) {
+            highestGrade = '-'
+        }
+
         let background = document.querySelector('.container')
         background.style.background = WTO_Standard[highestGrade].background
         
@@ -220,5 +241,4 @@ window.addEventListener('load', () =>{
         icon.className = WTO_Standard[highestGrade].emoji
 
     }
-
 });
