@@ -65,7 +65,7 @@ window.addEventListener('load', () =>{
 
                         console.log(data);
 
-                        const {dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue} = data.list[0];
+                        const {dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue} = data.list[1];
                         setElement(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue)
                     })
                 })
