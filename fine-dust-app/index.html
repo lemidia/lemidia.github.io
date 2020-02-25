@@ -31,7 +31,7 @@
         <div class="hr"></div>
 
         <div class="pm-container">
-            <p>미세먼지 (pm 10)</p>
+            <p>미세먼지 (10µm)</p>
             <div class="pm-container-icon">
                 <i id=pm10-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
                 <span class="sr-only">Loading...</span>
@@ -46,7 +46,7 @@
         <div class="hr"></div>
 
         <div class="pm-container">
-            <p>초미세먼지 (pm 2.5)</p>
+            <p>초미세먼지 (2.5µm)</p>
             <div class="pm-container-icon">
                 <i id=pm25-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
             </div>
@@ -57,12 +57,57 @@
             <div id="pm25-condition" class="pm-condition">Loading Data ... </div>
         </div>
 
+        <div class="hr"></div>
+
+        <div class="grade-info">
+            <div class="grade">
+                <p>8 등급 분류</p>
+                <ul>
+                    <li><i class="far fa-laugh-beam"> 아주 좋음 </i></li>
+                    <li><i class="far far fa-grin-alt"> 좋음 </i></li>
+                    <li><i class="far fa-grin-wink"> 양호 </i></li>
+                    <li><i class="far fa-meh"> 보통 </i></li>
+                    <li><i class="far fa-frown"> 나쁨 </i></li>
+                    <li><i class="far fa-angry"> 상당히 나쁨 </i></li>
+                    <li><i class="far fa-tired"> 매우 나쁨 </i></li>
+                    <li><i class="far fa-dizzy"> 최악 </i></li>
+                </ul>
+            </div>
+            <div class="grade-pm10">
+                <p>미세먼지 (10µm)</p>
+                <ul>
+                    <li>0 ~ 15</li>
+                    <li>16 ~ 30</li>
+                    <li>31 ~ 40</li>
+                    <li>41 ~ 50</li>
+                    <li>51 ~ 75</li>
+                    <li>76 ~ 100</li>
+                    <li>101 ~ 150</li>
+                    <li>151 ~</li>
+                </ul>
+            </div>
+            <div class="grade-pm25">
+                <p>초미세먼지 (2.5µm)</p>
+                <ul>
+                    <li>0 ~ 8</li>
+                    <li>9 ~ 15</li>
+                    <li>16 ~ 20</li>
+                    <li>21 ~ 25</li>
+                    <li>26 ~ 37</li>
+                    <li>38 ~ 50</li>
+                    <li> 51 ~ 75</li>
+                    <li>76 ~</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="current">
             <p class="bar"></p>
             <p class="current-location">현재 측정 장소: ?</p>
             <p class="current-time">업데이트 시간: ?</p>
             <p>사용자의 현재 위치에서 가장 가까운 측정소의 실시간 정보입니다.</p>
         </div>
+
         
     </div>
     

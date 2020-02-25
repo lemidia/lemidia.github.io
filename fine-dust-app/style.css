@@ -147,6 +147,39 @@ footer .love-icon{
     border-style: dashed;
 }
 
+/* grade info */
+
+.grade-info{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.grade-info .grade ul{
+    text-align: left;
+}
+
+.grade-info p{
+    border-bottom: 3px solid white;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.grade-info ul{
+    list-style: none;
+}
+
+.grade-info ul li{
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+
 @media screen and (max-width:500px){
     footer{
         font-size: 12px;
@@ -186,6 +219,10 @@ footer .love-icon{
         font-size: 0.8rem;
         height: 7srem;
         padding: 1.5rem;
+    }
+
+    .grade-info p, .grade-info ul li{
+        font-size: 1rem;
     }
 
 }
