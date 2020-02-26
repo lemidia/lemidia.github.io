@@ -7,7 +7,6 @@
 body{
     font-family: sans-serif;
     font-size: 15px;
-    color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -39,8 +38,82 @@ nav{
     font-size: 0.8rem;
 }
 
+.weather-container{
+    display: flex;
+    width: 90%;
+    padding: 0px 20px 0px 10px;
+    height: 250px;
+    max-width: 500px;
+    margin:25px auto 3px auto;
+    color: rgb(102, 102, 102);
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 5px;
+}
+
+.current-weather{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.location-time-condition {
+    padding-left: 10px;
+}
+
+.location-time-condition *{
+    margin-bottom: px;
+}
+
+.temp-information{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    text-align: left;
+}
+
+.temp-information .icon-temp{
+    margin-right: 20px;
+}
+
+.current-img{
+    width: 70px;
+    height: 70px;
+    margin-right: 5px;
+}
+
+.icon-temp {
+    display: flex;
+    align-items: center;
+}
+
+.icon-temp p {
+    color:  black;
+    font-size: 2.5rem;
+}
+
+.information *{
+    margin-bottom: 3px;
+}
+
+.weatherMapSigniture{
+    margin-bottom: 20px;
+    margin-left: 22px;
+    font-size: 0.7rem;
+    color: gray;
+}
+
+.weatherMapSigniture a{
+    text-decoration: none;
+    color: rgb(219, 98, 17);
+}
+
+
 .container{
     width: 100%;
+    margin: 0 auto;
+    color: white;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -51,6 +124,7 @@ nav{
 
 footer{
     background-color:rgb(43, 41, 48);
+    color: white;
     display: flex;
     justify-content: start;
     flex-direction: column;
@@ -217,7 +291,7 @@ footer .love-icon{
 
     .current{
         font-size: 0.8rem;
-        height: 7srem;
+        height: 7rem;
         padding: 1.5rem;
     }
 

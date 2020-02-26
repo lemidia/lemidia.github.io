@@ -1,22 +1,22 @@
 window.addEventListener('load', () =>{
-    let long;
-    let lat;
     const proxy = 'https://cors-anywhere.herokuapp.com/';
 
     // 사용자의 현재 위치: 경도, 위도 값을 TM 좌표계로 변환
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
-            long = position.coords.longitude; // 경도 x
-            lat = position.coords.latitude;   // 위도 y
-
-            const input_coord = 'WGS84'
-            const output_coord = 'TM'
 
             // KaKao REST API: 죄표계 변환, WGS84 to TM 
             // params : x: longitude
             //          y: latitude
             //          input_coord: transition from
             //          output_coord: transition to
+            
+            let long = position.coords.longitude; // 경도 x
+            let lat = position.coords.latitude;   // 위도 y
+
+            const input_coord = 'WGS84'
+            const output_coord = 'TM'
+
             const kakaoRESTApi = `https://dapi.kakao.com/v2/local/geo/transcoord.json?x=
             ${long}&y=${lat}&input_coord=${input_coord}&output_coord=${output_coord}`;
 
@@ -63,21 +63,90 @@ window.addEventListener('load', () =>{
                     .then(res => res.json())
                     .then(data => {
 
-                        console.log(data);
-
                         const {dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue} = data.list[0];
-                        setElement(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue)
+                        setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue)
                     })
                 })
+            }) // End of fine dust information fetch
+
+            // WeatherMap REST API: 현재 날씨 정보
+            // params : lon: longitude
+            //          lat: latitude
+            //          authKeyForWeatherMap: authorization API key (personal)
+
+            const authKeyForWeatherMap = '3f7ea16ba4a91cf586fdfbafbf4fa9db'
+
+            const weatherMapRESTAPIforCurrentWeather = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${authKeyForWeatherMap}`
+            fetch(weatherMapRESTAPIforCurrentWeather)
+            .then(res => res.json())
+            .then(data => {
+                setCurrentWeather(data)
+            }).catch(err => {
+                alert('invalid data' + err)
             })
+
         }, () => {
-            alert("You have denied the location information or please confirm the location");
+            alert("데이터를 가져오기 위해 위치정보를 수락해주세요 !");
         });
     } else{
-        alert("Geolocation is not supported by your browser");
+        alert("해당 브라우저에서는 위치정보가 지원이 되지 않습니다.");
     }
 
-    function setElement(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue){
+
+    function convert(stamp){
+        // Months array
+        var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        // Convert timestamp to milliseconds
+        var date = new Date(stamp*1000);
+        // Year
+        var year = date.getFullYear();
+        // Month
+        var month = months_arr[date.getMonth()];
+        // Day
+        var day = date.getDate();
+        // Hours
+        var hours = date.getHours();
+        // Minutes
+        var minutes = "0" + date.getMinutes();
+        // Seconds
+        var seconds = "0" + date.getSeconds();
+        // Display date time in yyyy-mm-dd h:m:s format
+        var convdataTime = year+'-'+month+'-'+ day +  ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        return convdataTime
+    }
+
+    function setCurrentWeather(data){
+        const{main, description, icon} = data.weather[0]
+        const{temp, feels_like, temp_min, temp_max, pressure, humidity} = data.main
+        const{speed} = data.wind 
+        const{all} = data.clouds 
+        const dateTime = data.dt
+        const{sunrise, sunset} = data.sys
+        const location = data.name
+
+        // .current-weather
+        let currentLocation = document.querySelector('.location')
+        let currentTime = document.querySelector('.time')
+        let currentCondition = document.querySelector('.condition')
+        currentLocation.textContent = location
+        currentTime.textContent = 'Updated Time : ' + convert(dateTime)
+        currentCondition.textContent = main
+
+        // .temp-information
+        let currentImgIcon = document.querySelector('.current-img')
+        let currentTemp = document.querySelector('.temp')
+        let currentCloud = document.querySelector('.cloudiness')
+        let currentHumidity = document.querySelector('.humidity')
+        let currentWind = document.querySelector('.wind')
+        currentImgIcon.setAttribute('src', `http://openweathermap.org/img/wn/${icon}@2x.png`)
+        currentTemp.textContent = Math.round(temp - 273.15)  + '°C' // Kelvin to Celsius
+        currentCloud.textContent = 'Cloudiness : ' + all + '%'
+        currentHumidity.textContent = 'Humidity : ' + humidity + '%'
+        currentWind.textContent = 'Wind : ' + speed + ' m/s'
+
+    }
+
+    function setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue){
         let currentLocation = document.querySelector('.current-location')
         let currentTime = document.querySelector('.current-time')
         currentLocation.textContent = '현재 측정 장소: ' + stationName
@@ -168,7 +237,7 @@ window.addEventListener('load', () =>{
                 return '-'
             }else if (value < 9) {
                 return 1
-            }else if (value < 10) {
+            }else if (value < 16) {
                 return 2
             }else if (value < 21) {
                 return 3
