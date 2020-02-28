@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="circle.css">
     <script src="https://kit.fontawesome.com/9b91a1c949.js" crossorigin="anonymous"></script>
     <title>미세먼지 정보</title>
 </head>
@@ -17,6 +18,7 @@
         </div>
     </nav>
 
+<div class="container">
     <div class="weather-container">
         <div class="current-weather">
             <div class="location-time-condition">
@@ -39,48 +41,86 @@
         </div>
     </div>
     <p class="weatherMapSigniture">More on <a href="https://openweathermap.org/">Open Weather</a></p>
-
-    <div class="container">
-
+    <div class="pm-containers">
         <div class="pm-container">
-            <p>전체적으로</p>
-            <div class="pm-container-icon">
-                <i id=pm-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+            <p>미세먼지</p>
+            <div class="pm-information">
+                <div class="pm10-circle c100 p0 small">
+                    <span class="pm10-circle-Value"></span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>      
+                <div class="pm-information-condition-icon">
+                    <div id="pm10-condition" class="pm-condition"></div>
+                    <div class="pm-container-icon">
+                        <i id=pm10-icon class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>
+                    </div>
+                </div>
             </div>
-            <div id="pm-condition" class="pm-condition">Loading Data ... </div>
-            <div id="pm-description" class="pm-description">Loading Data ... </div>
         </div>
 
-        <div class="hr"></div>
-
         <div class="pm-container">
-            <p>미세먼지 (10µm)</p>
-            <div class="pm-container-icon">
-                <i id=pm10-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-                <span class="sr-only">Loading...</span>
+            <p>초미세먼지</p>
+            <div class="pm-information">
+                    <div class="pm25-circle c100 p0 small">
+                        <span class="pm25-circle-Value"></span>
+                        <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                        </div>
+                    </div>      
+                <div class="pm-information-condition-icon">
+                    <div id="pm25-condition" class="pm-condition"></div>
+                    <div class="pm-container-icon">
+                        <i id=pm25-icon class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>
+                    </div>
+                </div>
             </div>
-            <div class="pm-container-value-measure">
-                <span class="pm10-value">?</span>
-                <span>㎍/㎥</span>
+        </div>
+    </div>
+
+    <div class="etc-containers">
+        <div class="etc-container">
+            <p class="etc-container-title">오존</p>
+            <div class="etc-information">
+                <p class="o3-value etc-value">0.003ppm</p>
+                <i id=03-icon class="fas-fa-good"></i>
+                <p class="o3-condition etc-condition"></p>
             </div>
-            <div id="pm10-condition" class="pm-condition">Loading Data ... </div>
+            <div class="progress 03-progress">
+                <div class="progress-done o3-progress-done" data-done="20">
+                </div>
+            </div>
         </div>
 
-        <div class="hr"></div>
-
-        <div class="pm-container">
-            <p>초미세먼지 (2.5µm)</p>
-            <div class="pm-container-icon">
-                <i id=pm25-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        <div class="etc-container">
+            <p class="etc-container-title">이산화질소</p>
+            <div class="etc-information">
+                <p class="no2-value etc-value">0.003ppm</p>
+                <i id=no2-icon class="fas-fa-good"></i>
+                <p class="no2-condition etc-condition"></p>
             </div>
-            <div class="pm-container-value-measure">
-                <span class="pm25-value">?</span>
-                <span>㎍/㎥</span>
+            <div class="progress no2-progress">
+                <div class="progress-done no2-progress-done" data-done="20">
+                </div>
             </div>
-            <div id="pm25-condition" class="pm-condition">Loading Data ... </div>
         </div>
 
-        <div class="hr"></div>
+        <div class="etc-container">
+            <p class="etc-container-title">일산화탄소</p>
+            <div class="etc-information">
+                <p class="co-value etc-value">0.003ppm</p>
+                <i id=co-icon class="fas-fa-good"></i>
+                <p class="co-condition etc-condition"></p>
+            </div>
+            <div class="progress co-progress">
+                <div class="progress-done co-progress-done" data-done="20">
+                </div>
+            </div>
+        </div>
+    </div>
 
         <div class="grade-info">
             <div class="grade">
@@ -97,7 +137,7 @@
                 </ul>
             </div>
             <div class="grade-pm10">
-                <p>미세먼지 (10µm)</p>
+                <p>미세먼지</p>
                 <ul>
                     <li>0 ~ 15</li>
                     <li>16 ~ 30</li>
@@ -110,7 +150,7 @@
                 </ul>
             </div>
             <div class="grade-pm25">
-                <p>초미세먼지 (2.5µm)</p>
+                <p>초미세먼지</p>
                 <ul>
                     <li>0 ~ 8</li>
                     <li>9 ~ 15</li>
@@ -130,10 +170,7 @@
             <p class="current-time">업데이트 시간: ?</p>
             <p>사용자의 현재 위치에서 가장 가까운 측정소의 실시간 정보입니다.</p>
         </div>
-
-        
     </div>
-    
 
     <footer>
         <div class="footer-title">

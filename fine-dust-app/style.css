@@ -8,6 +8,7 @@ body{
     font-family: sans-serif;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
+    background: rgb(247, 247, 247);
 }
 
 nav{
@@ -20,6 +21,26 @@ nav{
     padding: 1.3rem;
     font-size: 1rem;
     color: #646262;
+}
+
+.container{
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    color: black;
+}
+
+.weather-container{
+    display: flex;
+    width: 100%;
+    padding: 0px 10px 0px 10px;
+    height: 200px;
+    margin:25px auto 3px auto;
+    color: rgb(102, 102, 102);
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background: white;
 }
 
 .logo{
@@ -38,37 +59,27 @@ nav{
     font-size: 0.8rem;
 }
 
-.weather-container{
-    display: flex;
-    width: 90%;
-    padding: 0px 20px 0px 10px;
-    height: 250px;
-    max-width: 500px;
-    margin:25px auto 3px auto;
-    color: rgb(102, 102, 102);
-    border: 1px rgb(209, 209, 209) solid;
-    border-radius: 5px;
-}
-
 .current-weather{
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    padding: 10px;
 }
 
 .location-time-condition {
     padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 .location-time-condition *{
-    margin-bottom: px;
+    margin-bottom: 4px;
 }
 
 .temp-information{
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content:space-between;
     align-items: center;
     text-align: left;
 }
@@ -93,15 +104,17 @@ nav{
     font-size: 2.5rem;
 }
 
-.information *{
+.temp-information .information *{
     margin-bottom: 3px;
 }
 
+
 .weatherMapSigniture{
     margin-bottom: 20px;
-    margin-left: 22px;
+    margin-left: 5px;
     font-size: 0.7rem;
     color: gray;
+    margin-top: -17px;
 }
 
 .weatherMapSigniture a{
@@ -109,18 +122,144 @@ nav{
     color: rgb(219, 98, 17);
 }
 
+/* pm */
 
-.container{
+.pm-containers{
     width: 100%;
-    margin: 0 auto;
-    color: white;
+    display: flex;
+    height: 170px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.pm-container{
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.pm-container p{
+    margin-bottom: 13px;
+    margin-left: -30px;
+    font-size: 1.2rem;
+    color: #585858;
+}
+
+.pm-information{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pm-information-condition-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pm-information-condition-icon .pm-condition{
+    width: 30px;
+    margin-bottom: 5px;
+}
+
+.pm-container-icon{
+    font-size: 1.5rem;
+}
+
+
+
+/* etc */
+
+.etc-containers{
+    width: 100%;
+    height: 350px;
+    margin: auto;
+    background-color: white;
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 5px;
+    padding: 50px 30px 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.etc-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.etc-container * {
+    margin-bottom: 0.5rem;
+}
+
+.etc-container-title{
+    font-size: 1.5rem;
+    color: #646262;
+}
+
+
+.etc-information{
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    background: linear-gradient(rgb(224, 226, 226), rgb(48, 62, 143));
+    margin-bottom: 5px;
 }
+
+.etc-information .etc-value{
+    font-size: 1.2rem;
+}
+
+.etc-information i{
+    font-size: 1.3rem;
+    margin-right: 10px;
+}
+
+.etc-information:nth-child(2){
+    font-size: 1.1rem;
+}
+
+.etc-value{
+    flex: 1;
+}
+
+.progress{
+    background-color: #d8d8d8;
+    border-radius: 20px;
+    height: 11px;
+    width: 200px;
+}
+
+
+
+.progress-done{
+    background: linear-gradient(to right, rgb(120, 197, 202), rgb(54, 126, 136));
+    box-shadow: 0 3px 3px -5px rgb(143, 134, 137), 0 2px 5px rgb(139, 133, 135);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    opacity: 0;
+    width: 0px;
+    color: aliceblue;
+    transition: 1s ease-out;
+}
+
+
+
+/* foorter */
 
 footer{
     background-color:rgb(43, 41, 48);
@@ -163,83 +302,28 @@ footer .love-icon{
     height: 0.8rem;
 }
 
-.current{
-    color: #e7e2e2;
-    height: 7rem;
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    text-align: left;
-    padding: 1rem;
-    margin: 1rem;
-    font-size: 1.1rem;
-    border: 3px solid;
-    background: rgba(49, 49, 49, 0.1);
-    border-style: dashed;
-}
-
-.current > *{
-    margin-bottom: 0.3rem;
-}
-
-.pm-container{
-    height: 20rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin: 3rem auto;
-}
-
-.pm-container p{
-    font-size: 1.8rem;
-}
-
-.pm-container-icon i{
-    font-size: 8rem;
-    margin: 0rem 1rem;
-}
-
-.pm-container-value-measure{
-    font-size: 1.8rem;
-}
-
-.pm-condition{
-    font-size: 2rem;
-}
-
-.pm-description{
-    font-size: 1.5rem;
-}
-
-.hr{
-    width: 80%;
-    border: 2px solid white;
-    border-style: dashed;
-}
-
 /* grade info */
 
 .grade-info{
-    width: 90%;
+    width: 100%;
+    margin: auto;
     display: flex;
     justify-content: space-around;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 5px;
+    padding: 22px 20px 5px 20px;
 }
 
-.grade-info .grade ul{
-    text-align: left;
-}
+
 
 .grade-info p{
-    border-bottom: 3px solid white;
-    padding-bottom: 5px;
+    border-bottom: 3px solid rgb(218, 218, 218);
+    padding-bottom: 7px;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -250,7 +334,36 @@ footer .love-icon{
 
 .grade-info ul li{
     margin-bottom: 20px;
-    font-size: 1.4rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.grade-info .grade ul li{
+    text-align: left;
+}
+
+/* location & time information */
+.current{
+    color: black;
+    height: 7rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: left;
+    padding: 10px;
+    margin: auto;
+    font-size: 0.9rem;
+    border: 3px solid;
+    background: rgba(255, 255, 255, 1);
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.current > *{
+    margin-bottom: 0.3rem;
 }
 
 
@@ -264,31 +377,6 @@ footer .love-icon{
         height: 0.6rem;
     }
 
-    .pm-container{
-        height: 15rem;
-    }
-
-    .pm-container p{
-        font-size: 1.3rem;
-    }
-    
-    .pm-container-icon i{
-        font-size: 6rem;
-        margin: 0rem 1rem;
-    }
-    
-    .pm-container-value-measure{
-        font-size: 1.5rem;
-    }
-    
-    .pm-condition{
-        font-size: 1.5rem;
-    }
-    
-    .pm-description{
-        font-size: 1.3rem;
-    }
-
     .current{
         font-size: 0.8rem;
         height: 7rem;
@@ -296,7 +384,7 @@ footer .love-icon{
     }
 
     .grade-info p, .grade-info ul li{
-        font-size: 0.9rem;
+
     }
 
 }
