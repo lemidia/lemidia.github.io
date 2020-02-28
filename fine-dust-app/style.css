@@ -132,8 +132,10 @@ nav{
     align-items: center;
     padding: 10px;
     border: 1px rgb(209, 209, 209) solid;
+    border-bottom: none;
     border-radius: 5px;
-    margin-bottom: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
     background-color: white;
 }
 
@@ -175,29 +177,112 @@ nav{
     font-size: 1.5rem;
 }
 
+.pm10-circle-Value{
+    font-weight: bold;
+}
+.pm25-circle-Value{
+    font-weight: bold;
+}
 
-
-/* etc */
-
-.etc-containers{
+.who-recommend{
     width: 100%;
-    height: 350px;
-    margin: auto;
     background-color: white;
+    height: 230px;
     border: 1px rgb(209, 209, 209) solid;
-    border-radius: 5px;
-    padding: 50px 30px 30px 40px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px 20px 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
 }
 
+.who-recommend-title{
+    font-size: 1.2rem;
+    color: #4e4e4e;
+    border-bottom: 2px solid rgb(209, 209, 209);
+    padding-bottom: 3px;
+    width: 100%;
+}
+
+.title-value{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.recommend-title{
+    margin-right: 30px;
+}
+
+.recommend-title p{
+    margin-bottom: 5px;
+}
+
+.recommend-value{
+    font-weight: bold;
+    color: rgb(26, 158, 112);
+}
+
+.recommend-value p {
+    margin-bottom: 5px;
+}
+
+.who-recommend-description{
+    color: #5c5c5c;
+}
+
+.pm-data-from{
+    margin-bottom: 0;
+    margin-left: 5px;
+    font-size: 0.7rem;
+    color: gray;
+    margin-top: 4px;
+}
+
+.pm-data-from a{
+    text-decoration: none;
+    color: rgb(13, 86, 197);
+}
+
+
+
+/* etc */
+
+
+.etc-containers{
+    width: 100%;
+    height: 430px;
+    margin: auto;
+    background-color: white;
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 5px;
+    padding: 40px 10px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.etc-title{
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    color: #696969;
+    border-bottom: 2px solid #dddddd;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    margin-left: -10px;
+}
+
 .etc-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .etc-container * {
@@ -205,7 +290,7 @@ nav{
 }
 
 .etc-container-title{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #646262;
 }
 
@@ -237,7 +322,7 @@ nav{
 .progress{
     background-color: #d8d8d8;
     border-radius: 20px;
-    height: 11px;
+    height: 10px;
     width: 200px;
 }
 
@@ -314,9 +399,8 @@ footer .love-icon{
     background-color: rgb(255, 255, 255);
     border: 1px rgb(209, 209, 209) solid;
     border-radius: 5px;
-    padding: 22px 20px 5px 20px;
+    padding: 22px 20px 5px 15px;
 }
-
 
 
 .grade-info p{
@@ -326,6 +410,7 @@ footer .love-icon{
     font-size: 0.9rem;
     margin-bottom: 1rem;
     text-align: center;
+    color: #5c5c5c;
 }
 
 .grade-info ul{
@@ -333,18 +418,68 @@ footer .love-icon{
 }
 
 .grade-info ul li{
-    margin-bottom: 20px;
+    margin-bottom: 19px;
     font-size: 0.9rem;
     text-align: center;
+    font-weight: bold;
+}
+
+.grade-info ul li i{
+    margin-right: 3px;
 }
 
 .grade-info .grade ul li{
     text-align: left;
 }
 
+.grade-info ul li:nth-child(1){
+    color : rgb(51, 133, 255);
+}
+
+.grade-info ul li:nth-child(2){
+    color : rgb(79,153, 202);
+}
+
+.grade-info ul li:nth-child(3){
+    color : rgb(46, 143, 156);
+}
+
+.grade-info ul li:nth-child(4){
+    color : rgb(62, 182, 140);
+}
+
+.grade-info ul li:nth-child(5){
+    color : rgb(255, 179, 102);
+}
+
+.grade-info ul li:nth-child(6){
+    color : rgb(230, 92, 0);
+}
+
+.grade-info ul li:nth-child(7){
+    color : rgb(255, 51, 0);
+}
+
+.grade-info ul li:nth-child(8){
+    color : rgb(31, 46, 46);
+}
+
+.grade-pm10 ul li{
+    margin-bottom: 21px;
+}
+
+.grade-pm25 ul li{
+    margin-bottom: 21px;
+}
+
+.grade ul i{
+    font-size: 1rem;
+}
+
+
 /* location & time information */
 .current{
-    color: black;
+    color: rgb(90, 90, 90);
     height: 7rem;
     width: 100%;
     display: flex;
@@ -381,10 +516,6 @@ footer .love-icon{
         font-size: 0.8rem;
         height: 7rem;
         padding: 1.5rem;
-    }
-
-    .grade-info p, .grade-info ul li{
-
     }
 
 }

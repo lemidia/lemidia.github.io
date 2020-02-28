@@ -164,7 +164,7 @@ window.addEventListener('load', () =>{
             1:{
                 condition: '아주 좋음',
                 description: '현재 공기가 매우 좋습니다 ^o^! ',
-                color: 'rgb(45, 97, 175)',
+                color: 'rgb(51, 133, 255)',
                 background: 'linear-gradient(rgb(51, 133, 255), rgb(45, 97, 175))',
                 emoji: 'far fa-laugh-beam',
                 circle: 'light-blue'
@@ -364,7 +364,7 @@ window.addEventListener('load', () =>{
         let pm10Circle = document.querySelector('.pm10-circle')
         if (pm10Value !== '-') {
             let pm10Percent = Math.round((pm10Value/151) * 100)
-            pm10Circle.className = `pm10-circle c100 p${pm10Percent} small`
+            pm10Circle.className = `pm10-circle c100 p${pm10Percent} small ${WTO_Standard[currentGrade].circle}`
         }else{
             pm10Circle.className = `pm10-circle c100 p${0} small`
         }
@@ -390,7 +390,7 @@ window.addEventListener('load', () =>{
         let pm25Circle = document.querySelector('.pm25-circle')
         if (pm25Value !== '-') {
             let pm25Percent = Math.round((pm25Value/71) * 100)
-            pm25Circle.className = `pm25-circle c100 p${pm25Percent} small`
+            pm25Circle.className = `pm25-circle c100 p${pm25Percent} small ${WTO_Standard[currentGrade].circle}`
         }else{
             pm25Circle.className = `pm25-circle c100 p${0} small`
         }
