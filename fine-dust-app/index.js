@@ -85,15 +85,30 @@ window.addEventListener('load', () =>{
                 alert('invalid data' + err)
             })
 
+            // WeatherMap REST API:  예보 날씨 정보
+            // params : lon: longitude
+            //          lat: latitude
+            //          authKeyForWeatherMap: authorization API key (personal)
+            //          cnt: 불어올 리스트 개수 (3시간 마다)
+
+            const cnt = 8
+            const weatherMapRESTAPIforForecast = `${proxy}api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${authKeyForWeatherMap}&cnt=${cnt}`
+            fetch(weatherMapRESTAPIforForecast)
+            .then(res => res.json())
+            .then(data => {
+                setForecast(data)
+            }).catch(err => {
+                alert('invalid data' + err)
+            })
         }, () => {
-            alert("데이터를 가져오기 위해 위치정보를 수락해주세요 !");
+            alert("데이터를 가져오기 위해 위치정보를 수락해주세요!");
         });
     } else{
-        alert("해당 브라우저에서는 위치정보가 지원이 되지 않습니다.");
+        alert("해당 브라우저에서는 위치정보 지원이 되지 않습니다.");
     }
 
 
-    function convert(stamp){
+    function convert(stamp, type){
         // Months array
         var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         // Convert timestamp to milliseconds
@@ -111,8 +126,12 @@ window.addEventListener('load', () =>{
         // Seconds
         var seconds = "0" + date.getSeconds();
         // Display date time in yyyy-mm-dd h:m:s format
-        var convdataTime = year+'-'+month+'-'+ day +  ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-        return convdataTime
+        var convdataTime = year+'-'+month+'-'+ day + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        if (type === 'all') {
+            return convdataTime
+        }else if (type === 'hours'){
+            return hours
+        }
     }
 
     function setCurrentWeather(data){
@@ -129,7 +148,7 @@ window.addEventListener('load', () =>{
         let currentTime = document.querySelector('.time')
         let currentCondition = document.querySelector('.condition')
         currentLocation.textContent = location
-        currentTime.textContent = '업데이트 시간 : ' + convert(dateTime)
+        currentTime.textContent = '업데이트 시간 : ' + convert(dateTime, 'all')
         currentCondition.textContent = main
 
         // .temp-information
@@ -143,6 +162,33 @@ window.addEventListener('load', () =>{
         currentCloud.textContent = '구름 : ' + all + '%'
         currentHumidity.textContent = '습도 : ' + humidity + '%'
         currentWind.textContent = '바람 : ' + speed + ' m/s'
+    }
+
+    function setForecast(data){
+        const foreCastLists = document.querySelector('.forecast-lists')
+        for (let i = 0; i < 8; i++) {
+            let listData = data.list[i]
+            let hours = listData.dt
+            let icon = listData.weather[0].icon
+            let temp = listData.main.temp
+
+            let list = document.createElement('li')
+            list.className = 'listItem'
+
+            let convertedHours = convert(hours, 'hours')
+            if (convertedHours < 10) {
+                convertedHours = '0' + convertedHours
+            }
+            list.appendChild(document.createTextNode(convertedHours + ':00'))
+            
+            let iconImg = document.createElement('img')
+            iconImg.setAttribute('src', `./img/${icon}.png`)
+            list.appendChild(iconImg)
+
+            list.appendChild(document.createTextNode(Math.round(temp - 273.15)  + '°C'))
+
+            foreCastLists.appendChild(list)
+        }
 
     }
 

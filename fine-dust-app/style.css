@@ -13,14 +13,14 @@ body{
 
 nav{
     width: 100%;
-    height: 85px;
-    background-color: antiquewhite;
+    height: 80px;
+    background: linear-gradient(rgb(255, 247, 185), rgb(255, 237, 97));
     display: flex;
     justify-content: start;
     align-items: center;
     padding: 1.3rem;
     font-size: 1rem;
-    color: #646262;
+    color: #797979;
 }
 
 .container{
@@ -32,9 +32,10 @@ nav{
 
 .weather-container{
     display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 0px 10px 0px 10px;
-    height: 200px;
+    height: px;
     margin:25px auto 3px auto;
     color: rgb(102, 102, 102);
     border: 1px rgb(209, 209, 209) solid;
@@ -44,15 +45,16 @@ nav{
 }
 
 .logo{
-    height: 43px;
-    width: 43px;
+    height: 59px;
+    width: 60px;
     display: inline-block;
     margin-right: 0.6rem;
 }
 
 .title{
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    margin-bottom: -3px;
 }
 
 .sub-title{
@@ -106,6 +108,40 @@ nav{
 
 .temp-information .information *{
     margin-bottom: 3px;
+}
+
+/* Forecast information */
+
+.forecast{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.forecast p{
+    font-size: 1.3rem;
+    color: #616161;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px rgb(209, 209, 209) solid;
+}
+
+.forecast ul{
+    list-style: none;
+}
+
+.forecast ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.forecast ul li img{
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -364,12 +400,20 @@ footer{
     margin-bottom: 1.3rem;
 }
 
+.footer-title img{
+    height: 40px;
+    width: 40px;
+    margin-right: 7px;
+}
+
 footer .title{
+    font-size: 1.1rem;
     font-weight: bold;
+    margin-bottom: 1px;
 }
 
 footer.sub-title{
-    font-size: 1.8rem;
+    font-size: 1rem;
 }
 
 footer a{
