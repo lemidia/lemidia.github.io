@@ -1,26 +1,26 @@
 window.addEventListener('load', () =>{
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const proxy = 'https://cors-anywhere.herokuapp.com/'; // For localhost proxy - 127.0.0.1
+    let currentAddress1
 
-    // 사용자의 현재 위치: 경도, 위도 값을 TM 좌표계로 변환
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
+
+            const long = position.coords.longitude; // 경도 x
+            const lat = position.coords.latitude;   // 위도 y
 
             // KaKao REST API: 죄표계 변환, WGS84 to TM 
             // params : x: longitude
             //          y: latitude
             //          input_coord: transition from
             //          output_coord: transition to
-            
-            let long = position.coords.longitude; // 경도 x
-            let lat = position.coords.latitude;   // 위도 y
 
             const input_coord = 'WGS84'
             const output_coord = 'TM'
 
-            const kakaoRESTApi = `https://dapi.kakao.com/v2/local/geo/transcoord.json?x=
+            const kakaoRESTApiForCoords = `https://dapi.kakao.com/v2/local/geo/transcoord.json?x=
             ${long}&y=${lat}&input_coord=${input_coord}&output_coord=${output_coord}`;
 
-            fetch( kakaoRESTApi ,{
+            fetch(kakaoRESTApiForCoords ,{
                 method:'GET',
                 headers:{
                     'Content-Type': 'application/json',
@@ -69,6 +69,36 @@ window.addEventListener('load', () =>{
                 })
             }) // End of fine dust information fetch
 
+            // Return promise
+            function seekAddress(){
+
+                // KaKao REST API: 좌표 -> 주소 변환
+                // params : x: longitude
+                //          y: latitude
+                //          input_coord: transition from
+
+                const kakaoRESTApiForAddress = `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=
+                ${long}&y=${lat}&input_coord=WGS84`;
+
+                const address = fetch(kakaoRESTApiForAddress, {
+                    method:'GET',
+                    headers:{
+                        'Content-Type': 'application/json',
+                        'Authorization': 'KakaoAK 06034a40145bbf76839d147aa0b49abb' // Insert your own APP KEY (Kakao)
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    const addressLists = data.documents[0].address
+                    return addressLists.region_1depth_name + ' ' + addressLists.region_2depth_name
+                    + ' ' + addressLists.region_3depth_name
+                }).catch(err => {
+                    alert('invalid data' + err)
+                })
+
+                return address
+            }
+
             // WeatherMap REST API: 현재 날씨 정보
             // params : lon: longitude
             //          lat: latitude
@@ -80,7 +110,10 @@ window.addEventListener('load', () =>{
             fetch(weatherMapRESTAPIforCurrentWeather)
             .then(res => res.json())
             .then(data => {
-                setCurrentWeather(data)
+                seekAddress()
+                .then(res => {
+                    setCurrentWeather(data, res)
+                });
             }).catch(err => {
                 alert('invalid data' + err)
             })
@@ -106,7 +139,6 @@ window.addEventListener('load', () =>{
     } else{
         alert("해당 브라우저에서는 위치정보 지원이 되지 않습니다.");
     }
-
 
     function convert(stamp, type){
         // Months array
@@ -134,7 +166,7 @@ window.addEventListener('load', () =>{
         }
     }
 
-    function setCurrentWeather(data){
+    function setCurrentWeather(data, currentAddress){
         const{main, description, icon} = data.weather[0]
         const{temp, feels_like, temp_min, temp_max, pressure, humidity} = data.main
         const{speed} = data.wind 
@@ -147,8 +179,8 @@ window.addEventListener('load', () =>{
         let currentLocation = document.querySelector('.location')
         let currentTime = document.querySelector('.time')
         let currentCondition = document.querySelector('.condition')
-        currentLocation.textContent = location
-        currentTime.textContent = '업데이트 시간 : ' + convert(dateTime, 'all')
+        currentLocation.textContent = currentAddress
+        currentTime.textContent = convert(dateTime, 'all')
         currentCondition.textContent = main
 
         // .temp-information
