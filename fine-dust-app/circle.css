@@ -1078,6 +1078,14 @@
   color: rgb(62, 182, 140);
 }
 
+.c100.light-orange .bar,
+.c100.light-orange .fill {
+  border-color: rgb(255, 179, 102) !important;
+}
+.c100.light-orange:hover > span {
+  color: rgb(255, 179, 102);
+}
+
 .c100.orange .bar,
 .c100.orange .fill {
   border-color: rgb(230, 92, 0) !important;

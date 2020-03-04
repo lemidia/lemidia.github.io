@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="circle.css">
     <script src="https://kit.fontawesome.com/9b91a1c949.js" crossorigin="anonymous"></script>
-    <title>미세먼지 정보</title>
+    <title>날씨 및 미세먼지</title>
 </head>
 <body>
     <nav>
         <img src="./logo.png" alt="" class="logo">
         <div>
-            <p class="title">날씨 & 미세먼지</p>
+            <p class="title">Weather & Dust</p>
             <!-- <p class="sub-title">Particulate matter 10µm and 2.5µm</p> -->
         </div>
     </nav>
@@ -104,7 +104,7 @@
             증가를 최저 수준으로 지정한 수치입니다.
          </p>
     </div>
-    <p class="pm-data-from">자료제공 <a href="https://airkorea.or.kr/"> 한국환경공단 에어코리아</a></p>
+    <p class="pm-data-from">자료제공 <a href="https://www.airkorea.or.kr/"> 한국환경공단 에어코리아</a></p>
 
     <div class="grade-info">
         <div class="grade">
@@ -149,9 +149,9 @@
     </div>
 
     <div class="etc-containers">
-        <p class="etc-title">현재 오염물질 농도</p>
+        <p class="etc-title">기타 오염물질 농도</p>
         <div class="etc-container">
-            <p class="etc-container-title">오존</p>
+            <p class="etc-container-title">오존(o3)</p>
             <div class="etc-information">
                 <p class="o3-value etc-value">0.003ppm</p>
                 <i id=03-icon class="fas-fa-good"></i>
@@ -161,10 +161,14 @@
                 <div class="progress-done o3-progress-done" data-done="20">
                 </div>
             </div>
+            <div class="etc-measure">
+                <span>아주 좋음</span>
+                <span>보통</span>
+            </div>
         </div>
 
         <div class="etc-container">
-            <p class="etc-container-title">이산화질소</p>
+            <p class="etc-container-title">이산화질소(No2)</p>
             <div class="etc-information">
                 <p class="no2-value etc-value">0.003ppm</p>
                 <i id=no2-icon class="fas-fa-good"></i>
@@ -174,10 +178,14 @@
                 <div class="progress-done no2-progress-done" data-done="20">
                 </div>
             </div>
+            <div class="etc-measure">
+                <span>아주 좋음</span>
+                <span>보통</span>
+            </div>
         </div>
 
         <div class="etc-container">
-            <p class="etc-container-title">일산화탄소</p>
+            <p class="etc-container-title">일산화탄소(Co)</p>
             <div class="etc-information">
                 <p class="co-value etc-value">0.003ppm</p>
                 <i id=co-icon class="fas-fa-good"></i>
@@ -187,8 +195,13 @@
                 <div class="progress-done co-progress-done" data-done="20">
                 </div>
             </div>
+            <div class="etc-measure">
+                <span>아주 좋음</span>
+                <span>보통</span>
+            </div>
         </div>
     </div>
+    <p class="pm-data-from">자료제공 <a href="https://www.airkorea.or.kr/"> 한국환경공단 에어코리아</a></p>
 
         <div class="current">
             <p class="bar"></p>
@@ -208,8 +221,9 @@
         </div>
         <p>Contact site: <a class="link" href="https://lemidia.github.io">
         Code factory</a></p>
-        <p>All of Data is provided by <a href="https://www.airkorea.or.kr">
-            Air Korea</a></p>
+        <p>Data is provided by <a href="https://www.airkorea.or.kr">
+            Air Korea</a> and <a href="https://openweathermap.org/">
+                Open Weather</a></p>
         <p>Made with <img class="love-icon" src="love.svg" alt="love icon"> and Coffee by <Strong>Gyeong</Strong> in Korea</p>
     </footer>
     <script src="./index.js"></script>

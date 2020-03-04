@@ -13,15 +13,15 @@ body{
 
 nav{
     width: 100%;
-    height: 80px;
+    height: 65px;
     background: linear-gradient(rgb(134, 217, 255), rgb(81, 148, 224));
     /* rgb(255, 247, 185), rgb(255, 237, 97) */
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 1.3rem;
     font-size: 1rem;
-    color: #eeeeee;
+    color: #f1f1f1;
     /*#797979*/
 }
 
@@ -47,10 +47,10 @@ nav{
 }
 
 .logo{
-    height: 59px;
-    width: 60px;
+    height: 49px;
+    width: 50px;
     display: inline-block;
-    margin-right: 0.6rem;
+    margin-right: 0.5rem;
 }
 
 .title{
@@ -72,12 +72,13 @@ nav{
 }
 
 .location-time-condition {
-    padding-left: 10px;
+    padding-left: 5px;
     margin-bottom: 10px;
 }
 
 .location-time-condition *{
     margin-bottom: 4px;
+    color: #7c7c7c;
 }
 
 .temp-information{
@@ -140,6 +141,7 @@ nav{
     align-items: center;
     border-radius: 0px;
     padding: 3px 5px;
+
 }
 
 .forecast ul li img{
@@ -293,17 +295,16 @@ nav{
 
 .etc-containers{
     width: 100%;
-    height: 430px;
     margin: auto;
     background-color: white;
     border: 1px rgb(209, 209, 209) solid;
     border-radius: 5px;
-    padding: 40px 10px 30px 30px;
+    padding: 25px 10px 10px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .etc-title{
@@ -321,7 +322,7 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .etc-container * {
@@ -329,8 +330,9 @@ nav{
 }
 
 .etc-container-title{
-    font-size: 1.4rem;
-    color: #646262;
+    font-size: 1.2rem;
+    color: #5f5f5f;
+    margin-bottom: 10px;
 }
 
 
@@ -338,16 +340,22 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .etc-information .etc-value{
-    font-size: 1.2rem;
+    font-size: 1rem;
+    color: #868686;
 }
 
 .etc-information i{
-    font-size: 1.3rem;
-    margin-right: 10px;
+    font-size: 1.1rem;
+    margin-right: 7px;
+}
+
+.etc-information .etc-condition{
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
 }
 
 .etc-information:nth-child(2){
@@ -362,7 +370,15 @@ nav{
     background-color: #d8d8d8;
     border-radius: 20px;
     height: 10px;
-    width: 200px;
+    width: 210px;
+}
+
+.etc-measure{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #868686;
+    font-size: 0.7rem;
 }
 
 
@@ -430,8 +446,9 @@ footer > *{
 }
 
 footer .love-icon{
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 15px;
+    height: 15px;
+    margin-bottom: -3px;
 }
 
 /* grade info */
@@ -446,12 +463,12 @@ footer .love-icon{
     background-color: rgb(255, 255, 255);
     border: 1px rgb(209, 209, 209) solid;
     border-radius: 5px;
-    padding: 22px 20px 5px 15px;
+    padding: 22px 20px 5px 12px;
 }
 
 
 .grade-info p{
-    border-bottom: 3px solid rgb(218, 218, 218);
+    border-bottom: 2px solid rgb(218, 218, 218);
     padding-bottom: 7px;
     font-weight: bold;
     font-size: 0.9rem;
@@ -542,6 +559,7 @@ footer .love-icon{
     border: 1px rgb(209, 209, 209) solid;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .current > *{
@@ -555,8 +573,9 @@ footer .love-icon{
     }
 
     footer .love-icon{
-        width: 0.6rem;
-        height: 0.6rem;
+        width: 0.7rem;
+        height: 0.7rem;
+        margin-bottom: -2px;
     }
 
     .current{

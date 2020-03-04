@@ -277,8 +277,7 @@ window.addEventListener('load', () =>{
                 color: 'rgb(255, 179, 102)',
                 background: 'linear-gradient(rgb(255, 179, 102), rgb(230, 115, 0))',
                 emoji: 'far fa-frown',
-                circle: 'light blue',
-                circle: 'orange'
+                circle: 'light-orange'
             },
             6:{
                 condition: '상당히 나쁨',
