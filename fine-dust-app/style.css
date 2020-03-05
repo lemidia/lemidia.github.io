@@ -69,6 +69,8 @@ nav{
     flex-direction: column;
     justify-content: space-evenly;
     padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .location-time-condition {
@@ -228,11 +230,10 @@ nav{
 .who-recommend{
     width: 100%;
     background-color: white;
-    height: 230px;
     border: 1px rgb(209, 209, 209) solid;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    padding: 5px 20px 10px 20px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -245,12 +246,14 @@ nav{
     border-bottom: 2px solid rgb(209, 209, 209);
     padding-bottom: 3px;
     width: 100%;
+    margin-bottom: 23px;
 }
 
 .title-value{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 18px;
 }
 
 
@@ -259,7 +262,7 @@ nav{
 }
 
 .recommend-title p{
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .recommend-value{
@@ -274,6 +277,29 @@ nav{
 .who-recommend-description{
     color: #5c5c5c;
 }
+
+.who-recommend .warning-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffaf53;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 13px;
+    border-bottom: 3px solid rgb(199, 150, 76);
+    margin-right: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+    display: none
+}
+
+.who-recommend .warning-box i{
+    font-size: 22px;
+    margin-right: 13px;
+}
+
+/* from data */
 
 .pm-data-from{
     margin-bottom: 0;

@@ -1,6 +1,5 @@
 window.addEventListener('load', () =>{
     const proxy = 'https://cors-anywhere.herokuapp.com/'; // For localhost proxy - 127.0.0.1
-    let currentAddress1
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
@@ -140,9 +139,26 @@ window.addEventListener('load', () =>{
         alert("해당 브라우저에서는 위치정보 지원이 되지 않습니다.");
     }
 
+    function amPmConvertor(hours){
+        let convertedHours = hours
+        let amPm 
+
+        if (hours >= 13) {
+            convertedHours -= 12
+        }
+        
+        if (hours <= 11) {
+            amPm = 'AM'
+        }else{
+            amPm = 'PM'
+        }
+
+        return convertedHours + ':00' + ' ' + amPm 
+    }
+
     function convert(stamp, type){
         // Months array
-        var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var months_arr = ['1','2','3','4','5','6','7','8','9','10','11','12'];
         // Convert timestamp to milliseconds
         var date = new Date(stamp*1000);
         // Year
@@ -158,11 +174,13 @@ window.addEventListener('load', () =>{
         // Seconds
         var seconds = "0" + date.getSeconds();
         // Display date time in yyyy-mm-dd h:m:s format
-        var convdataTime = year+'-'+month+'-'+ day + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        var entire = year+'-'+month+'-'+ day + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
         if (type === 'all') {
-            return convdataTime
+            return entire
         }else if (type === 'hours'){
-            return hours
+            return amPmConvertor(hours)
+        }else if (type === 'briefly'){
+            return month + '월 ' + day + '일 ' + amPmConvertor(hours)
         }
     }
 
@@ -180,8 +198,10 @@ window.addEventListener('load', () =>{
         let currentTime = document.querySelector('.time')
         let currentCondition = document.querySelector('.condition')
         currentLocation.textContent = currentAddress
-        currentTime.textContent = convert(dateTime, 'all')
         currentCondition.textContent = main
+
+        const weekOfDay = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', ]
+        currentTime.textContent = convert(dateTime, 'briefly') + "  " + weekOfDay[new Date().getDay()]
 
         // .temp-information
         let currentImgIcon = document.querySelector('.current-img')
@@ -200,28 +220,32 @@ window.addEventListener('load', () =>{
         const foreCastLists = document.querySelector('.forecast-lists')
         for (let i = 0; i < 8; i++) {
             let listData = data.list[i]
-            let hours = listData.dt
+            let dt = listData.dt
             let icon = listData.weather[0].icon
             let temp = listData.main.temp
 
             let list = document.createElement('li')
             list.className = 'listItem'
 
-            let convertedHours = convert(hours, 'hours')
-            if (convertedHours < 10) {
-                convertedHours = '0' + convertedHours
-            }
-            list.appendChild(document.createTextNode(convertedHours + ':00'))
+            let convertedHours = convert(dt, 'hours')
+            let span = document.createElement('span')
+            span.appendChild(document.createTextNode(convertedHours))
+            span.style.width = '66px'
+            span.style.textAlign = 'center'
+            list.appendChild(span)
             
             let iconImg = document.createElement('img')
             iconImg.setAttribute('src', `./img/${icon}.png`)
             list.appendChild(iconImg)
 
-            list.appendChild(document.createTextNode(Math.round(temp - 273.15)  + '°C'))
+            span = document.createElement('span')
+            span.appendChild(document.createTextNode(Math.round(temp - 273.15)  + '°C'))
+            span.style.width = '36px'
+            span.style.textAlign = 'right'
+            list.appendChild(span)
 
             foreCastLists.appendChild(list)
         }
-
     }
 
     function setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue){
@@ -304,7 +328,6 @@ window.addEventListener('load', () =>{
                 circle: 'black'
             }
         }
-
 
         function getPm10Grade(value){
             if (value === '-'){
@@ -475,6 +498,11 @@ window.addEventListener('load', () =>{
         pm25CircleValue.textContent = pm25Value + '㎍/㎥'
         pm25CircleValue.style.color = WTO_Standard[currentGrade].color
 
+        // Warning box
+        if (pm10Value > 50 || pm25Value > 26 ) {
+            document.querySelector('.warning-box').style.display = 'flex'
+        }
+
         // Set background color based on highestGrade 
         if (highestGrade === -1) {
             highestGrade = '-'
@@ -536,14 +564,11 @@ window.addEventListener('load', () =>{
         no2ConditionElement.textContent = WTO_Standard[currentGrade].condition
         no2ConditionElement.style.color = WTO_Standard[currentGrade].color
 
-        
         let no2Percent = Math.round((no2Value/0.06)*100)
         const no2Progress = document.querySelector('.no2-progress-done');
         no2Progress.setAttribute('data-done', no2Percent)
         no2Progress.style.width = no2Progress.getAttribute('data-done') + '%';
         no2Progress.style.background = WTO_Standard[currentGrade].background
         no2Progress.style.opacity = 1;
-        
-
     }
 });
