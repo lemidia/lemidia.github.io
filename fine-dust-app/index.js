@@ -61,9 +61,8 @@ window.addEventListener('load', () =>{
                     fetch(airKoreaRESTAPIForRealTimeInfo)
                     .then(res => res.json())
                     .then(data => {
-
-                        const {dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue} = data.list[0];
-                        setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue)
+                        const {dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue, so2Value, pm10value24, pm25Value24} = data.list[0];
+                        setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue, so2Value, pm10value24, pm25Value24)
                     })
                 })
             }) // End of fine dust information fetch
@@ -248,7 +247,7 @@ window.addEventListener('load', () =>{
         }
     }
 
-    function setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue){
+    function setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue, so2Value, pm10value24, pm25Value24){
         let currentLocation = document.querySelector('.current-location')
         let currentTime = document.querySelector('.current-time')
         currentLocation.textContent = '현재 측정 장소: ' + stationName
@@ -438,6 +437,28 @@ window.addEventListener('load', () =>{
                 return 8
             }
         }
+
+        function getSo2Grade(value){
+            if (value === '-'){
+                return '-'
+            }else if (value <= 0.01) {
+                return 1
+            }else if (value <= 0.02) {
+                return 2
+            }else if (value <= 0.04) {
+                return 3
+            }else if (value <= 0.05) {
+                return 4
+            }else if (value <= 0.1) {
+                return 5
+            }else if (value <= 0.15) {
+                return 6
+            }else if (value <= 0.6) {
+                return 7
+            }else {
+                return 8
+            }
+        }
         
         // highestGrade among all values, base value is 1
         let highestGrade = -1
@@ -464,6 +485,9 @@ window.addEventListener('load', () =>{
         let pm10Circle = document.querySelector('.pm10-circle')
         if (pm10Value !== '-') {
             let pm10Percent = Math.round((pm10Value/151) * 100)
+            if (pm10Percent >= 100) {
+                pm10Percent = 100
+            }
             pm10Circle.className = `pm10-circle c100 p${pm10Percent} small ${WTO_Standard[currentGrade].circle}`
         }else{
             pm10Circle.className = `pm10-circle c100 p${0} small`
@@ -490,6 +514,9 @@ window.addEventListener('load', () =>{
         let pm25Circle = document.querySelector('.pm25-circle')
         if (pm25Value !== '-') {
             let pm25Percent = Math.round((pm25Value/71) * 100)
+            if (pm25Percent >= 100) {
+                pm25Percent = 100
+            }
             pm25Circle.className = `pm25-circle c100 p${pm25Percent} small ${WTO_Standard[currentGrade].circle}`
         }else{
             pm25Circle.className = `pm25-circle c100 p${0} small`
@@ -499,7 +526,7 @@ window.addEventListener('load', () =>{
         pm25CircleValue.style.color = WTO_Standard[currentGrade].color
 
         // Warning box
-        if (pm10Value > 50 || pm25Value > 26 ) {
+        if (pm10value24 > 50 || pm25Value24 > 26 ) {
             document.querySelector('.warning-box').style.display = 'flex'
         }
 
@@ -532,7 +559,10 @@ window.addEventListener('load', () =>{
         o3ConditionElement.textContent = WTO_Standard[currentGrade].condition
         o3ConditionElement.style.color = WTO_Standard[currentGrade].color
 
-        let o3Percent = Math.round((o3Value/0.09)*100)
+        let o3Percent = Math.round((o3Value/0.075)*100)
+        if (o3Percent >= 100) {
+            o3Percent = 100
+        }
         const o3Progress = document.querySelector('.o3-progress-done');
         o3Progress.setAttribute('data-done', o3Percent)
         o3Progress.style.width = o3Progress.getAttribute('data-done') + '%';
@@ -548,7 +578,10 @@ window.addEventListener('load', () =>{
         coConditionElement.textContent = WTO_Standard[currentGrade].condition
         coConditionElement.style.color = WTO_Standard[currentGrade].color
         
-        let coPercent = Math.round((coValue/5.5)*100)
+        let coPercent = Math.round((coValue/7.2)*100)
+        if (coPercent >= 100) {
+            coPercent = 100
+        }
         const coProgress = document.querySelector('.co-progress-done');
         coProgress.setAttribute('data-done', coPercent)
         coProgress.style.width = coProgress.getAttribute('data-done') + '%';
@@ -564,11 +597,33 @@ window.addEventListener('load', () =>{
         no2ConditionElement.textContent = WTO_Standard[currentGrade].condition
         no2ConditionElement.style.color = WTO_Standard[currentGrade].color
 
-        let no2Percent = Math.round((no2Value/0.06)*100)
+        let no2Percent = Math.round((no2Value/0.07)*100)
+        if (no2Percent >= 100) {
+            no2Percent = 100
+        }
         const no2Progress = document.querySelector('.no2-progress-done');
         no2Progress.setAttribute('data-done', no2Percent)
         no2Progress.style.width = no2Progress.getAttribute('data-done') + '%';
         no2Progress.style.background = WTO_Standard[currentGrade].background
         no2Progress.style.opacity = 1;
+
+        currentGrade = getSo2Grade(so2Value)
+        document.querySelector('.so2-value').textContent = so2Value + 'ppm'
+        const so2IconElement = document.getElementById('so2-icon')
+        so2IconElement.className = WTO_Standard[currentGrade].emoji
+        so2IconElement.style.color = WTO_Standard[currentGrade].color
+        const so2ConditionElement = document.querySelector('.so2-condition')
+        so2ConditionElement.textContent = WTO_Standard[currentGrade].condition
+        so2ConditionElement.style.color = WTO_Standard[currentGrade].color
+
+        let so2Percent = Math.round((so2Value/0.045)*100)
+        if (so2Percent >= 100) {
+            so2Percent = 100
+        }
+        const so2Progress = document.querySelector('.so2-progress-done');
+        so2Progress.setAttribute('data-done', so2Percent)
+        so2Progress.style.width = so2Progress.getAttribute('data-done') + '%';
+        so2Progress.style.background = WTO_Standard[currentGrade].background
+        so2Progress.style.opacity = 1;
     }
 });

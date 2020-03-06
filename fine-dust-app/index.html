@@ -91,8 +91,8 @@
          <p class="who-recommend-title">국제보건기구 WHO 권고기준</p>
          <div class="title-value">
             <div class="recommend-title">
-                <p>미세먼지 권고치</p>
-                <p>초미세먼지 권고치</p>
+                <p>미세먼지 권고치 (24시간 평균)</p>
+                <p>초미세먼지 권고치 (24시간 평균)</p>
             </div>
             <div class="recommend-value">
                 <p>50㎍/㎥ 이하</p>
@@ -105,7 +105,7 @@
          </p>
          <div class="warning-box">
             <i class="fas fa-exclamation-triangle"></i>
-            <p>현재 지역의 미세먼지 수치가 WHO 권고치를 초과하고 있습니다.</p>
+            <p>현재 지역의 24시간 평균 미세먼지 수치가 WHO 권고치를 초과하고 있습니다.</p>
         </div>
     </div>
     <p class="pm-data-from">자료제공 <a href="https://www.airkorea.or.kr/"> 한국환경공단 에어코리아</a></p>
@@ -153,11 +153,11 @@
     </div>
 
     <div class="etc-containers">
-        <p class="etc-title">기타 오염물질 농도</p>
+        <p class="etc-title">기타 오염물질 농도 (실시간)</p>
         <div class="etc-container">
-            <p class="etc-container-title">오존(o3)</p>
+            <p class="etc-container-title">오존 (o3)</p>
             <div class="etc-information">
-                <p class="o3-value etc-value">0.003ppm</p>
+                <p class="o3-value etc-value"></p>
                 <i id=03-icon class="fas-fa-good"></i>
                 <p class="o3-condition etc-condition"></p>
             </div>
@@ -172,9 +172,9 @@
         </div>
 
         <div class="etc-container">
-            <p class="etc-container-title">이산화질소(No2)</p>
+            <p class="etc-container-title">이산화질소 (No2)</p>
             <div class="etc-information">
-                <p class="no2-value etc-value">0.003ppm</p>
+                <p class="no2-value etc-value"></p>
                 <i id=no2-icon class="fas-fa-good"></i>
                 <p class="no2-condition etc-condition"></p>
             </div>
@@ -184,19 +184,36 @@
             </div>
             <div class="etc-measure">
                 <span>아주 좋음</span>
-                <span>보통</span>
+                <span>나쁨</span>
             </div>
         </div>
 
         <div class="etc-container">
-            <p class="etc-container-title">일산화탄소(Co)</p>
+            <p class="etc-container-title">일산화탄소 (Co)</p>
             <div class="etc-information">
-                <p class="co-value etc-value">0.003ppm</p>
+                <p class="co-value etc-value"></p>
                 <i id=co-icon class="fas-fa-good"></i>
                 <p class="co-condition etc-condition"></p>
             </div>
             <div class="progress co-progress">
                 <div class="progress-done co-progress-done" data-done="20">
+                </div>
+            </div>
+            <div class="etc-measure">
+                <span>아주 좋음</span>
+                <span>보통</span>
+            </div>
+        </div>
+
+        <div class="etc-container">
+            <p class="etc-container-title">아황산가스 (So2)</p>
+            <div class="etc-information">
+                <p class="so2-value etc-value"></p>
+                <i id=so2-icon class="fas-fa-good"></i>
+                <p class="so2-condition etc-condition"></p>
+            </div>
+            <div class="progress so2-progress">
+                <div class="progress-done so2-progress-done" data-done="20">
                 </div>
             </div>
             <div class="etc-measure">
