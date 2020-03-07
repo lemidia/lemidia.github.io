@@ -170,7 +170,7 @@ nav{
 .pm-containers{
     width: 100%;
     display: flex;
-    height: 170px;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 10px;
@@ -180,6 +180,32 @@ nav{
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     background-color: white;
+}
+
+.pm-containers-title{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #555555;
+    border-bottom: 2px solid #d4d4d4;
+    padding-bottom: 5px;
+    width: 95%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.pm-containers-title span{
+    font-size: 12px;
+    color: #6d6d6d;
+    margin-left: 9px;
+}
+
+.pm-containers-1{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .pm-container{
@@ -484,89 +510,78 @@ footer .love-icon{
     width: 100%;
     margin: auto;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: rgb(255, 255, 255);
     border: 1px rgb(209, 209, 209) solid;
     border-radius: 5px;
-    padding: 22px 20px 5px 12px;
+    padding: 20px 20px 5px 20px;
+    color: #555555;
 }
 
+.grade-info-title{
+    font-size: 1.2rem;
+    color: #555555;
+    border-bottom: 2px solid #d4d4d4;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+}
 
-.grade-info p{
-    border-bottom: 2px solid rgb(218, 218, 218);
-    padding-bottom: 7px;
+.grade{
+    margin-bottom: 23px;
+}
+
+.grade-title{
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.grade:nth-of-type(1){
+    border-left: #4584e2 4px solid;
+    padding-left: 10px;
+}
+
+.grade:nth-of-type(1) span{
     font-weight: bold;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: #5c5c5c;
+    color: #4584e2;
+    padding-right: 5px;
 }
 
-.grade-info ul{
-    list-style: none;
+.grade:nth-of-type(2){
+    border-left: #28c263 4px solid;
+    padding-left: 10px;
 }
 
-.grade-info ul li{
-    margin-bottom: 19px;
-    font-size: 0.9rem;
-    text-align: center;
+.grade:nth-of-type(2) span{
     font-weight: bold;
+    color: #28c263;
+    padding-right: 5px;
 }
 
-.grade-info ul li i{
-    margin-right: 3px;
+.grade:nth-of-type(3){
+    border-left: #f08b2c 4px solid;
+    padding-left: 10px;
 }
 
-.grade-info .grade ul li{
-    text-align: left;
+.grade:nth-of-type(3) span{
+    font-weight: bold;
+    color: #f08b2c;
+    padding-right: 5px;
 }
 
-.grade-info ul li:nth-child(1){
-    color : rgb(51, 133, 255);
+
+.grade:nth-of-type(4){
+    border-left: #e93535 4px solid;
+    padding-left: 10px;
 }
 
-.grade-info ul li:nth-child(2){
-    color : rgb(79,153, 202);
+.grade:nth-of-type(4) span{
+    font-weight: bold;
+    color: #e93535;
+    padding-right: 5px;
 }
-
-.grade-info ul li:nth-child(3){
-    color : rgb(46, 143, 156);
-}
-
-.grade-info ul li:nth-child(4){
-    color : rgb(62, 182, 140);
-}
-
-.grade-info ul li:nth-child(5){
-    color : rgb(255, 179, 102);
-}
-
-.grade-info ul li:nth-child(6){
-    color : rgb(230, 92, 0);
-}
-
-.grade-info ul li:nth-child(7){
-    color : rgb(255, 51, 0);
-}
-
-.grade-info ul li:nth-child(8){
-    color : rgb(31, 46, 46);
-}
-
-.grade-pm10 ul li{
-    margin-bottom: 21px;
-}
-
-.grade-pm25 ul li{
-    margin-bottom: 21px;
-}
-
-.grade ul i{
-    font-size: 1rem;
-}
-
 
 /* location & time information */
 .current{
@@ -597,6 +612,7 @@ footer .love-icon{
     background: white;
     height: 200px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 

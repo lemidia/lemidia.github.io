@@ -262,14 +262,16 @@ window.addEventListener('load', () =>{
                 emoji: 'fas fa-times',
                 circle: 'light-blue'
             },
+            
             1:{
-                condition: '아주 좋음',
+                condition: '좋음',
                 description: '현재 공기가 매우 좋습니다 ^o^! ',
                 color: 'rgb(51, 133, 255)',
                 background: 'linear-gradient(rgb(51, 133, 255), rgb(45, 97, 175))',
                 emoji: 'far fa-laugh-beam',
                 circle: 'light-blue'
             },
+            /*
             2:{
                 condition: '좋음',
                 description: '현재 공기가 좋습니다 ^o^ ',
@@ -278,6 +280,7 @@ window.addEventListener('load', () =>{
                 emoji: 'far fa-grin-alt',
                 circle: 'sky-blue'
             },
+            
             3:{
                 condition: '양호',
                 description: '현재 공기가 양호합니다.',
@@ -286,6 +289,7 @@ window.addEventListener('load', () =>{
                 emoji: 'far fa-grin-wink',
                 circle: 'cobalt'
             },
+            */
             4:{
                 condition: '보통',
                 description: '밖에 나갈 때 마스크를 착용해주세요.',
@@ -302,6 +306,7 @@ window.addEventListener('load', () =>{
                 emoji: 'far fa-frown',
                 circle: 'light-orange'
             },
+            /*
             6:{
                 condition: '상당히 나쁨',
                 description: '되도록 외출을 자제해 주세요.',
@@ -310,6 +315,7 @@ window.addEventListener('load', () =>{
                 emoji: 'far fa-angry',
                 circle: 'orange'
             },
+            */
             7:{
                 condition: '매우 나쁨',
                 description: '외출하지 마시길 권유드립니다.',
@@ -318,6 +324,7 @@ window.addEventListener('load', () =>{
                 emoji: 'far fa-tired',
                 circle: 'red'
             },
+            /*
             8:{
                 condition: '최악',
                 description: '미세먼지 최악입니다. 나가지 마세요.',
@@ -326,137 +333,90 @@ window.addEventListener('load', () =>{
                 emoji: 'far fa-dizzy',
                 circle: 'black'
             }
+            */
         }
 
         function getPm10Grade(value){
             if (value === '-'){
                 return '-'
-            }else if (value < 16) {
-                return 1
             }else if (value < 31) {
-                return 2
-            }else if (value < 41) {
-                return 3
-            }else if (value < 51) {
+                return 1
+            }else if (value < 81) {
                 return 4
-            }else if (value < 76) {
-                return 5
-            }else if (value < 101) {
-                return 6
             }else if (value < 151) {
-                return 7
+                return 5
             }else {
-                return 8
+                return 7
             }
         }
 
         function getPm25Grade(value){
             if (value === '-'){
                 return '-'
-            }else if (value < 9) {
-                return 1
             }else if (value < 16) {
-                return 2
-            }else if (value < 21) {
-                return 3
-            }else if (value < 25) {
+                return 1
+            }else if (value < 36) {
                 return 4
-            }else if (value < 38) {
-                return 5
-            }else if (value < 51) {
-                return 6
             }else if (value < 76) {
-                return 7
+                return 5
             }else {
-                return 8
+                return 7
             }
         }
 
         function getO3Grade(value){
             if (value === '-'){
                 return '-'
-            }else if (value <= 0.02) {
-                return 1
             }else if (value <= 0.03) {
-                return 2
-            }else if (value <= 0.06) {
-                return 3
+                return 1
             }else if (value <= 0.09) {
                 return 4
-            }else if (value <= 0.12) {
-                return 5
             }else if (value <= 0.15) {
-                return 6
-            }else if (value <= 0.38) {
-                return 7
+                return 5
             }else {
-                return 8
+                return 7
             }
         }
 
         function getCoGrade(value){
             if (value === '-'){
                 return '-'
-            }else if (value <= 1) {
+            }else if (value <= 2.00) {
                 return 1
-            }else if (value <= 2) {
-                return 2
-            }else if (value <= 5.5) {
-                return 3
-            }else if (value <= 9) {
+            }else if (value <= 9.00) {
                 return 4
-            }else if (value <= 12) {
+            }else if (value <= 15.00) {
                 return 5
-            }else if (value <= 15) {
-                return 6
-            }else if (value <= 32) {
-                return 7
             }else {
-                return 8
+                return 7
             }
         }
 
         function getNo2Grade(value){
             if (value === '-'){
                 return '-'
-            }else if (value <= 0.02) {
-                return 1
             }else if (value <= 0.03) {
-                return 2
-            }else if (value <= 0.05) {
-                return 3
+                return 1
             }else if (value <= 0.06) {
                 return 4
-            }else if (value <= 0.13) {
+            }else if (value <= 0.20) {
                 return 5
-            }else if (value <= 0.2) {
-                return 6
-            }else if (value <= 1.1) {
-                return 7
             }else {
-                return 8
+                return 7
             }
         }
 
         function getSo2Grade(value){
             if (value === '-'){
                 return '-'
-            }else if (value <= 0.01) {
-                return 1
             }else if (value <= 0.02) {
-                return 2
-            }else if (value <= 0.04) {
-                return 3
+                return 1
             }else if (value <= 0.05) {
                 return 4
-            }else if (value <= 0.1) {
-                return 5
             }else if (value <= 0.15) {
-                return 6
-            }else if (value <= 0.6) {
-                return 7
+                return 5
             }else {
-                return 8
+                return 7
             }
         }
         
@@ -513,7 +473,7 @@ window.addEventListener('load', () =>{
 
         let pm25Circle = document.querySelector('.pm25-circle')
         if (pm25Value !== '-') {
-            let pm25Percent = Math.round((pm25Value/71) * 100)
+            let pm25Percent = Math.round((pm25Value/76) * 100)
             if (pm25Percent >= 100) {
                 pm25Percent = 100
             }
@@ -559,7 +519,7 @@ window.addEventListener('load', () =>{
         o3ConditionElement.textContent = WTO_Standard[currentGrade].condition
         o3ConditionElement.style.color = WTO_Standard[currentGrade].color
 
-        let o3Percent = Math.round((o3Value/0.075)*100)
+        let o3Percent = Math.round((o3Value/0.10)*100)
         if (o3Percent >= 100) {
             o3Percent = 100
         }
@@ -578,7 +538,7 @@ window.addEventListener('load', () =>{
         coConditionElement.textContent = WTO_Standard[currentGrade].condition
         coConditionElement.style.color = WTO_Standard[currentGrade].color
         
-        let coPercent = Math.round((coValue/7.2)*100)
+        let coPercent = Math.round((coValue/11)*100)
         if (coPercent >= 100) {
             coPercent = 100
         }
@@ -597,7 +557,7 @@ window.addEventListener('load', () =>{
         no2ConditionElement.textContent = WTO_Standard[currentGrade].condition
         no2ConditionElement.style.color = WTO_Standard[currentGrade].color
 
-        let no2Percent = Math.round((no2Value/0.07)*100)
+        let no2Percent = Math.round((no2Value/0.08)*100)
         if (no2Percent >= 100) {
             no2Percent = 100
         }
@@ -616,7 +576,7 @@ window.addEventListener('load', () =>{
         so2ConditionElement.textContent = WTO_Standard[currentGrade].condition
         so2ConditionElement.style.color = WTO_Standard[currentGrade].color
 
-        let so2Percent = Math.round((so2Value/0.045)*100)
+        let so2Percent = Math.round((so2Value/0.06)*100)
         if (so2Percent >= 100) {
             so2Percent = 100
         }
