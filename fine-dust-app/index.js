@@ -93,7 +93,6 @@ window.addEventListener('load', () =>{
                 }).catch(err => {
                     alert('invalid data' + err)
                 })
-
                 return address
             }
 
@@ -182,7 +181,6 @@ window.addEventListener('load', () =>{
             return month + '월 ' + day + '일 ' + amPmConvertor(hours)
         }
     }
-
     function setCurrentWeather(data, currentAddress){
         const{main, description, icon} = data.weather[0]
         const{temp, feels_like, temp_min, temp_max, pressure, humidity} = data.main
@@ -213,6 +211,9 @@ window.addEventListener('load', () =>{
         currentCloud.textContent = '구름 : ' + all + '%'
         currentHumidity.textContent = '습도 : ' + humidity + '%'
         currentWind.textContent = '바람 : ' + speed + ' m/s'
+
+        // pm-location
+        document.querySelector('.navigator').textContent = currentAddress
     }
 
     function setForecast(data){
@@ -252,7 +253,8 @@ window.addEventListener('load', () =>{
         let currentTime = document.querySelector('.current-time')
         currentLocation.textContent = '현재 측정 장소: ' + stationName
         currentTime.textContent = '업데이트 시간: ' + dataTime
-
+        document.querySelector('.pm-time').textContent = dataTime
+        document.querySelector('.pm-location').textContent = stationName
         const WTO_Standard = {
             '-':{
                 condition: '데이터 없음',
@@ -488,6 +490,8 @@ window.addEventListener('load', () =>{
         // Warning box
         if (pm10value24 > 50 || pm25Value24 > 26 ) {
             document.querySelector('.warning-box').style.display = 'flex'
+        }else{
+            document.querySelector('.fine-box').style.display = 'flex'
         }
 
         // Set background color based on highestGrade 
