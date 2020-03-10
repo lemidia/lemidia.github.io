@@ -68,7 +68,7 @@ window.addEventListener('load', () =>{
             }) // End of fine dust information fetch
 
             // Return promise
-            function seekAddress(){
+            async function seekAddress(){
 
                 // KaKao REST API: 좌표 -> 주소 변환
                 // params : x: longitude
@@ -78,22 +78,19 @@ window.addEventListener('load', () =>{
                 const kakaoRESTApiForAddress = `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=
                 ${long}&y=${lat}&input_coord=WGS84`;
 
-                const address = fetch(kakaoRESTApiForAddress, {
+                const address =  await fetch(kakaoRESTApiForAddress, {
                     method:'GET',
                     headers:{
                         'Content-Type': 'application/json',
                         'Authorization': 'KakaoAK 06034a40145bbf76839d147aa0b49abb' // Insert your own APP KEY (Kakao)
                     }
                 })
-                .then(res => res.json())
-                .then(data => {
-                    const addressLists = data.documents[0].address
-                    return addressLists.region_1depth_name + ' ' + addressLists.region_2depth_name
-                    + ' ' + addressLists.region_3depth_name
-                }).catch(err => {
-                    alert('invalid data' + err)
-                })
-                return address
+                const data =  await address.json();
+                
+                const addressLists = data.documents[0].address
+                return addressLists.region_1depth_name + ' ' + addressLists.region_2depth_name
+                + ' ' + addressLists.region_3depth_name
+    
             }
 
             // WeatherMap REST API: 현재 날씨 정보
@@ -103,17 +100,15 @@ window.addEventListener('load', () =>{
 
             const authKeyForWeatherMap = '3f7ea16ba4a91cf586fdfbafbf4fa9db'
 
-            const weatherMapRESTAPIforCurrentWeather = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${authKeyForWeatherMap}`
-            fetch(weatherMapRESTAPIforCurrentWeather)
-            .then(res => res.json())
-            .then(data => {
-                seekAddress()
-                .then(res => {
-                    setCurrentWeather(data, res)
-                });
-            }).catch(err => {
-                alert('invalid data' + err)
-            })
+            async function getCurrentWeatherData(){
+                const weatherMapRESTAPIforCurrentWeather = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${authKeyForWeatherMap}`
+                const res = await fetch(weatherMapRESTAPIforCurrentWeather)
+                const data = await res.json()
+                const address = await seekAddress();
+                setCurrentWeather(data, address)
+            }
+
+            getCurrentWeatherData()
 
             // WeatherMap REST API:  예보 날씨 정보
             // params : lon: longitude
