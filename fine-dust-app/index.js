@@ -252,11 +252,11 @@ window.addEventListener('load', () =>{
             type: 'line',
             data: {
                 labels: [hoursArray[0], hoursArray[1], hoursArray[2], hoursArray[3], hoursArray[4]
-                , hoursArray[5], hoursArray[6], hoursArray[7]],
+                , hoursArray[5], hoursArray[6]],
                 datasets: [{
                     label: '시간별 기온',
                     data: [tempArray[0], tempArray[1], tempArray[2], tempArray[3], tempArray[4],
-                    tempArray[5], tempArray[6], tempArray[7]],
+                    tempArray[5], tempArray[6]],
                     backgroundColor: 'rgba(255, 206, 86, 0.2)',
                     borderColor: 'rgba(255, 206, 86, 1)',
                     borderWidth: 2,
