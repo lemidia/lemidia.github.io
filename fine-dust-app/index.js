@@ -67,7 +67,6 @@ window.addEventListener('load', () =>{
                 })
             }) // End of fine dust information fetch
 
-            // Return promise
             async function seekAddress(){
 
                 // KaKao REST API: 좌표 -> 주소 변환
@@ -104,7 +103,7 @@ window.addEventListener('load', () =>{
                 const weatherMapRESTAPIforCurrentWeather = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${authKeyForWeatherMap}`
                 const res = await fetch(weatherMapRESTAPIforCurrentWeather)
                 const data = await res.json()
-                const address = await seekAddress();
+                const address = await seekAddress()
                 setCurrentWeather(data, address)
             }
 
@@ -146,7 +145,7 @@ window.addEventListener('load', () =>{
             amPm = 'PM'
         }
 
-        return convertedHours + ':00' + ' ' + amPm 
+        return convertedHours + '' + ' ' + amPm 
     }
 
     function convert(stamp, type){
@@ -213,17 +212,22 @@ window.addEventListener('load', () =>{
 
     function setForecast(data){
         const foreCastLists = document.querySelector('.forecast-lists')
+        let tempArray = [];
+        let hoursArray = [];
         for (let i = 0; i < 8; i++) {
             let listData = data.list[i]
             let dt = listData.dt
             let icon = listData.weather[0].icon
             let temp = listData.main.temp
+            temp = Math.round(temp - 273.15);
+            tempArray[i] = temp;
 
             let list = document.createElement('li')
             list.className = 'listItem'
 
-            let convertedHours = convert(dt, 'hours')
-            let span = document.createElement('span')
+            let convertedHours = convert(dt, 'hours');
+            hoursArray[i] = convertedHours;
+            let span = document.createElement('span');
             span.appendChild(document.createTextNode(convertedHours))
             span.style.width = '66px'
             span.style.textAlign = 'center'
@@ -234,13 +238,61 @@ window.addEventListener('load', () =>{
             list.appendChild(iconImg)
 
             span = document.createElement('span')
-            span.appendChild(document.createTextNode(Math.round(temp - 273.15)  + '°C'))
+            span.appendChild(document.createTextNode(temp  + '°C'))
             span.style.width = '36px'
             span.style.textAlign = 'right'
             list.appendChild(span)
 
             foreCastLists.appendChild(list)
         }
+
+        // Set charts
+        const canvas = document.getElementById('myChart');
+        const myChart = new Chart(canvas, {
+            type: 'line',
+            data: {
+                labels: [hoursArray[0], hoursArray[1], hoursArray[2], hoursArray[3], hoursArray[4]
+                , hoursArray[5], hoursArray[6], hoursArray[7]],
+                datasets: [{
+                    label: '시간별 기온',
+                    data: [tempArray[0], tempArray[1], tempArray[2], tempArray[3], tempArray[4],
+                    tempArray[5], tempArray[6], tempArray[7]],
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2,
+                    fill: 'start'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: '시간별 기온',
+                    fontSize: 20,
+                    padding: 10
+                },
+                legend:{
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display:false
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            display:false
+                        },
+                        ticks: {
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value + '°';
+                            }
+                        }
+                    }]
+                }
+            }
+        })
     }
 
     function setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue, so2Value, pm10value24, pm25Value24){
