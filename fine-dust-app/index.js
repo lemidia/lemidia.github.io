@@ -124,11 +124,36 @@ window.addEventListener('load', () =>{
             }).catch(err => {
                 alert('invalid data' + err)
             })
+
+            setCurrentMap(lat, long);
         }, () => {
             alert("데이터를 가져오기 위해 위치정보를 수락해주세요!");
         });
     } else{
         alert("해당 브라우저에서는 위치정보 지원이 되지 않습니다.");
+    }
+
+    function setCurrentMap(lat, long){
+        var map = L.map('mapid').setView([lat, long], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        
+        
+        L.marker([lat, long]).addTo(map)
+        .bindPopup("<b>현재 위치</b>")
+        .openPopup();
+        
+        
+
+        var myIcon = L.divIcon({
+            iconSize: 0,
+            html:'<div class="circle-marker"></div>'
+        });
+        // you can set .my-div-icon styles in CSS
+        L.marker([lat, long], {icon: myIcon}).addTo(map);
     }
 
     function amPmConvertor(hours){

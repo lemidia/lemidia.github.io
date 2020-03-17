@@ -37,7 +37,6 @@ nav{
     flex-direction: column;
     width: 100%;
     padding: 0px 10px 0px 10px;
-    height: px;
     margin:25px auto 3px auto;
     color: rgb(102, 102, 102);
     border: 1px rgb(209, 209, 209) solid;
@@ -156,7 +155,51 @@ nav{
     margin-bottom: 20px;
 }
 
-.weatherMapSigniture{
+/* map css */
+
+#mapid {
+    height: 280px; 
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid #cfcfcf;
+}
+
+.circle-marker{
+    position: absolute;
+    bottom: -7px;
+    left: -7px;
+    animation: pulse 2.5s infinite;
+    background-color: rgb(40, 140, 207);
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(0.5);
+        box-shadow: 0 0 0 0 rgba(22, 124, 192, 0.911);
+    }
+
+    65%{
+        transform: scale(1);
+        
+    }
+
+    70%{
+        box-shadow: 0 0 0 70px rgba(22, 124, 192, 0);
+    }
+
+    100%{
+        transform: scale(0.5);
+    }
+}
+
+/* weather map signature */
+
+.weatherMapSignature{
     margin-bottom: 20px;
     margin-left: 5px;
     font-size: 0.7rem;
@@ -164,7 +207,7 @@ nav{
     margin-top: -17px;
 }
 
-.weatherMapSigniture a{
+.weatherMapSignature a{
     text-decoration: none;
     color: rgb(219, 98, 17);
 }

@@ -6,8 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="circle.css">
+    <!-- font awasome cdn -->
     <script src="https://kit.fontawesome.com/9b91a1c949.js" crossorigin="anonymous"></script>
+    <!-- chart.js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <!-- Leaflet's css file -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
     <title>날씨 및 미세먼지</title>
 </head>
 <body>
@@ -47,8 +58,9 @@
             </ul>
         </div>
         <canvas id="myChart" class="chart-temperature" width="" height="220"></canvas>
+        <div id="mapid"></div>
     </div>
-    <p class="weatherMapSigniture">More on <a href="https://openweathermap.org/">Open Weather</a></p>
+    <p class="weatherMapSignature">More on <a href="https://openweathermap.org/">Open Weather Map</a></p>
 
     <div class="ads">
         <!-- <START> google ads added by lemidia -->
