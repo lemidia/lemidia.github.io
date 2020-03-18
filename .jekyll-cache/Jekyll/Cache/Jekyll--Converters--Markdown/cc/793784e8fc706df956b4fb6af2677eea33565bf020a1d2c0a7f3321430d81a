@@ -1,4 +1,4 @@
-I"�<ul class="toc__menu">
+I"�<ul class="toc__menu">
   <li><a href="#너비우선탐색breadth-first-search">너비우선탐색(Breadth First Search)</a>
     <ul>
       <li><a href="#예제">예제</a></li>
@@ -6,6 +6,7 @@
       <li><a href="#구현">구현</a></li>
       <li><a href="#applications">Applications</a></li>
       <li><a href="#시간복잡도-및-공간복잡도">시간복잡도 및 공간복잡도</a></li>
+      <li><a href="#references">References</a></li>
     </ul>
   </li>
 </ul>

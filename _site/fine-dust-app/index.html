@@ -5,55 +5,297 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="circle.css">
+    <!-- font awasome cdn -->
     <script src="https://kit.fontawesome.com/9b91a1c949.js" crossorigin="anonymous"></script>
-    <title>미세먼지 정보</title>
+    <!-- chart.js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <!-- Leaflet's css file -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+    <title>날씨 및 미세먼지</title>
 </head>
 <body>
-
-    <div class="container">
-
-        <div class="current">
-            <p class="current-location">Loading Location Data ...</p>
-            <p class="current-time">Loading Location Data ...</p>
+    <nav>
+        <img src="./logo.png" alt="" class="logo">
+        <div>
+            <p class="title">Weather & Dust</p>
+            <!-- <p class="sub-title">Particulate matter 10µm and 2.5µm</p> -->
         </div>
+    </nav>
 
-        <div class="pm-container">
-            <p>미세먼지 (pm 10)</p>
-            <div class="pm-container-icon">
-                <i id=pm10-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-                <span class="sr-only">Loading...</span>
+<div class="container">
+    <div class="weather-container">
+        <div class="current-weather">
+            <div class="location-time-condition">
+                <h2 class="location"></h2>
+                <p class="time"></p>
+                <p class="condition"></p>
             </div>
-            <div class="pm-container-value-measure">
-                <span class="pm10-value">?</span>
-                <span>㎍/㎥</span>
+
+            <div class="temp-information">
+                <div class="icon-temp">
+                    <img src="" alt="" class="current-img">
+                    <p class="temp"></p>
+                </div>
+                <div class="information">
+                    <p class="cloudiness"></p>
+                    <p class="humidity"></p>
+                    <p class="wind"></p>
+                </div>
             </div>
-            <div id="pm10-condition" class="pm-condition">Loading Data ... </div>
-            <div id="pm10-description" class="pm-description">Loading Data ... </div>
         </div>
-
-        <div class="pm-container">
-            <p>초미세먼지 (pm 2.5)</p>
-            <div class="pm-container-icon">
-                <i id=pm25-icon class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-            </div>
-            <div class="pm-container-value-measure">
-                <span class="pm25-value">?</span>
-                <span>㎍/㎥</span>
-            </div>
-            <div id="pm25-condition" class="pm-condition">Loading Data ... </div>
-            <div id="pm25-description" class="pm25-description">Loading Data ... </div>
+        <div class="forecast">
+            <p>시간별 예보</p>
+            <ul class="forecast-lists">
+                
+            </ul>
         </div>
-
-        
+        <canvas id="myChart" class="chart-temperature" width="" height="220"></canvas>
+        <div id="mapid"></div>
     </div>
-    
+    <p class="weatherMapSignature">More on <a href="https://openweathermap.org/">Open Weather Map</a></p>
+
+    <div class="ads">
+        <!-- <START> google ads added by lemidia -->
+        <div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- lemidia -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-8663880613144845"
+                data-ad-slot="6829839254"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        <!-- <END> google ads added by lemidia -->
+    </div>
+
+    <div class="pm-containers">
+        <div class="pm-containers-title">
+            실시간 미세먼지 농도
+            <span>환경부 등급기준 적용</span>
+        </div>
+        <p class="pm-navigator"><i class="fas fa-location-arrow"></i>
+            현재 위치: <span class="navigator"></span></p>
+        <div class="pm-containers-1">
+        <div class="pm-container">
+            <p>미세먼지</p>
+            <div class="pm-information">
+                <div class="pm10-circle c100 p0 small">
+                    <span class="pm10-circle-Value"></span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>      
+                <div class="pm-information-condition-icon">
+                    <div id="pm10-condition" class="pm-condition"></div>
+                    <div class="pm-container-icon">
+                        <i id=pm10-icon class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-container">
+            <p>초미세먼지</p>
+            <div class="pm-information">
+                    <div class="pm25-circle c100 p0 small">
+                        <span class="pm25-circle-Value"></span>
+                        <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                        </div>
+                    </div>      
+                <div class="pm-information-condition-icon">
+                    <div id="pm25-condition" class="pm-condition"></div>
+                    <div class="pm-container-icon">
+                        <i id=pm25-icon class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pm-time-location">
+        <p>업데이트 시간: <span class="pm-time"></span> 측정장소: <span class="pm-location"></span></p>
+    </div>
+    </div>
+
+    <div class="who-recommend">
+         <p class="who-recommend-title">WHO 미세먼지 권고기준</p>
+         <div class="title-value">
+            <div class="recommend-title">
+                <p>미세먼지 권고치 (일 평균)</p>
+                <p>초미세먼지 권고치 (일 평균)</p>
+            </div>
+            <div class="recommend-value">
+                <p>50㎍/㎥ 이하</p> 
+                <p>25㎍/㎥ 이하</p>
+            </div>
+        </div>
+         <p class="who-recommend-description">
+            WHO가 미세먼지로 인한 심폐질환과 폐암에 의한 사망률 
+            증가를 최저 수준으로 지정한 수치입니다.
+         </p>
+         <div class="fine-box">
+            <i class="far fa-smile"></i>
+            <p>현재 지역의 24시간 평균 미세먼지 수치가 WHO 권고치 이하입니다.</p>
+        </div>
+        <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>현재 지역의 24시간 평균 미세먼지 수치가 WHO 권고치를 초과하고 있습니다!</p>
+        </div>
+    </div>
+    <p class="pm-data-from">자료제공 <a href="https://www.airkorea.or.kr/"> 한국환경공단 에어코리아</a>, <a href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health">WHO Air pollution standards</a></p>
+
+    <div class="grade-info">
+        <p class="grade-info-title">환경부 미세먼지 등급</p>
+        <div class="grade">
+            <p class="grade-title"><span>좋음   </span>미세먼지 0~30, 초미세먼지 0~15</p>
+            <p>대기오염 관련 질환자군에서도 영향이 유발되지 않을 수준</p>
+        </div>
+
+        <div class="grade">
+            <p class="grade-title"><span>보통   </span>미세먼지 31~80, 초미세먼지 16~35</p>
+            <p>환자군에게 만성 노출시 경미한 영향이 유발될 수 있는 수준</p>
+        </div>
+
+        <div class="grade">
+            <p class="grade-title"><span>나쁨   </span>미세먼지 81~150, 초미세먼지 36~75</p>
+            <p>환자군 및 민감군(어린이 및 노약자)에게 유해한 영향 유발, 일반인도 건강상 불쾌감을 경험할 수 있는 수준</p>
+        </div>
+
+        <div class="grade">
+            <p class="grade-title"><span>매우나쁨   </span>미세먼지 151~, 초미세먼지 76~</p>
+            <p>환자군 및 민감군에게 급성 노출시 심각한 영향 유발, 일반인도 약한 영향이 유발될 수 있는 수준</p>
+        </div>
+    </div>
+    <p class="pm-data-from">자료제공 <a href="http://www.me.go.kr/mamo/web/index.do?menuId=16201">환경부 수도권대기환경청</a></p>
+
+    <div class="etc-containers">
+        <p class="etc-title">기타 오염물질 농도 (실시간)</p>
+        <div class="etc-container">
+            <p class="etc-container-title">오존 (o3)</p>
+            <div class="etc-information">
+                <p class="o3-value etc-value"></p>
+                <i id=03-icon class="fas-fa-good"></i>
+                <p class="o3-condition etc-condition"></p>
+            </div>
+            <div class="progress 03-progress">
+                <div class="progress-done o3-progress-done" data-done="20">
+                </div>
+            </div>
+            <div class="etc-measure">
+                <span>좋음</span>
+                <span>나쁨</span>
+            </div>
+        </div>
+
+        <div class="etc-container">
+            <p class="etc-container-title">이산화질소 (No2)</p>
+            <div class="etc-information">
+                <p class="no2-value etc-value"></p>
+                <i id=no2-icon class="fas-fa-good"></i>
+                <p class="no2-condition etc-condition"></p>
+            </div>
+            <div class="progress no2-progress">
+                <div class="progress-done no2-progress-done" data-done="20">
+                </div>
+            </div>
+            <div class="etc-measure">
+                <span>좋음</span>
+                <span>나쁨</span>
+            </div>
+        </div>
+
+        <div class="etc-container">
+            <p class="etc-container-title">일산화탄소 (Co)</p>
+            <div class="etc-information">
+                <p class="co-value etc-value"></p>
+                <i id=co-icon class="fas-fa-good"></i>
+                <p class="co-condition etc-condition"></p>
+            </div>
+            <div class="progress co-progress">
+                <div class="progress-done co-progress-done" data-done="20">
+                </div>
+            </div>
+            <div class="etc-measure">
+                <span>좋음</span>
+                <span>나쁨</span>
+            </div>
+        </div>
+
+        <div class="etc-container">
+            <p class="etc-container-title">아황산가스 (So2)</p>
+            <div class="etc-information">
+                <p class="so2-value etc-value"></p>
+                <i id=so2-icon class="fas-fa-good"></i>
+                <p class="so2-condition etc-condition"></p>
+            </div>
+            <div class="progress so2-progress">
+                <div class="progress-done so2-progress-done" data-done="20">
+                </div>
+            </div>
+            <div class="etc-measure">
+                <span>좋음</span>
+                <span>나쁨</span>
+            </div>
+        </div>
+    </div>
+    <p class="pm-data-from">자료제공 <a href="https://www.airkorea.or.kr/"> 한국환경공단 에어코리아</a></p>
+
+    <div class="current">
+        <p class="bar"></p>
+        <p class="current-location">현재 측정 장소: ?</p>
+        <p class="current-time">업데이트 시간: ?</p>
+        <p>사용자의 현재 위치에서 가장 가까운 측정소의 실시간 정보입니다.</p>
+    </div>
+
+    <div class="ads">
+        <!-- <START> google ads added by lemidia -->
+        <div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- lemidia -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-8663880613144845"
+                data-ad-slot="6829839254"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            </div>
+        <!-- <END> google ads added by lemidia -->
+    </div>
+
+</div>
+
 
     <footer>
-        <p>Made with <img class="love-icon" src="love.svg" alt="love icon"> and Coffee by <Strong>Gyeong</Strong> in Korea</p>
+        <div class="footer-title">
+            <img src="./logo4.png" alt="">
+            <div>
+                <p class="title">Code Factory</p>
+                <p class="sub-title">Inspiration of computer science</p>
+            </div>
+        </div>
         <p>Contact site: <a class="link" href="https://lemidia.github.io">
-        Code factory - Inspiration of computer science</a></p>
-        <p>All of Data is provided by <a href="https://www.airkorea.or.kr">
-            에어코리아(실시간 대기환경정보)</a></p>
+        Code factory</a></p>
+        <p>Data is provided by <a href="https://www.airkorea.or.kr">
+            Air Korea</a> and <a href="https://openweathermap.org/">
+                Open Weather</a></p>
+        <p>Made with <img class="love-icon" src="love.svg" alt="love icon"> and Coffee by <Strong>Gyeong</Strong> in Korea</p>
     </footer>
     <script src="./index.js"></script>
 

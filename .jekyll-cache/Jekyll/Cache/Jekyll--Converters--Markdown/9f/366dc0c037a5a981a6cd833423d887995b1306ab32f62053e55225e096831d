@@ -1,4 +1,4 @@
-I"�x<p><strong>너비우선탐색 글 참고하기</strong></p>
+I"�x<p><strong>너비우선탐색 글 참고하기</strong></p>
 
 <ul>
   <li><a href="http://localhost:4000/algorithm/BFS/">Breadth First Search</a></li>
@@ -363,7 +363,7 @@ Breath First Search : 1 2 3 4 5 6 7 8 9 10 11 12
 <h2 id="references">References</h2>
 
 <ul>
-  <li><a href="https://en.wikipedia.org/wiki/Depth-first_search#Properties">Wikipedia</a></li>
-  <li><a href="https://www.javatpoint.com/depth-first-search-algorithm">JavaTpoint</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Breadth-first_search">Wikipedia</a></li>
+  <li><a href="https://www.javatpoint.com/breadth-first-search-algorithm">JavaTpoint</a></li>
 </ul>
 :ET
