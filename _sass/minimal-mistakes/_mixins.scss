@@ -52,6 +52,19 @@
   }
 }
 
+@media screen and (max-width:610px){
+  .feature__wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .feature__item{
+      padding: 10px;
+      margin-bottom: 0em;
+    }
+  }
+}
+
+
 /*
    Compass YIQ Color Contrast
    https://github.com/easy-designs/yiq-color-contrast
