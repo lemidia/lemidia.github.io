@@ -52,6 +52,10 @@
   }
 }
 
+.page__footer {
+  margin-top: 0 !important;
+}
+
 @media screen and (max-width:610px){
   .feature__wrapper{
     display: grid;
