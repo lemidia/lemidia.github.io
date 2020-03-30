@@ -47,6 +47,10 @@ use_math: true
 
 ## 결과 프로젝트 실행 방법
 
+다음 링크의 저장소로 가시면 완성된 결과 프로젝트의 파일을 확인 하실 수 있습니다.
+
+[프로젝트 완성 파일](https://github.com/lemidia/huddle-landing-page)
+
 저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.
 
 밑은 프로젝트의 README.md 입니다.
