@@ -51,7 +51,7 @@ use_math: true
 
 밑은 프로젝트의 README.md 입니다.
 
-![Design preview for the Huddle landing page with alternating feature blocks coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview.jpg)
 
 ## Welcome! 👋
 
