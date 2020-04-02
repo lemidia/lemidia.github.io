@@ -1,5 +1,5 @@
 ---
-title:  "Huddle landing page with alternating feature blocks"
+title:  "Clipboard landing page"
 excerpt: "7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
 "
 toc: true
@@ -27,11 +27,11 @@ header:
 use_math: true
 ---
 
-# Frontend Mentor - clipboard landing page
+# Frontend Mentor - Clipboard landing page
 
 7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
 
-3일차 : huddle landing page 
+3일차 : Clipboard landing page
 
 이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.
 
