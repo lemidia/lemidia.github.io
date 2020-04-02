@@ -27,11 +27,11 @@ header:
 use_math: true
 ---
 
-# Frontend Mentor - Huddle landing page with alternating feature blocks
+# Frontend Mentor - Insure landing page
 
 7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
 
-1일차 : huddle landing page 
+2일차 : Insure landing page
 
 이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.
 
@@ -39,23 +39,23 @@ use_math: true
 
 다음 링크를 따라가셔서 프로젝트에 필요한 이미지와 텍스트 그리고 가이드라인이 들어있는 파일을 다운로드 할 수 있습니다.
 
-[해당 프로젝트 기초파일](https://www.frontendmentor.io/challenges/huddle-landing-page-with-alternating-feature-blocks-5ca5f5981e82137ec91a5100) 
+[해당 프로젝트 기초파일](https://www.frontendmentor.io/challenges/insure-landing-page-uTU68JV8) 
 
 이 프로젝트는 유튜버 Florin pop에 의해서도 실시간으로 진행되었으니 같이 따라하셔도 좋습니다. 
 
-[유튜브에서 이 프로젝트 같이 실습하기](https://www.youtube.com/watch?v=wnb-BfjR-oo&t=1027s)
+[유튜브에서 이 프로젝트 같이 실습하기](https://www.youtube.com/watch?v=9HVKR_hK0nY)
 
 ## 결과 프로젝트 실행 방법
 
 다음 링크의 저장소로 가시면 완성된 결과 프로젝트의 파일을 확인 하실 수 있습니다.
 
-[프로젝트 완성 파일](https://github.com/lemidia/huddle-landing-page)
+[프로젝트 완성 파일](https://github.com/lemidia/Insure-landing-page)
 
 저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.
 
 밑은 프로젝트의 README.md 입니다.
 
-![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview.jpg)
+![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-insure-landing-page.jpg)
 
 ## Welcome! 👋
 
