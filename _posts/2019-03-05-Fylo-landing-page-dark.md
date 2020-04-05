@@ -26,7 +26,7 @@ header:
 use_math: true
 ---
 
-# Frontend Mentor - Fylo landing page with two column layout
+# Frontend Mentor - Fylo landing page dark theme
 
 7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
 
