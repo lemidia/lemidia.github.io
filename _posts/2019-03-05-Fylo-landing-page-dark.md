@@ -1,7 +1,6 @@
 ---
 title:  "Fylo landing page dark theme"
-excerpt: "7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
-"
+excerpt: "7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다."
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"
@@ -51,7 +50,7 @@ use_math: true
 
 밑은 프로젝트의 README.md 입니다.
 
-![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-fylo-landing-page-dark-theme.jpg)
+![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-fylo-landing-page-dark.jpg)
 
 ## Welcome! 👋
 
