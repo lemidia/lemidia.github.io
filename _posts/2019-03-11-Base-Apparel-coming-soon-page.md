@@ -27,7 +27,7 @@ header:
 use_math: true
 ---
 
-# Frontend Mentor -  Base Apparel coming soon page
+# Frontend Mentor - Base Apparel coming soon page
 
 7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
 
