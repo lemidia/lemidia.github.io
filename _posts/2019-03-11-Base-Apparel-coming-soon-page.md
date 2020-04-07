@@ -1,7 +1,6 @@
 ---
-title:  " Base Apparel coming soon page"
-excerpt: "7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
-"
+title:  "Base Apparel coming soon page"
+excerpt: "7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다."
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"
@@ -31,7 +30,7 @@ use_math: true
 
 7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
 
-7일차 :  Base Apparel coming soon page
+7일차 : Base Apparel coming soon page
 
 이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.
 
@@ -52,8 +51,6 @@ use_math: true
 [프로젝트 완성 파일](https://github.com/lemidia/base-Apparel-coming-soon-page)
 
 저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.
-
-밑은 프로젝트의 README.md 입니다.
 
 ![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-base-apparel.jpg)
 
