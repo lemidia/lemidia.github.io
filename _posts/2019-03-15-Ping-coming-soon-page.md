@@ -31,7 +31,7 @@ use_math: true
 
 Frontend Mentor에서 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
 
-![Design preview for the Huddle landing page with alternating feature blocks coding challenge](./design/desktop-preview-ping-coming-soon.jpg)
+![Design preview for the Huddle landing page with alternating feature blocks coding challenge](./assets/images/desktop-preview-ping-coming-soon.jpg)
 
 이 프로젝트는 Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.
 
