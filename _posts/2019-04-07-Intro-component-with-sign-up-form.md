@@ -35,6 +35,9 @@ pricing component with toggle - Frontend Mentor
 
 이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.
 
+![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-price-component.jpg)
+
+
 ## 프로젝트 따라하기
 
 다음 링크를 따라가셔서 프로젝트에 필요한 이미지와 텍스트 그리고 가이드라인이 들어있는 파일을 다운로드 할 수 있습니다.
@@ -54,8 +57,6 @@ pricing component with toggle - Frontend Mentor
 저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.
 
 밑은 프로젝트의 README.md 입니다.
-
-![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-price-component.jpg)
 
 ## Welcome! 👋
 
