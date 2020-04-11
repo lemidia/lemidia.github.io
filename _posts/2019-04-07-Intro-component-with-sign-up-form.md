@@ -1,6 +1,6 @@
 ---
-title:  "Intro component with sign up form"
-excerpt: "7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
+title:  "pricing component with toggle"
+excerpt: "하루에 하나씩 웹 컴포넌트 페이지를 만들어 봅시다.
 "
 toc: true
 toc_sticky: true
@@ -27,11 +27,11 @@ header:
 use_math: true
 ---
 
-# Frontend Mentor - Intro component with sign up form
+# Frontend Mentor - pricing component with toggle
 
-7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.
+하루에 하나씩 웹 컴포넌트 페이지를 만들어 봅시다.
 
-6일차 : Intro component with sign up form
+pricing component with toggle - Frontend Mentor
 
 이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.
 
@@ -39,23 +39,23 @@ use_math: true
 
 다음 링크를 따라가셔서 프로젝트에 필요한 이미지와 텍스트 그리고 가이드라인이 들어있는 파일을 다운로드 할 수 있습니다.
 
-[해당 프로젝트 기초파일](https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1) 
+[해당 프로젝트 기초파일](https://www.frontendmentor.io/challenges/pricing-component-with-toggle-8vPwRMIC) 
 
 이 프로젝트는 유튜버 Florin pop에 의해서도 실시간으로 진행되었으니 같이 따라하셔도 좋습니다. 
 
-[유튜브에서 이 프로젝트 같이 실습하기](https://www.youtube.com/watch?v=bFOuUypjkSM)
+[유튜브에서 이 프로젝트 같이 실습하기](https://www.youtube.com/watch?v=NBkD-O7f4Bs&t=44s)
 
 ## 결과 프로젝트 실행 방법
 
 다음 링크의 저장소로 가시면 완성된 결과 프로젝트의 파일을 확인 하실 수 있습니다.
 
-[프로젝트 완성 파일](https://github.com/lemidia/intro-component-with-signup-form-master)
+[프로젝트 완성 파일](https://github.com/lemidia/pricing-component-with-toggle)
 
 저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.
 
 밑은 프로젝트의 README.md 입니다.
 
-![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-sign-up-form.jpg)
+![Design preview for the Huddle landing page with alternating feature blocks coding challenge](/assets/images/desktop-preview-price-component.jpg)
 
 ## Welcome! 👋
 

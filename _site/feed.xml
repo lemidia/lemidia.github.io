@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-31T00:38:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">유니온 파인드(Union Find, Disjoint Set)</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="유니온 파인드(Union Find, Disjoint Set)" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-03-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h1 id=&quot;union-find&quot;&gt;Union-Find&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-09T23:18:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">유니온 파인드(Union Find, Disjoint Set)</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="유니온 파인드(Union Find, Disjoint Set)" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-03-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h1 id=&quot;union-find&quot;&gt;Union-Find&lt;/h1&gt;
 &lt;p&gt;컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조이다.&lt;/p&gt;
 
 &lt;p&gt;부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하면, 이 A나 B가 어느 부분집합에 속하는지, 또 A와 B가 각각 속한 부분집합 다르다면 이 두 부분집합을 하나의 집합으로 합쳐, 원소들이 겹치지 않는(Non-overlapping) 하나의 부분집합을 구성하는 것에 목적이 있다.&lt;/p&gt;
@@ -2194,7 +2194,97 @@ Delete      O(1)     O(1)
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/큐_(자료_구조)&quot;&gt;Queue - Wikipedia&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/queue-linked-list-implementation/&quot;&gt;Queue - Geeks&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="programming" /><category term="Data Structure" /><summary type="html">선입선출(FIFO) 선형 자료구조</summary></entry><entry><title type="html">합병 정렬(Merge Sort)</title><link href="http://localhost:4000/algorithm/merge-sort/" rel="alternate" type="text/html" title="합병 정렬(Merge Sort)" /><published>2019-04-05T00:00:00+09:00</published><updated>2019-05-10T22:06:00+09:00</updated><id>http://localhost:4000/algorithm/merge-sort</id><content type="html" xml:base="http://localhost:4000/algorithm/merge-sort/">&lt;h1 id=&quot;merge-sort합병-정렬&quot;&gt;Merge Sort(합병 정렬)&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/queue-linked-list-implementation/&quot;&gt;Queue - Geeks&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="programming" /><category term="Data Structure" /><summary type="html">선입선출(FIFO) 선형 자료구조</summary></entry><entry><title type="html">Intro component with sign up form</title><link href="http://localhost:4000/development/Intro-component-with-sign-up-form/" rel="alternate" type="text/html" title="Intro component with sign up form" /><published>2019-04-07T00:00:00+09:00</published><updated>2019-03-10T22:06:00+09:00</updated><id>http://localhost:4000/development/Intro-component-with-sign-up-form</id><content type="html" xml:base="http://localhost:4000/development/Intro-component-with-sign-up-form/">&lt;h1 id=&quot;frontend-mentor---intro-component-with-sign-up-form&quot;&gt;Frontend Mentor - Intro component with sign up form&lt;/h1&gt;
+
+&lt;p&gt;7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.&lt;/p&gt;
+
+&lt;p&gt;6일차 : Intro component with sign up form&lt;/p&gt;
+
+&lt;p&gt;이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;프로젝트-따라하기&quot;&gt;프로젝트 따라하기&lt;/h2&gt;
+
+&lt;p&gt;다음 링크를 따라가셔서 프로젝트에 필요한 이미지와 텍스트 그리고 가이드라인이 들어있는 파일을 다운로드 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1&quot;&gt;해당 프로젝트 기초파일&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;이 프로젝트는 유튜버 Florin pop에 의해서도 실시간으로 진행되었으니 같이 따라하셔도 좋습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=bFOuUypjkSM&quot;&gt;유튜브에서 이 프로젝트 같이 실습하기&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;결과-프로젝트-실행-방법&quot;&gt;결과 프로젝트 실행 방법&lt;/h2&gt;
+
+&lt;p&gt;다음 링크의 저장소로 가시면 완성된 결과 프로젝트의 파일을 확인 하실 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/lemidia/intro-component-with-signup-form-master&quot;&gt;프로젝트 완성 파일&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.&lt;/p&gt;
+
+&lt;p&gt;밑은 프로젝트의 README.md 입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/desktop-preview-sign-up-form.jpg&quot; alt=&quot;Design preview for the Huddle landing page with alternating feature blocks coding challenge&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;welcome-&quot;&gt;Welcome! 👋&lt;/h2&gt;
+
+&lt;p&gt;Thanks for checking out this front-end coding challenge.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.frontendmentor.io&quot;&gt;Frontend Mentor&lt;/a&gt; challenges allow you to improve your skills in a real-life workflow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To do this challenges, you need a basic understanding of HTML and CSS.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;where-to-find-everything&quot;&gt;Where to find everything&lt;/h2&gt;
+
+&lt;p&gt;Your task is to build out the project to the designs inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;/design&lt;/code&gt; folder. You will find both a mobile and a desktop version of the design to work to.&lt;/p&gt;
+
+&lt;p&gt;The designs are in JPG static format. This will mean that you’ll need to use your best judgment for styles such as &lt;code class=&quot;highlighter-rouge&quot;&gt;font-size&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt;. This should help train your eye to perceive differences in spacings and sizes.&lt;/p&gt;
+
+&lt;p&gt;If you would like the Sketch file in order to see sizes etc, it is available to download from the challenge page.&lt;/p&gt;
+
+&lt;p&gt;You will find all the required assets in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/images&lt;/code&gt; folder. The assets are already optimized.&lt;/p&gt;
+
+&lt;p&gt;There is also a &lt;code class=&quot;highlighter-rouge&quot;&gt;style-guide.md&lt;/code&gt; file, which contains the information you’ll need, such as color palette and fonts.&lt;/p&gt;
+
+&lt;h2 id=&quot;building-your-project&quot;&gt;Building your project&lt;/h2&gt;
+
+&lt;p&gt;Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Initialize your project as a public repository on &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;. This will make it easier to share your code with the community if you need some help. If you’re not sure how to do this, &lt;a href=&quot;https://try.github.io/&quot;&gt;have a read through of this Try Git resource&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Configure your repository to publish your code to a URL. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, but we recommend using &lt;a href=&quot;http://bit.ly/fem-zeit&quot;&gt;ZEIT Now&lt;/a&gt;. We’ve got more information about deploying your project with ZEIT below.&lt;/li&gt;
+  &lt;li&gt;Look through the designs to start planning out how you’ll tackle the project. This step is crucial to help you think ahead for CSS classes that you could create to make reusable styles.&lt;/li&gt;
+  &lt;li&gt;Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.&lt;/li&gt;
+  &lt;li&gt;Write out the base styles for your project, including general content styles, such as &lt;code class=&quot;highlighter-rouge&quot;&gt;font-family&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;font-size&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Start adding styles to the top of the page and work down. Only move on to the next section once you’re happy you’ve completed the area you’re working on.&lt;/li&gt;
+  &lt;li&gt;If you’d like to try making your project fully responsive, we’d recommend checking out &lt;a href=&quot;http://bit.ly/fem-sizzy&quot;&gt;Sizzy&lt;/a&gt;. It’s a great browser that makes it easy to view your site across multiple devices.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;deploying-your-project&quot;&gt;Deploying your project&lt;/h2&gt;
+
+&lt;p&gt;As mentioned above, there are a number of ways to host your project for free. We recommend using &lt;a href=&quot;http://bit.ly/fem-zeit&quot;&gt;ZEIT Now&lt;/a&gt; as it’s an amazing service and extremely simple to get set up with. If you’d like to use ZEIT, here are some steps to follow to get started:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bit.ly/fem-zeit-signup&quot;&gt;Sign up to ZEIT Now&lt;/a&gt; and go through the onboarding flow, ensuring your GitHub account is connected by using their &lt;a href=&quot;https://zeit.co/docs/v2/git-integrations/zeit-now-for-github&quot;&gt;ZEIT Now for GitHub&lt;/a&gt; integration.&lt;/li&gt;
+  &lt;li&gt;Connect your project to ZEIT Now from the &lt;a href=&quot;https://zeit.co/new&quot;&gt;“Create a new project” page&lt;/a&gt;, using the “New Project From GitHub” button and selecting the project you want to deploy.&lt;/li&gt;
+  &lt;li&gt;Once connected, every time you &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, ZEIT Now will create a new &lt;a href=&quot;https://zeit.co/docs/v2/platform/deployments&quot;&gt;deployment&lt;/a&gt; and the deployment URL will be shown on your &lt;a href=&quot;https://zeit.co/dashboard&quot;&gt;ZEIT Dashboard&lt;/a&gt;. You will also receive an email for each deployment with the URL.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;sharing-your-solution&quot;&gt;Sharing your solution&lt;/h2&gt;
+
+&lt;p&gt;There are multiple places you can share your solution:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Submit it on the platform so that other users will see your solution on the site. Other users will be able to give you feedback, which could help improve your code for the next project.&lt;/li&gt;
+  &lt;li&gt;Share your repository and live URL in the &lt;strong&gt;#finished-projects&lt;/strong&gt; channel of the &lt;a href=&quot;https://www.frontendmentor.io/slack&quot;&gt;Slack community&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Tweet &lt;a href=&quot;https://twitter.com/frontendmentor&quot;&gt;@frontendmentor&lt;/a&gt; and mention &lt;strong&gt;@frontendmentor&lt;/strong&gt; including the repo and live URLs in the tweet. We’d love to take a look at what you’ve built and help share it around.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;giving-feedback&quot;&gt;Giving feedback&lt;/h2&gt;
+
+&lt;p&gt;Feedback is always welcome, so if you have any to give on this challenge please email hi[at]frontendmentor[dot]io.&lt;/p&gt;
+
+&lt;p&gt;This challenge is completely free. Please share it with anyone who will find it useful for practice.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Have fun building!&lt;/strong&gt; 🚀&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="HTML" /><category term="CSS" /><category term="Web" /><summary type="html">7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.</summary></entry><entry><title type="html">합병 정렬(Merge Sort)</title><link href="http://localhost:4000/algorithm/merge-sort/" rel="alternate" type="text/html" title="합병 정렬(Merge Sort)" /><published>2019-04-05T00:00:00+09:00</published><updated>2019-05-10T22:06:00+09:00</updated><id>http://localhost:4000/algorithm/merge-sort</id><content type="html" xml:base="http://localhost:4000/algorithm/merge-sort/">&lt;h1 id=&quot;merge-sort합병-정렬&quot;&gt;Merge Sort(합병 정렬)&lt;/h1&gt;
 
 &lt;p&gt;합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘입니다.&lt;br /&gt;
 일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나입니다.
@@ -2344,170 +2434,4 @@ Delete      O(1)     O(1)
 
 &lt;h2 id=&quot;repository&quot;&gt;Repository&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/lemidia/Rest-ful-API-Authentication&quot;&gt;Github - lemidia&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="Development" /><category term="JavaScript" /><category term="Node.js" /><category term="API" /></entry><entry><title type="html">그래프(Graph)</title><link href="http://localhost:4000/data%20structure/graph/" rel="alternate" type="text/html" title="그래프(Graph)" /><published>2019-03-14T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/graph</id><content type="html" xml:base="http://localhost:4000/data%20structure/graph/">&lt;h1 id=&quot;graph&quot;&gt;Graph&lt;/h1&gt;
-&lt;p&gt;정점들과 간선들로 이루어진 집합이다.&lt;/p&gt;
-
-&lt;p&gt;V: Vertex, E: Edge, G: Graph&lt;br /&gt;
-그래프 G는 (V, E)의 집합으로 정의 될 수 있다. =&amp;gt; G = (V, E)&lt;br /&gt;
-V(G)는 정점의 집합 그리고 E(G)는 두 정점들의 연결을 나타내는 간선의 집합이다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;Info:&lt;/strong&gt; 그래프는 트리를 포함하는 개념이고, 트리는 사이클을 포함하지 않는 그래프라고 볼 수 있다.&lt;br /&gt;
-그래서 모든 트리는 그래프이지만, 모든 그래프는 트리가 아니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;undirected-and-directed-graph&quot;&gt;Undirected and Directed Graph&lt;/h2&gt;
-
-&lt;p&gt;그래프는 방향 그래프 또는 비방향 그래프가 될 수 있다.&lt;/p&gt;
-
-&lt;p&gt;비방향 그래프는 두 정점 간의 간선에 방향이 없다.&lt;br /&gt;
-A - B의 비방향 간선이 있다면, 이것은 A -&amp;gt; B로, B -&amp;gt; A로의 탐색이 가능하다는 것을 의미한다.&lt;/p&gt;
-
-&lt;p&gt;방향 그래프는 두 정점 간의 간선에 방향을 가지고 있다.&lt;br /&gt;
-A -&amp;gt; B의 방향 간선이 있다면, 이것은 A -&amp;gt; B로의 탐색이 가능, 그러나 B -&amp;gt; A로의 탐색이 가능하지 않다는 것을 의미&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/graphs_directed_undirected.png&quot; alt=&quot;Alt text&quot; width=&quot;600px&quot; height=&quot;500px&quot; /&gt;&lt;/p&gt;
-&lt;h2 id=&quot;unweighted-and-weighted-graph&quot;&gt;Unweighted and weighted Graph&lt;/h2&gt;
-
-&lt;p&gt;두 정점 간의 간선에 추가 정보가 없다면 Unweighted(비가중치) 그래프.&lt;br /&gt;
-두 정점 간의 간선에 추가 정보가 있다면 weighted(가중치) 그래프.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/weightedunweighted.jpeg&quot; alt=&quot;Alt text&quot; width=&quot;550px&quot; height=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;representation&quot;&gt;Representation&lt;/h2&gt;
-&lt;p&gt;그래프를 표현하는 2가지 방법을 알아본다.&lt;/p&gt;
-&lt;h3 id=&quot;인접-행렬adjacency-matrix&quot;&gt;인접 행렬(Adjacency matrix)&lt;/h3&gt;
-
-&lt;p&gt;2차원 행렬로 표현하는 방법.&lt;br /&gt;
-행은 출발 정점을 나타내고 열을 도착 정점을 나타낸다. 꼭짓점 x에서 꼭짓점 y로 변이 존재하면 행렬 성분 x행 y열의 값은 1이고 그렇지 않으면 0이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/graph-representations-undir.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; 그래프가 100개의 정점과 1개의 간선으로 이루어져 있어도, 인접행렬 표현 시 100x100 크기의 매트릭스를 써야한다. 즉, 비교적 적은 간선의 그래프를 표현하는데에는 불필요한 공간이 많이 소비된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;인접-리스트adjacency-list&quot;&gt;인접 리스트(Adjacency list)&lt;/h3&gt;
-&lt;p&gt;인접 리스트를 이용하여 그래프를 표현하는 방법&lt;br /&gt;
-이 표현에서는, 각 정점이 인접리스트 배열로 표현이 되어 있고, 자신과 인접한 노드들을 리스트로 연결한다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;표현방식:&lt;/strong&gt; A - B 와 같이 방향성이 없을 때는 A의 인접리스트에 B 원소를 추가하고, B의 뒤에도 A를 추가한다.&lt;br /&gt;
-A -&amp;gt; B 와 같이 방향성이 있을 때는 A의 인접리스트에 B 원소만 추가한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/graph-representations-adj.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; 위 그래프는 방향 그래프임에 주의하라.&lt;br /&gt;
-A 정점은 B와 C 노드와 이웃하므로 A의 인접리스트 뒤로 B와 C의 원소가 따라 붙는다.&lt;br /&gt;
-B 정점은 D와 E 노드와 이웃하므로 B의 인접리스트 뒤로 D와 E의 원소가 따라 붙는다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;Pros&lt;/strong&gt;:
-인접 행렬 방식에 비해 메모리 공간을 많이 절약할 수 있다.&lt;br /&gt;
-각 정점들 간의 이웃관계를 보다 쉽고 확실하게 표현할 수 있다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--danger&quot;&gt;&lt;strong&gt;Cons&lt;/strong&gt;:
-두 정점이 서로 연결되어 있는지 찾는 연산은 인접 행렬에 비해 다소 느리다.&lt;/p&gt;
-
-&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;
-
-&lt;h3 id=&quot;example-graph&quot;&gt;Example Graph&lt;/h3&gt;
-&lt;p&gt;예제에서 나타내고자 하는 그래프는 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Graph G (Bidirectional): 
-V = (0, 1, 2, 3, 4)
-E = (0, 1), (0, 2), (1, 2), (1, 3), (2, 4), (3, 4)
-
-G:
-0 ------ 2
-|      /   \
-|    /      4
-|  /       /
-1 ------ 3 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;위 그래프로 부터 표현되어지는 인접 리스트는 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 0번 정점은 1, 2번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 1번 정점은 0, 2, 3번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 2번 정점은 0, 1, 4번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 3번 정점은 1, 4번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;graph-class&quot;&gt;Graph Class&lt;/h3&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 그래프의 정점 갯수&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 그래프의 정점을 저장할 인접리스트 배열&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 그래프 생성자, 정점과 인접리스트 배열을 초기화 한다.&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;V&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;adjListArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 인접리스트 배열 생성&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 인접리스트 노드 초기화 및 생성&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;addedge&quot;&gt;addEdge&lt;/h3&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 양방향 간선 정보 저장&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// src -&amp;gt; dest&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// dest -&amp;gt; src&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;graphjava&quot;&gt;Graph.java&lt;/h3&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 그래프의 정점 갯수&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 그래프의 정점을 저장할 인접리스트 배열&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 그래프 생성자, 정점과 인접리스트 배열을 초기화 한다.&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;V&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;adjListArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 그래프 출력 메소드&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;printGraph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; =&amp;gt; &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;\n&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 양방향 간선 생성 메소드&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;adjListArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 정점의 갯수는 5개 (0, 1, 2, 3, 4)&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 그래프 초기화&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 0번과 1번을 정점으로 하는 간선을 생성한다.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 0번과 2번을 정점으로 하는 간선을 생성한다.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1번과 2번을 정점으로 하는 간선을 생성한다.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printGraph&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;Output:&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 0번 정점은 1, 2번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 1번 정점은 0, 2, 3번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 2번 정점은 0, 1, 4번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 3번 정점은 1, 4번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 4번 정점은 2, 3번 정점과 연결되어 있다.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Graph_(abstract_data_type)&quot;&gt;Graph - Wikipedia&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://www.javatpoint.com/breadth-first-search-algorithm&quot;&gt;Graph - javapoint&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="programming" /><category term="Data Structure" /><summary type="html">정점과 간선으로 이루어진 비선형 자료구조</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://github.com/lemidia/Rest-ful-API-Authentication&quot;&gt;Github - lemidia&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="Development" /><category term="JavaScript" /><category term="Node.js" /><category term="API" /></entry></feed>
