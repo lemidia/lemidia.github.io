@@ -1,32 +1,32 @@
-I"g<h1 id="frontend-mentor---intro-component-with-sign-up-form">Frontend Mentor - Intro component with sign up form</h1>
+I"C<h1 id="frontend-mentor---pricing-component-with-toggle">Frontend Mentor - pricing component with toggle</h1>
 
-<p>7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.</p>
+<p>하루에 하나씩 웹 컴포넌트 페이지를 만들어 봅시다.</p>
 
-<p>6일차 : Intro component with sign up form</p>
+<p>pricing component with toggle - Frontend Mentor</p>
 
 <p>이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.</p>
+
+<p><img src="/assets/images/desktop-preview-price-component.jpg" alt="Design preview for the Huddle landing page with alternating feature blocks coding challenge" /></p>
 
 <h2 id="프로젝트-따라하기">프로젝트 따라하기</h2>
 
 <p>다음 링크를 따라가셔서 프로젝트에 필요한 이미지와 텍스트 그리고 가이드라인이 들어있는 파일을 다운로드 할 수 있습니다.</p>
 
-<p><a href="https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1">해당 프로젝트 기초파일</a></p>
+<p><a href="https://www.frontendmentor.io/challenges/pricing-component-with-toggle-8vPwRMIC">해당 프로젝트 기초파일</a></p>
 
 <p>이 프로젝트는 유튜버 Florin pop에 의해서도 실시간으로 진행되었으니 같이 따라하셔도 좋습니다.</p>
 
-<p><a href="https://www.youtube.com/watch?v=bFOuUypjkSM">유튜브에서 이 프로젝트 같이 실습하기</a></p>
+<p><a href="https://www.youtube.com/watch?v=NBkD-O7f4Bs&amp;t=44s">유튜브에서 이 프로젝트 같이 실습하기</a></p>
 
 <h2 id="결과-프로젝트-실행-방법">결과 프로젝트 실행 방법</h2>
 
 <p>다음 링크의 저장소로 가시면 완성된 결과 프로젝트의 파일을 확인 하실 수 있습니다.</p>
 
-<p><a href="https://github.com/lemidia/intro-component-with-signup-form-master">프로젝트 완성 파일</a></p>
+<p><a href="https://github.com/lemidia/pricing-component-with-toggle">프로젝트 완성 파일</a></p>
 
 <p>저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.</p>
 
 <p>밑은 프로젝트의 README.md 입니다.</p>
-
-<p><img src="/assets/images/desktop-preview-sign-up-form.jpg" alt="Design preview for the Huddle landing page with alternating feature blocks coding challenge" /></p>
 
 <h2 id="welcome-">Welcome! 👋</h2>
 

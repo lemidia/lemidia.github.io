@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-09T23:18:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">유니온 파인드(Union Find, Disjoint Set)</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="유니온 파인드(Union Find, Disjoint Set)" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-03-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h1 id=&quot;union-find&quot;&gt;Union-Find&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-29T19:49:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">유니온 파인드(Union Find, Disjoint Set)</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="유니온 파인드(Union Find, Disjoint Set)" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-03-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h1 id=&quot;union-find&quot;&gt;Union-Find&lt;/h1&gt;
 &lt;p&gt;컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조이다.&lt;/p&gt;
 
 &lt;p&gt;부분집합(Subset)에서 특정 원소 하나를 A, 또 다른 원소 하나를 B라 하면, 이 A나 B가 어느 부분집합에 속하는지, 또 A와 B가 각각 속한 부분집합 다르다면 이 두 부분집합을 하나의 집합으로 합쳐, 원소들이 겹치지 않는(Non-overlapping) 하나의 부분집합을 구성하는 것에 목적이 있다.&lt;/p&gt;
@@ -2194,35 +2194,35 @@ Delete      O(1)     O(1)
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/큐_(자료_구조)&quot;&gt;Queue - Wikipedia&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/queue-linked-list-implementation/&quot;&gt;Queue - Geeks&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="programming" /><category term="Data Structure" /><summary type="html">선입선출(FIFO) 선형 자료구조</summary></entry><entry><title type="html">Intro component with sign up form</title><link href="http://localhost:4000/development/Intro-component-with-sign-up-form/" rel="alternate" type="text/html" title="Intro component with sign up form" /><published>2019-04-07T00:00:00+09:00</published><updated>2019-03-10T22:06:00+09:00</updated><id>http://localhost:4000/development/Intro-component-with-sign-up-form</id><content type="html" xml:base="http://localhost:4000/development/Intro-component-with-sign-up-form/">&lt;h1 id=&quot;frontend-mentor---intro-component-with-sign-up-form&quot;&gt;Frontend Mentor - Intro component with sign up form&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/queue-linked-list-implementation/&quot;&gt;Queue - Geeks&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="programming" /><category term="Data Structure" /><summary type="html">선입선출(FIFO) 선형 자료구조</summary></entry><entry><title type="html">pricing component with toggle</title><link href="http://localhost:4000/development/Intro-component-with-sign-up-form/" rel="alternate" type="text/html" title="pricing component with toggle" /><published>2019-04-07T00:00:00+09:00</published><updated>2019-03-10T22:06:00+09:00</updated><id>http://localhost:4000/development/Intro-component-with-sign-up-form</id><content type="html" xml:base="http://localhost:4000/development/Intro-component-with-sign-up-form/">&lt;h1 id=&quot;frontend-mentor---pricing-component-with-toggle&quot;&gt;Frontend Mentor - pricing component with toggle&lt;/h1&gt;
 
-&lt;p&gt;7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.&lt;/p&gt;
+&lt;p&gt;하루에 하나씩 웹 컴포넌트 페이지를 만들어 봅시다.&lt;/p&gt;
 
-&lt;p&gt;6일차 : Intro component with sign up form&lt;/p&gt;
+&lt;p&gt;pricing component with toggle - Frontend Mentor&lt;/p&gt;
 
 &lt;p&gt;이 프로젝트는 유튜버 Florin pop에 진행되었으며, Frontend Mentor 사이트에 있는 프로젝트들을 가지고 진행합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/desktop-preview-price-component.jpg&quot; alt=&quot;Design preview for the Huddle landing page with alternating feature blocks coding challenge&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;프로젝트-따라하기&quot;&gt;프로젝트 따라하기&lt;/h2&gt;
 
 &lt;p&gt;다음 링크를 따라가셔서 프로젝트에 필요한 이미지와 텍스트 그리고 가이드라인이 들어있는 파일을 다운로드 할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1&quot;&gt;해당 프로젝트 기초파일&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.frontendmentor.io/challenges/pricing-component-with-toggle-8vPwRMIC&quot;&gt;해당 프로젝트 기초파일&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;이 프로젝트는 유튜버 Florin pop에 의해서도 실시간으로 진행되었으니 같이 따라하셔도 좋습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=bFOuUypjkSM&quot;&gt;유튜브에서 이 프로젝트 같이 실습하기&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=NBkD-O7f4Bs&amp;amp;t=44s&quot;&gt;유튜브에서 이 프로젝트 같이 실습하기&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;결과-프로젝트-실행-방법&quot;&gt;결과 프로젝트 실행 방법&lt;/h2&gt;
 
 &lt;p&gt;다음 링크의 저장소로 가시면 완성된 결과 프로젝트의 파일을 확인 하실 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/lemidia/intro-component-with-signup-form-master&quot;&gt;프로젝트 완성 파일&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lemidia/pricing-component-with-toggle&quot;&gt;프로젝트 완성 파일&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;저장소를 클론하여, 압축을 푼 다음, index.html 파일을 실행시켜 주세요.&lt;/p&gt;
 
 &lt;p&gt;밑은 프로젝트의 README.md 입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/desktop-preview-sign-up-form.jpg&quot; alt=&quot;Design preview for the Huddle landing page with alternating feature blocks coding challenge&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;welcome-&quot;&gt;Welcome! 👋&lt;/h2&gt;
 
@@ -2284,7 +2284,7 @@ Delete      O(1)     O(1)
 
 &lt;p&gt;This challenge is completely free. Please share it with anyone who will find it useful for practice.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Have fun building!&lt;/strong&gt; 🚀&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="HTML" /><category term="CSS" /><category term="Web" /><summary type="html">7일 동안 하루에 하나씩 웹 사이트 랜딩 페이지를 만들어 봅시다.</summary></entry><entry><title type="html">합병 정렬(Merge Sort)</title><link href="http://localhost:4000/algorithm/merge-sort/" rel="alternate" type="text/html" title="합병 정렬(Merge Sort)" /><published>2019-04-05T00:00:00+09:00</published><updated>2019-05-10T22:06:00+09:00</updated><id>http://localhost:4000/algorithm/merge-sort</id><content type="html" xml:base="http://localhost:4000/algorithm/merge-sort/">&lt;h1 id=&quot;merge-sort합병-정렬&quot;&gt;Merge Sort(합병 정렬)&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Have fun building!&lt;/strong&gt; 🚀&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="HTML" /><category term="CSS" /><category term="Web" /><summary type="html">하루에 하나씩 웹 컴포넌트 페이지를 만들어 봅시다.</summary></entry><entry><title type="html">합병 정렬(Merge Sort)</title><link href="http://localhost:4000/algorithm/merge-sort/" rel="alternate" type="text/html" title="합병 정렬(Merge Sort)" /><published>2019-04-05T00:00:00+09:00</published><updated>2019-05-10T22:06:00+09:00</updated><id>http://localhost:4000/algorithm/merge-sort</id><content type="html" xml:base="http://localhost:4000/algorithm/merge-sort/">&lt;h1 id=&quot;merge-sort합병-정렬&quot;&gt;Merge Sort(합병 정렬)&lt;/h1&gt;
 
 &lt;p&gt;합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘입니다.&lt;br /&gt;
 일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나입니다.
