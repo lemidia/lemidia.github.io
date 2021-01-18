@@ -126,11 +126,19 @@ python은 그리스 신화속의 괴물 뱀을 뜻하고, 몬티 파이썬이라
 **화면에 Hello, World 찍기**
 다음은 자바로 Hello World를 출력하는 코드 입니다.
 
-`java class HelloWorldApp { public static void main(String[] args) { System.out.println("Hello World!"); } } `
+```java
+class HelloWorldApp {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+  }
+}
+```
 
 다음은 파이썬으로 Hello World를 출력하는 코드 입니다.
 
-`python print ("Hello World") `
+```python
+print ("Hello World")
+```
 
 파이썬에서의 코드가 비교적 간단하고 명료한 것을 볼 수 있습니다.
 
@@ -157,5 +165,5 @@ python은 그리스 신화속의 괴물 뱀을 뜻하고, 몬티 파이썬이라
 
 ## References
 
-- [파이선 개발환경 - 최성철 교수님]
+- 파이선 개발환경 - 최성철 교수님
 - [Python - wikipedia](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%B4%EC%8D%AC)
