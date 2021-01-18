@@ -6,7 +6,7 @@ window.addEventListener('load', () =>{
 
             const long = position.coords.longitude; // 경도 x
             const lat = position.coords.latitude;   // 위도 y
-
+            //console.log(long, lat)
             // KaKao REST API: 죄표계 변환, WGS84 to TM 
             // params : x: longitude
             //          y: latitude
@@ -50,7 +50,6 @@ window.addEventListener('load', () =>{
                     const addr = data.list[0].addr;
                     const stationName = data.list[0].stationName;
 
-
                     const authKeyForRealTimeInfo = 'hisbJ45Rnh7T2Un40Cg5F1%2FKP6Xgn4%2FCMOZW%2BD7YzCbM3X2qNqJ3fBbnLB6f9WnpXKrTuv0NYmQrg1b15BjYnQ%3D%3D';
                 
                     // 한국환경공단 REST API: 측정소별 실시간 측정정보 조회
@@ -61,6 +60,7 @@ window.addEventListener('load', () =>{
                     fetch(airKoreaRESTAPIForRealTimeInfo)
                     .then(res => res.json())
                     .then(data => {
+                        console.log(data)
                         const {dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue, so2Value, pm10value24, pm25Value24} = data.list[0];
                         setFineDust(stationName, dataTime, pm10Value, pm25Value, o3Value, no2Value, coValue, so2Value, pm10value24, pm25Value24)
                     })

@@ -1,0 +1,123 @@
+I"1!<h1 id="기본적인-컴퓨터-시스템">기본적인 컴퓨터 시스템</h1>
+
+<hr />
+
+<p>파이썬 개발환경을 준비하기에 앞서서 <strong>기본적인 컴퓨터 시스템</strong>을 알아봅니다. 그 중에서도 크게 <strong>운영체제, 파일 시스템 그리고 터미널 환경</strong>에 대해서 알아봅니다.</p>
+
+<h2 id="운영체제">운영체제</h2>
+
+<p>Operating System, 줄여서 OS 라고 하며, 컴퓨터에서 여러 프로그램들이 동작될 수 있는 환경을 제공하는 역할을 합니다. 우리가 사용하는 응용 프로그램과 물리적 하드웨어 사이에서 상호작용하는 소프트웨어라고 할 수 있습니다.</p>
+
+<p>대표적으로 마이크로 소프트 사의 윈도우 10, 애플의 매킨토시, Linux가 운영체제의 한 종류들 입니다.</p>
+
+<p>우리가 사용하는 응용 프로그램들은 운영체제에 의존적(dependent)입니다. 이는 특정 프로그램이 특정 운영체제에서만 실행이 가능한 것을 말합니다. 따라서 응용 프로그램은 특정 운영체제에 맞춰서 개발이 됩니다.</p>
+
+<h2 id="파일-시스템">파일 시스템</h2>
+
+<p>File system, 파일 시스템은 OS에서 파일을 저장하는 트리 구조 저장 체계 입니다.</p>
+
+<p>크게 두 가지 요소인 디렉터리와 파일로 구성되어 있는 것을 볼 수 있습니다.</p>
+
+<ul>
+  <li>디렉터리(Directory) : 폴더라고도 하며, 파일 또는 또 다른 디렉터리를 포함 할 수 있는 단위입니다.</li>
+  <li>파일(File) : 컴퓨터에서 정보를 저장하는 논리적인 단위입니다. 파일 이름은 파일명과 확장자로 구성되고 이 둘 사이에 .(dot)이 들어가게 됩니다. (main.py). 실행, 쓰기, 읽기 등을 할 수 있습니다.</li>
+</ul>
+
+<p>파일 시스템에서는 파일과 디렉터리들이 최상단의 루트(root)디렉터리 부터 위나 옆으로 가지가 뻗는 듯한 트리 구조로 구성이 되어집니다.</p>
+
+<p>윈도우의 경우 <code class="highlighter-rouge">C:\user\...</code> 에서 user가 루트 디렉터리 입니다.</p>
+
+<p>파일 시스템에서의 경로는 컴퓨터 내에서 파일이나 자원의 고유한 위치를 가르키는 주소와 같습니다. 트리 구조 상 노드간의 연결정도로 봐도 좋을 것 같습니다.</p>
+
+<p>절대 경로와 상대경로</p>
+
+<ul>
+  <li>절대 경로 : 루트 디렉터리부터 파일 위치까지의 경로. ex) <code class="highlighter-rouge">C:\user\codebase\helloworld.py</code></li>
+  <li>상대 경로 : 현재 시스템이 위치해 있는 디렉터리부터 우리가 찾고자하는 파일까지의 경로. ex) <code class="highlighter-rouge">../../index.html</code></li>
+</ul>
+
+<h2 id="터미널">터미널</h2>
+
+<p>터미널은 보통 CLI(Command Line Interface)라고도 하며, Mouse가 아닌 키보드를 이용해서 명령어 입력을 통해 컴퓨터를 제어하기 위해 사용하는 툴이라고 볼 수 있습니다.</p>
+
+<p>Graphic User Interface (GUI)와는 달리 키보드를 이용해 text로서 명령을 내리는 인터페이스 체계로서, Graphic User Interface (GUI)환경이 일반화 되기 전까지는 이 CLI가 주로 사용 되었습니다.
+지금도 맥과 유닉스 계열 시스템에서는 프로그램을 설치하고 여러 라이브러리를 관리하는 데에 이 CLI를 주로 많이 사용하고 있고, github의 사용이 증가함에 따라 다른 환경에서도 CLI의 사용이 많아 지고 있습니다.</p>
+
+<p>다음은 윈도우와 맥에서 터미널을 실행할 수 있는 방법입니다.</p>
+
+<ul>
+  <li>윈도우의 경우 : <code class="highlighter-rouge">윈도우 키 + terminal 또는 윈도우 키 + R -&gt; CMD 입력</code></li>
+  <li>맥의 경우 : <code class="highlighter-rouge">빠른실행 terminal 입력</code></li>
+</ul>
+
+<p><strong>쉘</strong></p>
+
+<p>쉘은 조개 껍데기라는 의미로서 터미널을 사용하고, 여러 프로그램을 작동시키기 위한 소프트웨어 환경을 말합니다.
+쉘은 키보드 입력으로 시스템 전반에 걸쳐 필수적인 파일 구조에 대한 연산(폴더 이동, 복사, 생성, 삭제 등)과 스크립트 작성을 지원하는 등 여러 기능을 제공합니다.</p>
+
+<p>윈도우에서는 cmd나 power shell을 사용하고, 맥에서는 bash나 zsh를 쉘로 사용합니다.</p>
+
+<p>다음은 shell의 일부 명령어 리스트 입니다. (셀 별로 명령어가 상이하거나 같습니다.)</p>
+
+<ul>
+  <li>디렉터리 이동 : <code class="highlighter-rouge">window cmd - cd, bash - cd</code></li>
+  <li>텍스트 전부를 지우기 : <code class="highlighter-rouge">window cmd - CLS, bash - clear</code></li>
+  <li>파일을 다른 위치로 복사 : <code class="highlighter-rouge">window cmd - copy, bash - cp</code></li>
+  <li>파일 지우기 : <code class="highlighter-rouge">window cmd - del, bash - rm</code></li>
+  <li>하위 디렉터리와 파일 보기 : <code class="highlighter-rouge">window cmd - dir, bash - ls</code></li>
+</ul>
+
+<h1 id="파이썬">파이썬</h1>
+
+<p>데이터 과학과 AI분야에서 널리 쓰이는 파이썬에 대해서 간략히 알아보고 그 특징에 대해서 알아봅니다.</p>
+
+<h2 id="파이썬과-그-특징">파이썬과 그 특징</h2>
+
+<p>파이썬(Python)은 1991년 프로그래머인 귀도 반 로섬이 발표한 고급 프로그래밍 언어로, 플랫폼에 독립적이며 인터프리터식, 객체지향적, 동적 타이핑(dynamically typing) 대화형 언어입니다.</p>
+
+<p>python은 그리스 신화속의 괴물 뱀을 뜻하고, 몬티 파이썬이라는 코메디 그룹의 이름에서 유래되었다고 합니다.</p>
+
+<p>파이썬의 주요 특징은 특징은 다음과 같습니다.</p>
+
+<ul>
+  <li>동적 타이핑(dynamically typing) : 프로그램의 실행 시간(run time)에 자료형이 검사되고 결정됩니다.</li>
+  <li>플랫폼에 독립적 : 여기서 플랫폼은 보통 OS를 일컽는데, 파이썬으로 작성된 프로그램은 OS의 종류에 관계없이 어디서나 실행이 될 수 있다는 것을 의미합니다.</li>
+  <li>인터프리터식 : 소스코드를 바로 실행할 수 있게 지원하는 프로그램 실행 방법으로서, 별도 번역과정 없이 소스코드를 실행시점에 해석하여 컴퓨터가 처리할 수 있도록 하는 방법입니다.</li>
+  <li>객체 지향적 언어 : 실행 순서가 아닌 단위 모듈(객체)을 중심으로 프로그램을 작성할 수 있도록 고안된 언어를 말합니다. 객체는 실세계에 존재하는 사물과 같은 개념을 컴퓨터에서 표현하는 것으로, 객체는 속성과 목적을 달성하기 위한 행동을 가지고 있습니다.</li>
+</ul>
+
+<p>여기서 컴파일러와 인터프리터를 좀 더 짚고 넘어가 보겠습니다.</p>
+
+<h3 id="컴파일러">컴파일러</h3>
+
+<ul>
+  <li>작동방식 : 소스코드를 기계어로 먼저 번역하고 해당 플랫폼에 최적화되어 프로그램을 실행 합니다.</li>
+  <li>장 단점 : 인터프리터에 비해 상대적으로 실행속도가 빠르지만, 한번의 많은 기억장소를 필요로 합니다.</li>
+  <li>주요 언어 : 대표적으로 C, 자바, C++, C#가 컴파일러 방식을 채택하고 있습니다.</li>
+</ul>
+
+<h3 id="인터프리터">인터프리터</h3>
+
+<ul>
+  <li>작동방식 : 소스코드를 기계어로 먼저 번역하고 해당 플랫폼에 최적화되어 프로그램을 실행 합니다.</li>
+  <li>장 단점 : 간단히 작성하여 실행할 수 있고, 컴파일러에 비해 메모리가 적게 필요하지만 실행속도가 다소 느립니다.</li>
+  <li>주요 언어 : 대표적으로 파이썬과 스칼라가 인터프리터 방식을 채택하고 있습니다.</li>
+</ul>
+
+<h2 id="running-time">Running time</h2>
+
+<p>The worst-case running time : $O(|V|\cdot|E|)$</p>
+
+<p>SPFA의 최악 실행 시간은 standard Bellman-Ford algorithm과 같은 $O(|V|\cdot|E|)$ 이다.</p>
+
+<p>The average running time : $O(|E|)$</p>
+
+<p>실험으로 보여지는 SPFA의 평균 실행 시간은 $O(|E|)$ 수준이다. 그러나 평균 실행 시간은 아직 증명 되지 않았다.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm">Wikipedia - SPFA</a></li>
+  <li><a href="https://wcipeg.com/wiki/Shortest_path#Relaxation">wcipeg - Shortest path</a></li>
+</ul>
+:ET

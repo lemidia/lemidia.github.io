@@ -177,6 +177,10 @@
 <lastmod>2019-03-13T22:06:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/development/boostcamp-week1-day1/</loc>
+<lastmod>2021-01-19T22:06:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/categories/algorithm/</loc>
 </url>
 <url>
@@ -225,6 +229,9 @@
 <loc>http://localhost:4000/page11/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/page12/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/images/SPFA-img.png.pdf</loc>
 <lastmod>2020-02-15T06:03:15+09:00</lastmod>
 </url>
@@ -238,7 +245,7 @@
 </url>
 <url>
 <loc>http://localhost:4000/fine-dust-app/</loc>
-<lastmod>2020-03-17T15:29:06+09:00</lastmod>
+<lastmod>2020-09-17T03:01:46+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/google75dbf5986dc0180c.html</loc>
