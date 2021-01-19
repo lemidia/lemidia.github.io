@@ -1,4 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-18T19:40:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">파이썬/AI 개발환경 준비하기</title><link href="http://localhost:4000/development/boostcamp-week1-day1/" rel="alternate" type="text/html" title="파이썬/AI 개발환경 준비하기" /><published>2021-01-18T00:00:00+09:00</published><updated>2021-01-19T22:06:00+09:00</updated><id>http://localhost:4000/development/boostcamp-week1-day1</id><content type="html" xml:base="http://localhost:4000/development/boostcamp-week1-day1/">&lt;h1 id=&quot;기본적인-컴퓨터-시스템&quot;&gt;기본적인 컴퓨터 시스템&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-19T20:24:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Code Factory</title><subtitle>Deal with Computer science.</subtitle><author><name>Gyeong</name></author><entry><title type="html">파이썬 기초 문법</title><link href="http://localhost:4000/development/boostcamp-week1-day2/" rel="alternate" type="text/html" title="파이썬 기초 문법" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T22:06:00+09:00</updated><id>http://localhost:4000/development/boostcamp-week1-day2</id><content type="html" xml:base="http://localhost:4000/development/boostcamp-week1-day2/">&lt;h1 id=&quot;파이썬의-기초-문법&quot;&gt;파이썬의 기초 문법&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;파이썬 언어에서의 값을 담을 수 있는 변수, 코드를 모듈로 묶어서 실행하는 하나의 단위인 함수, 사용자로 부터 입력을 받는 법, 콘솔에 출력하는 법, 조건문과 반복문 그리고 스트링을 조작할 수 있는 빌트인 모듈에 대해서 알아봅니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;운영체제&quot;&gt;운영체제&lt;/h2&gt;
+
+&lt;p&gt;Operating System, 줄여서 OS 라고 하며, 컴퓨터에서 여러 프로그램들이 동작될 수 있는 환경을 제공하는 역할을 합니다. 우리가 사용하는 응용 프로그램과 물리적 하드웨어 사이에서 상호작용하는 소프트웨어라고 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;대표적으로 마이크로 소프트 사의 윈도우 10, 애플의 매킨토시, Linux가 운영체제의 한 종류들 입니다.&lt;/p&gt;
+
+&lt;p&gt;우리가 사용하는 응용 프로그램들은 운영체제에 의존적(dependent)입니다. 이는 특정 프로그램이 특정 운영체제에서만 실행이 가능한 것을 말합니다. 따라서 응용 프로그램은 특정 운영체제에 맞춰서 개발이 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;파일-시스템&quot;&gt;파일 시스템&lt;/h2&gt;
+
+&lt;p&gt;File system, 파일 시스템은 OS에서 파일을 저장하는 트리 구조 저장 체계 입니다.&lt;/p&gt;
+
+&lt;p&gt;크게 두 가지 요소인 디렉터리와 파일로 구성되어 있는 것을 볼 수 있습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;디렉터리(Directory) : 폴더라고도 하며, 파일 또는 또 다른 디렉터리를 포함 할 수 있는 단위입니다.&lt;/li&gt;
+  &lt;li&gt;파일(File) : 컴퓨터에서 정보를 저장하는 논리적인 단위입니다. 파일 이름은 파일명과 확장자로 구성되고 이 둘 사이에 .(dot)이 들어가게 됩니다. (main.py). 실행, 쓰기, 읽기 등을 할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;파일 시스템에서는 파일과 디렉터리들이 최상단의 루트(root)디렉터리 부터 위나 옆으로 가지가 뻗는 듯한 트리 구조로 구성이 되어집니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\user\...&lt;/code&gt; 에서 user가 루트 디렉터리 입니다.&lt;/p&gt;
+
+&lt;p&gt;파일 시스템에서의 경로는 컴퓨터 내에서 파일이나 자원의 고유한 위치를 가르키는 주소와 같습니다. 트리 구조 상 노드간의 연결정도로 봐도 좋을 것 같습니다.&lt;/p&gt;
+
+&lt;p&gt;절대 경로와 상대경로&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;절대 경로 : 루트 디렉터리부터 파일 위치까지의 경로. ex) &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\user\codebase\helloworld.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;상대 경로 : 현재 시스템이 위치해 있는 디렉터리부터 우리가 찾고자하는 파일까지의 경로. ex) &lt;code class=&quot;highlighter-rouge&quot;&gt;../../index.html&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;터미널&quot;&gt;터미널&lt;/h2&gt;
+
+&lt;p&gt;터미널은 보통 CLI(Command Line Interface)라고도 하며, Mouse가 아닌 키보드를 이용해서 명령어 입력을 통해 컴퓨터를 제어하기 위해 사용하는 툴이라고 볼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;Graphic User Interface (GUI)와는 달리 키보드를 이용해 text로서 명령을 내리는 인터페이스 체계로서, Graphic User Interface (GUI)환경이 일반화 되기 전까지는 이 CLI가 주로 사용 되었습니다.
+지금도 맥과 유닉스 계열 시스템에서는 프로그램을 설치하고 여러 라이브러리를 관리하는 데에 이 CLI를 주로 많이 사용하고 있고, github의 사용이 증가함에 따라 다른 환경에서도 CLI의 사용이 많아 지고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;다음은 윈도우와 맥에서 터미널을 실행할 수 있는 방법입니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;윈도우의 경우 : &lt;code class=&quot;highlighter-rouge&quot;&gt;윈도우 키 + terminal 또는 윈도우 키 + R -&amp;gt; CMD 입력&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;맥의 경우 : &lt;code class=&quot;highlighter-rouge&quot;&gt;빠른실행 terminal 입력&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;쉘&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;쉘은 조개 껍데기라는 의미로서 터미널을 사용하고, 여러 프로그램을 작동시키기 위한 소프트웨어 환경을 말합니다.
+쉘은 키보드 입력으로 시스템 전반에 걸쳐 필수적인 파일 구조에 대한 연산(폴더 이동, 복사, 생성, 삭제 등)과 스크립트 작성을 지원하는 등 여러 기능을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우에서는 cmd나 power shell을 사용하고, 맥에서는 bash나 zsh를 쉘로 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;다음은 shell의 일부 명령어 리스트 입니다. (셀 별로 명령어가 상이하거나 같습니다.)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;디렉터리 이동 : &lt;code class=&quot;highlighter-rouge&quot;&gt;window cmd - cd, bash - cd&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;텍스트 전부를 지우기 : &lt;code class=&quot;highlighter-rouge&quot;&gt;window cmd - CLS, bash - clear&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;파일을 다른 위치로 복사 : &lt;code class=&quot;highlighter-rouge&quot;&gt;window cmd - copy, bash - cp&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;파일 지우기 : &lt;code class=&quot;highlighter-rouge&quot;&gt;window cmd - del, bash - rm&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;하위 디렉터리와 파일 보기 : &lt;code class=&quot;highlighter-rouge&quot;&gt;window cmd - dir, bash - ls&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;파이썬python&quot;&gt;파이썬(Python)&lt;/h1&gt;
+
+&lt;p&gt;데이터 과학과 AI분야에서 널리 쓰이는 파이썬에 대해서 간략히 알아보고 그 특징에 대해서 알아봅니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;파이썬과-그-특징&quot;&gt;파이썬과 그 특징&lt;/h2&gt;
+
+&lt;p&gt;파이썬(Python)은 1991년 프로그래머인 귀도 반 로섬이 발표한 고급 프로그래밍 언어로, 플랫폼에 독립적이며 인터프리터식, 객체지향적, 동적 타이핑(dynamically typing) 대화형 언어입니다.&lt;/p&gt;
+
+&lt;p&gt;python은 그리스 신화속의 괴물 뱀을 뜻하고, 몬티 파이썬이라는 코메디 그룹의 이름에서 유래되었다고 합니다.&lt;/p&gt;
+
+&lt;p&gt;파이썬의 주요 특징은 특징은 다음과 같습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;동적 타이핑(dynamically typing) : 프로그램의 실행 시간(run time)에 자료형이 검사되고 결정됩니다.&lt;/li&gt;
+  &lt;li&gt;플랫폼에 독립적 : 여기서 플랫폼은 보통 OS를 일컽는데, 파이썬으로 작성된 프로그램은 OS의 종류에 관계없이 어디서나 실행이 될 수 있다는 것을 의미합니다.&lt;/li&gt;
+  &lt;li&gt;인터프리터식 : 소스코드를 바로 실행할 수 있게 지원하는 프로그램 실행 방법으로서, 별도 번역과정 없이 소스코드를 실행시점에 해석하여 컴퓨터가 처리할 수 있도록 하는 방법입니다.&lt;/li&gt;
+  &lt;li&gt;객체 지향적 언어 : 실행 순서가 아닌 단위 모듈(객체)을 중심으로 프로그램을 작성할 수 있도록 고안된 언어를 말합니다. 객체는 실세계에 존재하는 사물과 같은 개념을 컴퓨터에서 표현하는 것으로, 객체는 속성과 목적을 달성하기 위한 행동을 가지고 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;여기서 컴파일러와 인터프리터를 좀 더 짚고 넘어가 보겠습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;컴파일러&quot;&gt;컴파일러&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;작동방식 : 소스코드를 기계어로 먼저 번역하고 해당 플랫폼에 최적화되어 프로그램을 실행 합니다.&lt;/li&gt;
+  &lt;li&gt;장 단점 : 인터프리터에 비해 상대적으로 실행속도가 빠르지만, 한번의 많은 기억장소를 필요로 합니다.&lt;/li&gt;
+  &lt;li&gt;주요 언어 : 대표적으로 C, 자바, C++, C#가 컴파일러 방식을 채택하고 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;인터프리터&quot;&gt;인터프리터&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;작동방식 : 소스코드를 기계어로 먼저 번역하고 해당 플랫폼에 최적화되어 프로그램을 실행 합니다.&lt;/li&gt;
+  &lt;li&gt;장 단점 : 간단히 작성하여 실행할 수 있고, 컴파일러에 비해 메모리가 적게 필요하지만 실행속도가 다소 느립니다.&lt;/li&gt;
+  &lt;li&gt;주요 언어 : 대표적으로 파이썬과 스칼라가 인터프리터 방식을 채택하고 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;why-python&quot;&gt;Why python?&lt;/h3&gt;
+
+&lt;p&gt;파이썬은 다른 여타 언어와 비교해 상대적으로 쉽고 코드가 간단합니다. 그래서 프로그래밍에 입문하시는 분들도 쉽게 시작해 보실 수 있는 언어입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;화면에 Hello, World 찍기&lt;/strong&gt;
+다음은 자바로 Hello World를 출력하는 코드 입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloWorldApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음은 파이썬으로 Hello World를 출력하는 코드 입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;파이썬에서의 코드가 비교적 간단하고 명료한 것을 볼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;파이썬은 또한 이미 다양한 라이브러리가 구현이 되어있고 이것을 손쉽게 가져다가 쓸 수 있습니다. (특히 데이터 사이언스, 분석)
+바둑에서 이세돌을 이긴 알파고 부터 중력파 확인과 블랙홀을 탐지하기 위해 지구에서 멀리 떨어져 있는 여러 안테나의 네트워크 통신에 까지 파이썬이 사용되고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 우리가 자주 사용하는 소셜미디어 유튜브, 레딧, 인스타그램 등… 많은 곳에서 파이썬이 사용되고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;해외 개발자 사이트 스택 오버플로우의 언어 통계에 따르면 사람들이 지금 가장 많이 사용하는 언어로서 1위를 기록하고 있고, 데이터 사이언스 분야에서는 독보적으로 사용되고 있음을 볼 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;피어세션-정리&quot;&gt;피어세션 정리&lt;/h1&gt;
+
+&lt;p&gt;오늘은 동료분들과의 첫 만남이었고, 서로 인사하며 얼굴을 트는 기회를 가질 수 있었습니다.&lt;/p&gt;
+
+&lt;p&gt;서로 인사하고, 자기소개로 시작하며 피어세션이 진행되었습니다.&lt;/p&gt;
+
+&lt;p&gt;공지대로 조 이름, 모더레이터를 정하고, 그라운드 룰은 어떻게 하면 좋을지 서로 논의해 보았습니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 동료분들 끼리 이 피어세션 동안 어떤 것을 하면 좋을지에 대해서 토의를 해보는 시간을 가질 수 있었습니다.&lt;/p&gt;
+
+&lt;p&gt;피어 플랜으로서, 저희는 딥러닝 백엔드를 하나 선택하여(pandas) 서로 공부하고, 그것을 공유하는 것 하나와 캐글 또 하나는 관련 논문 스터디를 진행하는 쪽으로 의견이 모아졌습니다.&lt;/p&gt;
+
+&lt;p&gt;하지만 주차가 지남에 따라 내용이 다소 심화되는 점과 앞으로의 과제를 생각해 볼 때, 피어 플랜을 무리하게 전부 하지 않고 다소 유연하게 하는 쪽으로 가져봄직도 한 것 같습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;파이선 개발환경 - 최성철 교수님&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%B4%EC%8D%AC&quot;&gt;Python - wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Gyeong</name></author><category term="AI" /><category term="Python" /><summary type="html">부스트캠프 1주차 Day2 강의를 보고 내용을 정리한 노트입니다.</summary></entry><entry><title type="html">파이썬/AI 개발환경 준비하기</title><link href="http://localhost:4000/development/boostcamp-week1-day1/" rel="alternate" type="text/html" title="파이썬/AI 개발환경 준비하기" /><published>2021-01-18T00:00:00+09:00</published><updated>2021-01-19T22:06:00+09:00</updated><id>http://localhost:4000/development/boostcamp-week1-day1</id><content type="html" xml:base="http://localhost:4000/development/boostcamp-week1-day1/">&lt;h1 id=&quot;기본적인-컴퓨터-시스템&quot;&gt;기본적인 컴퓨터 시스템&lt;/h1&gt;
 
 &lt;hr /&gt;
 
@@ -113,11 +268,17 @@
 &lt;p&gt;&lt;strong&gt;화면에 Hello, World 찍기&lt;/strong&gt;
 다음은 자바로 Hello World를 출력하는 코드 입니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;java class HelloWorldApp { public static void main(String[] args) { System.out.println(&quot;Hello World!&quot;); } } &lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloWorldApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;다음은 파이썬으로 Hello World를 출력하는 코드 입니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python print (&quot;Hello World&quot;) &lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;파이썬에서의 코드가 비교적 간단하고 명료한 것을 볼 수 있습니다.&lt;/p&gt;
 
@@ -128,7 +289,7 @@
 
 &lt;p&gt;해외 개발자 사이트 스택 오버플로우의 언어 통계에 따르면 사람들이 지금 가장 많이 사용하는 언어로서 1위를 기록하고 있고, 데이터 사이언스 분야에서는 독보적으로 사용되고 있음을 볼 수 있습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;피어세션-정리&quot;&gt;피어세션 정리&lt;/h2&gt;
+&lt;h1 id=&quot;피어세션-정리&quot;&gt;피어세션 정리&lt;/h1&gt;
 
 &lt;p&gt;오늘은 동료분들과의 첫 만남이었고, 서로 인사하며 얼굴을 트는 기회를 가질 수 있었습니다.&lt;/p&gt;
 
@@ -145,7 +306,7 @@
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;[파이선 개발환경 - 최성철 교수님]&lt;/li&gt;
+  &lt;li&gt;파이선 개발환경 - 최성철 교수님&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%B4%EC%8D%AC&quot;&gt;Python - wikipedia&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Gyeong</name></author><category term="AI" /><category term="Python" /><summary type="html">부스트캠프 1주차 Day1 강의를 보고 내용을 정리한 노트입니다.</summary></entry><entry><title type="html">유니온 파인드(Union Find, Disjoint Set)</title><link href="http://localhost:4000/data%20structure/unionfind/" rel="alternate" type="text/html" title="유니온 파인드(Union Find, Disjoint Set)" /><published>2019-05-14T00:00:00+09:00</published><updated>2019-03-13T22:06:00+09:00</updated><id>http://localhost:4000/data%20structure/unionfind</id><content type="html" xml:base="http://localhost:4000/data%20structure/unionfind/">&lt;h1 id=&quot;union-find&quot;&gt;Union-Find&lt;/h1&gt;
 &lt;p&gt;컴퓨터 과학에서 서로소 찾기 집합 혹은 병합 찾기 집합이라 불리며 중복되지 않은 부분집합들의 원소 정보를 조작하고 저장하는 자료구조이다.&lt;/p&gt;
@@ -2433,118 +2594,4 @@ Delete      O(1)     O(1)
 
 &lt;p&gt;This challenge is completely free. Please share it with anyone who will find it useful for practice.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Have fun building!&lt;/strong&gt; 🚀&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="HTML" /><category term="CSS" /><category term="Web" /><summary type="html">하루에 하나씩 웹 컴포넌트 페이지를 만들어 봅시다.</summary></entry><entry><title type="html">합병 정렬(Merge Sort)</title><link href="http://localhost:4000/algorithm/merge-sort/" rel="alternate" type="text/html" title="합병 정렬(Merge Sort)" /><published>2019-04-05T00:00:00+09:00</published><updated>2019-05-10T22:06:00+09:00</updated><id>http://localhost:4000/algorithm/merge-sort</id><content type="html" xml:base="http://localhost:4000/algorithm/merge-sort/">&lt;h1 id=&quot;merge-sort합병-정렬&quot;&gt;Merge Sort(합병 정렬)&lt;/h1&gt;
-
-&lt;p&gt;합병 정렬 또는 병합 정렬(merge sort)은 O(n log n) 비교 기반 정렬 알고리즘입니다.&lt;br /&gt;
-일반적인 방법으로 구현했을 때 이 정렬은 안정 정렬에 속하며, 분할 정복 알고리즘의 하나입니다.
-존 폰 노이만이 1945년에 개발했습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h2&gt;
-
-&lt;p&gt;밑의 애니메이션을 먼저 보시고 알고리즘을 읽으시면 이해가 빠를 수 있습니다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;리스트의 길이가 1 이하이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는&lt;/li&gt;
-  &lt;li&gt;분할(divide) : 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다.&lt;/li&gt;
-  &lt;li&gt;정복(conquer) : 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.&lt;/li&gt;
-  &lt;li&gt;결합(combine) : 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다. 이때 정렬 결과가 임시배열에 저장된다.&lt;/li&gt;
-  &lt;li&gt;복사(copy) : 임시 배열에 저장된 결과를 원래 배열에 복사한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Animation - Merge sort&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/merge.gif&quot; alt=&quot;Alt text&quot; width=&quot;400px&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;analysis&quot;&gt;Analysis&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/merge-sort-rec.png&quot; alt=&quot;Alt text&quot; width=&quot;500px&quot; height=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; 7개의 원소가 들어있는 배열에 재귀적 병합 정렬을 적용했을 때 우리가 상상할 수 있는 그림입니다.&lt;br /&gt;
-배열의 원소가 1개가 될 때까지 원래 배열의 1/2씩 분할을 계속 진행합니다.&lt;br /&gt;
-배열의 원소가 1개가 되면 병합을 진행합니다.&lt;br /&gt;
-[38][27]&lt;br /&gt;
-38은 27보다 크므로 두 원소가 스왑되어 합병됩니다.&lt;br /&gt;
-[43][3]&lt;br /&gt;
-43은 3보다 크므로 두 원소가 스왑되어 합병됩니다.&lt;br /&gt;
-[27, 38] [3, 43]&lt;br /&gt;
-27과 3이 스왑되고 38과 43은 그대로 배열에 들어갑니다.&lt;br /&gt;
-이와 마찬가지로 다른 분할 배열들도 위와 같이 진행됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;java로-구현---재귀적top-down-recursive&quot;&gt;Java로 구현 - 재귀적(Top-down, Recursive)&lt;/h2&gt;
-
-&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;설명&lt;/strong&gt;: 재귀적으로 서브배열의 크기가 1이 될 때까지 계속 분할을 진행합니다.&lt;br /&gt;
-분할된 배열들을 정렬하고 합병합니다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// @author lemidia&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MergeSort&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Middle&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Left&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Right&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Merge&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])){&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++];&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++];&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;cm&quot;&gt;/*
-        while (i&amp;lt;=q &amp;amp;&amp;amp; j&amp;lt;=r){
-            if(data[i] &amp;lt;= data[j]){
-                temp[k++] = data[i++];
-            }else{
-                temp[k++] = data[j++];
-            }
-        }
-        while (i&amp;lt;=q)
-            temp[k++] = data[i++];
-        while (j&amp;lt;=r)
-            temp[k++] = data[j++];
-        for(int l = p; l&amp;lt;=r; l++){
-            data[l] = temp[l];
-        }
-        */&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;시간복잡도&quot;&gt;시간복잡도&lt;/h2&gt;
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;최악 시간복잡도	O(n log n)
-최선 시간복잡도	O(n log n)
-평균 시간복잡도	일반적으로, O(n log n)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;쉬운 설명&lt;/strong&gt;: 배열의 원소가 n개일 때 깊이는 log(n)만큼 진행 됩니다. (매번 2개씩 분할 되므로)&lt;br /&gt;
-각 깊이마다 n개의 원소들이 제자리를 찾아 스왑됩니다.&lt;br /&gt;
-그래서 시간복잡도는 깊이 * n개의 원소 즉, &lt;strong&gt;nlog(n)&lt;/strong&gt;이 됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Merge_sort&quot;&gt;Merge Sort - wikipedia&lt;/a&gt;&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="Sort" /><category term="Mathematics" /><summary type="html">O(nlogn)의 비교 기반 분할 정복 정렬 알고리즘</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;Have fun building!&lt;/strong&gt; 🚀&lt;/p&gt;</content><author><name>Gyeong</name></author><category term="HTML" /><category term="CSS" /><category term="Web" /><summary type="html">하루에 하나씩 웹 컴포넌트 페이지를 만들어 봅시다.</summary></entry></feed>
