@@ -336,5 +336,5 @@ range(0,5) = [0,1,2,3,4] 까지 같은 의미
 
 ## References
 
-- 파이선 개발환경 - 최성철 교수님
+- 파이선 기본문법 - 최성철 교수님
 - [Python - wikipedia](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%B4%EC%8D%AC)
