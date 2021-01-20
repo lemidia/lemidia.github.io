@@ -1,0 +1,22 @@
+I"K<ul class="toc__menu">
+  <li><a href="#파이썬의-기초-문법">파이썬의 기초 문법</a>
+    <ul>
+      <li><a href="#변수">변수</a>
+        <ul>
+          <li><a href="#변수와-관련된-파이썬-에서의-자료형-연산자-형변환">변수와 관련된 파이썬 에서의 자료형, 연산자, 형변환</a></li>
+        </ul>
+      </li>
+      <li><a href="#함수">함수</a></li>
+      <li><a href="#입-출력">입 출력</a></li>
+      <li><a href="#조건문과-반복문">조건문과 반복문</a></li>
+      <li><a href="#스트링-함수">스트링 함수</a></li>
+    </ul>
+  </li>
+  <li><a href="#피어세션-정리">피어세션 정리</a></li>
+  <li><a href="#과제-진행-상황-정리">과제 진행 상황 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET
