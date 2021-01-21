@@ -408,8 +408,6 @@ d = defaultdict(lambda: 0) # Default 값을 0으로 설정합 print(d["first"])
 
 ### enumerate & zip
 
-**enumerate**
-
 - enumerate : list의 element를 추출할 때 번호를 붙여서 추출
 
 ```python
@@ -429,8 +427,6 @@ d = defaultdict(lambda: 0) # Default 값을 0으로 설정합 print(d["first"])
 ```
 
 ---
-
-**zip**
 
 - zip : 두 개의 list의 값을 병렬적으로 추출함
 
@@ -511,7 +507,7 @@ def geneartor_list(value):
 
 - list comprehension과 유사한 형태로 generator 형태의 list 생성
 - generator expression 이라는 이름으로도 부름
-- [ ] 대신 ( ) 를 사용하여 표현
+- [] 대신 () 를 사용하여 표현
 
 ```python
 gen_ex = (n*n for n in range(500))
