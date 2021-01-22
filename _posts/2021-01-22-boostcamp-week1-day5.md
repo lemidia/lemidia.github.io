@@ -1,6 +1,6 @@
 ---
-title: "파이썬/AI 개발환경 준비하기"
-excerpt: "부스트캠프 1주차 Day1 강의를 보고 내용을 정리한 노트입니다."
+title: "파이썬 기초문법 4"
+excerpt: "부스트캠프 1주차 Day5 강의를 보고 내용을 정리한 노트입니다."
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"
