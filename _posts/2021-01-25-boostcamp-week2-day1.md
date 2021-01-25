@@ -187,7 +187,7 @@ test_array.std()
 
 ex) exp, log, log10, power, sqrt, sin cos, tan, cosh...
 
-# Dot product
+### Dot product
 
 매트릭스의 dot product 계산에 쓰이는 함수입니다.
 
@@ -199,7 +199,7 @@ test_a.dot(test_b)
 # array([[58, 64], [139, 154]])
 ```
 
-# broadcasting
+### broadcasting
 
 shape이 다른 배열 간 연산을 지원하는 기능입니다.
 
@@ -217,7 +217,7 @@ test_matrix * scalar
 #        [12, 15, 18]])
 ```
 
-# All & Any
+### All & Any
 
 ```python
 a = np.arange(10)
@@ -232,15 +232,15 @@ np.all(a>5), np.any(a<10)
 
 벡터는 숫자를 원소로 가지는 리스트 또는 배열이라고 볼 수 있습니다.
 
-![Alt text](/assets/images/vector-1.png){: width="200px" height="100px" .align-center}
+![Alt text](/assets/images/vector-1.png){: width="300px" height="200px" .align-center}
 
 벡터는 공간에서 한점을 나타냅니다.
 
-![Alt text](/assets/images/vector-2.png){: width="200px" height="100px" .align-center}
+![Alt text](/assets/images/vector-2.png){: width="300px" height="200px" .align-center}
 
 벡터는 숫자르 원소로 가지는 리스트로서 백터끼리 같은 모양을 가지면 덧셈, 뺄셈, 성분곱이 가능합니다.
 
-![Alt text](/assets/images/vector-3.png){: width="200px" height="100px" .align-center}
+![Alt text](/assets/images/vector-3.png){: width="300px" height="200px" .align-center}
 
 ### 벡터의 뺄셈
 
@@ -248,7 +248,7 @@ np.all(a>5), np.any(a<10)
 벡터의 뺄셈은 방향을 뒤집은 덧셈입니다.  
 대수적으로 보면 : x = [1 ,2], y = [5, 3] 이란 두개의 벡터가 있을 때 y - x 뺄셈을 하면 -> [4, 1]이 됩니다.
 
-![Alt text](/assets/images/vector-4.png){: width="200px" height="100px" .align-center}
+![Alt text](/assets/images/vector-4.png){: width="300px" height="200px" .align-center}
 
 ### 백터의 노름
 
@@ -259,14 +259,14 @@ L1 노름과 L2노름이 있습니다.
 - L1-노름은 각 성분의 변화량의 절대값을 모두 더합니다.
 - L2-노름은 피타고라스 정리를 이용해 유클리드 거리를 계산합니다.
 
-![Alt text](/assets/images/vector-5.png){: width="300px" height="100px" .align-center}
+![Alt text](/assets/images/vector-5.png){: width="300px" height="200px" .align-center}
 
 ### 두 벡터 사이의 각도 구하기
 
 두 벡터 사이의 거리는 제2 코사인 법칙에 의해 두 벡터 사이의 각도를 계산 가능  
 그리고 분자는 더욱 간단히 내적으로 구할 수 있다.
 
-![Alt text](/assets/images/vector-6.png){: width="300px" height="100px" .align-center}
+![Alt text](/assets/images/vector-6.png){: width="300px" height="200px" .align-center}
 
 ### 내적 해석하기
 
@@ -274,7 +274,7 @@ L1 노름과 L2노름이 있습니다.
 proj(x)의 길이는 코사인 법칙에 의해 x의 노름 x cos(theta)가 된다.  
 내적은 정사영의 길이를 벡터 y의 길이 만큼 조정한 값이 된다.
 
-![Alt text](/assets/images/vector-7.png){: width="400px" height="100px" .align-center}
+![Alt text](/assets/images/vector-7.png){: width="400px" height="200px" .align-center}
 
 ## 행렬
 
@@ -282,36 +282,36 @@ proj(x)의 길이는 코사인 법칙에 의해 x의 노름 x cos(theta)가 된�
 - 행렬은 행(row)과 열(column)이라는 인덱스(index)를 가집니다.
 - 행렬의 특정 행(열)을 고정하면 행(열)벡터라 부릅니다.
 
-![Alt text](/assets/images/vector-8.png){: width="400px" height="100px" .align-center}
+![Alt text](/assets/images/vector-8.png){: width="400px" height="200px" .align-center}
 
 - 벡터가 공간에서 한 점을 의미한다면 행렬은 여러 점들을 나타냅니다.
 - 행렬의 행벡터 xi 는 i 번째 데이터를 의미합니다.
 - 행렬의 xij 는 i 번째 데이터의 j 번째 변수의 값을 말합니다.
 
-![Alt text](/assets/images/vector-9.png){: width="400px" height="100px" .align-center}
+![Alt text](/assets/images/vector-9.png){: width="400px" height="200px" .align-center}
 
 ### 행렬에서의 스칼라곱
 
 - 성분곱은 벡터와 똑같습니다. 스칼라곱도 벡터와 차이가 없습니다.
 
-![Alt text](/assets/images/vector-10.png){: width="400px" height="100px" .align-center}
+![Alt text](/assets/images/vector-10.png){: width="400px" height="200px" .align-center}
 
 ### 행렬에서의 곱셈
 
 행렬 곱셈은 i번째 행벡터와 j번째 열벡터 사이의 내적을 성분으로 가지는 행렬을 계산합니다.
 
-![Alt text](/assets/images/vector-11.png){: width="400px" height="100px" .align-center}
+![Alt text](/assets/images/vector-11.png){: width="400px" height="200px" .align-center}
 
 ### 역행렬 이해하기
 
 - 어떤 행렬 A 의 연산을 거꾸로 되돌리는 행렬을 역행렬(inverse matrix)이 라 부르고 A−1 라 표기한다.  
   역행렬은 행과 열 숫자가 같고 행렬식(determinant)이 0이 아닌 경우에만 계산할 수 있다. (ad-bc != 0)
 
-![Alt text](/assets/images/vector-12.png){: width="400px" height="100px" .align-center}
+![Alt text](/assets/images/vector-12.png){: width="400px" height="200px" .align-center}
 
 - 만일 역행렬을 계산할 수 없다면 유사역행렬(pseudo-inverse) 또는 무어-펜로즈(Moore-Penrose) 역행렬 A+ 을 이용한다.
 
-![Alt text](/assets/images/vector-12.png){: width="400px" height="100px" .align-center}
+![Alt text](/assets/images/vector-12.png){: width="400px" height="200px" .align-center}
 
 # 피어세션 정리
 
