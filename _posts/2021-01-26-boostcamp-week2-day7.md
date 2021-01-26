@@ -1,6 +1,6 @@
 ---
 title: "경사하강법 (Gradient Descent)"
-excerpt: "부스트캠프 2주차 Day6 강의를 보고 내용을 정리한 노트입니다."
+excerpt: "부스트캠프 2주차 Day7 강의를 보고 내용을 정리한 노트입니다."
 toc: true
 toc_sticky: true
 # toc_label: "페이지 주요 목차"
@@ -12,7 +12,7 @@ tags:
   - AI
   - Python
 
-last_modified_at: 2021-01-19T08:06:00-05:00
+last_modified_at: 2021-01-26T08:06:00-05:00
 
 header:
   overlay_image: /assets/images/headerLogo2.jpg
@@ -185,5 +185,4 @@ use_math: true
 
 ## References
 
-- 파이선 기본문법 - 최성철 교수님
-- [Python - wikipedia](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%B4%EC%8D%AC)
+- Mathematics for Artificial Intelligence - Unist 임성철 교수님
