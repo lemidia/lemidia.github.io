@@ -15,7 +15,7 @@ tags:
 last_modified_at: 2021-01-26T08:06:00-05:00
 
 header:
-  overlay_image: /assets/images/headerLogo2.jpg
+  overlay_image: /assets/images/headerIMG.jpg
   overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   #actions:
