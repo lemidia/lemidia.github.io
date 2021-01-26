@@ -382,5 +382,4 @@ proj(x)의 길이는 코사인 법칙에 의해 x의 노름 x cos(theta)가 된�
 
 ## References
 
-- 파이선 기본문법 - 최성철 교수님
-- [Python - wikipedia](https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%B4%EC%8D%AC)
+- Mathematics for Artificial Intelligence - Unist 임성철 교수님
