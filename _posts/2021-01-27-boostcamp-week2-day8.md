@@ -246,11 +246,11 @@ $\frac{\partial z}{\partial x}$ 구하기
 
 딥러닝에서도 위와 같은 아이디어가 똑같이 적용됩니다.
 
-딥러닝은 역전파(backpropagation) 알고리즘을 이용하여 각 층에 사용된 패러미터 ${W(l), b(l)}1~l1$ 까지를 학습합니다
+딥러닝은 역전파(backpropagation) 알고리즘을 이용하여 각 층에 사용된 패러미터 ${W(l), b(l)}1$에서$l1$ 까지를 학습합니다
 
 각 층 패러미터의 그레디언트 벡터는 윗층부터 역순으로 계산하게 됩니다
 
-위의 그림처럼 목적함수 L에 대한 w(l)의 그레디언트를 계산한다면 다음과 같이 계산해 볼 수 있습니다.
+위의 그림처럼 목적함수 $L$에 대한 $w(l)$의 그레디언트를 계산한다면 다음과 같이 계산해 볼 수 있습니다.
 
 $\frac{\partial L}{\partial w^{(l)}} = \frac{\partial L}{\partial O} \bullet \bullet \bullet \frac{\partial H^{(l)}}{\partial Z^{(l)}} \frac{\partial Z^{(l)}}{\partial W^{(l)}}$
 
