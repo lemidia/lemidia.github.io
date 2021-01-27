@@ -250,7 +250,7 @@ $w$를 $(x+y)$라 놓았으니 $w$를 $x$대해서 편미분을 하면 $ \frac{\
 
 위의 그림처럼 목적함수 L에 대한 w(l)의 그레디언트를 계산한다면 다음과 같이 계산해 볼 수 있습니다.
 
-$\frac{\partial L}{\partial w^{(l)}} = \frac{\partial L}{\partial O}} \bullet \bullet \bullet \frac{\partial H^{(l)}}{\partial Z^{(l)}}} \frac{\partial Z^{(l)}}{\partial W^{(l)}}$
+$\frac{\partial L}{\partial w^{(l)}} = \frac{\partial L}{\partial O} \bullet \bullet \bullet \frac{\partial H^{(l)}}{\partial Z^{(l)}} \frac{\partial Z^{(l)}}{\partial W^{(l)}}$
 
 # 피어세션 정리
 
