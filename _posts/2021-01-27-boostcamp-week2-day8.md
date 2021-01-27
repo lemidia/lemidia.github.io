@@ -236,7 +236,7 @@ $w$를 $(x+y)$라 놓고, $z$를 $w$에 대해서 편미분을 하면 $ \frac{\p
 그 다음 속미분을 합니다.  
 $w$를 $(x+y)$라 놓았으니 $w$를 $x$대해서 편미분을 하면 $ \frac{\partial w}{\partial x} = 1$이 됩니다.
 
-그 다음 합성합수 연쇄법칙에 의해 $ \frac{\partial z}{\partial w} $ \frac{\partial w}{\partial x}$에서 ${\partial w}$텀이 약분되게 되고 결론은 $ \frac{\partial z}{\partial x}$이 도출되게 됩니다.
+그 다음 합성합수 연쇄법칙에 의해 $ \frac{\partial z}{\partial w} \frac{\partial w}{\partial x}$에서 ${\partial w}$텀이 약분되게 되고 결론은 $ \frac{\partial z}{\partial x}$가 도출되게 됩니다.
 
 ---
 
@@ -250,7 +250,7 @@ $w$를 $(x+y)$라 놓았으니 $w$를 $x$대해서 편미분을 하면 $ \frac{\
 
 위의 그림처럼 목적함수 L에 대한 w(l)의 그레디언트를 계산한다면 다음과 같이 계산해 볼 수 있습니다.
 
-$\frac{\partial L}{\partial w^{(l)}} = \frac{\partial L}{\partial O}} \bullet \bullet \bullet \frac{\partial H^{(l)}}{\partial Z^{(l)}}} \frac{\partial Z^{(l)}}{\partial W^{(l)}}}$
+$\frac{\partial L}{\partial w^{(l)}} = \frac{\partial L}{\partial O}} \bullet \bullet \bullet \frac{\partial H^{(l)}}{\partial Z^{(l)}}} \frac{\partial Z^{(l)}}{\partial W^{(l)}}$
 
 # 피어세션 정리
 
