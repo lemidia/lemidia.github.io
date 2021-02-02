@@ -34,7 +34,7 @@ use_math: true
 - Generalization
 - Under-fitting vs. over-fitting
 - Cross validation
-- Bias-variance tradeoff
+- Bias-variance
 - Bootstrapping
 - Bagging and boosting
 
@@ -92,7 +92,98 @@ K-fold Validation이라고도 불리는 Cross validation은 학습 데이터를 
 
   ![Alt text](/assets/images/aitech_day12-4.png){: width="600px" .align-center}
 
-### 현재 작업 중 입니다! :blush:
+## Bootstrapping
+
+고정된 수의 학습데이터에 대해 랜덤하게 샘플링 된 데이터로 여러 모델을 만들어 어떤 목적을 수행하겠다는 방법론을 말합니다.
+
+예를 들어 전체 데이터의 수가 100개이면 그 중 랜덤하게 80개를 뽑아 모델 1을 학습시키고, 다시 랜덤하게 80개를 뽑아 모델 2를 학습시키고... 이렇게 수행하게 됩니다.
+
+이렇게 되면 하나의 입력에 대해서 여러개의 모델이 같은 값을 예측할 수도 있지만 서로 다른 값을 예측할 수도 있습니다.
+
+![Alt text](/assets/images/aitech_day12-5.png){: width="600px" .align-center}
+
+그래서 입력 값들에 대해 이 모델들의 출력 값이 얼마나 일치하는 지를 보고 전체적인 모델의 Uncertainty를 예측하고자 할 때 사용할 수 있습니다.
+
+## Bagging vs Boosting
+
+![Alt text](/assets/images/aitech_day12-6.png){: width="600px" .align-center}
+
+**Bagging** : 위에서 다룬 Bootstrapping 방법을 쓰는 데, 전체 데이터에서 일부를 랜덤 샘플링 해서 여러 개의 모델을 만들고, 그 모델들의 아웃풋을 가지고 평균을 내는 것을 의미하게 됩니다. 이런 것을 일반적으로 앙상블이라고도 부릅니다.
+
+**Boosting** : 전체적인 프로세스가 Sequential 하게 전체 학습 데이터에 대해 모델을 만들고 그 중 학습이 잘 안된 데이터에 대해 또 다른 모델을 만들어 이 학습이 잘 안된 데이터에 대해 학습이 잘 되도록 모델을 만드는 것을 반복합니다. 그리고 이렇게 만든 모델들을 Sequential하게 합쳐 하나의 모델을 만듭니다.
+
+![Alt text](/assets/images/aitech_day12-7.png){: width="600px" .align-center}
+
+## Gradient Descent Methods
+
+Gradient Descent 분류해보면 크게 3가지로 분류해 볼 수 있습니다.
+
+- Stochastic gradient descent : 엄밀하게 얘기해서 전체 학습 데이터에서 한번에 한개의 샘플 데이터에 대해서 역전파를 통해 그레디언트를 구하고, 값을 업데이트하고, 다시 한번에 한개의 샘플 데이터에 대해 반복하는 것을 말합니다.
+- Mini-batch gradient descent : 배치 사이즈인 256개나 128개 등의 학습 데이터의 서브셋에 대해 계산된 그레디언트를 업데이트 하는 방법을 말합니다.
+- Batch gradient descent : 전체 데이터에 대해 계산된 그레디언트를 사용해 패러매터를 업데이트 하게 되는 것을 말합니다.
+
+대부분의 딥러닝 문제에서는 Mini-batch gradient descent가 사용되어지고 있습니다.
+
+## Batch-size Matters
+
+많은 딥러닝 문제에서 Batch-size는 아주 중요한 요소입니다.  
+Batch-size에 따라 우리가 추구하고자 하는 모델이 이상적으로 가는지, 잘 학습이 되어지는에 대해 결정적일 수 있기 때문입니다.
+
+![Alt text](/assets/images/aitech_day12-8.png){: width="600px" .align-center}
+
+실험적으로 발견이 되어진 내용에 의하면 큰 Batch-size를 사용하여 모델을 학습하게 되면, 학습과 테스트 함수가 sharp minimizers에 도달할 가능성이 크다고 합니다. 반면에 작은 Batch-size를 사용하게 되면 flat minimizers에 도달할 가능성이 크다고 합니다.
+
+여기서 말하고자 하는 내용은 Batch-size를 작게쓰는 것이 일반적으로 성능이 좋다라는 것을 실험적으로 말하는 것입니다.
+
+![Alt text](/assets/images/aitech_day12-9.png){: width="600px" .align-center}
+
+우리의 목적은 데이터가 Testing function에서 잘 동작하는 것을 찾고 싶습니다.
+
+Flat minimum 에서는 Training Function에서 조금 멀어져도, Testing Function에서도 적당히 비슷한 값이 나오는 것을 볼 수 있습니다. 이 말은 학습 데이터에서 잘 동작하는 것이 테스트 데이터에서도 잘 동작하는 즉, 앞에서 살펴본 Generalization performance가 높다고 할 수 있습니다.
+
+Flat minimum 에서는 Training Function에서 Local minimum에 도달했어도 Testing Function에서는 약간만 멀어져 있어도 높은 값이 나오는 것을 볼 수 있습니다. 이 말은 학습 데이터에서 잘 동작하는 것이 테스트 데이터에서는 잘 동작하지 않는 또는 예측하지 않는 즉, Generalization performance가 낮다고 할 수 있습니다.
+
+## Gradient Descent Methods
+
+- Stochastic gradient descent
+- Momentum
+- Nesterov accelerated gradient
+- Adagrad
+- Adadelta
+- RMSprop
+- Adam
+
+### Gradient Descent
+
+가장 일반적인 Gradient Descent 방법입니다.
+
+![Alt text](/assets/images/aitech_day12-10.png){: width="600px" .align-center}
+
+W는 업데이트 될 패러미터 백터, t는 타임스탬프, g는 자동미분으로 얻어진 그레디언트를 의미합니다.
+
+그레디언트 값을 에타라고도 부르는 Learning rate 값과 곱해서 W와 빼주고 그 값을 새로 업데이트 하게 되는 방법입니다.
+
+이 방법의 가장 큰 문제는 스텝 사이즈인 Learning rate를 정하는 것이 너무 어렵다는 점입니다.  
+Learning rate가 너무 크게 되면 학습이 잘 안되게 되고, 이 것이 너무 작으면 아무리 학습을 시켜도 학습이 안되게 될 것입니다.
+
+그래서 이 Learning rate를 적절히 잡아주는게 중요합니다.
+
+### Momentum
+
+관성이라고도 하는 이 방법은 쉽게 말해 한 번 그레디언트 방향이 a방향으로 흘렀다면, 다음번에 업데이트에서 계산된 그레이언트가 조금 다른 방향으로 흘러도 전에 흐르던 방향인 a방향의 정보를 조금 추가해서 그 방향을 보정하거나 이어가자는 것을 의미합니다.
+
+![Alt text](/assets/images/aitech_day11-10.png){: width="600px" .align-center}
+
+베타상수가 모멘텀이 되고 a_t+1이 accumulation이 됩니다.  
+즉 한 번 계산되고 나서 g_t가 버려지게 되는 것이 아니고, 이 값이 베타 상수인 모멘텀과 같이 계산되어 accumuaation에 들어가게 되고 현재 뿐만 아니라, 다음 번의 경사하강 업데이트 계산에 a_t로서 계산이 들어가게 됩니다.
+
+미니 배치 연산에서 에를 들면 전의 배치에서는 경사가 이쪽 방향으로 흘렀지만 다음 번 배치에서는 다른 방향으로 흐를 수 있고 이 때, 전에 계산된 방향으로 조금 보정해서 또는 관성을 줘서 흘러가자라는 것을 볼 수 있습니다.
+
+그래서 그레디언트가 아주 많이 다 방향으로 왔다갔다 해도 어느정도 잘 학습이 되게 만들어 주는 효과가 있다고 합니다.
+
+### Nesterov Accelerated Gradient
+
+![Alt text](/assets/images/aitech_day12-11.png){: width="600px" .align-center}
 
 # 퀴즈 정리
 
