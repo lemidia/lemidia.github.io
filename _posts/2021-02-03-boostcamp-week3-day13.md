@@ -168,4 +168,4 @@ C: 채널 수, 깊이를 의미합니다. 보통 이미지라면 R, G, B의 3개
 
 ## References
 
-- Optimization in Deep Learning - 최성준 교수님
+- CNN - Convolution - 최성준 교수님
