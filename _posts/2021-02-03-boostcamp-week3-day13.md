@@ -29,15 +29,15 @@ use_math: true
 
 CNN(Convolutional Neural Network)에서 가장 중요한 연산은 Convolution 입니다.  
 Convolution의 정의, convolution 연산 방법과 기능에 대해 배웁니다.  
-그리고 Convolution, 입력을 축소하는 Pooling layer, 모든 노드를 연결하여 최종적인 결과를 만드는 Fully connected layer 로 구성되는 기본적인 CNN(Convolutional Neural Network) 구조에 대해 배웁니다.
+그리고 Convolution, 입력을 축소하는 Pooling layer, 모든 노드를 연결하여 최종적인 결과를 만드는 Fully connected layer로 구성되는 기본적인 CNN(Convolutional Neural Network) 구조에 대해 배웁니다.
 
 ---
 
-CNN consists of convolution layer, pooling layer, and fully connected layer.
+**CNN consists of convolution layer, pooling layer, and fully connected layer.**
 
-가장 기본적이고 고전적인 CNN은 feature 값을 얻어내기 위해 합성곱 연산을 하는 convolution 층, Convolution을 거쳐서 나온 activation maps이 있을 때, 이를 이루는 convolution layer을 resizing하여 새로운 layer를 얻는 pooling 층 그리고 우리가 최종적으로 얻고자 하는 값들을 만들어주는 fully connected 층으로 구성됩니다.
+가장 기본적이고 고전적인 CNN은 feature 값을 얻어내기 위해 합성곱 연산을 하는 **convolution layer**, Convolution을 거쳐서 나온 activation maps이 있을 때, 이를 이루는 convolution layer을 resizing하여 새로운 layer를 얻는 **pooling layer** 그리고 우리가 최종적으로 얻고자 하는 값들을 만들어주는 **fully connected layer**로 구성됩니다.
 
-이미지를 예로 들면, Convolution and pooling layer는 이미지에서 어떤 유용한 정보를 뽑아내는 feature extraction을 담당하고 fully connected layer는 decision making; 예를 들어 분류를 하거나 회귀를 해서 우리가 원하는 출력 값을 얻도록 하게 합니다.
+이미지를 예로 들면, Convolution and pooling layer는 이미지에서 어떤 유용한 정보를 뽑아내는 **feature extraction**을 담당하고 fully connected layer는 **decision making**; 예를 들어 분류를 하거나 회귀를 해서 우리가 원하는 출력 값을 얻도록 하게 합니다.
 
 최근 들어서는 뒷단에 있는 fully connected layer가 최소화 되고, 점점 없어지는 추세라고 합니다.  
 이것은 패러매터의 수와 연관이 있는데요, 패러미터의 수가 늘어 나면 늘어날 수록 학습이 어렵고, Generalization performance가 떨어진다고 알려져 있습니다.
@@ -50,23 +50,23 @@ CNN consists of convolution layer, pooling layer, and fully connected layer.
 
 Convolution 연산을 밑의 그림을 통해 봐보겠습니다.
 
-stride와 padding을 고려하지 않고 가장 기본적인 Convolution 연산을 해보면 오른쪽의 Output 필터가 도출되게 됩니다.
-
 ![Alt text](/assets/images/aitech_day13-1.png){: width="600px" .align-center}
 
-오른쪽에서 빨간 네모인 값, 즉 하나의 Output 값은 Convolution 필터를 적용하고자 하는 이미지에 찍어 도출한다고 생각할 수 있습니다.
-
-밑의 그림에서 보는 것 처럼, 필터를 좌측 상단 이미지 상에 위치시키고, 각 그리드 위치에 맞는 값들 끼리 서로 곱셈을 한 후 전부 더하면 O_11의 output 값이 됩니다.
-
-추가로 마지막에 바이어스 텀을 더해줄 수 있습니다.
+밑에서 알아보게 될 stride와 padding는 고려하지 않고 가장 기본적인 Convolution 연산을 해보면 오른쪽의 Output 필터가 도출되게 됩니다.
 
 ![Alt text](/assets/images/aitech_day13-2.png){: width="600px" .align-center}
 
-전과 마찬가지로 O_12, O_13 값도 이미지 상에서 필터를 한 칸씩 옆으로 밀어 똑같이 계산하면 도출할 수 있습니다.
+오른쪽에서 빨간 네모인 값, 즉 하나의 Output 값은 Convolution 필터를 적용하고자 하는 이미지에 찍어 도출한다고 생각할 수 있습니다.
+
+위의 그림에서 보는 것 처럼, 필터를 좌측 상단 이미지 상에 위치시키고, 각 그리드 위치에 맞는 값들 끼리 서로 곱셈을 한 후 전부 더하면 O_11의 output 값이 됩니다.
+
+추가로 마지막에 바이어스 텀을 더해줄 수 있습니다.
 
 ![Alt text](/assets/images/aitech_day13-3.png){: width="600px" .align-center}
 
 ![Alt text](/assets/images/aitech_day13-4.png){: width="600px" .align-center}
+
+전과 마찬가지로 O_12, O_13 값도 이미지 상에서 필터를 한 칸씩 옆으로 밀어 똑같이 계산하면 도출할 수 있습니다.
 
 **2D convolution in action**
 
@@ -74,7 +74,7 @@ stride와 padding을 고려하지 않고 가장 기본적인 Convolution 연산�
 
 우리가 적용하고자 하는 필터에 따라 같은 이미지에 대해서 convolution output이 밑에서 보이는 것 처럼 여러가지 타입의 이미지로 변환이 되게 됩니다.
 
-예를 들어서, 1/9 값을 가진 3x3 필터를 사용한다면, 이미지 상에서 필터가 적용될 때 3x3 픽셀의 이미지 값의 평균이 계산되고 이는 output 값의 출력 값이 됩니다. 그래서 이미지의 특정 영역에 대해 픽셀 값을 다 합쳐서 평균을 내므로 마치 밑에서 보이는 것 처럼 예를 들면 Blur화 된 이미지가 만들어지게 되는 것입니다.
+예를 들어서, 1/9 값을 가진 3x3 필터를 사용한다면, 이미지 상에서 필터가 적용될 때 3x3 픽셀의 이미지 값의 평균이 계산되고 이는 output 값에서 한 픽셀의 값이 됩니다. 그래서 이미지의 특정 영역에 대해 픽셀 값을 다 합쳐서 평균을 내므로 마치 밑에서 보이는 것 처럼 예를 들면 Blur화 된 이미지가 만들어지게 되는 것입니다.
 
 마찬가지로 다른 타입의 필터를 적용하면 같은 이미지에 대해 강조되거나 외곽이 강조된 이미지를 얻을 수 있을 것입니다.
 
@@ -98,7 +98,11 @@ feature맵의 채널 수를 늘리고 싶다면, 하나의 이미지에 대해 �
 
 ![Alt text](/assets/images/aitech_day13-7.png){: width="600px" .align-center}
 
+---
+
 Convolution 연산을 여러 번 하게 되면 아래 그림처럼 도식화 될 수 있습니다.
+
+![Alt text](/assets/images/aitech_day13-8.png){: width="600px" .align-center}
 
 `stride는 1, padding은 0으로 고려하고 도식화 된 이미지 입니다.`
 
@@ -110,8 +114,6 @@ ReLU를 적용시키게 되면, 0보다 작은 Element 값들은 0 이되고, 0�
 
 나중에 보게 되겠지만 이 그림에서 첫번 째 Convolution에서 적용된 패러매터 들의 개수는 5x5x3x4가 됩니다.  
 4개의 필터가 필요하고, 각 필터의 사이즈는 5x5x3가 되기 때문입니다.
-
-![Alt text](/assets/images/aitech_day13-8.png){: width="600px" .align-center}
 
 ## Stride
 
@@ -141,7 +143,7 @@ Stride가 2인 경우에는 처음에 필터가 적용되고 나서 Stride의 �
 
 **Stride&Padding**
 
-밑의 그림을 보시면 직관적으로 이해가 빠르게 되실겁니다.
+다음은 2차원 상에서 Stride 와 Padding을 다르게 하여 Convolution 연산을 도식화 한 것입니다.
 
 ![Alt text](/assets/images/aitech_day13-12.png){: width="600px" .align-center}
 
@@ -153,16 +155,16 @@ Stride가 2인 경우에는 처음에 필터가 적용되고 나서 Stride의 �
 
 논문을 보거나 대부분의 자료에서 이렇게 도식화 된 그림을 많이 볼 수 있고, 도형 옆에는 각각 수들이 적혀 있습니다.
 
-H: 세로 길이를 의미합니다.
-W: 가로 길이를 의미합니다.
+H: 세로 길이를 의미합니다.  
+W: 가로 길이를 의미합니다.  
 C: 채널 수, 깊이를 의미합니다. 보통 이미지라면 R, G, B의 3개의 값이고 투명도 까지 더해지면 4개의 값이 됩니다.
 
 파란색 네모 박스는 왼쪽 큰 상자에 대해 적용할 필터가 됩니다.  
 3x3 크기의 필터를 적용하겠다는 것이고, 당연히 큰 상자의 채널 수와 필터의 채널 수는 일치해야 합니다.
 
-그럼 파란색 네모가 필터의 패러미터 수는 3x3x128이 됩니다.
+그렇다면 필터의 패러미터 수는 3x3x128이 됩니다.
 
-오른쪽의 출력의 채널 수는 64개가 되는데 이는, 오른쪽의 박스가 파란색 네모 필터를 64개 적용해서 얻어진 결과물이 됩니다. 왜냐하면 파란색 네모가 필터 하나 당 채널이 1인 출력을 만들기 때문입니다.
+오른쪽의 출력의 채널 수는 64개가 되는데 이는, 오른쪽의 박스가 파란색 네모 필터를 64개 적용해서 얻어진 결과물이 됩니다. 왜냐하면 파란색 네모인 필터 하나 당 채널이 1인 feature map을 만들기 때문입니다.
 
 그래서 총 패러미터의 수는 3x3x128x64가 됩니다.
 
