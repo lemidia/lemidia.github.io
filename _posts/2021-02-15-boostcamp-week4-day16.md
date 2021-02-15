@@ -26,7 +26,7 @@ header:
 use_math: true
 ---
 
-# Intro to NLP, Bag-of-Words
+# Intro to NLP, Bag-of-Words, Naive Bayes Classifier
 
 NLP에 대해 짧게 소개하고 자연어를 처리하는 가장 간단한 모델 중 하나인 **Bag-of-Words**를 알아봅니다.
 
