@@ -157,4 +157,4 @@ o_t는 어떤 값을 내보낼지 정하는 역할을 하게 되고 이를 thanh
 
 ## References
 
-- Optimization - Convolution - 최성준 교수님
+- RNN - 최성준 교수님
