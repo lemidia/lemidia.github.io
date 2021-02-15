@@ -127,15 +127,15 @@ Bag-of-Words로 나타내어진 문서를 정해진 카테고리 혹은 클래�
 
 d = 분류 되어질 문서, C = C개의 클래스
 
-특정한 문서 d가 주어져 있을 때, 그 문서가 특정 클래스 중 하나인 c에 속할 확률 : P(c|d), 조건부 확률 분포상, 가장 높은 확률을 가지는 c를 통해서 문서 분류를 수행
+특정한 문서 d가 주어져 있을 때, 그 문서가 특정 클래스 중 하나인 c에 속할 확률 : P(c\|d), 조건부 확률 분포상, 가장 높은 확률을 가지는 c를 통해서 문서 분류를 수행
 
-P(c|d)는 Bayes’ Rule에 의해 아래의 그림에서의 중간 식과 같이 나타내어 질 수 있다.
+P(c\|d)는 Bayes’ Rule에 의해 아래의 그림에서의 중간 식과 같이 나타내어 질 수 있다.
 
 Bayes’ Rule에서 P(d)는 문서 d가 뽑힐 확률, d는 우리가 분류할 고정된 하나의 개체라고 볼 수 있으므로, argmax operation 상에서 상수로 무시할 수 있게 되고, 이는 맨 아래의 식으로 유도될 수 있음.
 
 ![Alt text](/assets/images/aitech_day16-5.png){: width="600px" .align-center}
 
-P(d|c)는 특정 클래스가 고정이 되었을 때, 문서 d가 나타날 확률을 의미. 문서 d가 나타날 확률은 문서에서의 단어 w1 .. wn가 동시적으로 그리고 독립적으로 일어난 사건을 의미.
+P(d\|c)는 특정 클래스가 고정이 되었을 때, 문서 d가 나타날 확률을 의미. 문서 d가 나타날 확률은 문서에서의 단어 w1 .. wn가 동시적으로 그리고 독립적으로 일어난 사건을 의미.
 
 ![Alt text](/assets/images/aitech_day16-6.png){: width="600px" .align-center}
 
@@ -148,8 +148,8 @@ P(c_NLP)도 위와 같습니다.
 
 그리고 각 문서에서의 특정 단어가 나타날 확률은 다음의 표와 같을 때, 문서 d5가 주어졌을 때, 어느 클래스에 속할지 구하는 확률은 위에서 구한 공식에 대입하면 다음 그림과 같습니다.
 
-d5가 cv클래스에 속할 확률 : cv 클래스의 문서가 뽑힐 확률 x P(w|c_cv) of words of w_d5  
-d5가 NLP클래스에 속할 확률 : NLP 클래스의 문서가 뽑힐 확률 x P(w|c_NLP) of words of w_d5
+d5가 cv클래스에 속할 확률 : cv 클래스의 문서가 뽑힐 확률 x P(w\|c_cv) of words of w_d5  
+d5가 NLP클래스에 속할 확률 : NLP 클래스의 문서가 뽑힐 확률 x P(w\|c_NLP) of words of w_d5
 
 ![Alt text](/assets/images/aitech_day16-8.png){: width="600px" .align-center}
 
