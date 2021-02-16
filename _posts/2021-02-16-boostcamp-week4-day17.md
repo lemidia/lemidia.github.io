@@ -1,5 +1,5 @@
 ---
-title: "Recurrent Neural Network and Language Modeling"
+title: "Recurrent Neural Network, Types of RNNs and LSTM "
 excerpt: ""
 toc: true
 toc_sticky: true
@@ -14,7 +14,7 @@ tags:
   - Python
   - Math
 
-last_modified_at: 2021-02-17T08:06:00-05:00
+last_modified_at: 2021-02-16T08:06:00-05:00
 
 header:
   overlay_image: /assets/images/headerIMG.jpg
@@ -29,7 +29,7 @@ use_math: true
 
 # Sequential Models - RNN
 
-자연어 처리 분야에서 Recurrent Neural Network(RNN)가 무엇이고, Gradient Vanishing/Exploding의 문제를 보완한 Vanilla RNN을 발전시킨 LSTM을 알아보고, RNN의 Type을 알아봅니다..
+자연어 처리 분야에서 Recurrent Neural Network(RNN)가 무엇이고, Gradient Vanishing/Exploding의 문제를 보완한 Vanilla RNN을 발전시킨 LSTM을 알아보고, RNN의 Type을 알아봅니다.
 
 ## Sequential Model - Naive sequence model
 
