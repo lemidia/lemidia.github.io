@@ -1,5 +1,5 @@
 ---
-title: "Intro to NLP, Bag-of-Words, NaiveBayes Classifier "
+title: "Intro to NLP, Bag-of-Words, Naive Bayes Classifier "
 excerpt: ""
 toc: true
 toc_sticky: true
@@ -47,6 +47,8 @@ NLP는 언어 모델링, 기계 번역, 질문 답변, 문서 분류 및 대화 
 Natural language processing의 연구동향은 ACL, EMNLP, NAACL와 같은 학회에서 발표가 됩니다.
 
 ### Academic Disciplines related to NLP
+
+---
 
 **Natural language processing (major conferences: ACL, EMNLP, NAACL)**
 
