@@ -75,11 +75,11 @@ End 토큰은 Decoder에서 문장이 끝나는 시점을 의미하고, 이 토�
 
 ![Alt text](/assets/images/aitech_day18-5.png){: width="600px" .align-center}
 
-이렇게 만들어진 context vector는 앞서 만들어진 디코더 단의 hidden state vector와 concat이 되어서 y1 아웃풋을 만들게 되고, 이는 다음 타임 스탭으로의 입력으로 들어가게 됩니다.
+이렇게 만들어진 context vector는 앞서 만들어진 디코더 단의 hidden state vector와 concat이 되어서 그림에서는 y3 아웃풋을 만들게 되고, 이는 다음 타임 스탭으로의 입력으로 들어가게 됩니다.
 
 ![Alt text](/assets/images/aitech_day18-6.png){: width="600px" .align-center}
 
-디코터 단에서 마지막 단어를 예측하는 타임 스탭에서의 그림은 다음과 같습니다.
+디코더 단에서 y6인 money를 예측하는 타임 스탭에서의 그림은 다음과 같습니다.
 
 ![Alt text](/assets/images/aitech_day18-7.png){: width="600px" .align-center}
 
