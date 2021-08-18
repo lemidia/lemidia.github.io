@@ -27,7 +27,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .left-inner-container {
@@ -147,15 +147,19 @@ form.error small {
 @media screen and (max-width: 650px) {
   .logo {
     margin-bottom: 40px;
+    margin-left: -150px;
   }
 
   .left {
-    padding-top: 40px;
+    padding-top: 0px;
     width: 100%;
   }
 
   .left-inner-container {
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
   }
 
   .container {
@@ -169,13 +173,16 @@ form.error small {
   .bg-mobile {
     display: block;
     width: calc(100% + 100px);
-    margin-left: -60px;
   }
 
   h1,
   p,
   form {
     text-align: center;
+  }
+
+  form {
+    width: 100%;
   }
 
   h1 {
