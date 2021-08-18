@@ -1,0 +1,16 @@
+I"Ö<ul class="toc__menu">
+  <li><a href="#intro-to-nlp-bag-of-words-naive-bayes-classifier">Intro to NLP, Bag-of-Words, Naive Bayes Classifier</a>
+    <ul>
+      <li><a href="#what-is-natural-language-processing-nlp">What is Natural language processing? (NLP)</a>
+        <ul>
+          <li><a href="#academic-disciplines-related-to-nlp">Academic Disciplines related to NLP</a></li>
+        </ul>
+      </li>
+      <li><a href="#trends-of-nlp">Trends of NLP</a></li>
+      <li><a href="#bag-of-words">Bag-of-Words</a></li>
+      <li><a href="#naivebayes-classifier-for-document-classification">NaiveBayes Classifier for Document Classification</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

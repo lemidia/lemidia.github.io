@@ -1,0 +1,39 @@
+I"�<ul class="toc__menu">
+  <li><a href="#판다스--딥러닝에서의-확률론-기본">판다스 / 딥러닝에서의 확률론 기본</a>
+    <ul>
+      <li><a href="#pandas---groupby">pandas - groupby</a>
+        <ul>
+          <li><a href="#hierarchical-index">Hierarchical index</a></li>
+          <li><a href="#hierarchical-index--unstack">Hierarchical index – unstack()</a></li>
+          <li><a href="#hierarchical-index--operations">Hierarchical index – operations</a></li>
+          <li><a href="#groupby--gropued">Groupby – gropued</a></li>
+          <li><a href="#groupby--aggregation">Groupby – aggregation</a></li>
+          <li><a href="#groupby--transformation">Groupby – transformation</a></li>
+          <li><a href="#merge--concat">Merge &amp; Concat</a>
+            <ul>
+              <li><a href="#merge-example">Merge example</a></li>
+              <li><a href="#left-join">left join</a></li>
+              <li><a href="#right-join">right join</a></li>
+              <li><a href="#fullouter-join">full(outer) join</a></li>
+            </ul>
+          </li>
+          <li><a href="#concat">Concat</a></li>
+        </ul>
+      </li>
+      <li><a href="#딥러닝-확률론">딥러닝 확률론</a>
+        <ul>
+          <li><a href="#이산확률변수-vs-연속확률변수">이산확률변수 vs 연속확률변수</a></li>
+          <li><a href="#조건부확률과-기계학습">조건부확률과 기계학습</a></li>
+          <li><a href="#기대값이-뭔가요">기대값이 뭔가요?</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#피어세션-정리">피어세션 정리</a></li>
+  <li><a href="#퀴즈-정리">퀴즈 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

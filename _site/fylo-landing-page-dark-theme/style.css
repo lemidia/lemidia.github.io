@@ -1,0 +1,450 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Raleway", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+header {
+  background-color: hsl(217, 28%, 15%);
+  padding-bottom: 100px;
+}
+
+a {
+  color: w;
+}
+
+p {
+  line-height: 1.7;
+}
+
+ul {
+  padding: 0;
+}
+
+section {
+  background-color: hsl(218, 28%, 13%);
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: 1300px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 50px 50px;
+}
+
+.container-small {
+  width: 700px;
+  max-width: 100%;
+  margin: 0 auto;
+  z-index: 5;
+  position: relative;
+  background-color: transparent;
+}
+
+.container-middle {
+  width: 900px;
+  max-width: 100%;
+  margin: 0px auto;
+  position: relative;
+  padding: 10px 0;
+  z-index: 5;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex > div {
+  flex: 1;
+}
+
+nav img {
+  width: 150px;
+}
+
+nav .flex {
+  justify-content: space-between;
+}
+
+nav .flex ul li:not(:last-child) {
+  margin-right: 40px;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  background: linear-gradient(120deg, hsl(176, 68%, 64%), hsl(198, 60%, 50%));
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  z-index: 5;
+  color: white;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-row-gap: 70px;
+  column-gap: 90px;
+}
+
+.grid p {
+  font-size: 0.8em;
+}
+
+.grid div {
+  padding: 20px;
+}
+
+.grid h3 {
+  font-size: 1em;
+}
+
+.grid .img-box {
+  width: 100px;
+  height: 90px;
+  margin: auto;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: 250px;
+  left: -200px;
+  background-image: url("./images/bg-curvy-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom left;
+  width: 1500px;
+  height: 400px;
+  z-index: 2;
+}
+
+.stay-productive h2 {
+  font-size: 2em;
+}
+
+.stay-productive p {
+  font-size: 0.8em;
+}
+
+.stay-productive .flex div:first-child img {
+  width: 80%;
+}
+
+.stay-productive .flex div:nth-child(2) {
+  flex: 0.8;
+}
+
+.stay-productive a {
+  color: hsl(176, 68%, 64%);
+  padding-bottom: 4px;
+  border-bottom: 1px solid hsl(176, 68%, 64%);
+}
+
+.stay-productive a img {
+  margin-bottom: -3px;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.testimonial {
+  background-color: hsl(219, 30%, 18%);
+  padding: 25px;
+  padding-bottom: 30px;
+  text-align: left;
+  font-size: 0.8em;
+  border-radius: 3px;
+}
+
+.testimonial p {
+  margin-bottom: 25px;
+}
+
+.testimonial img {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  border-radius: 50%;
+}
+
+.user-info {
+  display: flex;
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.user-info small {
+  font-size: 0.5em;
+}
+
+.testimonial:nth-child(2) {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.testimonial:nth-child(1) {
+  z-index: 5;
+}
+
+.quote {
+  position: relative;
+}
+
+.quote::before {
+  content: "";
+  background-image: url(./images/bg-quotes.png);
+  position: absolute;
+  top: -27px;
+  left: -7px;
+  background-size: 80% 70%;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+}
+
+.email-input {
+  background-color: hsl(217, 28%, 15%);
+  padding: 30px 60px 30px;
+  border-radius: 10px;
+  transform: translateY(100px);
+}
+
+.email-input h2 {
+  margin-top: 0;
+}
+
+.email-input p {
+  font-size: 0.8em;
+}
+
+.email-input input {
+  margin-top: 20px;
+  width: 350px;
+  height: 40px;
+  margin-right: 20px;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+}
+
+.email-input input:focus {
+  outline: none;
+}
+
+footer {
+  font-size: 0.8em;
+  text-align: left;
+  padding-top: 150px;
+  padding-bottom: 10px;
+  background-color: hsl(216, 53%, 9%);
+}
+
+footer p {
+  margin: 0;
+}
+
+footer ul li {
+  margin-bottom: 20px;
+}
+
+footer ul {
+  margin: 0;
+}
+
+footer .logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+footer img {
+  width: 15px;
+  margin-right: 20px;
+}
+
+footer .flex {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+footer .flex ul {
+  flex: 1;
+}
+
+footer .flex div:first-child {
+  flex: 2;
+}
+
+footer .flex li {
+  margin-right: 15px;
+}
+
+.margin-right {
+  margin-right: 50px;
+}
+
+.social-links {
+  display: flex;
+}
+
+.social-links a {
+  border: 1px solid white;
+  color: white;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .container-small,
+  .container-middle {
+    padding: 30px 40px;
+  }
+
+  h2 {
+    font-size: 1.1em !important;
+  }
+
+  header {
+    padding-bottom: 20px;
+  }
+
+  nav ul li {
+    font-size: 0.9em;
+  }
+
+  nav .flex ul li:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  nav .flex {
+    flex-direction: row;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 10px;
+  }
+
+  header::after {
+    display: none;
+  }
+
+  .stay-productive a {
+    font-size: 0.7em;
+  }
+
+  .stay-productive .flex div:first-child img {
+    width: 400px;
+  }
+
+  .stay-productive a img {
+    width: 15px;
+  }
+
+  .testimonial:nth-child(2) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .testimonial {
+    margin-bottom: 30px;
+  }
+
+  .quote {
+    margin-top: 60px;
+  }
+
+  .email-input {
+    width: 85%;
+  }
+
+  .email-input form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .email-input form input {
+    margin-bottom: 20px;
+  }
+
+  .email-input form input,
+  .email-input form button {
+    width: 90%;
+    margin-left: 20px;
+  }
+
+  footer {
+    font-size: 1em;
+  }
+
+  footer .logo {
+    width: 180px;
+    margin-bottom: 30px;
+  }
+
+  footer .flex > * {
+    margin-bottom: 40px;
+  }
+
+  footer .social-links {
+    margin: auto;
+  }
+
+  footer ul.margin-right {
+    margin-top: -50px;
+  }
+}

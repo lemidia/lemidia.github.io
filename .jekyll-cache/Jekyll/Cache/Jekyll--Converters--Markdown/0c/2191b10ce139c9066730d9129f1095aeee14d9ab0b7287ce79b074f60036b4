@@ -1,0 +1,26 @@
+I"z<ul class="toc__menu">
+  <li><a href="#matplotlib">matplotlib</a>
+    <ul>
+      <li><a href="#matplotlib-1">matplotlib</a>
+        <ul>
+          <li><a href="#matplotlib-overview">matplotlib overview</a></li>
+          <li><a href="#figure--axes">Figure &amp; Axes</a></li>
+          <li><a href="#set-color">set color</a></li>
+          <li><a href="#set-line-style">set line style</a></li>
+          <li><a href="#set-title">set title</a></li>
+          <li><a href="#set-legend">set legend</a></li>
+          <li><a href="#scatter">scatter</a></li>
+          <li><a href="#bar-chart">bar chart</a></li>
+          <li><a href="#histogram">histogram</a></li>
+          <li><a href="#seaborn">seaborn</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#퀴즈-정리">퀴즈 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

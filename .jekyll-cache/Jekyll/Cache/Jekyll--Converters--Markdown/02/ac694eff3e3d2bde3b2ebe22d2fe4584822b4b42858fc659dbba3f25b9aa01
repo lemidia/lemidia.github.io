@@ -1,0 +1,10 @@
+I"[<ul class="toc__menu">
+  <li><a href="#sequence-to-sequence">Sequence to Sequence</a>
+    <ul>
+      <li><a href="#encoder-decoder-architecture">Encoder-decoder architecture</a></li>
+      <li><a href="#seq2seq-model-with-attention">Seq2Seq Model with Attention</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

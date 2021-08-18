@@ -1,0 +1,991 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Recurrent Neural Network, Types of RNNs and LSTM  - Code Factory</title>
+<meta name="description" content="Deal with Computer science. ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Code Factory">
+<meta property="og:title" content="Recurrent Neural Network, Types of RNNs and LSTM">
+<meta property="og:url" content="http://localhost:4000/development/boostcamp-week4-day17/">
+
+
+  <meta property="og:description" content="Deal with Computer science. ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerIMG.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-16T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-02-16T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/boostcamp-week4-day17/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Code Factory Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/icons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/icons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+<script data-ad-client="ca-pub-8663880613144845" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- mathjax -->
+    
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo4.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Code Factory
+          <span class="site-subtitle">Inspiration of Computer science</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/algorithm/" >Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/datastructure/" >Data Structure</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/assets/images/headerIMG.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Recurrent Neural Network, Types of RNNs and LSTM
+
+        
+      </h1>
+      
+        <p class="page__lead">
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>It is in the moment of decisions that your destiny is shaped.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:poiu2186@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Recurrent Neural Network, Types of RNNs and LSTM">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-02-16T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-02-16T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              
+                <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+                <ul class="toc__menu">
+  <li><a href="#sequential-models---rnn">Sequential Models - RNN</a>
+    <ul>
+      <li><a href="#sequential-model---naive-sequence-model">Sequential Model - Naive sequence model</a></li>
+      <li><a href="#sequential-model---auto-regressive-model">Sequential Model - Auto regressive model</a></li>
+      <li><a href="#markov-model">Markov model</a></li>
+      <li><a href="#latent-autoregressive-model">Latent autoregressive model</a></li>
+      <li><a href="#recurrent-neural-network">Recurrent Neural Network</a>
+        <ul>
+          <li><a href="#short-term-dependencies">Short-term dependencies</a></li>
+          <li><a href="#long-short-term-memory">Long Short-term Memory</a></li>
+        </ul>
+      </li>
+      <li><a href="#types-of-rnns">Types Of RNNs</a>
+        <ul>
+          <li><a href="#one-to-one">One-to-one</a></li>
+          <li><a href="#one-to-many">One-to-many</a></li>
+          <li><a href="#many-to-one">Many-to-one</a></li>
+          <li><a href="#many-to-many">Many-to-many</a></li>
+        </ul>
+      </li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+              
+            </nav>
+            <!-- devinlife comment : right-sidebar ads -->
+            <nav class="toc-custom">
+              
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- lemidia2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8663880613144845"
+     data-ad-slot="5185585092"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+              
+            </nav>
+          </aside>
+        
+        <h1 id="sequential-models---rnn">Sequential Models - RNN</h1>
+
+<p>자연어 처리 분야에서 Recurrent Neural Network(RNN)가 무엇이고, Gradient Vanishing/Exploding의 문제를 보완한 Vanilla RNN을 발전시킨 LSTM을 알아보고, RNN의 Type을 알아봅니다.</p>
+
+<h2 id="sequential-model---naive-sequence-model">Sequential Model - Naive sequence model</h2>
+
+<p>Sequential Data는 우리의 일상에서 언어나 주식 차트, 영상 등이 해당될 수 있습니다.</p>
+
+<p>이미지 같은 고정된 차원의 데이터가 아닌 시간에 따라 데이터가 입력이 되는 시계열 데이터에 대해 동작하는 것이 Sequential Model이라고 할 수 있습니다.</p>
+
+<p>예를 들어 현재 무슨 언어가 나올지 예측하는 모델을 생각해 볼 수 있습니다. 시간상으로 전에 나온 단어들로 미래의 단어를 예측한다던지..</p>
+
+<p>첫번째 단어가 입력이 되면, 두번째 단어는 첫번째 단어를 고려, 세번째 단어는 두번째, 첫번째 단어를 고려.. 반복</p>
+
+<p>그럼 이 모델은 현재 단어를 예측하기 위해 고려해야 하는 데이터의 개수가 시간이 지남에 따라 계속 증가하게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-1.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="sequential-model---auto-regressive-model">Sequential Model - Auto regressive model</h2>
+
+<p>위의 모델은 현재를 예측할 때 과거의 데이터를 다 고려했다면, 이 방법은 fixed timespan을 두어 과거의 몇개만 고려하는 것입니다.</p>
+
+<p>예를들어 과거에 대해 5개의 데이터만 보겠다하면 T의 값은 5가 됩니다. <code class="highlighter-rouge">x_t = x_1 ~ x_5</code>까지만 보겠다.</p>
+
+<p><img src="/assets/images/aitech_day15-2.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="markov-model">Markov model</h2>
+
+<p>이 모델은 현재의 값은 직전 과거의 하나의 데이터에만 dependent 하다는 것을 가정으로 두게됩니다.</p>
+
+<p>이 모델은 과거의 하나의 데이터만을 이용하기 때문에, 위의 모델에 비해 당연히 많은 과거의 정보를 이용할 수가 없게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-3.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="latent-autoregressive-model">Latent autoregressive model</h2>
+
+<p>처음 살펴본 두개의 모델의 가장 큰 단점은 과거의 방대한 데이터를 다 고려해야한다는 것입니다.</p>
+
+<p>이 모델은 모델 중간에 Hidden state가 들어있는 모델입니다. 이 Hidden state가 하는 일은 과거 데이터의 정보를 summary 한다고 볼 수 있습니다.</p>
+
+<p>그래서 다음의 타임스텝의 아웃풋은 현재의 인풋과 바로 이전의 Hidden state에 의존하여 작동할 수 있게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-4.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="recurrent-neural-network">Recurrent Neural Network</h2>
+
+<p>위에서 설명한 여러가지 모델들을 가장 잘 표현한 것이 Recurrent Neural Network 라고 할 수 있습니다.</p>
+
+<p>Recurrent Neural Network는 MLP와 다른 점이 있다면, 자기 자신을 돌아오는 구조가 하나 있다는 것입니다.</p>
+
+<p>이런 구조에서 타임t에서의 h는 x_t에서만 dependent한 것이 아니라, t-1의 A로 표시된 Sell state에도 dependent 하게 됩니다.</p>
+
+<p>밑의 그림에서 오른쪽 그림은 왼쪽에서의 그림을 시간순으로 쭉 나열한 것이 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-5.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h3 id="short-term-dependencies">Short-term dependencies</h3>
+
+<p>위에서 살펴본 RNN 구조에서의 가장 큰 단점이라고 한다면 Short-term dependencies을 들 수 있습니다.</p>
+
+<p>과거의 모든 정보들이 다 취합이 되서 요약되고 미래에서 그것을 고려가 되어야하는데, RNN 자체는 하나의 fixed rule로 이 정보들을 계속 취합하기 때문에, 먼 과거에 있던 정보가 미래까지 살아남기 힘든 것을 의미합니다.</p>
+
+<p>Short-term dependencies 즉, 현재에서 몇개의 전 과거의 데이터는 잘 고려가 되는데, 한 참 멀리 있는 정보를 고려하기 힘든것을 말하는 것입니다.</p>
+
+<p><img src="/assets/images/aitech_day15-6.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h3 id="long-short-term-memory">Long Short-term Memory</h3>
+
+<p>기존의 RNN 구조를 살펴보면, x가 A의 구조를 통과해서 h라는 아웃풋을 산출하고 h는 다시 다음번의 A구조로 들어가게 됩니다. 여기서 A구조에서는 weight와 계산이 되고, activation function과 계산이되게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-7.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>기존의 RNN을 개선한 Long Short-term Memory의 구조는 다음과 같습니다.</p>
+
+<p>Long Short-term Memory의 각각의 컴포넌트가 어떻게 동작하고 이 구조가 왜 Short-term dependencies를 극복하는지 알아보겠습니다.</p>
+
+<p><img src="/assets/images/aitech_day15-8.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>Long Short-term Memory의 구조를 세부적으로 묘사한 그림입니다.</p>
+
+<p>x_t는 인풋으로써 언어 모델이라면 여러개의 단어(5000개의 단어)를 표현한 원-핫 벡터가 될 수도 있고, 워드 임베딩된 벡터로 표현될 수도 있습니다.</p>
+
+<p>h_t는 hidden state이면서, output이 됩니다.</p>
+
+<p>previous cell state는 0부터 t-1까지의 정보를 다 취합해서 summarize 해주는 정보가 됩니다.</p>
+
+<p>previous hidden state는 위쪽으로 previous cell state 들어가기도 하지만 오른쪽으로 여러 연산의 입력으로도 들어가게 됩니다.</p>
+
+<p>전체적으로 보면 들어오는 입력은 3개가 되고 나가는 출력도 3개가 됩니다. 출력 중 2개는 다음번 입력으로 들어가고, 나머지 하나는 실제 아웃풋이 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-9.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>Long Short-term Memory은 총 4개의 gate로 이루어져 있습니다.</p>
+
+<p><img src="/assets/images/aitech_day15-10.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>그림에서 검은 선이 바로 cell state이고, C_0부터 C_t 까지 들어온 정보를 요약하게 됩니다.<br />
+타임스탬프 t마다 컨베이어 벨트에서 처럼 물건(정보)이 올라오고, 그 정보들을 잘 조작해서, 어떤 것이 유용하고 어떤 것이 유용하지 않은지 정해서 다음번 셀로 이 정보들을 넘겨주는 역할을 하게 됩니다.</p>
+
+<p>정보들을 잘 조작해서, 어떤 것이 유용하고 어떤 것이 유용하지 않은지 정해서 올리는 역할은 gate가 하게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-11.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>Forget gate는 어떤 정보를 버릴지 정하는 역할을 합니다.<br />
+Forget gate에는 현재의 입력 x_t와 이전의 hidden state value인 h_t-1이 들어가서 f_t라는 숫자를 얻어내게 됩니다. 시그모이드를 통과하기 때문에 항상 f_t는 0에서 1사이 값을 갖게 됩니다.</p>
+
+<p>f_t는 이전 cell state에서 나온 정보들 중에 어떤 것을 버리고, 어떤것을 살릴지 정해주게 됩니다.</p>
+
+<p>Input gate는 어떤 정보를 cell state에 저장할지(올릴지) 정하는 역할을 합니다.<br />
+현재에 어떤 입력이 들어왔는데, 이것을 무작정 cell state에 올리는 것이 아닌, 이 정보중에 어떤 정보를 올릴지 정하게 됩니다.</p>
+
+<p>i_t는 어떤 정보를 cell state에 올릴지 또는 저장할지 정하게 됩니다. 이전의 hidden state value와 현재의 입력을 가지고 만들어 지게 됩니다.</p>
+
+<p>그렇다면 우리가 실제로 올릴 정보를 알아야합니다.</p>
+
+<p>C_t~가 이 역할을 하게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-12.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>update gate는 이전까지 summarize 되어있던 cell state와 올릴지 또는 저장할지 정하는 i_t 그리고 C_t~를 가지고 cell state에 update하는 역할을 합니다.</p>
+
+<p>이전 cell state인 C_t-1과 f_t 만큼을 곱해서 C_t-1에서 어떤 정보를 버리게 되고 나오는 값 A, C_t~와 i_t만큼을 곱해서 어느 값을 올릴지를 정해서 만들어진 값 B, 이 두 값을 combine해서 다음 cell state인 C_t으로 업데이트 하는 역할을 합니다.</p>
+
+<p>Out state는 어떤 값을 밖으로 내보낼지 결정하는 역할을 합니다.</p>
+
+<p>o_t는 어떤 값을 내보낼지 정하는 역할을 하게 되고 이를 thanh를 통과한 C_t인 updated cell state와 Element wise multiplication을 해서 결정적으로 h_t가 만들어 지게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day15-13.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="types-of-rnns">Types Of RNNs</h2>
+
+<p>다루고자 하는 데이터와 문제에 따라 RNN을 여러 형태로 하여 구성할 수 있습니다.</p>
+
+<ul>
+  <li>one-to-one</li>
+  <li>one-to-many</li>
+  <li>many-to-one</li>
+  <li>many-to-many</li>
+</ul>
+
+<h3 id="one-to-one">One-to-one</h3>
+
+<p>입력과 출력의 타임스탭이 단 하나인 스탠다드한 모델 구조를 말합니다.<br />
+모델은 입력 벡터를 받아 가중치를 이용해 입력 벡터를 선형변환과 필요하다면 비선형 함수를 적용하고, 출력 벡터를 산출한다는 의미가 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day17-1.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h3 id="one-to-many">One-to-many</h3>
+
+<p>입력이 하나의 타임스탭으로 이루어지고, 출력은 여러 타임스탭으로 이루어진 모델 구조를 말합니다.<br />
+대표적으로 Image Captioning이 이에 해당할 수 있습니다. 입력으로는 하나의 이미지를 받고, 이 이미지에 대한 설명으로 각 타임스탭마다 하나의 단어를 산출한다는 점을 들 수 있습니다.</p>
+
+<p>매 타입스탭마다 모델로 입력이 주어져야 하지만, 밑의 사진처럼 따로 주어질 입력이 없는 경우 원래의 입력 사이즈와 같고 값이 0으로 채워진 벡터나 행렬을 입력으로 주게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day17-2.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h3 id="many-to-one">Many-to-one</h3>
+
+<p>입력이 여러개의 타임스탭으로 이루어지고, 출력은 하나의 타임스탭으로 이루어진 모델을 말합니다.<br />
+대표적으로 여러개의 입력을 받아 종합적으로 이 입력들의 감정을 분류하는 Sentiment Classification을 예로 들 수 있습니다.</p>
+
+<p><img src="/assets/images/aitech_day17-3.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h3 id="many-to-many">Many-to-many</h3>
+
+<p>입력과 출력 모두 여러개의 타임스탭으로 이루어진 시퀀스한 모델을 말합니다.<br />
+대표적으로 입력 단에서 특정 어느 나라 말을 끝까지 시간순으로 읽은 후, 출력단에서 순차적으로 다른 나라말로 번역(예측)이 되는, 기계독해 - Machine Translation을 예로 들 수 있습니다.</p>
+
+<p><img src="/assets/images/aitech_day17-4.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>RNN - 주재걸, 최성준 교수님</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ai" class="page__taxonomy-item" rel="tag">AI</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#math" class="page__taxonomy-item" rel="tag">Math</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#rnn" class="page__taxonomy-item" rel="tag">RNN</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">Development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-02-16">February 16, 2021</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Recurrent+Neural+Network%2C+Types+of+RNNs+and+LSTM+%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week4-day17%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week4-day17%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week4-day17%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/boostcamp-week4-day16/" class="pagination--pager" title="Intro to NLP, Bag-of-Words, Naive Bayes Classifier
+">Previous</a>
+    
+    
+      <a href="/development/boostcamp-week4-day18/" class="pagination--pager" title="Sequence to Sequence with Attention
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day18/" rel="permalink">Sequence to Sequence with Attention
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 17 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day16/" rel="permalink">Intro to NLP, Bag-of-Words, Naive Bayes Classifier
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 15 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week3-day15/" rel="permalink">Sequential Models - RNN
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 05 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week3-day14/" rel="permalink">Regularization
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 04 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">학습 데이터에 대한 에러와 테스트 데이터에 대한 에러의 차이가 가능한 작게 되도록 하는 여러가지 기법을 알아봅니다.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <!-- <START> google ads added by lemidia -->
+    <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- lemidia -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-8663880613144845"
+          data-ad-slot="6829839254"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    <!-- <END> google ads added by lemidia -->
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-title">
+  <div>
+    <img src="/assets/images/logo4.png" alt="">
+  </div>
+  <div>
+    <p><Strong>Code Factory</strong></p><span>Inspiration of Computer science</span>
+  </div>
+</div>
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+Hosted by Github Pages.  Made with <img src="/assets/images/love.svg" alt=""> by Gyeong</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/boostcamp-week4-day17/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/development/boostcamp-week4-day17"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,28 @@
+I"X<ul class="toc__menu">
+  <li><a href="#optimization-in-deep-learning">Optimization in Deep Learning</a>
+    <ul>
+      <li><a href="#important-concepts-in-optimization">Important Concepts in Optimization</a></li>
+      <li><a href="#generalization">Generalization</a></li>
+      <li><a href="#underfitting-vs-overfitting">Underfitting vs. Overfitting</a></li>
+      <li><a href="#cross-validation">Cross-validation</a></li>
+      <li><a href="#bias-and-variance">Bias and Variance</a></li>
+      <li><a href="#bootstrapping">Bootstrapping</a></li>
+      <li><a href="#bagging-vs-boosting">Bagging vs Boosting</a></li>
+      <li><a href="#gradient-descent-methods">Gradient Descent Methods</a></li>
+      <li><a href="#batch-size-matters">Batch-size Matters</a></li>
+      <li><a href="#gradient-descent-methods-1">Gradient Descent Methods</a>
+        <ul>
+          <li><a href="#gradient-descent">Gradient Descent</a></li>
+          <li><a href="#momentum">Momentum</a></li>
+          <li><a href="#nesterov-accelerated-gradient">Nesterov Accelerated Gradient</a></li>
+          <li><a href="#adagrad">Adagrad</a></li>
+          <li><a href="#adadelta">Adadelta</a></li>
+          <li><a href="#rmsprop">RMSprop</a></li>
+          <li><a href="#adam">Adam</a></li>
+        </ul>
+      </li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

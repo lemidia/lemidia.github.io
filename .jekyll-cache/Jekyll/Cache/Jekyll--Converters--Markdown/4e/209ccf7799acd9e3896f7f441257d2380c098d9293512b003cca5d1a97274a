@@ -1,0 +1,25 @@
+I"�<ul class="toc__menu">
+  <li><a href="#exceptionfilelog-handling">Exception/File/Log Handling</a>
+    <ul>
+      <li><a href="#exception">Exception</a></li>
+      <li><a href="#file-handling">File Handling</a>
+        <ul>
+          <li><a href="#python-file-io">Python File I/O</a></li>
+        </ul>
+      </li>
+      <li><a href="#logging">Logging</a></li>
+    </ul>
+  </li>
+  <li><a href="#python-data-handling">Python data handling</a>
+    <ul>
+      <li><a href="#comma-separate-value">Comma Separate Value</a></li>
+      <li><a href="#json">JSON</a></li>
+    </ul>
+  </li>
+  <li><a href="#피어세션-정리">피어세션 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

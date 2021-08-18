@@ -1,0 +1,864 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Sequence to Sequence with Attention - Code Factory</title>
+<meta name="description" content="Deal with Computer science. ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Code Factory">
+<meta property="og:title" content="Sequence to Sequence with Attention">
+<meta property="og:url" content="http://localhost:4000/development/boostcamp-week4-day18/">
+
+
+  <meta property="og:description" content="Deal with Computer science. ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerIMG.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-17T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-02-17T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/boostcamp-week4-day18/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Code Factory Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/icons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/icons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+<script data-ad-client="ca-pub-8663880613144845" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- mathjax -->
+    
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo4.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Code Factory
+          <span class="site-subtitle">Inspiration of Computer science</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/algorithm/" >Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/datastructure/" >Data Structure</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/assets/images/headerIMG.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Sequence to Sequence with Attention
+
+        
+      </h1>
+      
+        <p class="page__lead">
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>It is in the moment of decisions that your destiny is shaped.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:poiu2186@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Sequence to Sequence with Attention">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2021-02-17T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-02-17T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              
+                <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+                <ul class="toc__menu">
+  <li><a href="#sequence-to-sequence">Sequence to Sequence</a>
+    <ul>
+      <li><a href="#encoder-decoder-architecture">Encoder-decoder architecture</a></li>
+      <li><a href="#seq2seq-model-with-attention">Seq2Seq Model with Attention</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+              
+            </nav>
+            <!-- devinlife comment : right-sidebar ads -->
+            <nav class="toc-custom">
+              
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- lemidia2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8663880613144845"
+     data-ad-slot="5185585092"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+              
+            </nav>
+          </aside>
+        
+        <h1 id="sequence-to-sequence">Sequence to Sequence</h1>
+
+<p>Sequence를 Encoding과 Decoding 할 수 있는 sequence to sequence에 대해 알아봅니다.</p>
+
+<p>Sequence to sequence는 encoder와 decoder로 이루어져 있는 framework으로 대표적인 자연어 처리 architecture 중 하나입니다.</p>
+
+<h2 id="encoder-decoder-architecture">Encoder-decoder architecture</h2>
+
+<p>Sequence to Sequence 모델은 여러개의 입력 단어 시퀀스를 받아 처리하는 Encoder, 출력 단어를 순차적으로 생성하는 Decoder로 구성됩니다.</p>
+
+<p>각각의 모듈은 서로 파라미터를 공유하지 않는 독립된 RNN 모듈이라고 생각할 수 있습니다.</p>
+
+<p>그림에서는 RNN 모델을 LSTM 모듈로서 채용한 것을 알 수 있습니다.</p>
+
+<p>Sequence to Sequence의 Encoder에서 입력 단어의 마지막 까지 읽어들인 후, Encoder에서 나온 제일 마지막 hidden state vector가 Decoder로 제일 처음 h0 벡터로서 입력으로 들어가게 됩니다.</p>
+
+<p>h0는 입력 단어들을 잘 요약 정리한 정보라고 할 수 있고, 이는 출력단에서 순차적으로 처리가 되어 대응 되는 다음 단어를 생성하는데 사용될 수 있습니다.</p>
+
+<p>Start 토큰은 실질적으로 예측하고자 하는 결과 단어를 만들기 위한 제일 처음 넣어주는 인풋값으로서 사용하게 됩니다.</p>
+
+<p>End 토큰은 Decoder에서 문장이 끝나는 시점을 의미하고, 이 토큰이 생성되면 디코더의 실행은 멈추게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day18-1.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="seq2seq-model-with-attention">Seq2Seq Model with Attention</h2>
+
+<p>기존에는 인코더의 마지막 hidden state 벡터의 입력만 디코더에 넣어줘서 결과를 순차적으로 생성했다면, Attention을 적용한 경우에는, 인코더에서 각각의 타임스탭마다 만들어진 중간 노드들의 hidden state vector들을 디코더의 매 타임 스탭마다 하나의 정보로서 같이 활용하게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day18-2.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>인코더에서 만들어진 마지막 hidden state vector = h0와 start 토큰이 디코더를 거쳐 h1 state vector를 만들게 되는데 이는 인코더 단의 각각의 매 타임 스탭마다 만들어진 h1 ~ h4와 각각 내적의 연산을 수행하게 됩니다.</p>
+
+<p>이 내적 연산의 결과값의 의미는 h1 state vector와 각각의 인코더 hidden state vector간의 내적에 기반한 유사도라고 할 수 있습니다.</p>
+
+<p><img src="/assets/images/aitech_day18-3.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>우리는 이 값들을 다시 소프트맥스 층에 적용하여, 각각의 인코더 hidden state vector와의 대응되는 확률 값으로 해석할 수 있습니다.</p>
+
+<p>이 각각의 값들은, 각각의 인코더 hidden state vector로의 부여되는 가중치로서 사용이 되고, 이 4개의 값들을 가중평균을 내어 다시 종합된 하나의 인코딩 vector를 생성할 수 있게 됩니다. 이를 context vector 라고도 부릅니다.</p>
+
+<p>예시로든 사진에서는 0.85의 값이 제일 높은데 이는, 인코더의 첫번째 타임스탭의 단어를 제일 높은 확률로 필요로 한다는 의미가 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day18-4.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>밑의 그림에서 녹색 원 안에의 부분을 우리는 Attention 모듈이라고 부르게 되고, 입력으로 인코더 단에서의 각각의 hidden state vector와 디코더 단에서의 hidden state vector가 들어가게 되고, Attention 모듈의 출력으로는 인코더 단에서의 각각의 hidden state vector의 가중 평균이 되는 context vector가 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day18-5.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>이렇게 만들어진 context vector는 앞서 만들어진 디코더 단의 hidden state vector와 concat이 되어서 그림에서는 y3 아웃풋을 만들게 되고, 이는 다음 타임 스탭으로의 입력으로 들어가게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day18-6.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>디코더 단에서 y6인 money를 예측하는 타임 스탭에서의 그림은 다음과 같습니다.</p>
+
+<p><img src="/assets/images/aitech_day18-7.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>이렇게 디코더 단에서 매 타임 스탭마다 단어를 예측하는데에 있어서 각각의 인코더 hidden state vector가 쓰이게 되고 매번 다른 가중치가 적용된 가중평균된 context vector를 생성하게 되고, context vector가 매 타임 스탭마다 생성되고 아웃풋에 직접적인 입력의 일부로서 사용이 되어 그 해당 타임 스탭에서의 보다 좀 더 정확한 예측이 가능하도록 하게 만듭니다.</p>
+
+<p>이를 End of sentence를 의미하는 END 토큰이 나올 때 까지 반복을 하게 됩니다.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>RNN - 주재걸, 최성준 교수님</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ai" class="page__taxonomy-item" rel="tag">AI</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#math" class="page__taxonomy-item" rel="tag">Math</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#rnn" class="page__taxonomy-item" rel="tag">RNN</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">Development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-02-17">February 17, 2021</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Sequence+to+Sequence+with+Attention%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week4-day18%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week4-day18%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week4-day18%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/boostcamp-week4-day17/" class="pagination--pager" title="Recurrent Neural Network, Types of RNNs and LSTM
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day17/" rel="permalink">Recurrent Neural Network, Types of RNNs and LSTM
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 16 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day16/" rel="permalink">Intro to NLP, Bag-of-Words, Naive Bayes Classifier
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 15 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week3-day15/" rel="permalink">Sequential Models - RNN
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 05 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week3-day14/" rel="permalink">Regularization
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 04 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">학습 데이터에 대한 에러와 테스트 데이터에 대한 에러의 차이가 가능한 작게 되도록 하는 여러가지 기법을 알아봅니다.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <!-- <START> google ads added by lemidia -->
+    <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- lemidia -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-8663880613144845"
+          data-ad-slot="6829839254"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    <!-- <END> google ads added by lemidia -->
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-title">
+  <div>
+    <img src="/assets/images/logo4.png" alt="">
+  </div>
+  <div>
+    <p><Strong>Code Factory</strong></p><span>Inspiration of Computer science</span>
+  </div>
+</div>
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+Hosted by Github Pages.  Made with <img src="/assets/images/love.svg" alt=""> by Gyeong</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/boostcamp-week4-day18/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/development/boostcamp-week4-day18"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

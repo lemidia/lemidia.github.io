@@ -1,0 +1,18 @@
+I"1<ul class="toc__menu">
+  <li><a href="#sequential-models---rnn">Sequential Models - RNN</a>
+    <ul>
+      <li><a href="#sequential-model---naive-sequence-model">Sequential Model - Naive sequence model</a></li>
+      <li><a href="#sequential-model---auto-regressive-model">Sequential Model - Auto regressive model</a></li>
+      <li><a href="#markov-model">Markov model</a></li>
+      <li><a href="#latent-autoregressive-model">Latent autoregressive model</a></li>
+      <li><a href="#recurrent-neural-network">Recurrent Neural Network</a>
+        <ul>
+          <li><a href="#short-term-dependencies">Short-term dependencies</a></li>
+          <li><a href="#long-short-term-memory">Long Short-term Memory</a></li>
+        </ul>
+      </li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

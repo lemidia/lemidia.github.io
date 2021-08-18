@@ -1,0 +1,44 @@
+I"/<ul class="toc__menu">
+  <li><a href="#numpy--벡터--행렬">Numpy / 벡터 / 행렬</a>
+    <ul>
+      <li><a href="#numpy">Numpy</a>
+        <ul>
+          <li><a href="#import">import</a></li>
+          <li><a href="#array-creation">array creation</a></li>
+          <li><a href="#array-shape">array shape</a></li>
+          <li><a href="#array-type">array type</a></li>
+          <li><a href="#array-reshape">array reshape</a></li>
+          <li><a href="#indexing-for-numpy-array">indexing for numpy array</a></li>
+          <li><a href="#arange">arange</a></li>
+          <li><a href="#zeros-ones">zeros, ones</a></li>
+          <li><a href="#sum--mean--std">sum / mean / std</a></li>
+          <li><a href="#dot-product">Dot product</a></li>
+          <li><a href="#broadcasting">broadcasting</a></li>
+          <li><a href="#all--any">All &amp; Any</a></li>
+        </ul>
+      </li>
+      <li><a href="#벡터">벡터</a>
+        <ul>
+          <li><a href="#벡터의-뺄셈">벡터의 뺄셈</a></li>
+          <li><a href="#백터의-노름">백터의 노름</a></li>
+          <li><a href="#두-벡터-사이의-각도-구하기">두 벡터 사이의 각도 구하기</a></li>
+          <li><a href="#내적-해석하기">내적 해석하기</a></li>
+        </ul>
+      </li>
+      <li><a href="#행렬">행렬</a>
+        <ul>
+          <li><a href="#행렬에서의-스칼라곱">행렬에서의 스칼라곱</a></li>
+          <li><a href="#행렬에서의-곱셈">행렬에서의 곱셈</a></li>
+          <li><a href="#역행렬-이해하기">역행렬 이해하기</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#피어세션-정리">피어세션 정리</a></li>
+  <li><a href="#퀴즈-정리">퀴즈 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

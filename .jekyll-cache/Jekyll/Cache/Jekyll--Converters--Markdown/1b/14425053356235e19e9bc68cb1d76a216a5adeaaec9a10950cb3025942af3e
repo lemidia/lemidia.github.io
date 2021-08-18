@@ -1,0 +1,35 @@
+I"�<ul class="toc__menu">
+  <li><a href="#판다스--역전파-알고리즘">판다스 / 역전파 알고리즘</a>
+    <ul>
+      <li><a href="#판다스">판다스</a>
+        <ul>
+          <li><a href="#판다스-설치">판다스 설치</a></li>
+          <li><a href="#데이터-로딩">데이터 로딩</a></li>
+          <li><a href="#pandas의-구성">pandas의 구성</a></li>
+          <li><a href="#dataframe-indexing">dataframe indexing</a></li>
+          <li><a href="#selection-with-column-names">Selection with column names</a></li>
+          <li><a href="#data-drop">data drop</a></li>
+          <li><a href="#dataframe-operation">dataframe operation</a></li>
+          <li><a href="#pandas-map">pandas map</a></li>
+        </ul>
+      </li>
+      <li><a href="#역전파-알고리즘">역전파 알고리즘</a>
+        <ul>
+          <li><a href="#신경망을-수식으로-분해해보기">신경망을 수식으로 분해해보기</a></li>
+          <li><a href="#소프트맥스-연산">소프트맥스 연산</a></li>
+          <li><a href="#신경망은-선형모델과-활성함수를-합성한-함수">신경망은 선형모델과 활성함수를 합성한 함수</a></li>
+          <li><a href="#활성함수란">활성함수란</a></li>
+          <li><a href="#다층-신경망">다층 신경망</a></li>
+          <li><a href="#딥러닝-학습원리-역전파-알고리즘">딥러닝 학습원리: 역전파 알고리즘</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#피어세션-정리">피어세션 정리</a></li>
+  <li><a href="#퀴즈-정리">퀴즈 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

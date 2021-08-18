@@ -1,0 +1,206 @@
+I"*C<h1 id="python-object-oriented-programming--module-and-project">Python Object-Oriented Programming &amp; module and project</h1>
+
+<p>파이썬에서의 코드를 객체지향적으로 작성하는 방법을 알아보고, 또한 파이썬의 모듈과 패키지를 알아봅니다.</p>
+
+<h2 id="파이썬에서의-객체지향-프로그래밍">파이썬에서의 객체지향 프로그래밍</h2>
+
+<p>Object-Oriented Programming, OOP 라고도 하며 실생활에서 존재하는 존재나 물건을 코드에서의 객체로 표현하는 방법입니다. OOP에서 이러한 객체 개념은 속성의 변수(variable), 행동은 함수(method)로 표현됩니다.</p>
+
+<ul>
+  <li>객체: 실생활에서 일종의 물건. 속성(Attribute)와 행동(Action)을 가짐</li>
+</ul>
+
+<p>클래스는 객체를 설계하는 청사진과도 같다고 볼 수 있습니다. 또는 붕어빵틀.</p>
+
+<p>다음은 축구 선수 정보를 Class로 구현한 것입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SoccerPlayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">back_number</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span> <span class="bp">self</span><span class="o">.</span><span class="n">back_number</span> <span class="o">=</span> <span class="n">back_number</span>
+    <span class="k">def</span> <span class="nf">change_back_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_number</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"선수의 등번호를 변경합니다 : From </span><span class="si">%</span><span class="s">d to </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">back_number</span><span class="p">,</span> <span class="n">new_number</span><span class="p">))</span> <span class="bp">self</span><span class="o">.</span><span class="n">back_number</span> <span class="o">=</span> <span class="n">new_number</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">class SoccerPlayer(object):</code>에서 맨 앞 키워드는 클래스를 정의하는 예약어, 그 다음은 클래스명, 그다음은 상속받는 객체명입니다.
+<code class="highlighter-rouge">__init__은 객체 초기화 예약 함수</code>는 객체 초기화 예약 함수입니다.</p>
+
+<p><strong>파이썬에서 __ 의미</strong></p>
+
+<p>예) __는 특수한 예약 함수나 변수 그리고 함수명 변경(맨글링)으로 사용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SoccerPlayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="k">return</span> <span class="s">"Hello, My name is </span><span class="si">%</span><span class="s">s. I play in </span><span class="si">%</span><span class="s">s in center "</span> <span class="o">%</span> \
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+
+<span class="n">jinhyun</span> <span class="o">=</span> <span class="n">SoccerPlayer</span><span class="p">(</span><span class="s">"Jinhyun"</span><span class="p">,</span> <span class="s">"MF"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">jinhyun</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><code class="highlighter-rouge">클래스에서 method(Action) 추가는 기존 함수와 같으나, 반드시 self를 추가해야만 class 함수로 인정됩니다.</code></p>
+
+<p>Object 이름 선언과 함께 초기값 입력 하는 방법은 다음과 같습니다.
+<code class="highlighter-rouge">jinhyun = SoccerPlayer("Jinhyun", "MF", 10)</code></p>
+
+<hr />
+
+<p><strong>상속</strong></p>
+
+<p>상속은 부모 클래스로 부터 속성과 함수를 물려받은 자식 클래스를 생성 하는 것이라고 말할 수 있습니다.</p>
+
+<p>다음은 Korean 클래스가 Person 클래스를 상속하는 코드입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+<span class="k">class</span> <span class="nc">Korean</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">first_korean</span> <span class="o">=</span> <span class="n">Korean</span><span class="p">(</span><span class="s">"Sungchul"</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">first_korean</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>polymorphism</strong></p>
+
+<p>다형성이란 하나의 메소드나 클래스가 있을 때 이것들이 다양한 방법으로 동작할 수 있다는 것을 의미합니다.<br />
+객체 선언시 여러개의 부모 객체가 각기 다른 자식 클래스 종류의 인스턴스를 가지고 있음으로 표현할 수 있습니다.</p>
+
+<p>다른 언어에서는 메소드 오버로딩 이라고 해서 클래스 내에 함수명이 같고 패러메터의 갯수나 타입이 다른것을 의미하는 것이 있습니다. 여기서 메소드를 부를 때 같은 함수 호출 명이 같더라도 패러메터 갯수나 타입을 다르게 해서 호출을 하면 특정 조건에 맞는 함수가 호출이 되는데 이 때 이것을 다형성이라고 할 수 있습니다.</p>
+
+<p><strong>Encapsulation</strong></p>
+
+<p>캡슐화라고 하며 객체의 속성(data fields)과 행위(메서드, methods)를 하나로 묶고, 실제 구현 내용 일부를 외부에 감추어 은닉하는 방법론 입니다.</p>
+
+<p><strong>Inner function</strong></p>
+
+<p>파이썬에서는 함수 내에 또 다른 함수를 선언하여 사용할 수 있습니다.</p>
+
+<p>다음은 Inner function의 한 예 입니다.</p>
+
+<p>먼저 맨 바깥 함수를 호출하면 print_msg 함수는 안에 있는 printer 함수를 호출합니다.<br />
+이 때, 안에 있는 함수는 바깥에 있는 매개변수를 참조하여 사용할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_msg</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">printer</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="n">printer</span><span class="p">()</span>
+
+<span class="n">print_msg</span><span class="p">(</span><span class="s">"Hello, Python"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>closures</strong></p>
+
+<p>클로저는 위에서 봐던 inner function을 return값으로 반환하는 개념입니다.<br />
+another는 inner function를 참조하게 되고, another() 하면 printer()함수가 실행됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_msg</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">printer</span><span class="p">():</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">printer</span>
+<span class="n">another</span> <span class="o">=</span> <span class="n">print_msg</span><span class="p">(</span><span class="s">"Hello, Python"</span><span class="p">)</span>
+<span class="n">another</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="module-and-project">Module and Project</h2>
+
+<p>모듈은 파이썬 정의와 문장들을 담고 있는 파일입니다. 파일의 이름은 모듈 이름에 확장자 .py 를 붙입니다.<br />
+프로그램에서는 작은 프로그램 조각들을 모듈이라고 할 수 있고,이 모듈들을 모아서 하나의 큰 프로그램을 개발합니다.</p>
+
+<p>예를 들어 )</p>
+
+<p>파이썬에서는 Built-in Module 중 하나인 난수를 생성할 수 있는 Random 모듈이 있습니다.
+코드에서 랜덤한 값이 필요할 때, 이러한 랜덤 모듈을 레고 블럭 처럼 가져다가 쓸 수 있습니다.</p>
+
+<p>모듈을 가져가 쓸 때는 import 문을 사용해서 module을 호출할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># 0~100사이의 정수 난수를 생성
+</span><span class="k">print</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span> <span class="c1"># 일반적인 난수 생성
+</span></code></pre></div></div>
+
+<p>사용자가 정의한 모듈을 쓰는 예를 보겠습니다.</p>
+
+<p>fah_converter.py 모듈입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">covert_c_to_f</span><span class="p">(</span><span class="n">celcius_value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">celcius_value</span> \<span class="o">*</span> <span class="mf">9.0</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
+</code></pre></div></div>
+
+<p>그 다음은 module_ex.py 모듈입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fah_converter</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="s">"Enter a celsius value: "</span><span class="p">),</span>
+<span class="n">celsius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">fahrenheit</span> <span class="o">=</span> <span class="n">fah_converter</span><span class="o">.</span><span class="n">covert_c_to_f</span><span class="p">(</span><span class="n">celsius</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">"That's "</span><span class="p">,</span> <span class="n">fahrenheit</span><span class="p">,</span> <span class="s">" degrees Fahrenheit"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이 프로그램은 사용자로 부터 온도 값을 입력받고 섭씨를 화씨로 변환하는 프로그램입니다.<br />
+위에서 보듯이 두개의 .py 파일은 서로 다른 두개의 모듈이라고 볼 수 있습니다.<br />
+module_ex.py에서는 섭씨를 화씨로 변환하는 함수를 쓰기 위해 먼저 <code class="highlighter-rouge">import fah_converter</code>라고 함으로써 fah_converter.py 모듈을 부릅니다. 그리고 <code class="highlighter-rouge">fah_converter.covert_c_to_f(celsius)</code> 모듈명 + . + 쓸 함수명 함으로써 그 기능을 이용하고 있습니다.</p>
+
+<hr />
+
+<p><strong>패키지</strong></p>
+
+<p>패키지는 하나의 대형 프로젝트를 만드는 코드의 묶음이라고 볼 수 있습니다.<br />
+패키지는 모듈을 담을 수 있고, 또 다른 패키지를 담을 수 있습니다.</p>
+
+<p>Package 내에서 다른 폴더의 모듈을 부를 때는 절대 호출과 상대호출 방법이 있습니다.</p>
+
+<p>절대 참조는 루트 디렉터리 부터 타켓이 되는 모듈이나 패키지까지 경로를 적는 방법을 말합니다.<br />
+상대 참조는 현재 디렉토리 기준으로 타켓이 되는 모듈이나 패키지까지 경로를 적는 방법을 말합니다.</p>
+
+<ul>
+  <li>절대 참조로 호출하는 방법(루트 디렉터리 ) : from game.graphic.render import render_test()</li>
+  <li>상대 참조로 호출하는 방법(현재 디렉터리는 graphic) : from .render import render_test()</li>
+  <li>상대 참조로 부모 디렉터리로 갔다가 형재 노드의 패키지로 가는 법 : from ..sound.echo import echo_test()</li>
+</ul>
+
+<p><strong>가상환경</strong></p>
+
+<p>프로젝트 진행 시 필요한 패키지만 설치하는 환경이라고 볼 수 있습니다.<br />
+가상환경에는 기본적으로 필요한 인터프리터가 있고, 프로젝트 목적에 따라 각각 필요한 패키지를 설치하여 운용할 수 있습니다.<br />
+가상환경은 다양한 패키지 관리 도구를 가지고 있고 사용하고 있습니다.</p>
+
+<p>대표적인 도구 virtualenv와 conda가 있습니다.</p>
+
+<ul>
+  <li>virtualenv + pip : 가장 대표적인 가상환경 관리 도구, 레퍼런스 + 패키지 개수</li>
+  <li>conda : 상용 가상환경도구 miniconda 기본 도구, 설치의 용이성</li>
+</ul>
+
+<p>conda 가상환경을 만들고 사용하는 방법은 다음과 같습니다.</p>
+
+<p>터미널에서 <code class="highlighter-rouge">conda create -n my_project python=3.8</code> 를 입력하면 됩니다.<br />
+그리고 <code class="highlighter-rouge">conda activate my_project</code>를 호출하면 가상환경을 쓸 수 있게 됩니다.</p>
+
+<p>해제할 때는 <code class="highlighter-rouge">conda deactivate</code>를 해주면 됩니다.</p>
+
+<p>필요한 패키지를 설치할 때는 <code class="highlighter-rouge">conda install &lt;패키지명&gt;</code>를 쓸 수 있습니다.</p>
+
+<h1 id="피어세션-정리">피어세션 정리</h1>
+
+<p>오늘은 조원과 만난 네 번째 날이었고, 서로 인사하며 각자 어제 자기가 공부한 내용이라든지 궁금했던 내용을 서로 발표하며 유익한 세션 시간을 가질 수 있었습니다.</p>
+
+<p>삼일이 지나고 나니 서로 좀 더 친해지고 알아가게 되어서 그런지, 전날 보다 조원들 간의 사이가 좀 더 화목하게 되고, 한 마디에 한 번 웃었다면 이번엔 두 번 웃는 그런 사이가 되어 가는거 같아 좋았습니다.</p>
+
+<h1 id="과제-진행-상황-정리">과제 진행 상황 정리</h1>
+
+<p>오늘은 강의도 그렇게 길지 않았고, 둘째 날에 비교해 과제의 개수가 줄어 시간 상 정리 노트를 쓰기 전에 과제를 해결할 수 있었습니다.<br />
+이번 과제도 유익한 시뮬레이션/구현 문제가 주어졌고 애매했던 스트링함수 개념을 한 번 더 연습해보고 문제에 접목해 볼 수 있는 좋은 기회였습니다.<br />
+문제 조건에 특수문자와 공백 처리를 해야하는 약간의 까다로움이 있었지만, 이때까지 공부한 내용을 바탕으로 잘 해결해 풀 수 있었습니다.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>파이선 기본문법 3- 최성철 교수님</li>
+  <li><a href="https://ko.wikipedia.org/wiki/%ED%8C%8C%EC%9D%B4%EC%8D%AC">Python - wikipedia</a></li>
+</ul>
+:ET

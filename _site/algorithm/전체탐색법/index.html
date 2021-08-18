@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>전체탐색법(Brute force) - Code Factory</title>
-<meta name="description" content="주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법. ">
+<meta name="description" content="주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법 ">
 
 
   <meta name="author" content="Gyeong">
@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://localhost:4000/algorithm/%EC%A0%84%EC%B2%B4%ED%83%90%EC%83%89%EB%B2%95/">
 
 
-  <meta property="og:description" content="주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법. ">
+  <meta property="og:description" content="주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법 ">
 
 
 
@@ -223,7 +223,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
       </h1>
       
-        <p class="page__lead">주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법.
+        <p class="page__lead">주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법
 </p>
       
       
@@ -378,7 +378,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="전체탐색법(Brute force)">
-    <meta itemprop="description" content="주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법.">
+    <meta itemprop="description" content="주어진 문제에서 해가 될 수 있는 모든 가능성을 검사하는 방법">
     <meta itemprop="datePublished" content="2019-04-18T00:00:00+09:00">
     <meta itemprop="dateModified" content="2019-05-10T22:06:00+09:00">
 
@@ -455,14 +455,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <h2 id="선형-구조에서의-전체탐색">선형 구조에서의 전체탐색</h2>
 
 <h3 id="약수의-합">약수의 합</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>한 정수 n을 입력받아서 n의 모든 약수의 합을 구하는 프로그램을 작성하시오.  
 
-예를 들어 10의 약수는 1, 2, 5, 10이므로 이 값들의 합인 18이 10의 약수의 합이 된다.  
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>한 정수 n을 입력받아서 n의 모든 약수의 합을 구하는 프로그램을 작성하시오.
 
-입력  
-첫 번째 줄에 정수 n이 입력된다. (단, 1 &lt;= n &lt;= 100,000)  
+예를 들어 10의 약수는 1, 2, 5, 10이므로 이 값들의 합인 18이 10의 약수의 합이 된다.
 
-출력  
+입력
+첫 번째 줄에 정수 n이 입력된다. (단, 1 &lt;= n &lt;= 100,000)
+
+출력
 n의 약수의 합을 출력한다.
 -------------------
 입력 예
@@ -503,8 +504,9 @@ n의 약수의 합을 출력한다.
 아마 다른 포스트에서 다루게 될 것이므로 한 번 생각해보자.</p>
 
 <h3 id="최댓값">최댓값</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>다음과 같이 9×9 격자판에 쓰여진 81개의 자연수가 주어질 때, 이들 중 최댓 값을 찾고  
-그 최댓값이 몇 행 몇 열에 위치한 수인지 구하는 프로그램을 작성하시오.  
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>다음과 같이 9×9 격자판에 쓰여진 81개의 자연수가 주어질 때, 이들 중 최댓 값을 찾고
+그 최댓값이 몇 행 몇 열에 위치한 수인지 구하는 프로그램을 작성하시오.
 
 예를 들어, 다음과 같이 81개의 수가 주어질 경우에는 이들 중 최댓값은 90이고, 이 값은 5행 7열에 위치한다.
 
@@ -520,14 +522,14 @@ n의 약수의 합을 출력한다.
 8   47 47 70 45 23 65  3 41 44
 9   87 13 82 38 31 12 29 29 80
 
-입력  
+입력
 첫째 줄부터 아홉째 줄까지 한 줄에 아홉 개씩 자연수가 주어진다. 주어지는 자연 수는 100보다 작다.
 
-출력  
-첫째 줄에 최댓값을 출력하고, 둘째 줄에 최댓값이 위치한 행 번호와 열 번호를 빈칸을 사이에 두고 차례로 출력한다.  
+출력
+첫째 줄에 최댓값을 출력하고, 둘째 줄에 최댓값이 위치한 행 번호와 열 번호를 빈칸을 사이에 두고 차례로 출력한다.
 최댓값이 두 개 이상인 경우 그 중 한 곳의 위치를 출력한다.
 ----------------------------
-입력 예  
+입력 예
 3 23 85 34 17 74 25 52 65
 10 7 39 42 88 52 14 72 63
 87 42 18 78 53 45 18 84 53
@@ -570,7 +572,7 @@ n의 약수의 합을 출력한다.
 
 <p>위 예의 경우에 max값이 최댓값이었는데, 여기서 1을 증가하면 오버플로가 발생하 여 max값은 음수가 된다.<br />
 따라서 이런 점을 방지하기 위하여 적어도 2배 정도라 하더 라도 오버플로가 발생하지 않도록 처리하는 경우가 많다.<br />
-이럴 때는 주로 최댓값을 987654321 등의 자릿수도 쉽게 알 수 있고 2배를 하더라도 정수 범위에 있는 수 등을 활용하는 경우가 많다.  문제에 따라서는 탐색하고자 하는 데이터 중에서 임의의 한 값 을 최댓값 또는 최솟값으로 결정하는 방법도 있다.</p>
+이럴 때는 주로 최댓값을 987654321 등의 자릿수도 쉽게 알 수 있고 2배를 하더라도 정수 범위에 있는 수 등을 활용하는 경우가 많다. 문제에 따라서는 탐색하고자 하는 데이터 중에서 임의의 한 값 을 최댓값 또는 최솟값으로 결정하는 방법도 있다.</p>
 
 <p>위 문제를 해결하는 소스코드는 다음과 같다.</p>
 
@@ -618,24 +620,24 @@ n의 약수의 합을 출력한다.
 
 <h3 id="고기잡이">고기잡이</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>우리나라 최고의 어부 정올이가 이번에 네모네모 배 고기잡이 대회에 참가한다.  
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>우리나라 최고의 어부 정올이가 이번에 네모네모 배 고기잡이 대회에 참가한다.
 
 이 대회에는 3개의 라운드가 있는데, 첫 번째 라운드는 1차원 형태로 표현될 수 있는 작은 연못에서
-길쭉한 그물을 던져서 최대한 많은 고기를 잡는 것이 목적이다.  
+길쭉한 그물을 던져서 최대한 많은 고기를 잡는 것이 목적이다.
 
-1라운드의 예를 들면 연못의 크기가 1*6이고 물고기의 위치와 가치가 다음과 같다고 하자.  
+1라운드의 예를 들면 연못의 크기가 1*6이고 물고기의 위치와 가치가 다음과 같다고 하자.
 
 1 0 2 0 4 3
 
 여기서 그물의 크기는 1*3이라고 할 때, 잡을 수 있는 방법은
-(1 0 2), (0 2 0), (2 0 4), (0 4 3)의 4가지 방법이 있다.  
+(1 0 2), (0 2 0), (2 0 4), (0 4 3)의 4가지 방법이 있다.
 
 이 중 가장 이득을 보는 방법은 마지막 방법 0 + 4 + 3 = 7이다.
 따라서 주어진 경우의 최대 이득은 7이 된다.
-정올이는 최대한 가치가 큰 물고기를 잡아서 우승하고 싶어 한다.  
+정올이는 최대한 가치가 큰 물고기를 잡아서 우승하고 싶어 한다.
 
 연못의 폭과 각 칸에 있는 물고기의 가치, 그물의 가로의 길이와 세로의 길이가 주어질 때,
-잡을 수 있는 물고기의 최대이득을 구하는 프로그램을 작성하시오.  
+잡을 수 있는 물고기의 최대이득을 구하는 프로그램을 작성하시오.
 
 입력
 첫 번째 줄에 연못의 폭 N이 입력된다. ( N &lt;= 100 인 자연수 )
@@ -649,7 +651,7 @@ n의 약수의 합을 출력한다.
 입력 예
 6
 3
-1 0 2 0 4 3 
+1 0 2 0 4 3
 
 출력 예
 7
@@ -695,12 +697,12 @@ n의 약수의 합을 출력한다.
 <p>위와 같이 작성하면 생각하기 쉽기 때문에 빠른 시간에 코딩이 가능하다. 위의 코드의 출력결과는 다음과 같다.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 3 4
-1 2 3 4 5 
+1 2 3 4 5
 2 3 4 5 6
 3 4 5 6 7
-4 5 6 7 8 
+4 5 6 7 8
 5 6 7 8 9
-6 7 8 9 10 
+6 7 8 9 10
 7 8 9 10 11
 </code></pre></div></div>
 
@@ -730,23 +732,23 @@ n의 약수의 합을 출력한다.
 
 <h3 id="계단-오르기">계단 오르기</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>길동이는 n개의 단으로 구성된 계단을 오르려고 한다.  
-길동이는 계단을 오를 때 기분에 따라서 한 번에 1단 또는 2단을 올라갈 수 있다.  
-계단의 크기 n이 주어질 때, 길동이가 이 계단을 올라갈 수 있는 모든 경우의 수를  
-구하는 프로그램을 작성하시오.  
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>길동이는 n개의 단으로 구성된 계단을 오르려고 한다.
+길동이는 계단을 오를 때 기분에 따라서 한 번에 1단 또는 2단을 올라갈 수 있다.
+계단의 크기 n이 주어질 때, 길동이가 이 계단을 올라갈 수 있는 모든 경우의 수를
+구하는 프로그램을 작성하시오.
 
-만약 계단이 3개라면 길동이는 1, 1, 1로 올라가는 법과 1, 2로 올라가는 법, 2, 1로 
-올라가는 법의 3가지 서로 다른 방법이 있다.  
+만약 계단이 3개라면 길동이는 1, 1, 1로 올라가는 법과 1, 2로 올라가는 법, 2, 1로
+올라가는 법의 3가지 서로 다른 방법이 있다.
 -----------------------------------------
 입력
-계단의 수 n이 입력된다(단 n은 20보다 작은 자연수).  
+계단의 수 n이 입력된다(단 n은 20보다 작은 자연수).
 
 출력
 길동이가 계단을 오르는 모든 방법의 수를 출력한다.
 
 입력 예         출력 예
 3              3
- 
+
 </code></pre></div></div>
 
 <p>이 문제도 비선형구조로 전체탐색을 하여 해를 구할 수 있다.<br />
@@ -768,7 +770,7 @@ n의 약수의 합을 출력한다.
 </span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">ans</span><span class="p">;</span>
 <span class="kt">void</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="o">&gt;</span><span class="n">n</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="c1">// --- (a)</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="o">==</span><span class="n">n</span><span class="p">){</span> <span class="c1">// 현재 n칸이면 </span>
+    <span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="o">==</span><span class="n">n</span><span class="p">){</span> <span class="c1">// 현재 n칸이면</span>
         <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
@@ -776,8 +778,8 @@ n의 약수의 합을 출력한다.
     <span class="n">solve</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 2칸 오르기</span>
 <span class="p">}</span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span> 
-    <span class="n">solve</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">solve</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -786,24 +788,24 @@ n의 약수의 합을 출력한다.
 
 <h3 id="거스름-돈">거스름 돈</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>여러분은 실력을 인정받아 전 세계적으로 사용할 수 있는 자동판매기용 프로그램의  
-개발을 의뢰받았다. 거스름돈에 사용될 동전의 수를 최소화하는 것이다. 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>여러분은 실력을 인정받아 전 세계적으로 사용할 수 있는 자동판매기용 프로그램의
+개발을 의뢰받았다. 거스름돈에 사용될 동전의 수를 최소화하는 것이다.
 
-입력으로 거슬러 줘야할 돈의 액수와 그 나라에서 이용하는 동전의 가짓수  
-그리고 동전의 종류가 들어오면 여러 가지 방법들 중 가장 적은 동전의 수를 구하는  
+입력으로 거슬러 줘야할 돈의 액수와 그 나라에서 이용하는 동전의 가짓수
+그리고 동전의 종류가 들어오면 여러 가지 방법들 중 가장 적은 동전의 수를 구하는
 프로그램을 작성하시오.
 
 -----------------------------------------
 입력
-첫 번째 줄에는 거슬러 줘야할 돈의 액수 m이 입력된다.  
-( 10 &lt;= m &lt;= 10,000 )  
-다음 줄에는 그 나라에서 사용되는 동전의 종류의 수 n이 입력된다.  
-( 1 &lt;= n &lt;= 10 )  
-마지막 줄에는 동전의 수만큼의 동전 액수가 오름차순으로 입력된다.  
-( 10 &lt;= 액수 &lt;= m )  
+첫 번째 줄에는 거슬러 줘야할 돈의 액수 m이 입력된다.
+( 10 &lt;= m &lt;= 10,000 )
+다음 줄에는 그 나라에서 사용되는 동전의 종류의 수 n이 입력된다.
+( 1 &lt;= n &lt;= 10 )
+마지막 줄에는 동전의 수만큼의 동전 액수가 오름차순으로 입력된다.
+( 10 &lt;= 액수 &lt;= m )
 
 출력
-최소의 동전의 수를 출력한다.  
+최소의 동전의 수를 출력한다.
 
 입력 예
 730
@@ -841,7 +843,7 @@ n의 약수의 합을 출력한다.
 <span class="kt">void</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">int</span> <span class="n">mon</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">mon</span><span class="o">&gt;</span><span class="n">m</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
     <span class="k">if</span><span class="p">(</span><span class="n">mon</span><span class="o">==</span><span class="n">m</span><span class="p">){</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="o">&lt;</span><span class="n">ans</span><span class="p">)</span> <span class="n">ans</span><span class="o">=</span><span class="n">d</span><span class="p">;</span> 
+        <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="o">&lt;</span><span class="n">ans</span><span class="p">)</span> <span class="n">ans</span><span class="o">=</span><span class="n">d</span><span class="p">;</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -850,9 +852,9 @@ n의 약수의 합을 출력한다.
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span>
-        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">coin</span><span class="o">+</span><span class="n">i</span><span class="p">);</span> 
-    <span class="n">solve</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span> 
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">coin</span><span class="o">+</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">solve</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -878,7 +880,7 @@ n의 약수의 합을 출력한다.
 
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 </span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">coin</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">ans</span><span class="o">=</span><span class="mi">987654321</span><span class="p">;</span>
-<span class="kt">void</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">int</span> <span class="n">mon</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">)</span> <span class="p">{</span> 
+<span class="kt">void</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">int</span> <span class="n">mon</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">mon</span><span class="o">==</span><span class="n">m</span><span class="p">){</span>
         <span class="k">if</span><span class="p">(</span><span class="n">ans</span><span class="o">&gt;</span><span class="n">cnt</span><span class="p">)</span> <span class="n">ans</span><span class="o">=</span><span class="n">cnt</span><span class="p">;</span>
         <span class="k">return</span><span class="p">;</span> <span class="c1">// 백트랙</span>
@@ -888,11 +890,11 @@ n의 약수의 합을 출력한다.
         <span class="n">solve</span><span class="p">(</span><span class="n">mon</span><span class="o">+</span><span class="n">coin</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">cnt</span><span class="o">+</span><span class="n">i</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span> 
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
         <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">coin</span><span class="o">+</span><span class="n">i</span><span class="p">);</span>
     <span class="n">solve</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span> 
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -910,12 +912,12 @@ n의 약수의 합을 출력한다.
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*위의 그래프를 참고하여 문제를 풀어보자*
 
 정올이는 GSHS에서 연구활동 교수님을 뵈러 A대학교를 가려고 한다.
-출발점과 도착점을 포함하여 경유하는 지역 n개, 한 지역에서 다른 지역으로 가는 방법이 총 m 개이며 
+출발점과 도착점을 포함하여 경유하는 지역 n개, 한 지역에서 다른 지역으로 가는 방법이 총 m 개이며
 GSHS는 지역 1이고 A대학교는 지역 n이라고 할 때 대학까지 최소 비용을 구하시오.
 
-단, n은 10 이하, m은 30 이하, 그리고 한 지역에서 다른 지역으로 
+단, n은 10 이하, m은 30 이하, 그리고 한 지역에서 다른 지역으로
 가는 데에 필요한 비용은 모두 200 이하 양의 정수이며
-한 지역에서 다른 지역으로 가는 어떠한 방법이 존재하면 
+한 지역에서 다른 지역으로 가는 어떠한 방법이 존재하면
 같은 방법과 비용을 통해 역방향으로 갈 수 있다.
 
 위의 그래프는 예를 보여준다.
@@ -931,7 +933,7 @@ GSHS는 지역 1이고 A대학교는 지역 n이라고 할 때 대학까지 최�
 대학까지 가는 데 드는 최소 비용을 출력한다. 만약 갈 수 없다면 “-1”을 출력.
 
 ----------------------------
-입력 예 
+입력 예
 7 11
 1 2 47
 1 3 69
@@ -965,7 +967,7 @@ GSHS는 지역 1이고 A대학교는 지역 n이라고 할 때 대학까지 최�
 
 <p><img src="/assets/images/creativealgorithm21.png" alt="Alt text" width="700px" height="900px" /></p>
 
-<p class="notice--warning"><strong>Warning:</strong>  중간에 몇개의 과정이 생략되었음에 유의</p>
+<p class="notice--warning"><strong>Warning:</strong> 중간에 몇개의 과정이 생략되었음에 유의</p>
 
 <p><img src="/assets/images/creativealgorithm22.png" alt="Alt text" width="700px" height="700px" /></p>
 
@@ -1126,7 +1128,7 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/boostcamp-week1-day2/" rel="permalink">파이썬 기초 문법
+        <a href="/development/boostcamp-week4-day18/" rel="permalink">Sequence to Sequence with Attention
 </a>
       
     </h2>
@@ -1141,15 +1143,15 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
 
 
 
-  16 minute read
+  5 minute read
 
 </p>
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> January 19 2021</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 17 2021</p>
     
-    <p class="archive__item-excerpt" itemprop="description">부스트캠프 1주차 Day2 강의를 보고 내용을 정리한 노트입니다.
+    <p class="archive__item-excerpt" itemprop="description">
 </p>
   </article>
 </div>
@@ -1164,7 +1166,7 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/boostcamp-week1-day1/" rel="permalink">파이썬/AI 개발환경 준비하기
+        <a href="/development/boostcamp-week4-day17/" rel="permalink">Recurrent Neural Network, Types of RNNs and LSTM
 </a>
       
     </h2>
@@ -1185,9 +1187,9 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> January 18 2021</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 16 2021</p>
     
-    <p class="archive__item-excerpt" itemprop="description">부스트캠프 1주차 Day1 강의를 보고 내용을 정리한 노트입니다.
+    <p class="archive__item-excerpt" itemprop="description">
 </p>
   </article>
 </div>
@@ -1200,17 +1202,9 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-      <div class="archive__item-teaser">
-        <img src=
-          
-            "/assets/images/withoutunionbylank.png"
-          
-          alt="">
-      </div>
-    
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/data%20structure/unionfind/" rel="permalink">유니온 파인드(Union Find, Disjoint Set)
+        <a href="/development/boostcamp-week4-day16/" rel="permalink">Intro to NLP, Bag-of-Words, Naive Bayes Classifier
 </a>
       
     </h2>
@@ -1225,15 +1219,15 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
 
 
 
-  6 minute read
+  11 minute read
 
 </p>
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 14 2019</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 15 2021</p>
     
-    <p class="archive__item-excerpt" itemprop="description">중복되지 않는 부분집합들의 원소 정보를 조작하고 저장하는 자료구조
+    <p class="archive__item-excerpt" itemprop="description">
 </p>
   </article>
 </div>
@@ -1246,17 +1240,9 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-      <div class="archive__item-teaser">
-        <img src=
-          
-            "/assets/images/creativealgorithm33.png"
-          
-          alt="">
-      </div>
-    
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/%ED%83%90%EC%83%89%EA%B3%B5%EA%B0%84%EC%9D%98-%EB%B0%B0%EC%A0%9C/" rel="permalink">탐색공간의 배제(Exclusion of Search Space)
+        <a href="/development/boostcamp-week3-day15/" rel="permalink">Sequential Models - RNN
 </a>
       
     </h2>
@@ -1271,15 +1257,15 @@ solve(a, b)는 현재 a정점까지 방문한 상태로 이동거리가 b라고 
 
 
 
-  14 minute read
+  10 minute read
 
 </p>
     
     -->
     
-       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 21 2019</p>
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 05 2021</p>
     
-    <p class="archive__item-excerpt" itemprop="description">전체탐색에서 불필요한 공간을 탐색하지 않음으로써 알고리즘의 효율을 향상하는 방법
+    <p class="archive__item-excerpt" itemprop="description">
 </p>
   </article>
 </div>

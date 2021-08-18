@@ -1,0 +1,41 @@
+I"�<ul class="toc__menu">
+  <li><a href="#파이썬에서의-자료구조와-pythonic-code">파이썬에서의 자료구조와 Pythonic Code</a>
+    <ul>
+      <li><a href="#파이썬에서의-자료구조">파이썬에서의 자료구조</a>
+        <ul>
+          <li><a href="#스택과-큐">스택과 큐</a>
+            <ul>
+              <li><a href="#스택">스택</a></li>
+              <li><a href="#큐">큐</a></li>
+            </ul>
+          </li>
+          <li><a href="#튜플">튜플</a></li>
+          <li><a href="#set">set</a></li>
+          <li><a href="#dict">dict</a></li>
+          <li><a href="#collections">collections</a>
+            <ul>
+              <li><a href="#deque">deque</a></li>
+              <li><a href="#ordereddict">OrderedDict</a></li>
+              <li><a href="#defaultdict">defaultdict</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#파이썬-스타일-코드---pythonic-code">파이썬 스타일 코드 - Pythonic Code</a>
+        <ul>
+          <li><a href="#split--join">split &amp; join</a></li>
+          <li><a href="#list-comprehension">list comprehension</a></li>
+          <li><a href="#enumerate--zip">enumerate &amp; zip</a></li>
+          <li><a href="#iterable-object">iterable object</a></li>
+          <li><a href="#generator">generator</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#피어세션-정리">피어세션 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

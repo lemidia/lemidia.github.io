@@ -1,0 +1,1214 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Numpy / 벡터 / 행렬 - Code Factory</title>
+<meta name="description" content="부스트캠프 2주차 Day6 강의를 보고 내용을 정리한 노트입니다. ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Code Factory">
+<meta property="og:title" content="Numpy / 벡터 / 행렬">
+<meta property="og:url" content="http://localhost:4000/development/boostcamp-week2-day6/">
+
+
+  <meta property="og:description" content="부스트캠프 2주차 Day6 강의를 보고 내용을 정리한 노트입니다. ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerIMG.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-01-25T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-01-19T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/boostcamp-week2-day6/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Code Factory Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/icons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/icons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+<script data-ad-client="ca-pub-8663880613144845" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- mathjax -->
+    
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo4.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Code Factory
+          <span class="site-subtitle">Inspiration of Computer science</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/algorithm/" >Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/datastructure/" >Data Structure</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/assets/images/headerIMG.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Numpy / 벡터 / 행렬
+
+        
+      </h1>
+      
+        <p class="page__lead">부스트캠프 2주차 Day6 강의를 보고 내용을 정리한 노트입니다.
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  14 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>It is in the moment of decisions that your destiny is shaped.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:poiu2186@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Numpy / 벡터 / 행렬">
+    <meta itemprop="description" content="부스트캠프 2주차 Day6 강의를 보고 내용을 정리한 노트입니다.">
+    <meta itemprop="datePublished" content="2021-01-25T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-01-19T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              
+                <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+                <ul class="toc__menu">
+  <li><a href="#numpy--벡터--행렬">Numpy / 벡터 / 행렬</a>
+    <ul>
+      <li><a href="#numpy">Numpy</a>
+        <ul>
+          <li><a href="#import">import</a></li>
+          <li><a href="#array-creation">array creation</a></li>
+          <li><a href="#array-shape">array shape</a></li>
+          <li><a href="#array-type">array type</a></li>
+          <li><a href="#array-reshape">array reshape</a></li>
+          <li><a href="#indexing-for-numpy-array">indexing for numpy array</a></li>
+          <li><a href="#arange">arange</a></li>
+          <li><a href="#zeros-ones">zeros, ones</a></li>
+          <li><a href="#sum--mean--std">sum / mean / std</a></li>
+          <li><a href="#dot-product">Dot product</a></li>
+          <li><a href="#broadcasting">broadcasting</a></li>
+          <li><a href="#all--any">All &amp; Any</a></li>
+        </ul>
+      </li>
+      <li><a href="#벡터">벡터</a>
+        <ul>
+          <li><a href="#벡터의-뺄셈">벡터의 뺄셈</a></li>
+          <li><a href="#백터의-노름">백터의 노름</a></li>
+          <li><a href="#두-벡터-사이의-각도-구하기">두 벡터 사이의 각도 구하기</a></li>
+          <li><a href="#내적-해석하기">내적 해석하기</a></li>
+        </ul>
+      </li>
+      <li><a href="#행렬">행렬</a>
+        <ul>
+          <li><a href="#행렬에서의-스칼라곱">행렬에서의 스칼라곱</a></li>
+          <li><a href="#행렬에서의-곱셈">행렬에서의 곱셈</a></li>
+          <li><a href="#역행렬-이해하기">역행렬 이해하기</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#피어세션-정리">피어세션 정리</a></li>
+  <li><a href="#퀴즈-정리">퀴즈 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+              
+            </nav>
+            <!-- devinlife comment : right-sidebar ads -->
+            <nav class="toc-custom">
+              
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- lemidia2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8663880613144845"
+     data-ad-slot="5185585092"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+              
+            </nav>
+          </aside>
+        
+        <h1 id="numpy--벡터--행렬">Numpy / 벡터 / 행렬</h1>
+
+<p>넘파이는 과학계산에서 많이 사용하는 선형대수의 계산식을 파이썬으로 구현할 수 있도록 도와주는 라이브러리입니다. 모든 데이터 분석과 인공지능 학습에 있어 가장 필수적으로 사용되고 이용되므로 간단한 예제들과 함께 알아봅니다.</p>
+
+<p>벡터는 딥러닝에서 매우 중요한 선형대수학의 기본 단위가 되고, numpy에서도 굉장히 많이 사용되는 연산이기 때문에 확실하게 알 필요가 있습니다.</p>
+
+<p>행렬은 딥러닝에서 가장 핵심적인 연산이라고 볼 수 있을만큼 중요하고, 자주 사용됩니다.<br />
+행렬이 가지는 기하학적 의미와 머신러닝에서 어떻게 사용되는지 알아봅니다.</p>
+
+<h2 id="numpy">Numpy</h2>
+
+<p>넘파이는 과학계산에서 많이 사용하는 선형대수의 계산식을 파이썬으로 구현할 수 있도록 도와주는 라이브러리입니다.</p>
+
+<ul>
+  <li>Numerical Python</li>
+  <li>파이선의 고성능 과학 계산용 패키지</li>
+  <li>Matrix와 Vector 와 같은 Array 연산의 사실상의 표준</li>
+</ul>
+
+<p><strong>특징</strong></p>
+
+<ul>
+  <li>일반 리스트에 비해 빠르고 효율적</li>
+  <li>반복문 없이 데이터 배열에 대한 처리 지원</li>
+  <li>선형대수와 관련된 다양한 기능을 제공</li>
+</ul>
+
+<h3 id="import">import</h3>
+
+<p>넘파이의 호출 방법입니다.<br />
+일반적으로 np라는 별칭을 이용해서 호출합니다. (세계적인 약속 같은 것)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<h3 id="array-creation">array creation</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="nb">float</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">test_array</span><span class="p">)</span>
+<span class="c1"># array([1., 4., 5., 8.])
+</span>
+<span class="err">넘파이는</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="err">라는</span> <span class="err">함수를</span> <span class="err">활용해서</span> <span class="err">배열을</span> <span class="err">생성합니다</span><span class="o">.</span>
+<span class="err">넘파이에는</span> <span class="err">하나의</span> <span class="err">데이터</span> <span class="err">타입만</span> <span class="err">배열에</span> <span class="err">넣을</span> <span class="err">수</span> <span class="err">있습니다</span><span class="o">.</span>
+</code></pre></div></div>
+
+<h3 id="array-shape">array shape</h3>
+
+<ul>
+  <li>shape : array의 크기, 형태 등에 대한 정보</li>
+</ul>
+
+<p>다른 프로그래밍 언어와 같이 다음과 같이 선언하고 특정 값으로 초기화 할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span><span class="p">(</span><span class="n">arr_shape</span><span class="p">)</span>
+<span class="c1"># (2,4)
+</span></code></pre></div></div>
+
+<ul>
+  <li>ndim - number of dimension</li>
+  <li>size - number of data(element)</li>
+</ul>
+
+<h3 id="array-type">array type</h3>
+
+<ul>
+  <li>array의 single element가 가지는 데이터 타입</li>
+  <li>각 element가 차지는 메모리의 크기가 결정됨</li>
+  <li>int8, int16, float32, float64, str 등이 있습니다.</li>
+</ul>
+
+<h3 id="array-reshape">array reshape</h3>
+
+<ul>
+  <li>reshape : Array의 shape의 크기를 변경할 수 있습니다. size는 동일.</li>
+</ul>
+
+<p>다음은 2x4의 매트릭스를 1차원의 원소 8개를 가지는 벡터로 변환하는 코드입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="c1"># (2, 4)
+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,)</span>
+<span class="c1"># array([1, 2, 3, 4, 1, 2, 3, 4])
+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,)</span><span class="o">.</span><span class="n">shape</span>
+<span class="c1"># (8,)
+</span></code></pre></div></div>
+
+<h3 id="indexing-for-numpy-array">indexing for numpy array</h3>
+
+<p>리스트와 달리 2차원 배열에서 [0, 0]표기법을 제공합니다.<br />
+매트릭스일 경우는 앞은 row, 뒤는 column을 의미합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="nb">int</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Two dimensional array representation #1
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Two dimensional array representation #2
+</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># Matrix 0,0 에 12 할당 print(a)
+</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Matrix 0,0 에 12 할당 print(a)
+</span></code></pre></div></div>
+
+<p>리스트와 달리 행과 열 부분을 나워서 슬라이싱이 가능합니다.<br />
+이는 매트릭스의 부분집합을 추출할 때 유용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[:,</span><span class="mi">2</span><span class="p">:]</span> <span class="c1"># 전체 Row의 2열 이상
+# array([[3, 4, 5], [8, 9, 10]])
+</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># 1 Row의 1열 ~ 2열
+# array([7, 8, 9])
+</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># 1 Row ~ 2Row의 전체
+# array([6, 7, 8, 9, 10])
+</span></code></pre></div></div>
+
+<h3 id="arange">arange</h3>
+
+<p>array의 범위를 지정하여, 값의 list,fmf 생성하는 명령어 입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># array([0, 1, 2, 3, 4])
+</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># array([1, 2, 3, 4])
+</span>
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># array([[1, 2], [3, 4]])
+</span></code></pre></div></div>
+
+<h3 id="zeros-ones">zeros, ones</h3>
+
+<p>0또는, 1로 채워진 ndarray를 생성하는 함수</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#zeros :
+</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,))</span>
+<span class="c1"># array([0, 0, 0, 0, 0])
+</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># array([[0, 0],
+#        [0, 0]])
+</span>
+<span class="c1">#ones :
+</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
+<span class="c1"># array([1,1,1])
+</span></code></pre></div></div>
+
+<h3 id="sum--mean--std">sum / mean / std</h3>
+
+<p>ndarray의 element들 간의 합을 구하거나 평균 또는 표준편차를 구하는 기능의 함수입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="nb">int</span><span class="p">)</span>
+<span class="c1"># 10
+</span>
+<span class="n">test_array</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">test_array</span>
+<span class="c1"># array([[1,2,3,4],
+#         5,6,7,8],
+#         9,10,11,12)
+</span>
+<span class="n">test_array</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># 6.5
+</span>
+<span class="n">test_array</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="c1"># 3.4520525295346629
+</span></code></pre></div></div>
+
+<p>이 외에도 다양한 수학 연산자 함수를 제공합니다.</p>
+
+<p>ex) exp, log, log10, power, sqrt, sin cos, tan, cosh…</p>
+
+<h3 id="dot-product">Dot product</h3>
+
+<p>매트릭스의 dot product 계산에 쓰이는 함수입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">test_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">test_a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">test_b</span><span class="p">)</span>
+<span class="c1"># array([[58, 64], [139, 154]])
+</span></code></pre></div></div>
+
+<h3 id="broadcasting">broadcasting</h3>
+
+<p>shape이 다른 배열 간 연산을 지원하는 기능입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="n">scalar</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1">#덧셈
+</span><span class="n">test_matrix</span> <span class="o">+</span> <span class="n">scalar</span>
+<span class="c1"># array([[4, 5, 6],
+#        [7, 8, 9]])
+</span>
+<span class="c1"># 곱셈
+</span><span class="n">test_matrix</span> <span class="o">*</span> <span class="n">scalar</span>
+<span class="c1"># array([[3, 6, 9],
+#        [12, 15, 18]])
+</span></code></pre></div></div>
+
+<h3 id="all--any">All &amp; Any</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">a</span> <span class="c1"># array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</span><span class="n">np</span><span class="o">.</span><span class="nb">any</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="nb">any</span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># (True, False)
+</span><span class="n">np</span><span class="o">.</span><span class="nb">all</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="nb">any</span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># (False, True)
+</span></code></pre></div></div>
+
+<h2 id="벡터">벡터</h2>
+
+<p>벡터는 숫자를 원소로 가지는 리스트 또는 배열이라고 볼 수 있습니다.</p>
+
+<p><img src="/assets/images/vector-1.png" alt="Alt text" width="300px" height="200px" class="align-center" /></p>
+
+<p>벡터는 공간에서 한점을 나타냅니다.</p>
+
+<p><img src="/assets/images/vector-2.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<p>벡터는 숫자르 원소로 가지는 리스트로서 백터끼리 같은 모양을 가지면 덧셈, 뺄셈, 성분곱이 가능합니다.</p>
+
+<p><img src="/assets/images/vector-3.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h3 id="벡터의-뺄셈">벡터의 뺄셈</h3>
+
+<p>두 벡터의 뺄셈은 다른 벡터로 부터 상대적 위치이동을 표현합니다.<br />
+벡터의 뺄셈은 방향을 뒤집은 덧셈입니다.<br />
+대수적으로 보면 : x = [1 ,2], y = [5, 3] 이란 두개의 벡터가 있을 때 y - x 뺄셈을 하면 -&gt; [4, 1]이 됩니다.</p>
+
+<p><img src="/assets/images/vector-4.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h3 id="백터의-노름">백터의 노름</h3>
+
+<p>벡터의 노름은 원점에서부터의 거리를 말합니다.</p>
+
+<p>L1 노름과 L2노름이 있습니다.</p>
+
+<ul>
+  <li>L1-노름은 각 성분의 변화량의 절대값을 모두 더합니다.</li>
+  <li>L2-노름은 피타고라스 정리를 이용해 유클리드 거리를 계산합니다.</li>
+</ul>
+
+<p><img src="/assets/images/vector-5.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h3 id="두-벡터-사이의-각도-구하기">두 벡터 사이의 각도 구하기</h3>
+
+<p>두 벡터 사이의 거리는 제2 코사인 법칙에 의해 두 벡터 사이의 각도를 계산 가능<br />
+그리고 분자는 더욱 간단히 내적으로 구할 수 있다.</p>
+
+<p><img src="/assets/images/vector-6.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h3 id="내적-해석하기">내적 해석하기</h3>
+
+<p>내적은 정사영된 벡터의 길이와 관련 있다.<br />
+proj(x)의 길이는 코사인 법칙에 의해 x의 노름 x cos(theta)가 된다.<br />
+내적은 정사영의 길이를 벡터 y의 길이 만큼 조정한 값이 된다.</p>
+
+<p><img src="/assets/images/vector-7.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h2 id="행렬">행렬</h2>
+
+<ul>
+  <li>행렬(matrix)은 벡터를 원소로 가지는 2차원 배열입니다.</li>
+  <li>행렬은 행(row)과 열(column)이라는 인덱스(index)를 가집니다.</li>
+  <li>행렬의 특정 행(열)을 고정하면 행(열)벡터라 부릅니다.</li>
+</ul>
+
+<p><img src="/assets/images/vector-8.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<ul>
+  <li>벡터가 공간에서 한 점을 의미한다면 행렬은 여러 점들을 나타냅니다.</li>
+  <li>행렬의 행벡터 xi 는 i 번째 데이터를 의미합니다.</li>
+  <li>행렬의 xij 는 i 번째 데이터의 j 번째 변수의 값을 말합니다.</li>
+</ul>
+
+<p><img src="/assets/images/vector-9.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h3 id="행렬에서의-스칼라곱">행렬에서의 스칼라곱</h3>
+
+<ul>
+  <li>성분곱은 벡터와 똑같습니다. 스칼라곱도 벡터와 차이가 없습니다.</li>
+</ul>
+
+<p><img src="/assets/images/vector-10.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h3 id="행렬에서의-곱셈">행렬에서의 곱셈</h3>
+
+<p>행렬 곱셈은 i번째 행벡터와 j번째 열벡터 사이의 내적을 성분으로 가지는 행렬을 계산합니다.</p>
+
+<p><img src="/assets/images/vector-11.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h3 id="역행렬-이해하기">역행렬 이해하기</h3>
+
+<ul>
+  <li>어떤 행렬 A 의 연산을 거꾸로 되돌리는 행렬을 역행렬(inverse matrix)이 라 부르고 A−1 라 표기한다.<br />
+역행렬은 행과 열 숫자가 같고 행렬식(determinant)이 0이 아닌 경우에만 계산할 수 있다. (ad-bc != 0)</li>
+</ul>
+
+<p><img src="/assets/images/vector-12.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<ul>
+  <li>만일 역행렬을 계산할 수 없다면 유사역행렬(pseudo-inverse) 또는 무어-펜로즈(Moore-Penrose) 역행렬 A+ 을 이용한다.</li>
+</ul>
+
+<p><img src="/assets/images/vector-12.png" alt="Alt text" width="500px" class="align-center" /></p>
+
+<h1 id="피어세션-정리">피어세션 정리</h1>
+
+<p>두번째 주차 첫 날 모임이었습니다.<br />
+오늘은 새로운 모더레이터가 선출되고, 부스트캠프의 시간표가 조금 바뀜에 따라 피어 플랜을 다시 재정비 하기로 했습니다.<br />
+회의를 통해 의견이 모아졌고, 기존에 하던 “어제 무엇을 하였고, 오늘의 공부 계획은?” 계속 진행하고, 이제 edwith에는 오늘 다룬 토픽에 대해 좀 더 알아보기란 목록으로 “further question”이 추가 된다고 하여, 이와 묶어 당일 다뤄진 내용 중 다소 어렵거나 이해가 안간 내용과 같이 피어들과 같이 회의하고 공부하기로 하였습니다.</p>
+
+<h1 id="퀴즈-정리">퀴즈 정리</h1>
+
+<p><strong>벡터</strong></p>
+
+<ol>
+  <li>
+    <p>다음 백터의 L-1 노름을 구하라.</p>
+
+    <p>x=[−1,2,−3]</p>
+
+    <p>각 요소의 절대값의 합이 답이 됩니다.</p>
+  </li>
+  <li>
+    <p>다음 백터의 L-2 노름을 구하라.</p>
+
+    <p>x = [-6, -8]x=[−6,−8]</p>
+
+    <p>각 요소의 제곱의 총합에 제곱근을 취한 값이 답이 됩니다.</p>
+  </li>
+  <li>
+    <p>L2-노름을 이용하여 다음 두 벡터 사이의 거리를 구하시오 (정수값으로 입력).</p>
+
+    <p>x=[−3,0]<br />
+y=[0,4]</p>
+
+    <p>두 벡터의 뺄셈을 하여 L-2 노름을 취한 값이 거리가 됩니다.</p>
+  </li>
+  <li>
+    <p>다음 두 벡터 사이의 각도를 구하시오 (라디안 단위: 0 이상, 7 미만의 정수값으로 입력)</p>
+
+    <p>x=[0,1]
+y=[0,2]</p>
+
+    <p>theta = arccos * (x와y의 내적) / (x의 노름 * y의 노름)으로 구해도 되고,<br />
+이 벡터의 경우에는 두 벡터가 정확히 같은 방향(포개어져 있음)이므로 각이 0도 입니다.</p>
+  </li>
+  <li>
+    <p>내적이 다음과 같이 정의될 때, 다음 두 벡터 ( x, y )의 내적을 구하시오 (정수값으로 입력).</p>
+
+    <p>x=[1,−1,1,−1]
+y=[4,−4,4,−4]</p>
+
+    <p>[x, y] 의 내적 = x의 노름 * y의 노름 * cos(theta)로 구할 수 있습니다.</p>
+  </li>
+</ol>
+
+<p><strong>행렬</strong></p>
+
+<ol>
+  <li>
+    <p>다음 보기 중 행렬 X 의 올바른 전치행렬을 고르시오.</p>
+
+    <p>T한 행렬을 구하라는 의미입니다.<br />
+성분 i와j를 서로 바꾸어준 위치를 생각하면 됩니다.</p>
+  </li>
+  <li>
+    <p>두 행렬의 곱셈은 각 행렬의 모양과 상관없이 가능하다? (O,X) 문제</p>
+
+    <p>두 행렬의 곱셈은 앞의 행렬의 열과 뒤의 행렬의 행의 개수가 맞아야 합니다.</p>
+  </li>
+  <li>
+    <p>어떠한 행렬의 역행렬은 항상 계산할 수 있다. (O,X) 문제</p>
+
+    <p>2차원 정사각행렬을 예로 들면, ad-bc = 0 이 아니면 역행렬이 존재하지 않습니다.</p>
+  </li>
+  <li>
+    <p>다음 보기 중 행렬 XX 의 올바른 역행렬을 고르시오.</p>
+
+    <p>수반행렬을 사용해 구해도 되고, 가우스 조던 소거법을 이용해 풀어도 좋습니다.<br />
+어떤분은 넘파이 함수를 이용해 푸셧다고 합니다.</p>
+  </li>
+  <li>
+    <p>다음 보기 중 행렬 X 의 올바른 무어-펜로즈 역행렬을 고르시오.</p>
+
+    <p>저는 강의에서 배운대로 $A = A^{+}b = A^{T} \big(AA^{T}\big)^{-1}b$를 하여 답을 구할 수 있었습니다.</p>
+  </li>
+</ol>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Mathematics for Artificial Intelligence - Unist 임성철 교수님</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ai" class="page__taxonomy-item" rel="tag">AI</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">Development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-01-19">January 19, 2021</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Numpy+%2F+%EB%B2%A1%ED%84%B0+%2F+%ED%96%89%EB%A0%AC%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week2-day6%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week2-day6%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week2-day6%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/boostcamp-week1-day5/" class="pagination--pager" title="파이썬 기초문법 4
+">Previous</a>
+    
+    
+      <a href="/development/boostcamp-week2-day7/" class="pagination--pager" title="경사하강법 (Gradient Descent)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day18/" rel="permalink">Sequence to Sequence with Attention
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 17 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day17/" rel="permalink">Recurrent Neural Network, Types of RNNs and LSTM
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  12 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 16 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day16/" rel="permalink">Intro to NLP, Bag-of-Words, Naive Bayes Classifier
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 15 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week3-day15/" rel="permalink">Sequential Models - RNN
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 05 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <!-- <START> google ads added by lemidia -->
+    <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- lemidia -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-8663880613144845"
+          data-ad-slot="6829839254"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    <!-- <END> google ads added by lemidia -->
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-title">
+  <div>
+    <img src="/assets/images/logo4.png" alt="">
+  </div>
+  <div>
+    <p><Strong>Code Factory</strong></p><span>Inspiration of Computer science</span>
+  </div>
+</div>
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+Hosted by Github Pages.  Made with <img src="/assets/images/love.svg" alt=""> by Gyeong</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/boostcamp-week2-day6/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/development/boostcamp-week2-day6"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

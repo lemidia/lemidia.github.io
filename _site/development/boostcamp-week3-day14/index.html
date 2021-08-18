@@ -1,0 +1,905 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Regularization - Code Factory</title>
+<meta name="description" content="학습 데이터에 대한 에러와 테스트 데이터에 대한 에러의 차이가 가능한 작게 되도록 하는 여러가지 기법을 알아봅니다. ">
+
+
+  <meta name="author" content="Gyeong">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Code Factory">
+<meta property="og:title" content="Regularization">
+<meta property="og:url" content="http://localhost:4000/development/boostcamp-week3-day14/">
+
+
+  <meta property="og:description" content="학습 데이터에 대한 에러와 테스트 데이터에 대한 에러의 차이가 가능한 작게 되도록 하는 여러가지 기법을 알아봅니다. ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/headerIMG.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-04T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-02-04T22:06:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/boostcamp-week3-day14/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Gyeong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Code Factory Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/icons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/icons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+<script data-ad-client="ca-pub-8663880613144845" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- mathjax -->
+    
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo4.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Code Factory
+          <span class="site-subtitle">Inspiration of Computer science</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/algorithm/" >Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/datastructure/" >Data Structure</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/development/" >Development</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/assets/images/headerIMG.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Regularization
+
+        
+      </h1>
+      
+        <p class="page__lead">학습 데이터에 대한 에러와 테스트 데이터에 대한 에러의 차이가 가능한 작게 되도록 하는 여러가지 기법을 알아봅니다.
+</p>
+      
+      
+        <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+</p>
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://unsplash.com"><strong>Unsplash</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/gyeong.jpeg" alt="Gyeong" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Gyeong</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>It is in the moment of decisions that your destiny is shaped.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic Of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:poiu2186@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.acmicpc.net/user/lemidia" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Online Judge</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Regularization">
+    <meta itemprop="description" content="학습 데이터에 대한 에러와 테스트 데이터에 대한 에러의 차이가 가능한 작게 되도록 하는 여러가지 기법을 알아봅니다.">
+    <meta itemprop="datePublished" content="2021-02-04T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-02-04T22:06:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              
+                <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+                <ul class="toc__menu">
+  <li><a href="#regularization">Regularization</a>
+    <ul>
+      <li><a href="#early-stopping">Early stopping</a></li>
+      <li><a href="#parameter-norm-penalty">Parameter Norm Penalty</a></li>
+      <li><a href="#data-augmentation">Data Augmentation</a></li>
+      <li><a href="#noise-robustness">Noise Robustness</a></li>
+      <li><a href="#label-smoothing">Label Smoothing</a></li>
+      <li><a href="#dropout">Dropout</a></li>
+      <li><a href="#batch-normalization">Batch Normalization</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+              
+            </nav>
+            <!-- devinlife comment : right-sidebar ads -->
+            <nav class="toc-custom">
+              
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- lemidia2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8663880613144845"
+     data-ad-slot="5185585092"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+              
+            </nav>
+          </aside>
+        
+        <h1 id="regularization">Regularization</h1>
+
+<p>Regularization은 우리말로 규제라고 하며 쉽게 말해서 이전에 살펴본 최적화 방법에서 우리의 모델을 Generalization하게(학습 데이터에 대한 에러와 테스트 데이터에 대한 에러의 차이가 가능한 작게 되도록)하도록 하는 의미를 갖습니다.</p>
+
+<p>엄밀히 말하면 우리의 모델이 데이터를 보고 학습을 하게 되는데, 학습에 방해가 되도록 규제를 하게 됩니다.<br />
+학습에 방해가 되도록 규제를 해서 우리가 얻는 이점은 학습 데이터에서만 우리의 모델이 잘 동작하는 것만 아니라 한번도 보지 못한 테스트 데이터에서도 잘 동작하도록 하는 것입니다.</p>
+
+<p>여러가지 규제 방법들이 있고 아래와 같은 순서로 하나씩 살펴보겠습니다.</p>
+
+<ul>
+  <li>Early stopping</li>
+  <li>Parameter norm penalty</li>
+  <li>Data augmentation</li>
+  <li>Noise robustness</li>
+  <li>Label smoothing</li>
+  <li>Dropout</li>
+  <li>Batch normalization</li>
+</ul>
+
+<h2 id="early-stopping">Early stopping</h2>
+
+<p>일반적으로 학습이 반복되면서 학습 에러는 낮아지지만 그에 반해 학습 데이터 셋에서 분리한 검증 데이터로 검증을 하게 될 때, 검증 에러는 증가하게 됩니다.</p>
+
+<p>밑의 그림은 말 그대로 학습이 반복됨에 따라 Generalization performance가 낮아지기 전에 또는 Generalization Gap이 커지기 전에 우리의 모델 학습을 멈추는 것을 의미합니다. 하지만 너무 빨리 멈춰 버리면 충분한 학습이 덜 되는 등 문제가 생기게 되므로 상황에 맞게 잘 적용해야 할 것입니다.</p>
+
+<p>규제를 적용하고자 할 때 테스트 데이터를 써서 Early stopping을 하게 되면 Cheating에 해당되게 되므로 검증 데이터를 따로 사용하고 테스트 데이터는 사용하지 않습니다.</p>
+
+<p><img src="/assets/images/aitech_day14-1.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="parameter-norm-penalty">Parameter Norm Penalty</h2>
+
+<p>Parameter Norm Penalty는 뉴럴 네트워크 파라미터가 너무 커지지 않게 하는 것을 말합니다.<br />
+네트워크 파라미터 숫자를 다 제곱한 다음 더하면 어떤 값이 나오게 되는데 이 숫자를 같이 줄이는 것을 의미합니다.</p>
+
+<p>이 것에 대해 물리적이거나 해석적인 의미는 뉴럴 네트워크가 만들어 내는 함수의 공간에 부드러움을 더하는 것입니다. 부드러운 함수일 수록 Generalization performance가 높을 것이다 라는 가정을 가지게 됩니다</p>
+
+<p><img src="/assets/images/aitech_day14-2.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>밑에서 알아보게 될 stride와 padding는 고려하지 않고 가장 기본적인 Convolution 연산을 해보면 오른쪽의 Output 필터가 도출되게 됩니다.</p>
+
+<h2 id="data-augmentation">Data Augmentation</h2>
+
+<p>뉴럴넷 혹은 딥러닝에서는 가장 중요한 하나를 꼽자면 역시 데이터 인데요, 데이터의 수가 작은 것 보다 데이터가 무한히 많으면 확실히 학습이 잘 이루어 지게 됩니다.</p>
+
+<p>왼쪽의 그림 처럼 데이터의 수가 적을 때는 Random Forest, XGBoost 같은 방법론들이 데이터 대비 학습 성능이 더 잘 될 때가 많았습니다.</p>
+
+<p>하지만 데이터 샘플의 개수가 어느정도 커지게 되면 딥러닝은 우리가 가지고 있는 방대한 데이터를 잘 표현을 하게 되고 이로 인해 성능이 올라가고, 기존에 머신러닝 방법론들은 이 많은 수의 데이터를 표현할 만한 표현력이 부족해지게 됩니다.</p>
+
+<p>문제는 무엇이냐 하면, 현실에서의 데이터의 수는 한정적이고 해서 Data Augmentation를 통해서 데이터에 조작을 가해 기존에 있던 데이터와 비슷하지만 형태가 조금 다른 데이터를 추가하는 방식을 만들게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day14-3.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>위에서 보이는 사진처럼 기존의 이미지에 대한 레이블 값이 바뀌게 하지 않는 선(유지)에서 이미지를 회전시키고, 확대 시키거나 축소 또는 뒤집기(플립), 자르기 등의 행위를 Data Augmentation 이라고 합니다.</p>
+
+<p>하지만 MNIST 데이터에서 6과 같은 숫자는 상하로 뒤집게 되면 아예 이 데이터에 대한 레이블 값이 바뀌는 것이기에 이런 경우에는 뒤집기 같은 것을 사용할 수 없게 됩니다.</p>
+
+<h2 id="noise-robustness">Noise Robustness</h2>
+
+<p>Noise Robustness는 노이즈를 추가한 데이터에 대해서도 잘 동작 하도록 모델을 강건하게 만든다는 것에 의미가 있습니다.</p>
+
+<p>Data Augmentation과 차이점이라면 입력 데이터에 대해서만 노이즈를 추가하는 것이 아닌, 모델의 weight에 대해서도 노이즈를 추가해 줄 수 있습니다. 이렇게 되면 모델이 학습할 때 조금 더 성능이 더 잘 나온다는 실험적 결과가 있다고 합니다.</p>
+
+<p><img src="/assets/images/aitech_day14-4.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="label-smoothing">Label Smoothing</h2>
+
+<p>Label Smoothing도 Data Augmentation과 비슷한 의미를 갖는데, 차이점은 분류 문제라면 학습 데이터에서 랜덤하게 두 개의 이미지를 가져와 섞어주는 것입니다.</p>
+
+<p>이것이 어떤 효과가 있냐 하면, 분류 문제에서의 이미지 공간 속에서 여러 개의 클래스들을 잘 구분할 수 있는 Decision Boundary를 찾고 싶을 것인데, 이 Decision Boundary를 부드럽게 만들어주는 효과를 가지고 있다고 합니다.
+<img src="/assets/images/aitech_day14-5.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<p>Mix up 같은 경우는 밑에서 보이는 것 처럼 이미지를 서로 50:50으로 섞습니다. 그리고 레이블 값도 각각 0.5씩 주게 됩니다.</p>
+
+<p>Cut out은 이미지에서 일정 영역을 빼버리게 됩니다.</p>
+
+<p>Cut mix는 이미지를 섞는데, 블렌딩하게 섞는 것이 아닌 일정 영역을 잘라 다른 이미지로 대체해버리는 방법을 말합니다. 그림에서 보이듯이 레이블 값은 0.6, 0.4씩 주어지게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day14-6.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="dropout">Dropout</h2>
+
+<p>드롭아웃은 사진에서 보이는 것 처럼 뉴럴 넷에서의 특정 웨이트를 0으로 만듦으로써 뉴런을 비활성화 시키는 것을 말합니다. 드롭아웃 p = 0.5라는 말은 50%의 뉴런을 비활성화 시킨다라고 말할 수 있습니다.</p>
+
+<p>이것을 해서 얻는 이점은 각각의 뉴런들이 좀 더 Robust한 feature를 잡을 수 있다라고 해석을 한다고 합니다. 그래서 모델의 Generalization performance가 올라간다고 실험적으로 잘 알려져 있습니다.</p>
+
+<p><img src="/assets/images/aitech_day14-7.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="batch-normalization">Batch Normalization</h2>
+
+<p>Batch Normalization는 이 기법을 적용하고자 하는 레이어의 값들을 통계적으로 정규화 시킨다라고 말할 수 있습니다.</p>
+
+<p>예를 들어 1000개의 파라미터 값이 있는 히든 레이어가 있다고 하면, 1000개의 파라미터 각각의 값들에 대해 zero mean and unit variance하게 만들어 주는 것입니다.</p>
+
+<p>unit variance은 데이터들에 대해 분산이 1이고 평균이 0인 값들의 분포로 만들어 주는 것을 말합니다.</p>
+
+<p>신경망에서 해당층에는 파라미터의 여러 값들이 있는데, 그 수치의 크기가 달라서 큰 수의 값에 신경망이 지나치게 영향을 받는 것을 방지하기 위해서 이 기법을 적용한다고 생각해 볼 수 있습니다.</p>
+
+<p>방법은 전체 데이터에 대해 평균과 분산을 구하고, 각각의 데이터에 대해서 평균을 뺀 값을 표준편차로 나눠주게 되면 Standarization이 되게 됩니다.</p>
+
+<p>그렇다면, 전체 데이터에서 평균에 가까운 값이나 평균의 값을 가진 파라미터는 0또는 0 근처의 값이 되고, 다른 값들은 평균을 빼준 값에서 표준편차로 나누어준 거리 만큼 평균에서 떨어진 값으로 있게 됩니다.</p>
+
+<p><img src="/assets/images/aitech_day14-8.png" alt="Alt text" width="600px" class="align-center" /></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Optimization - Convolution - 최성준 교수님</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ai" class="page__taxonomy-item" rel="tag">AI</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">Development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-02-04">February 4, 2021</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Regularization%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week3-day14%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week3-day14%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fboostcamp-week3-day14%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/boostcamp-week3-day13/" class="pagination--pager" title="CNN - Convolution은 무엇인가?
+">Previous</a>
+    
+    
+      <a href="/development/boostcamp-week3-day15/" class="pagination--pager" title="Sequential Models - RNN
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day18/" rel="permalink">Sequence to Sequence with Attention
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 17 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day17/" rel="permalink">Recurrent Neural Network, Types of RNNs and LSTM
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  12 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 16 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week4-day16/" rel="permalink">Intro to NLP, Bag-of-Words, Naive Bayes Classifier
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 15 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/boostcamp-week3-day15/" rel="permalink">Sequential Models - RNN
+</a>
+      
+    </h2>
+    <!--
+       devinlife comments :
+         아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+         기존에는 read_time이 표기. read_time -> date 변경
+
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+
+</p>
+    
+    -->
+    
+       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 05 2021</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <!-- <START> google ads added by lemidia -->
+    <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- lemidia -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-8663880613144845"
+          data-ad-slot="6829839254"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    <!-- <END> google ads added by lemidia -->
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-title">
+  <div>
+    <img src="/assets/images/logo4.png" alt="">
+  </div>
+  <div>
+    <p><Strong>Code Factory</strong></p><span>Inspiration of Computer science</span>
+  </div>
+</div>
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/lemidia" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/gyeong_it/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Gyeong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+Hosted by Github Pages.  Made with <img src="/assets/images/love.svg" alt=""> by Gyeong</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/boostcamp-week3-day14/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/development/boostcamp-week3-day14"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lemidia-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

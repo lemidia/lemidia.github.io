@@ -1,0 +1,15 @@
+I"[<ul class="toc__menu">
+  <li><a href="#regularization">Regularization</a>
+    <ul>
+      <li><a href="#early-stopping">Early stopping</a></li>
+      <li><a href="#parameter-norm-penalty">Parameter Norm Penalty</a></li>
+      <li><a href="#data-augmentation">Data Augmentation</a></li>
+      <li><a href="#noise-robustness">Noise Robustness</a></li>
+      <li><a href="#label-smoothing">Label Smoothing</a></li>
+      <li><a href="#dropout">Dropout</a></li>
+      <li><a href="#batch-normalization">Batch Normalization</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

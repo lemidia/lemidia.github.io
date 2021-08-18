@@ -1,0 +1,30 @@
+I"�<ul class="toc__menu">
+  <li><a href="#베이즈-정리--딥러닝-입문-mlp">베이즈 정리 / 딥러닝 입문/ MLP</a>
+    <ul>
+      <li><a href="#베이즈-정리">베이즈 정리</a>
+        <ul>
+          <li><a href="#베이즈-정리-예제">베이즈 정리: 예제</a></li>
+          <li><a href="#베이즈-정리를-통한-정보의-갱신">베이즈 정리를 통한 정보의 갱신</a></li>
+        </ul>
+      </li>
+      <li><a href="#deep-learning-basic">Deep Learning Basic</a>
+        <ul>
+          <li><a href="#what-make-you-a-good-deep-learner-">What make you a good deep learner ?</a></li>
+          <li><a href="#contents">Contents</a></li>
+          <li><a href="#ai--ml--dl">AI / ML / DL</a></li>
+          <li><a href="#key-components-of-deep-learning">Key Components of Deep Learning</a></li>
+          <li><a href="#data">Data</a></li>
+          <li><a href="#model">Model</a></li>
+          <li><a href="#loss">Loss</a></li>
+          <li><a href="#optimization-algorithm">Optimization Algorithm</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#퀴즈-정리">퀴즈 정리</a>
+    <ul>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </li>
+</ul>
+:ET
